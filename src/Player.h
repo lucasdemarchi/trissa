@@ -23,12 +23,13 @@
 #define PLAYER_H__
 
 #include <string>
+#include <exception>
 #include "common.h"
 		
 namespace trissa {
 	class Player;
 
-	class PlayerException : public exception{
+	class PlayerException : public std::exception{
 	public:
 		static const int BOARD_NOT_KNOWN = 0;
 		PlayerException(int idException, Player*  player);
@@ -64,7 +65,7 @@ namespace trissa {
 			player(player){
 	}
 	const char * PlayerException::what(){
-		string str_error("Player error: ");
+		std::string str_error("Player error: ");
 		if (idException == BOARD_NOT_KNOWN) {
 				str_error += (player->getName());
 				str_error += " doesn't know how to play in board with size ";

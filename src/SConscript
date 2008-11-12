@@ -1,3 +1,3 @@
 #VariantDir('build', 'src')
 env = Environment()
-env.Object('Player.cc')
+env.Program(['Player.cc', 'PlayerFactory.cc'], LIBS=['dl', 'boost_filesystem'])

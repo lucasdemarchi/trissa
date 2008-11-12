@@ -1,14 +1,15 @@
 #include <vector>
 
 namespace trissa{
-	using namespace std;
+	class Player;
 	
+	typedef Player * (*function_creator_ptr)();
 	struct Move {
 		int x;
 		int y;
 		int z;
 	};
 		
-	typedef vector<int, vector<int, vector<int, int> > > Cube;
+	typedef std::vector<int, std::vector<int, std::vector<int, int> > > Cube;
 	
 }
