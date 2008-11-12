@@ -1,3 +1,27 @@
+/*
+ * Player.h
+ * This file is part of Trissa
+ *
+ * Copyright (C) 2008 - Lucas De Marchi
+ *
+ * Trissa is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * Trissa is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Trissa; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Boston, MA  02110-1301  USA
+ */
+#ifndef PLAYER_H__
+#define PLAYER_H__
+
 #include <string>
 #include "common.h"
 		
@@ -24,12 +48,12 @@ namespace trissa {
 		
 		virtual ~Player(){
 		}
-		virtual Move& play(Cube const& board, const Move* opponentMove) = 0;
-		//virtual Move& firstPlay() = 0;
-		virtual const char * getName() = 0;
+		virtual Move& play(Cube const& board, const Move& opponentMove) = 0;
 		virtual bool isKnownBoard(unsigned int dimension) {
 			return false;
 		}
+		virtual Move& firstPlay() = 0;
+		virtual const char * getName() = 0;
 	protected:
 		unsigned int dimension;
 		friend class PlayerException;
@@ -52,3 +76,5 @@ namespace trissa {
 
 
 }
+
+#endif /* PLAYER_H__ */
