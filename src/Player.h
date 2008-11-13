@@ -40,7 +40,7 @@ namespace trissa {
 	
 	class Player{
 	public:
-		Player(unsigned int dimension) throw () : dimension(dimension) {
+		Player(unsigned int dimension) throw (PlayerException) : dimension(dimension) {
 			if (!isKnownBoard(dimension))
 				throw PlayerException(0, this);
 				
@@ -48,12 +48,12 @@ namespace trissa {
 		
 		virtual ~Player(){
 		}
-		virtual Move& play(Cube const& board, const Move& opponentMove) = 0;
-		virtual bool isKnownBoard(unsigned int dimension) {
+		virtual Move& play(Cube const& board, Move const& opponentMove) = 0;
+		virtual bool isKnownBoard(unsigned int dimension) const {
 			return false;
 		}
 		virtual Move& firstPlay() = 0;
-		virtual const char * getName() = 0;
+		virtual const char * getName() const = 0;
 	protected:
 		unsigned int dimension;
 		friend class PlayerException;

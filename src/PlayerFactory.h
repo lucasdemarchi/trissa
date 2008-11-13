@@ -40,6 +40,8 @@ namespace trissa {
 		public:
 			PlayerFactory(std::string path);
 			~PlayerFactory();
+			
+			Player * create_player (std::string player_name);
 		private:
 			std::map<std::string, Player_details> factory;
 	};

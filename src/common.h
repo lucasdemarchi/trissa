@@ -24,11 +24,11 @@ namespace trissa{
 	class Player;
 	
 	typedef Player * (*function_creator_ptr)();
-	struct Move {
+	typedef struct Move {
 		int x;
 		int y;
 		int z;
-	};
+	} Move;
 		
 	typedef std::vector<int, std::vector<int, std::vector<int, int> > > Cube;
 	

@@ -83,6 +83,10 @@ namespace trissa {
 			dlclose(it->second.dlib);
 		}
 	}
+	
+	Player* PlayerFactory::create_player (string player_name){
+		return (factory[player_name].player_creator_ptr)();
+	}
 }
 
 int main(){
