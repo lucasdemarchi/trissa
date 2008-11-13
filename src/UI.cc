@@ -1,5 +1,5 @@
 /*
- * common.h
+ * UI.cc
  * This file is part of Trissa
  *
  * Copyright (C) 2008 - Lucas De Marchi
@@ -18,23 +18,27 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, 
  * Boston, MA  02110-1301  USA
  */
-#ifndef COMMON_H__
-#define COMMON_H__
+#include "UI.h"
 
-#include <vector>
+namespace trissa {
+	using namespace std;
 
-namespace trissa{
-	class Player;
+	//TODO: all
+	UI::UI(){
+	}
 	
-	typedef Player * (*function_creator_ptr)();
-	typedef struct Move {
-		int x;
-		int y;
-		int z;
-	} Move;
-		
-	typedef std::vector<std::vector<std::vector<int> > > Cube;
+	//TODO: all
+	UI::~UI(){
 	
+	}
+	
+	//TODO: all
+	unsigned int UI::getDimension(){
+		return 0;
+	}
+	
+	//TODO: all
+	void UI::getPlayers(vector<string> strplayers, string& strplayerA, string& strplayerB){
+	
+	}
 }
-
-#endif /* COMMON_H__ */

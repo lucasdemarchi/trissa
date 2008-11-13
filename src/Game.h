@@ -1,5 +1,5 @@
 /*
- * common.h
+ * Game.h
  * This file is part of Trissa
  *
  * Copyright (C) 2008 - Lucas De Marchi
@@ -18,23 +18,32 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, 
  * Boston, MA  02110-1301  USA
  */
-#ifndef COMMON_H__
-#define COMMON_H__
+#ifndef GAME_H__
+#define GAME_H__
+#include "common.h"
+#include <string>
 
-#include <vector>
-
-namespace trissa{
+namespace trissa {
+	
+	//forward declarations
 	class Player;
+	class PlayerFactory;
+	class UI;
 	
-	typedef Player * (*function_creator_ptr)();
-	typedef struct Move {
-		int x;
-		int y;
-		int z;
-	} Move;
-		
-	typedef std::vector<std::vector<std::vector<int> > > Cube;
-	
+	class Game {
+	public:
+		//Game();
+		Game(std::string playersPath);
+		void start();
+		~Game();
+	private:
+		Player* playerA;
+		Player* playerB;
+		PlayerFactory* playerFactory;
+		Cube* board;
+		UI* ui;
+	};
+
 }
 
-#endif /* COMMON_H__ */
+#endif /* GAME_H__ */

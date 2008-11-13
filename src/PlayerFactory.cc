@@ -87,6 +87,11 @@ namespace trissa {
 	Player* PlayerFactory::create_player (string player_name){
 		return (factory[player_name].player_creator_ptr)();
 	}
+	
+	//TODO: all
+	void PlayerFactory::getPlayersList(vector<string>& strplayers){
+	}
+	
 }
 
 int main(){
