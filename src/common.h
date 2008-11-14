@@ -34,7 +34,9 @@ namespace trissa{
 	} Move;
 		
 	typedef std::vector<std::vector<std::vector<int> > > Cube;
-	
+
+#define PLAYER_NONE 0
+
 }
 
 #endif /* COMMON_H__ */

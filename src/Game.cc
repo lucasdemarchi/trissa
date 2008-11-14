@@ -22,16 +22,13 @@
 #include "PlayerFactory.h"
 #include "Player.h"
 #include "UI.h"
+#include "common.h"
+
+#include <iostream>
+using namespace std;
 
 namespace trissa {
-	using namespace std;
-//	private:
-//		Player* playerA;
-//		Player* playerB;
-//		PlayerFactory playerFactory;
-//		Cube* board;
-//		UI* ui;
-
+	
 	//TODO: all
 //	Game::Game(){
 //	}
@@ -44,7 +41,7 @@ namespace trissa {
 		unsigned const int dimension = ui->getDimension();
 		
 		//Is there a better way of doing this?
-		board = new vector<vector<vector<int> > >(dimension, vector<vector<int> >(dimension, vector<int>(dimension, 0)));
+		board = new vector<vector<vector<int> > >(dimension, vector<vector<int> >(dimension, vector<int>(dimension, PLAYER_NONE)));
 		
 		vector<string> strplayers;
 		string strplayerA, strplayerB;
@@ -67,4 +64,20 @@ namespace trissa {
 	void Game::start(){
 	}
 
+}
+
+void print_usage(){
+	cout << "Usage: trissa path_to_players" << endl;	
+}
+
+int main (int argc, char * argv[]){
+
+	if(argc != 2){
+		print_usage();
+		return -1;
+	}
+	
+	
+	trissa::Game game(argv[1]);
+	return 0;
 }

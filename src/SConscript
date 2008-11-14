@@ -1,3 +1,16 @@
 #VariantDir('build', 'src')
-env = Environment()
-env.Program(['Player.cc', 'PlayerFactory.cc'], LIBS=['dl', 'boost_filesystem'])
+#
+env = Environment(LIBS=['dl','boost_filesystem'])
+
+#vars = Variables('custrom.py')
+#vars.Add('RELEASE', 'Set to 1 do build for release', 0)
+#Help(vars.GenerateHelpText(env))
+
+debug = ARGUMENTS.get('debug', 0)
+if int(debug):
+	env['CCFLAGS'] = '-g'
+else:
+	env['CCFLAGS'] = '-O3'
+
+#env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)
+env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)

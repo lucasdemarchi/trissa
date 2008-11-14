@@ -40,40 +40,17 @@ namespace trissa {
 	
 	class Player{
 	public:
-		Player(unsigned int dimension) throw (PlayerException) : dimension(dimension) {
-			if (!isKnownBoard(dimension))
-				throw PlayerException(0, this);
-				
-		}
+		Player(unsigned int dimension) throw (PlayerException);
 		
-		virtual ~Player(){
-		}
+		virtual ~Player();
 		virtual Move& play(Cube const& board, Move const& opponentMove) = 0;
-		virtual bool isKnownBoard(unsigned int dimension) const {
-			return false;
-		}
 		virtual Move& firstPlay() = 0;
 		virtual const char * getName() const = 0;
+		virtual bool isKnownBoard(unsigned int dimension) const;
 	protected:
 		unsigned int dimension;
 		friend class PlayerException;
 	};
-	
-	PlayerException::PlayerException(int idException, Player*  player): 
-			idException(idException),
-			player(player){
-	}
-	const char * PlayerException::what(){
-		std::string str_error("Player error: ");
-		if (idException == BOARD_NOT_KNOWN) {
-				str_error += (player->getName());
-				str_error += " doesn't know how to play in board with size ";
-				str_error += (player->dimension);
-				return str_error.c_str();
-		}
-		return "Unknown error";
-	}	
-
 
 }
 

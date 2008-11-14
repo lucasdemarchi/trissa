@@ -93,7 +93,3 @@ namespace trissa {
 	}
 	
 }
-
-int main(){
-	return 0;
-}
