@@ -22,6 +22,7 @@
 #define UI_H__
 #include <vector>
 #include <string>
+#include <iostream>
 
 namespace trissa {
 	class UI{

@@ -8,9 +8,20 @@ env = Environment(LIBS=['dl','boost_filesystem'])
 
 debug = ARGUMENTS.get('debug', 0)
 if int(debug):
-	env['CCFLAGS'] = '-g'
+	env['CCFLAGS'] = ['-g']
 else:
-	env['CCFLAGS'] = '-O3'
+	env['CCFLAGS'] = ['-O3']
 
+
+env['LINKFLAGS']+=['-rdynamic']
 #env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)
 env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)
+
+#dict = env.Dictionary()
+#keys = dict.keys();
+#keys.sort();
+#for key in keys:
+#	print '%s: %s'%(key, dict[key])
+#
+#
+#print 'LINKFLAGS:', env.subst('$LINKFLAGS')

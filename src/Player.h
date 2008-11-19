@@ -4,6 +4,7 @@
  *
  * Copyright (C) 2008 - Lucas De Marchi
  *
+ 
  * Trissa is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as published by
  * the Free Software Foundation.
@@ -24,7 +25,15 @@
 #include <string>
 #include <exception>
 #include "common.h"
-		
+
+#define REGISTER_PLAYER(classname) 									\
+	extern "C" trissa::Player * create_player(int dimension){		\
+		return new classname (dimension);							\
+	}																\
+	extern "C" char * getPlayerName(){								\
+		return classname::name;										\
+	}
+
 namespace trissa {
 	class Player;
 
@@ -41,12 +50,19 @@ namespace trissa {
 	class Player{
 	public:
 		Player(unsigned int dimension) throw (PlayerException);
-		
+//		Player(unsigned int dimension) : dimension(dimension)
+//		{
+//		}
 		virtual ~Player();
+//		{
+//		}
 		virtual Move& play(Cube const& board, Move const& opponentMove) = 0;
 		virtual Move& firstPlay() = 0;
 		virtual const char * getName() const = 0;
 		virtual bool isKnownBoard(unsigned int dimension) const;
+//		{
+//			return false;
+//		}
 	protected:
 		unsigned int dimension;
 		friend class PlayerException;

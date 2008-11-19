@@ -39,20 +39,19 @@ namespace trissa {
 					dir_itr != end_iter;
 					++dir_itr ){
 				Player_details player_details;
-				
 				try{
-					if ( fs::is_regular_file(dir_itr->status()) && dir_itr->path().extension() == ".so"){
+					if ( fs::is_regular_file(dir_itr->status()) && dir_itr->path().extension() == ".so" ){
 						// Try to load dynamic library
 						const string& filename = dir_itr->path().string();
 						
 						player_details.dlib = dlopen(filename.c_str(), RTLD_NOW);
 						if(player_details.dlib == NULL){
-							cerr<< "PlayerFactory: " << "Unable do load library " << filename;
+							cerr<< "PlayerFactory: " << "Unable do load library " << filename << endl << dlerror() << endl;
 							continue;
 						}
 
 						//Get a pointer to function that creates this player and insert it in factory map;
-						player_details.player_creator_ptr = (function_creator_ptr) dlsym(player_details.dlib, "getPlayerCreator_ptr");
+						player_details.player_creator_ptr = (function_creator_ptr) dlsym(player_details.dlib, "create_player");
 						if(dlerror()){
 							cerr<< "PlayerFactory: " << "Unable get Player's  creator function from library " << filename;
 							dlclose(player_details.dlib);
@@ -70,7 +69,8 @@ namespace trissa {
 					}
 				}
 				catch ( const std::exception & ex ){
-					cerr<< "PlayerFactory: " << "Unable to access file " << dir_itr->path().filename() << endl;
+					cerr<< "PlayerFactory: " << "Unable to access file "; // << dir_itr->path().filename() << endl;
+					cerr << ex.what() << endl;
 				}
 			}
 		}
@@ -84,12 +84,17 @@ namespace trissa {
 		}
 	}
 	
-	Player* PlayerFactory::create_player (string player_name){
-		return (factory[player_name].player_creator_ptr)();
+	Player* PlayerFactory::create_player (string player_name, int dimension){
+		return (factory[player_name].player_creator_ptr)(dimension);
 	}
 	
-	//TODO: all
 	void PlayerFactory::getPlayersList(vector<string>& strplayers){
+		for (map<string, Player_details>::iterator it = factory.begin();
+			it != factory.end();
+			it++){
+			
+			strplayers.push_back(it->first);
+		}
 	}
 	
 }

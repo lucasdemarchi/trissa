@@ -26,7 +26,7 @@
 namespace trissa{
 	class Player;
 	
-	typedef Player * (*function_creator_ptr)();
+	typedef Player * (*function_creator_ptr)(int);
 	typedef struct Move {
 		int x;
 		int y;

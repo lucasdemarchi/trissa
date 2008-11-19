@@ -37,19 +37,19 @@ namespace trissa {
 	Game::Game(string playersPath){
 		playerFactory = new PlayerFactory(playersPath);
 		ui = new UI();
-		
+//		
 		unsigned const int dimension = ui->getDimension();
-		
-		//Is there a better way of doing this?
+//		
+//		//Is there a better way of doing this?
 		board = new vector<vector<vector<int> > >(dimension, vector<vector<int> >(dimension, vector<int>(dimension, PLAYER_NONE)));
-		
+//		
 		vector<string> strplayers;
 		string strplayerA, strplayerB;
 		playerFactory->getPlayersList(strplayers);
 		
 		ui->getPlayers(strplayers, strplayerA, strplayerB);
-		playerA = playerFactory->create_player(strplayerA);
-		playerB = playerFactory->create_player(strplayerB);
+//		playerA = playerFactory->create_player(strplayerA, dimension);
+//		playerB = playerFactory->create_player(strplayerB, dimension);
 		
 	}
 	
