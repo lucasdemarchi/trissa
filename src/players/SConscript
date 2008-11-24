@@ -1,0 +1,12 @@
+#VariantDir('build', 'src')
+#
+env = Environment(CPPPATH=['../'])
+
+debug = ARGUMENTS.get('debug', 0)
+if int(debug):
+	env['CCFLAGS'] = ['-g']
+else:
+	env['CCFLAGS'] = ['-O3']
+
+env.SharedLibrary(['RandomPlayer.cc'], variables = vars)
+
