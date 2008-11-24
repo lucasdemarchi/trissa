@@ -19,7 +19,7 @@
  * Boston, MA  02110-1301  USA
  */
 #include "Player.h"
-		
+#include <iostream>
 namespace trissa {
 			
 	PlayerException::PlayerException(int idException, Player*  player): 
@@ -37,16 +37,10 @@ namespace trissa {
 		return "Unknown error";
 	}
 	
-	Player::Player(unsigned int dimension) throw (PlayerException) : dimension(dimension) {
-		if (!isKnownBoard(dimension))
-			throw PlayerException(0, this);			
+	Player::Player(unsigned int dimension) throw (PlayerException) : dimension(dimension) {	
 	}
 		
 	Player::~Player(){
-	}
-	
-	bool Player::isKnownBoard(unsigned int dimension) const {
-		return false;
 	}
 	
 }

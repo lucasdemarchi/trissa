@@ -33,23 +33,22 @@ namespace trissa {
 //	Game::Game(){
 //	}
 	
-	//TODO: all
 	Game::Game(string playersPath){
 		playerFactory = new PlayerFactory(playersPath);
 		ui = new UI();
-//		
+		
 		unsigned const int dimension = ui->getDimension();
-//		
+		
 //		//Is there a better way of doing this?
 		board = new vector<vector<vector<int> > >(dimension, vector<vector<int> >(dimension, vector<int>(dimension, PLAYER_NONE)));
-//		
+		
 		vector<string> strplayers;
 		string strplayerA, strplayerB;
 		playerFactory->getPlayersList(strplayers);
 		
 		ui->getPlayers(strplayers, strplayerA, strplayerB);
-//		playerA = playerFactory->create_player(strplayerA, dimension);
-//		playerB = playerFactory->create_player(strplayerB, dimension);
+		playerA = playerFactory->create_player(strplayerA, dimension);
+		playerB = playerFactory->create_player(strplayerB, dimension);
 		
 	}
 	
@@ -76,8 +75,10 @@ int main (int argc, char * argv[]){
 		print_usage();
 		return -1;
 	}
-	
-	
+		
 	trissa::Game game(argv[1]);
+	
+	
+	
 	return 0;
 }

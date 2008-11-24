@@ -24,7 +24,7 @@
 #include <dlfcn.h>
 #include <iostream>
 
-
+#include "Player.h"
 
 namespace trissa {
 	using namespace std;
@@ -69,13 +69,17 @@ namespace trissa {
 					}
 				}
 				catch ( const std::exception & ex ){
-					cerr<< "PlayerFactory: " << "Unable to access file "; // << dir_itr->path().filename() << endl;
+					cerr<< "PlayerFactory: " << "Unable to access file " << dir_itr->path().filename() << endl;
 					cerr << ex.what() << endl;
 				}
 			}
 		}
 	}
 	PlayerFactory::~PlayerFactory(){
+
+		for(int i = 0; i < created_players.size(); i++)
+			delete (created_players[i]);
+
 		//iterate through factory and close all dlibs
 		for (map<string, Player_details>::iterator it = factory.begin();
 				it != factory.end();
@@ -85,10 +89,21 @@ namespace trissa {
 	}
 	
 	Player* PlayerFactory::create_player (string player_name, int dimension){
-		return (factory[player_name].player_creator_ptr)(dimension);
+		Player* p;
+		try{
+			p = (factory[player_name].player_creator_ptr)(dimension);
+		}
+		catch(exception& ex){
+			cerr << ex.what();
+			return NULL;
+		}
+		
+		created_players.push_back(p);
+			
+		return p;
 	}
 	
-	void PlayerFactory::getPlayersList(vector<string>& strplayers){
+	void PlayerFactory::getPlayersList(vector<string>& strplayers){		
 		for (map<string, Player_details>::iterator it = factory.begin();
 			it != factory.end();
 			it++){

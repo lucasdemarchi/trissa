@@ -45,6 +45,7 @@ namespace trissa {
 			void getPlayersList(std::vector<std::string>& strplayers);
 		private:
 			std::map<std::string, Player_details> factory;
+			std::vector<Player*> created_players;
 	};
 }
 #endif /* PLAYER_FACTORY_H__ */
