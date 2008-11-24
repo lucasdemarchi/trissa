@@ -8,6 +8,7 @@ public:
 	static char* name;
 	RandomPlayer(int dimension) : trissa::Player(dimension){
 		srand (time(NULL));
+		//For firstPlay usage
 		next_move.x = dimension /2;
 		next_move.y = dimension /2;
 		next_move.z = dimension /2;
