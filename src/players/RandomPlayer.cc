@@ -20,12 +20,11 @@ public:
 		rx = rand() % (dimension);
 		ry = rand() % (dimension);
 		rz = rand() % (dimension);
-		
 		//pos occupied? Get next available
 		for(int z = rz; z-rz < dimension; z++)
 			for(int y = ry; y-ry < dimension; y++)
 				for(int x = rx; x-rx < dimension; x++)
-					if( board[z%dimension][y%dimension][x%dimension] != PLAYER_NONE){
+					if( board[z%dimension][y%dimension][x%dimension] == PLAYER_NONE){
 						next_move.x = x % dimension;
 						next_move.y = y % dimension;
 						next_move.z = z % dimension;

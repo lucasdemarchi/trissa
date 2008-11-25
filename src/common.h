@@ -36,6 +36,8 @@ namespace trissa{
 	typedef std::vector<std::vector<std::vector<int> > > Cube;
 
 #define PLAYER_NONE 0
+#define PLAYER_A 1
+#define PLAYER_B 2
 
 }
 

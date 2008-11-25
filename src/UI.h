@@ -23,6 +23,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "common.h"
 
 namespace trissa {
 	class UI{
@@ -31,6 +32,7 @@ namespace trissa {
 		~UI();
 		unsigned int getDimension();
 		void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
+		void refresh(Cube const& board, Move const& lastMove);
 	};
 }
 

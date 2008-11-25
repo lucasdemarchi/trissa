@@ -37,8 +37,8 @@ namespace trissa {
 		playerFactory = new PlayerFactory(playersPath);
 		ui = new UI();
 		
-		unsigned const int dimension = ui->getDimension();
-		
+		unsigned int dimension = ui->getDimension();
+		this->dimension = dimension;
 //		//Is there a better way of doing this?
 		board = new vector<vector<vector<int> > >(dimension, vector<vector<int> >(dimension, vector<int>(dimension, PLAYER_NONE)));
 		
@@ -58,9 +58,42 @@ namespace trissa {
 		delete board;
 		delete ui;
 	}
+
+	void Game::run(){
+		int turn;
+		Move* moveA = playerA->firstPlay();
+		Move* move = moveA;
+		Move* moveB = NULL;
+		
+		if(move->z < dimension && move->y < dimension &&
+		   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_NONE)
+		{
+			(*board)[move->z][move->y][move->x] = turn%2 ? PLAYER_A : PLAYER_B ;
+		}
+		ui->refresh(*board,*move);
+
+		for(turn = 1; !isFinished() && turn < 20; turn++){
+			if(turn%2){
+				moveB = playerB->play(*board,*moveA);
+				move = moveB;
+			}
+			else{
+				moveA = playerA->play(*board,*moveB);
+				move = moveA;
+			}
+			
+			if(move->z < dimension && move->y < dimension &&
+			   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_NONE)
+			{
+				(*board)[move->z][move->y][move->x] = turn%2 ? PLAYER_A : PLAYER_B ;
+			}
+			
+		}
+		ui->refresh(*board,*move);
+	}
 	
-	//TODO: all
-	void Game::start(){
+	int Game::isFinished(){
+		return 0;
 	}
 
 }
@@ -77,7 +110,7 @@ int main (int argc, char * argv[]){
 	}
 		
 	trissa::Game game(argv[1]);
-	
+	game.run();
 	
 	
 	return 0;

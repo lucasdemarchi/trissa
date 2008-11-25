@@ -19,6 +19,7 @@
  * Boston, MA  02110-1301  USA
  */
 #include "UI.h"
+#include <cstring>
 
 namespace trissa {
 	using namespace std;
@@ -53,5 +54,66 @@ namespace trissa {
 		cin >> playerB;
 		strplayerA = strplayers[playerA];
 		strplayerB = strplayers[playerB];		
+	}
+	void UI::refresh(Cube const& board, Move const& lastMove){
+		char * dash_space = (char*) "---|";
+		char * blank_space = (char*) "   ";
+
+		for (int j = 0; j < board.size(); j++){
+			for (int k = 0; k < board.size(); k++)
+			{
+				cout << "|";
+				for(int i=0;i<board.size();i++)
+					cout << dash_space;
+				cout << " ";
+			}
+
+			cout << "\n";
+			for (int k = 0; k < board.size(); k++)
+			{
+				cout << "|";
+				for(int i=0;i<board.size();i++){
+					if( board[k][j][i] == PLAYER_NONE)
+						cout << blank_space;
+					else if (board[k][j][i] == PLAYER_A)
+						cout << " X ";
+					else
+						cout << " O ";
+
+					cout << "|";
+				}
+				cout << " ";
+			}
+			cout << "\n";	
+		}
+		for (int k = 0; k < board.size(); k++)
+		{
+			cout << "|";
+			for(int i=0;i<board.size();i++)
+				cout << dash_space;
+			cout << " ";
+		}
+		
+		cout << "\n\n";		
+		
+		
+		
+		
+//		delete blank_space;	
+//	cout << "       z=1                z=2                z=3                z=4\n";
+//	for(int i=0;i<board.size();i++)
+//		cout << "       z=" << i << "
+//		for (int j = 0; j < board.size(); j++)
+//		
+//		cout<<("|---|---|---|---|  |---|---|---|---|  |---|---|---|---|  |---|---|---|---|\n");
+//		for(k=0;k<4;k++){
+//			printf("|");
+//			for(i=0;i<4;i++)
+//				printf(" %c |",t->posicao[i][j][k]);
+//			printf("  ");
+//		}
+//		printf("\n");
+//	}
+//	printf("|---|---|---|---|  |---|---|---|---|  |---|---|---|---|  |---|---|---|---|\n");	
 	}
 }

@@ -34,9 +34,11 @@ namespace trissa {
 	public:
 		//Game();
 		Game(std::string playersPath);
-		void start();
+		void run();
+		int isFinished();
 		~Game();
 	private:
+		unsigned int dimension;
 		Player* playerA;
 		Player* playerB;
 		PlayerFactory* playerFactory;
