@@ -37,7 +37,13 @@ namespace trissa {
 		return "Unknown error";
 	}
 	
-	Player::Player(unsigned int dimension) throw (PlayerException) : dimension(dimension) {	
+	PlayerType Player::getPlayerType() const {
+		return this->player_type;
+	}
+	
+	Player::Player(unsigned int dimension, PlayerType player_type) throw (PlayerException) : 
+		dimension(dimension), player_type(player_type)
+	{	
 	}
 		
 	Player::~Player(){

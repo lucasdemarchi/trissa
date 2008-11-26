@@ -41,7 +41,7 @@ namespace trissa {
 			PlayerFactory(std::string path);
 			~PlayerFactory();
 			
-			Player * create_player (std::string player_name, int dimension);
+			Player * create_player (std::string player_name, int dimension, PlayerType player_type);
 			void getPlayersList(std::vector<std::string>& strplayers);
 		private:
 			std::map<std::string, Player_details> factory;

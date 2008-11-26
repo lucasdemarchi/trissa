@@ -88,10 +88,10 @@ namespace trissa {
 		}
 	}
 	
-	Player* PlayerFactory::create_player (string player_name, int dimension){
+	Player* PlayerFactory::create_player (string player_name, int dimension, PlayerType player_type){
 		Player* p;
 		try{
-			p = (factory[player_name].player_creator_ptr)(dimension);
+			p = (factory[player_name].player_creator_ptr)(dimension, player_type);
 		}
 		catch(exception& ex){
 			cerr << ex.what();

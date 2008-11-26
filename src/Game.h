@@ -38,6 +38,8 @@ namespace trissa {
 		int isFinished();
 		~Game();
 	private:
+		PlayerType eval() const;
+		PlayerType eval(Move const& lastMove, PlayerType player_type);
 		unsigned int dimension;
 		Player* playerA;
 		Player* playerB;

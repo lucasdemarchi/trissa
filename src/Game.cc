@@ -25,6 +25,9 @@
 #include "common.h"
 
 #include <iostream>
+
+
+#define DEBUG 1
 using namespace std;
 
 namespace trissa {
@@ -40,15 +43,15 @@ namespace trissa {
 		unsigned int dimension = ui->getDimension();
 		this->dimension = dimension;
 //		//Is there a better way of doing this?
-		board = new vector<vector<vector<int> > >(dimension, vector<vector<int> >(dimension, vector<int>(dimension, PLAYER_NONE)));
+		board = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
 		
 		vector<string> strplayers;
 		string strplayerA, strplayerB;
 		playerFactory->getPlayersList(strplayers);
 		
 		ui->getPlayers(strplayers, strplayerA, strplayerB);
-		playerA = playerFactory->create_player(strplayerA, dimension);
-		playerB = playerFactory->create_player(strplayerB, dimension);
+		playerA = playerFactory->create_player(strplayerA, dimension, PLAYER_CROSS);
+		playerB = playerFactory->create_player(strplayerB, dimension, PLAYER_CIRCLE);
 		
 	}
 	
@@ -59,41 +62,117 @@ namespace trissa {
 		delete ui;
 	}
 
-	void Game::run(){
+	void Game::run()
+	{
 		int turn;
-		Move* moveA = playerA->firstPlay();
-		Move* move = moveA;
-		Move* moveB = NULL;
+		Move* move = playerA->firstPlay();
+		Player* player = playerA;
 		
 		if(move->z < dimension && move->y < dimension &&
-		   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_NONE)
+		   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_BLANK)
 		{
-			(*board)[move->z][move->y][move->x] = turn%2 ? PLAYER_A : PLAYER_B ;
+			(*board)[move->z][move->y][move->x] = playerA->getPlayerType();
 		}
+		else
+		{
+			cerr << "Player '" << playerA->getName() << "' returned invalid position (x,y,z): [" 
+			     << move->x << "," << move->y << "," << move->z << "]\n";
+		}
+		
 		ui->refresh(*board,*move);
 
-		for(turn = 1; !isFinished() && turn < 20; turn++){
-			if(turn%2){
-				moveB = playerB->play(*board,*moveA);
-				move = moveB;
-			}
-			else{
-				moveA = playerA->play(*board,*moveB);
-				move = moveA;
-			}
+		for(turn = 1; eval(*move,player->getPlayerType()) == PLAYER_BLANK; turn++){
+			if(turn%2)
+				player = playerB;
+			else
+				player = playerA;
+			
+			move = player->play(*board,*move);
 			
 			if(move->z < dimension && move->y < dimension &&
-			   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_NONE)
+			   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_BLANK)
 			{
-				(*board)[move->z][move->y][move->x] = turn%2 ? PLAYER_A : PLAYER_B ;
+				(*board)[move->z][move->y][move->x] = player->getPlayerType();
+			}
+			else
+			{
+				cerr << "Player returned invalid position (x,y,z): [" 
+					 << move->x << "," << move->y << "," << move->z << "]\n";
 			}
 			
 		}
 		ui->refresh(*board,*move);
 	}
 	
-	int Game::isFinished(){
-		return 0;
+	PlayerType Game::eval() const
+	{
+		
+	}
+	PlayerType Game::eval(Move const& lastMove, PlayerType player_type)
+	{
+		Move directions[] = {
+			{1,0,0} , {0,1,0} , {0,0,1} ,
+			{1,1,0} , {1,0,1} , {0,1,1} ,
+			{1,-1,0}, {1,0,-1}, {0,1,-1},
+			{1,1,1} , {1,-1,1}, {-1,1,1}, {1,1,-1}
+		};
+		int n_directions = 13;
+
+		
+		for(int i; i < n_directions; i++){
+			bool invalid_direction = false;
+			Move new_pos = lastMove;
+			int n_pieces = 1;
+			//first subtract direction
+			while (true){
+				new_pos -= directions[i];
+				if(new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
+				   new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension)
+				{
+					if( (*board)[new_pos.z][new_pos.y][new_pos.x] != player_type){
+						invalid_direction = true;
+						break;
+					}
+					else
+						n_pieces++;
+				}
+				else{ //out of cube
+					break;
+				}
+			}
+			if(invalid_direction) continue; //next direction, this is not a winner direction
+			
+			//add direction to position until go out of cube
+			new_pos = lastMove;
+			while (true){
+				new_pos += directions[i];
+				if(new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
+				   new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension)
+				{
+					if( (*board)[new_pos.z][new_pos.y][new_pos.x] != player_type){
+						invalid_direction = true;
+						break;
+					}
+					else
+						n_pieces++;
+				}
+				else{ //out of cube
+					break;
+				}
+			}
+			if(!invalid_direction && n_pieces == dimension){
+				// set member variable for winner direction and point
+#ifdef DEBUG
+				cout << "Winner direction: [" 
+				     << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
+				cout << "Last position played: ["
+				     << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
+#endif //DEBUG
+				return (player_type);
+			}
+		}
+		return PLAYER_BLANK;
+		
 	}
 
 }

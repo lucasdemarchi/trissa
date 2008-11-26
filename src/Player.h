@@ -26,12 +26,12 @@
 #include <exception>
 #include "common.h"
 
-#define REGISTER_PLAYER(classname) 									\
-	extern "C" trissa::Player * create_player(int dimension){		\
-		return new classname (dimension);							\
-	}																\
-	extern "C" char * getPlayerName(){								\
-		return classname::name;										\
+#define REGISTER_PLAYER(classname) 															\
+	extern "C" trissa::Player * create_player(int dimension, trissa::PlayerType player_type){		\
+		return new classname (dimension, player_type);													\
+	}																						\
+	extern "C" char * getPlayerName(){														\
+		return classname::name;																\
 	}
 
 namespace trissa {
@@ -49,13 +49,15 @@ namespace trissa {
 	
 	class Player{
 	public:
-		Player(unsigned int dimension) throw (PlayerException);
+		Player(unsigned int dimension, PlayerType player_type) throw (PlayerException);
 		virtual ~Player();
 		virtual Move* play(Cube const& board, Move const& opponentMove) = 0;
 		virtual Move* firstPlay() = 0;
 		virtual const char * getName() const = 0;
+		PlayerType getPlayerType() const;
 	protected:
 		unsigned int dimension;
+		PlayerType player_type;
 		friend class PlayerException;
 	};
 

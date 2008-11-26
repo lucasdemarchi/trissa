@@ -6,7 +6,7 @@
 class RandomPlayer : public trissa::Player {
 public:
 	static char* name;
-	RandomPlayer(int dimension) : trissa::Player(dimension){
+	RandomPlayer(int dimension, trissa::PlayerType player_type) : trissa::Player(dimension, player_type){
 		srand (time(NULL));
 		//For firstPlay usage
 		next_move.x = dimension /2;
@@ -24,7 +24,7 @@ public:
 		for(int z = rz; z-rz < dimension; z++)
 			for(int y = ry; y-ry < dimension; y++)
 				for(int x = rx; x-rx < dimension; x++)
-					if( board[z%dimension][y%dimension][x%dimension] == PLAYER_NONE){
+					if( board[z%dimension][y%dimension][x%dimension] == trissa::PLAYER_BLANK){
 						next_move.x = x % dimension;
 						next_move.y = y % dimension;
 						next_move.z = z % dimension;
