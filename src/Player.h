@@ -26,12 +26,12 @@
 #include <exception>
 #include "common.h"
 
-#define REGISTER_PLAYER(classname) 															\
-	extern "C" trissa::Player * create_player(int dimension, trissa::PlayerType player_type){		\
-		return new classname (dimension, player_type);													\
-	}																						\
-	extern "C" char * getPlayerName(){														\
-		return classname::name;																\
+#define REGISTER_PLAYER(classname) 																\
+	extern "C" trissa::Player * create_player(int dimension, trissa::PlayerType player_type){	\
+		return new classname (dimension, player_type);											\
+	}																							\
+	extern "C" char * getPlayerName(){															\
+		return classname::name;																	\
 	}
 
 namespace trissa {

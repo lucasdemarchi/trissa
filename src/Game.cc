@@ -81,7 +81,11 @@ namespace trissa {
 		
 		ui->refresh(*board,*move);
 
-		for(turn = 1; eval(*move,player->getPlayerType()) == PLAYER_BLANK; turn++){
+		for(turn = 1;
+		    eval(*move,player->getPlayerType()) == PLAYER_BLANK
+		    && turn < (dimension*dimension*dimension)
+		    ; turn++)
+		{
 			if(turn%2)
 				player = playerB;
 			else

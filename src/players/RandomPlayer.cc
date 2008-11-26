@@ -32,6 +32,7 @@ public:
 					}
 
 		//if i'm here, no available positions to play
+		cerr << "RandomPlayer: " << "No available positions to play. Maybe there's a bug in trissa's core. Contact developers.\n";
 		return NULL;
 	}
 	virtual trissa::Move* firstPlay(){

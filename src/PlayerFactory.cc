@@ -46,21 +46,21 @@ namespace trissa {
 						
 						player_details.dlib = dlopen(filename.c_str(), RTLD_NOW);
 						if(player_details.dlib == NULL){
-							cerr<< "PlayerFactory: " << "Unable do load library " << filename << endl << dlerror() << endl;
+							cerr<< "PlayerFactory: " << "Unable to load library " << filename << endl << dlerror() << endl;
 							continue;
 						}
 
 						//Get a pointer to function that creates this player and insert it in factory map;
 						player_details.player_creator_ptr = (function_creator_ptr) dlsym(player_details.dlib, "create_player");
 						if(dlerror()){
-							cerr<< "PlayerFactory: " << "Unable get Player's  creator function from library " << filename;
+							cerr<< "PlayerFactory: " << "Unable to get Player's  creator function from library " << filename;
 							dlclose(player_details.dlib);
 						}
 						
 						//Execute function "getPlayerName" inside library
 						string playerName = ((char *(*)())dlsym(player_details.dlib, "getPlayerName"))();
 						if(dlerror()){
-							cerr<< "PlayerFactory: " << "Unable get Player name from library " << filename;
+							cerr<< "PlayerFactory: " << "Unable to get Player name from library " << filename;
 							dlclose(player_details.dlib);
 							continue;
 						}
