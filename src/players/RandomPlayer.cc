@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+using namespace std;
 
 class RandomPlayer : public trissa::Player {
 public:
@@ -32,7 +33,8 @@ public:
 					}
 
 		//if i'm here, no available positions to play
-		cerr << "RandomPlayer: " << "No available positions to play. Maybe there's a bug in trissa's core. Contact developers.\n";
+		cerr << "RandomPlayer: " << "No available positions to play. "
+				"Maybe there's a bug in trissa's core. Contact developers.\n";
 		return NULL;
 	}
 	virtual trissa::Move* firstPlay(){

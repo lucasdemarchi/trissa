@@ -82,7 +82,7 @@ namespace trissa {
 		ui->refresh(*board,*move);
 
 		for(turn = 1;
-		    eval(*move,player->getPlayerType()) == PLAYER_BLANK
+		    goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
 		    && turn < (dimension*dimension*dimension)
 		    ; turn++)
 		{
@@ -108,11 +108,11 @@ namespace trissa {
 		ui->refresh(*board,*move);
 	}
 	
-	PlayerType Game::eval() const
+	PlayerType Game::goalTest() const
 	{
 		
 	}
-	PlayerType Game::eval(Move const& lastMove, PlayerType player_type)
+	PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 	{
 		Move directions[] = {
 			{1,0,0} , {0,1,0} , {0,0,1} ,
@@ -165,7 +165,7 @@ namespace trissa {
 				}
 			}
 			if(!invalid_direction && n_pieces == dimension){
-				// set member variable for winner direction and point
+				//TODO: set member variable for winner direction(s) and point
 #ifdef DEBUG
 				cout << "Winner direction: [" 
 				     << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
