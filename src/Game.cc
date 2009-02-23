@@ -55,7 +55,6 @@ namespace trissa {
 		
 	}
 	
-	//TODO: all
 	Game::~Game(){
 		delete playerFactory; //and all players...
 		delete board;

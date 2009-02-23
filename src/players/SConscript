@@ -6,7 +6,7 @@ debug = ARGUMENTS.get('debug', 0)
 if int(debug):
 	env['CCFLAGS'] = ['-g']
 else:
-	env['CCFLAGS'] = ['-O3']
+	env['CCFLAGS'] = ['-O3','-Wall']
 
 env.SharedLibrary(['RandomPlayer.cc'], variables = vars)
-
+env.SharedLibrary(['MinmaxPlayer.cc'], variables = vars)
