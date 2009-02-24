@@ -22,9 +22,9 @@ public:
 		ry = rand() % (dimension);
 		rz = rand() % (dimension);
 		//pos occupied? Get next available
-		for(int z = rz; z-rz < dimension; z++)
-			for(int y = ry; y-ry < dimension; y++)
-				for(int x = rx; x-rx < dimension; x++)
+		for(unsigned int z = rz; z-rz < dimension; z++)
+			for(unsigned int y = ry; y-ry < dimension; y++)
+				for(unsigned int x = rx; x-rx < dimension; x++)
 					if( board[z%dimension][y%dimension][x%dimension] == trissa::PLAYER_BLANK){
 						next_move.x = x % dimension;
 						next_move.y = y % dimension;
