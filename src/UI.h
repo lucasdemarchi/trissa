@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Trissa; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 #ifndef UI_H__
@@ -32,7 +32,10 @@ namespace trissa {
 		~UI();
 		unsigned int getDimension();
 		void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
+    private:
 		void refresh(Cube const& board, Move const& lastMove);
+    public:
+		void refresh(Cube const& board, Move const& lastMove, bool wait);
 	};
 }
 

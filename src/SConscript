@@ -8,7 +8,7 @@ env = Environment(LIBS=['dl','boost_filesystem'])
 
 debug = ARGUMENTS.get('debug', 0)
 if int(debug):
-	env['CCFLAGS'] = ['-g']
+	env['CCFLAGS'] = ['-g', '-D_trissa_debug_', '-Wall']
 else:
 	env['CCFLAGS'] = ['-O3']
 

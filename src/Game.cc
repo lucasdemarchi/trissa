@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Trissa; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 #include "Game.h"
@@ -27,34 +27,33 @@
 #include <iostream>
 
 
-#define DEBUG 1
 using namespace std;
 
 namespace trissa {
-	
+
 	//TODO: all
 //	Game::Game(){
 //	}
-	
+
 	Game::Game(string playersPath){
 		playerFactory = new PlayerFactory(playersPath);
 		ui = new UI();
-		
+
 		unsigned int dimension = ui->getDimension();
 		this->dimension = dimension;
 //		//Is there a better way of doing this?
 		board = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
-		
+
 		vector<string> strplayers;
 		string strplayerA, strplayerB;
 		playerFactory->getPlayersList(strplayers);
-		
+
 		ui->getPlayers(strplayers, strplayerA, strplayerB);
 		playerA = playerFactory->create_player(strplayerA, dimension, PLAYER_CROSS);
 		playerB = playerFactory->create_player(strplayerB, dimension, PLAYER_CIRCLE);
-		
+
 	}
-	
+
 	Game::~Game(){
 		delete playerFactory; //and all players...
 		delete board;
@@ -63,22 +62,22 @@ namespace trissa {
 
 	void Game::run()
 	{
-		int turn;
+		unsigned int turn;
 		Move* move = playerA->firstPlay();
 		Player* player = playerA;
-		
+
 		if(move->z < dimension && move->y < dimension &&
 		   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_BLANK)
 		{
 			(*board)[move->z][move->y][move->x] = playerA->getPlayerType();
 		}
-		else
-		{
-			cerr << "Player '" << playerA->getName() << "' returned invalid position (x,y,z): [" 
-			     << move->x << "," << move->y << "," << move->z << "]\n";
-		}
-		
-		ui->refresh(*board,*move);
+        else{
+            cerr << "Player returned invalid position (z,y,x): ["
+                 << move->z << "," << move->y << "," << move->x << "]\n";
+        }
+
+		ui->refresh(*board,*move, true);
+
 
 		for(turn = 1;
 		    goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
@@ -89,28 +88,27 @@ namespace trissa {
 				player = playerB;
 			else
 				player = playerA;
-			
+
 			move = player->play(*board,*move);
-			
+
 			if(move->z < dimension && move->y < dimension &&
 			   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_BLANK)
 			{
 				(*board)[move->z][move->y][move->x] = player->getPlayerType();
 			}
-			else
-			{
-				cerr << "Player returned invalid position (x,y,z): [" 
-					 << move->x << "," << move->y << "," << move->z << "]\n";
+			else{
+				cerr << "Player returned invalid position (z,y,x): ["
+					 << move->z << "," << move->y << "," << move->x << "]\n";
 			}
-			
+			ui->refresh(*board,*move, true);
 		}
-		ui->refresh(*board,*move);
+		ui->refresh(*board,*move,true);
 	}
-	
-	PlayerType Game::goalTest() const
-	{
-		
-	}
+
+	//PlayerType Game::goalTest() const
+	//{
+        //return NULL;
+	//}
 	PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 	{
 		Move directions[] = {
@@ -121,11 +119,14 @@ namespace trissa {
 		};
 		int n_directions = 13;
 
-		
-		for(int i; i < n_directions; i++){
+
+		for(int i=0; i < n_directions; i++){
 			bool invalid_direction = false;
-			Move new_pos = lastMove;
-			int n_pieces = 1;
+			Move new_pos;
+			new_pos.x = lastMove.x;
+			new_pos.y = lastMove.y;
+			new_pos.z = lastMove.z;
+			unsigned int n_pieces = 1;
 			//first subtract direction
 			while (true){
 				new_pos -= directions[i];
@@ -144,9 +145,11 @@ namespace trissa {
 				}
 			}
 			if(invalid_direction) continue; //next direction, this is not a winner direction
-			
+
 			//add direction to position until go out of cube
-			new_pos = lastMove;
+            new_pos.x = lastMove.x;
+			new_pos.y = lastMove.y;
+			new_pos.z = lastMove.z;
 			while (true){
 				new_pos += directions[i];
 				if(new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
@@ -165,23 +168,23 @@ namespace trissa {
 			}
 			if(!invalid_direction && n_pieces == dimension){
 				//TODO: set member variable for winner direction(s) and point
-#ifdef DEBUG
-				cout << "Winner direction: [" 
+#ifdef _trissa_debug_
+				cout << "Winner direction: ["
 				     << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
 				cout << "Last position played: ["
 				     << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
-#endif //DEBUG
+#endif // _trissa_debug_
 				return (player_type);
 			}
 		}
 		return PLAYER_BLANK;
-		
+
 	}
 
 }
 
 void print_usage(){
-	cout << "Usage: trissa path_to_players" << endl;	
+	cout << "Usage: trissa path_to_players" << endl;
 }
 
 int main (int argc, char * argv[]){
@@ -190,10 +193,10 @@ int main (int argc, char * argv[]){
 		print_usage();
 		return -1;
 	}
-		
+
 	trissa::Game game(argv[1]);
 	game.run();
-	
-	
+
+
 	return 0;
 }

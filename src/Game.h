@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Trissa; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 #ifndef GAME_H__
@@ -24,12 +24,12 @@
 #include <string>
 
 namespace trissa {
-	
+
 	//forward declarations
 	class Player;
 	class PlayerFactory;
 	class UI;
-	
+
 	class Game {
 	public:
 		//Game();
@@ -38,7 +38,7 @@ namespace trissa {
 		int isFinished();
 		~Game();
 	private:
-		PlayerType goalTest() const;
+		//PlayerType goalTest() const;
 		PlayerType goalTest(Move const& lastMove, PlayerType player_type);
 		unsigned int dimension;
 		Player* playerA;
