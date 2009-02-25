@@ -164,10 +164,10 @@ private:
         if(depth == 0 || (lastMove != NULL && goalTest(*lastMove))){
             int r = eval();
             cout << "[MINIMAX] mine: ";
-            for (int i=0; i <= dimension; i++)
+            for (unsigned int i=0; i <= dimension; i++)
                 cout << boardEval.mine[i] << " | ";
             cout << endl << "[MINIMAX] oppo: ";
-            for (int i=0; i <= dimension; i++)
+            for (unsigned int i=0; i <= dimension; i++)
                 cout << boardEval.opponent[i] << " | ";
             cout << endl;
             cout << "ret: " << r << endl;
@@ -388,7 +388,7 @@ private:
 		}
 		else {
 		    int ret = 0;
-            for (unsigned int i=2; i<dimension; i++)
+            for (unsigned int i=1; i<dimension; i++)
                 ret += (boardEval.mine[i] - boardEval.opponent[i]) * i * i;
             return ret;
 		}
