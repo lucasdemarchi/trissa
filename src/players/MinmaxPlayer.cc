@@ -8,7 +8,7 @@
 #define MAX(a,b) a>b?a:b
 #define MIN(a,b) a<b?a:b
 #define THE_OTHER player==player_type?other_player:player_type
-#define _trissa_debug_ 1
+
 using namespace std;
 
 struct Pieces {
@@ -46,7 +46,9 @@ public:
 		(*my_board)[opponentMove.z][opponentMove.y][opponentMove.x] = other_player;
 
 		int r = maximize(depth,-INF,INF, player_type, NULL);
+#ifdef _trissa_debug_
 		cout << "Ret: " << r << endl;
+#endif
 		(*my_board)[next_move.z][next_move.y][next_move.x] = player_type;
 		return &next_move;
 
@@ -146,10 +148,12 @@ private:
                                 next_move.x = i; next_move.y = j; next_move.z = k;
 					        }
 					    }
+#ifdef _trissa_debug_
 					    if(depth == this->depth) {
 					        cout << "[MINMAX] Son: [" << k << "," << j << "," << i <<"]" << endl << endl;
                         }
                         cout.flush();
+#endif
 					    if (v >= beta)
                             return v;
 					    alpha = MAX (alpha, v);
@@ -163,6 +167,7 @@ private:
     int minimize(unsigned int depth, int alpha, int beta, trissa::PlayerType player, trissa::Move const* lastMove){
         if(depth == 0 || (lastMove != NULL && goalTest(*lastMove))){
             int r = eval();
+#ifdef _trissa_debug_
             cout << "[MINIMAX] mine: ";
             for (unsigned int i=0; i <= dimension; i++)
                 cout << boardEval.mine[i] << " | ";
@@ -172,6 +177,7 @@ private:
             cout << endl;
             cout << "ret: " << r << endl;
             cout.flush();
+#endif
             return r;
         }
         int v = INF;
