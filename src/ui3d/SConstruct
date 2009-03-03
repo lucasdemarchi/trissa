@@ -1,0 +1,44 @@
+VariantDir('bin','src',duplicate=0)
+env = Environment()
+
+print 'Release mode enabled'
+env['CCFLAGS'] = ['-O3', '-Wall', '-I/usr/share/OGRE/Samples/Common/include','-DEXT_HASH']
+
+#check Ogre3D stuff
+## Got some fugly stuff ( || true ) in there to supress unreadable crashes, it
+# ends up using the nicer formatted error messages below 
+env.ParseConfig('pkg-config --silence-errors --libs --cflags OGRE || true')
+env.ParseConfig('pkg-config --silence-errors --libs --cflags OIS || true')
+env.ParseConfig('pkg-config --silence-errors --libs --cflags CEGUI-OGRE || true')
+#env.ParseConfig('pkg-config --silence-errors --libs --cflags OgreOde_Core || true')
+
+# Get out current config so we can verify we have everything we need.
+# There is an autoadd method here, but then we'd have to specify full paths for 
+# the libs and headers, which is lame.
+config = Configure(env)
+
+# Everyone needs OIS :)
+if not config.CheckLibWithHeader('OIS', 'OISPrereqs.h', 'C++'):
+	print 'OIS must be installed!'
+	Exit(1)
+
+# this should work to get Ogre included
+if not config.CheckLibWithHeader( 'OgreMain', 'Ogre.h', 'C++' ):
+	print "Ogre Must be installed!"
+	Exit(1)
+	
+# Substitute with your GUI of choice
+if not config.CheckLibWithHeader('CEGUIBase', 'CEGUI.h', 'C++'):
+	print "You need CEGUI to compile this program"
+	Exit(1);
+
+if not config.CheckLibWithHeader('CEGUIOgreRenderer', 'OgreCEGUIRenderer.h', 'C++'):
+	print "You need OGRE-CEGUI to compile this program"
+	Exit(1);
+
+# Validate the configuration and assign it to our env
+env = config.Finish(); 
+
+env.Program('bin/trissa', ['bin/trissa.cc', 'bin/input.cc', 'bin/state_manager.cc', 'bin/MainMenu.cc', 'bin/SettingsMenu.cc', 'bin/Menu.cc'])
+
+

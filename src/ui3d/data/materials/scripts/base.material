@@ -1,0 +1,55 @@
+material Beach
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture BeachStones.jpg
+			}
+		}
+	}
+}
+
+material BumpyMetal
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture BumpyMetal.jpg
+			}
+		}
+	}
+}
+
+material Chrome
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture Chrome.jpg
+			}
+		}
+	}
+}
+
+material Dirt
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture Dirt.jpg
+			}
+		}
+	}
+}

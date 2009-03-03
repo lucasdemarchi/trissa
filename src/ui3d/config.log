@@ -1,0 +1,103 @@
+file /home/lucas/programming/ogre/trissa/SConstruct,line 18:
+	Configure(confdir = .sconf_temp)
+scons: Configure: Checking for C++ library OIS... 
+scons: Configure: ".sconf_temp/conftest_0.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp/conftest_0.cpp <-
+  |  |
+  |  |
+  |  |#include "OISPrereqs.h"
+  |  |
+  |  |int
+  |  |main() {
+  |  |  
+  |  |return 0;
+  |  |}
+  |  |
+  |
+scons: Configure: ".sconf_temp/conftest_0.o" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_0.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_0.cpp
+  |
+scons: Configure: ".sconf_temp/conftest_0" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_0 .sconf_temp/conftest_0.o -lOIS -lCEGUIOgreRenderer -lOgreMain -lCEGUIBase -lOIS
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ library OgreMain... 
+scons: Configure: ".sconf_temp/conftest_1.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp/conftest_1.cpp <-
+  |  |
+  |  |
+  |  |#include "Ogre.h"
+  |  |
+  |  |int
+  |  |main() {
+  |  |  
+  |  |return 0;
+  |  |}
+  |  |
+  |
+scons: Configure: ".sconf_temp/conftest_1.o" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_1.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_1.cpp
+  |
+scons: Configure: ".sconf_temp/conftest_1" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_1 .sconf_temp/conftest_1.o -lOIS -lCEGUIOgreRenderer -lOgreMain -lCEGUIBase -lOIS -lOgreMain
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ library CEGUIBase... 
+scons: Configure: ".sconf_temp/conftest_2.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp/conftest_2.cpp <-
+  |  |
+  |  |
+  |  |#include "CEGUI.h"
+  |  |
+  |  |int
+  |  |main() {
+  |  |  
+  |  |return 0;
+  |  |}
+  |  |
+  |
+scons: Configure: ".sconf_temp/conftest_2.o" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_2.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_2.cpp
+  |
+scons: Configure: ".sconf_temp/conftest_2" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_2 .sconf_temp/conftest_2.o -lOIS -lCEGUIOgreRenderer -lOgreMain -lCEGUIBase -lOIS -lOgreMain -lCEGUIBase
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ library CEGUIOgreRenderer... 
+scons: Configure: ".sconf_temp/conftest_3.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp/conftest_3.cpp <-
+  |  |
+  |  |
+  |  |#include "OgreCEGUIRenderer.h"
+  |  |
+  |  |int
+  |  |main() {
+  |  |  
+  |  |return 0;
+  |  |}
+  |  |
+  |
+scons: Configure: ".sconf_temp/conftest_3.o" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_3.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_3.cpp
+  |
+scons: Configure: ".sconf_temp/conftest_3" is up to date.
+scons: Configure: The original builder output was:
+  |g++ -o .sconf_temp/conftest_3 .sconf_temp/conftest_3.o -lOIS -lCEGUIOgreRenderer -lOgreMain -lCEGUIBase -lOIS -lOgreMain -lCEGUIBase -lCEGUIOgreRenderer
+  |
+scons: Configure: (cached) yes
+
+
