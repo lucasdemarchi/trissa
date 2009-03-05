@@ -1,19 +1,35 @@
-#include "input.h"
-#include "state_manager.h"
+/*
+ * InputHandler.cc
+ * This file is part of Trissa
+ *
+ * Copyright (C) 2009 - Lucas De Marchi
+ *
+ * Trissa is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as published by
+ * the Free Software Foundation.
+ *
+ * Trissa is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Trissa; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
+ * Boston, MA  02110-1301  USA
+ */
+
+#include "InputHandler.h"
+#include "StateManager.h"
 #include <OgreStringConverter.h>
 #include <OISException.h>
 
 
 using namespace Ogre;
 
-InputHandler::InputHandler(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem) :  //, Ogre::SceneManager* mgr, Ogre::Camera* cam) :
+InputHandler::InputHandler(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem) :
     mWindow( win ),
-//    mSceneMgr( mgr ),
     mStateManager( stateManager ),
-//    mCamera( cam ),
-//    mRotate( 0.4 ),
-//    mMove( 250 ),
-//    mDirection( Vector3::ZERO )
     mCEGUISystem ( CEGUISystem ){
 
     setupInputSystem();
@@ -23,8 +39,6 @@ InputHandler::InputHandler(Ogre::RenderWindow* win, StateManager* stateManager, 
 }
 
 InputHandler::~InputHandler(){
-    //WindowEventUtilities::removeWindowEventListener( mWindow, this );
-    //windowClosed( mWindow );
     if( mInputManager ){
         mInputManager->destroyInputObject(mMouse);
         mInputManager->destroyInputObject(mKeyboard);
@@ -38,61 +52,23 @@ void InputHandler::capture(){
     mKeyboard->capture();
     mMouse->capture();
 }
-    // MouseListener
+
+// MouseListener
 bool InputHandler::mouseMoved(const OIS::MouseEvent &evt) {
-    //mCEGUISystem->injectMouseWheelChange(evt.state.Z.rel);
-	return mCEGUISystem->injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
-
-
-//    mCamNode->translate( Vector3( 0, 0, -e.state.Z.rel * 0.6 ), Node::TS_LOCAL );
-//    SceneNode* camNode = mCamera->getParentSceneNode();
-//    camNode->translate( Vector3( 0, 0, -e.state.Z.rel * 0.6 ), Node::TS_LOCAL );
-//
-//    if (e.state.buttonDown(OIS::MB_Right)){
-//        SceneNode* ninjaNode = mSceneMgr->getSceneNode("NinjaNode");
-//        ninjaNode->yaw(Degree(-mRotate * e.state.X.rel), Node::TS_WORLD);
-//    }
-//  return true;
+    return mCEGUISystem->injectMouseMove(evt.state.X.rel, evt.state.Y.rel);
 }
 bool InputHandler::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
-	return mCEGUISystem->injectMouseButtonDown(convertButton(id));
-
-
-    //CEGUIsys->injectMouseButtonDown(convertButton(id));
     return true;
 }
 bool InputHandler::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
-    mCEGUISystem->injectMouseButtonUp(convertButton(id));
     return true;
 }
 
 // KeyListener
 bool InputHandler::keyPressed(const OIS::KeyEvent &e) {
-    //SceneNode* camNode = 0;
-    switch (e.key)
-    {
-        case OIS::KC_ESCAPE:
-            mStateManager->requestStateChange( SHUTDOWN );
-            break;
-//        case OIS::KC_1:
-//            mCamera->getParentSceneNode()->detachObject(mCamera);
-//            camNode = mSceneMgr->getSceneNode("CamNode1");
-//            camNode->attachObject(mCamera);
-//            break;
-//        case OIS::KC_2:
-//            mCamera->getParentSceneNode()->detachObject(mCamera);
-//            camNode = mSceneMgr->getSceneNode("CamNode2");
-//            camNode->attachObject(mCamera);
-//            break;
-        default:
-            break;
-    }
-    mCEGUISystem->injectKeyDown(e.key);
-    mCEGUISystem->injectChar(e.text);
     return true;
 }
 bool InputHandler::keyReleased(const OIS::KeyEvent &e) {
-    mCEGUISystem->injectKeyUp(e.key);
     return true;
 }
 
@@ -144,11 +120,9 @@ CEGUI::MouseButton InputHandler::convertButton(OIS::MouseButtonID btn){
 
 }
 
-
-//
 //bool InputHandler::windowClosing(RenderWindow* rw){
 //    if( rw == mWindow){
-//        mContinue = false;
+//        mStateManager->requestStateChange( SHUTDOWN );
 //        return false;
 //    }
 //    return true;

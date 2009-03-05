@@ -1,448 +1,797 @@
-03/03/2009 03:53:39 (Std) 	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-03/03/2009 03:53:39 (Std) 	+                     Crazy Eddie's GUI System - Event log                    +
-03/03/2009 03:53:39 (Std) 	+                          (http://www.cegui.org.uk/)                         +
-03/03/2009 03:53:39 (Std) 	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+05/03/2009 19:37:16 (Std) 	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+05/03/2009 19:37:16 (Std) 	+                     Crazy Eddie's GUI System - Event log                    +
+05/03/2009 19:37:16 (Std) 	+                          (http://www.cegui.org.uk/)                         +
+05/03/2009 19:37:16 (Std) 	+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-03/03/2009 03:53:39 (Std) 	CEGUI::Logger singleton created. (0x9e08898)
-03/03/2009 03:53:39 (Std) 	---- Begining CEGUI System initialisation ----
-03/03/2009 03:53:39 (Std) 	CEGUI::ImagesetManager singleton created (0x9e11640)
-03/03/2009 03:53:39 (Std) 	CEGUI::FontManager singleton created. (0x9e11cc8)
-03/03/2009 03:53:39 (Std) 	CEGUI::WindowFactoryManager singleton created
-03/03/2009 03:53:39 (Std) 	CEGUI::WindowManager singleton created (0x9e11660)
-03/03/2009 03:53:39 (Std) 	CEGUI::SchemeManager singleton created. (0x9e08b78)
-03/03/2009 03:53:39 (Std) 	CEGUI::MouseCursor singleton created. (0x9e06198)
-03/03/2009 03:53:39 (Std) 	CEGUI::GlobalEventSet singleton created. (0x9e08b98)
-03/03/2009 03:53:39 (Std) 	CEGUI::WidgetLookManager singleton created. (0x9e061f0)
-03/03/2009 03:53:39 (Std) 	CEGUI::WindowRendererManager singleton created (0x9e06210)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'DefaultWindow' windows added. (0xb7b9bd40)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'DragContainer' windows added. (0xb7b9bc80)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'ScrolledContainer' windows added. (0xb7b9bbc0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'ClippedContainer' windows added. (0xb7b9bb00)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Checkbox' windows added. (0xb7b9ba40)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/PushButton' windows added. (0xb7b9af00)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/RadioButton' windows added. (0xb7b9ae40)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Combobox' windows added. (0xb7b9b8c0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/ComboDropList' windows added. (0xb7b9b980)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Editbox' windows added. (0xb7b9b800)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/FrameWindow' windows added. (0xb7b9b740)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/ItemEntry' windows added. (0xb7b9b680)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Listbox' windows added. (0xb7b9b440)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/ListHeader' windows added. (0xb7b9b5c0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/ListHeaderSegment' windows added. (0xb7b9b500)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Menubar' windows added. (0xb7b9b2c0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/PopupMenu' windows added. (0xb7b9b080)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/MenuItem' windows added. (0xb7b9b380)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/MultiColumnList' windows added. (0xb7b9b200)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/MultiLineEditbox' windows added. (0xb7b9b140)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/ProgressBar' windows added. (0xb7b9afc0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/ScrollablePane' windows added. (0xb7b9ad80)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Scrollbar' windows added. (0xb7b9acc0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Slider' windows added. (0xb7b9ac00)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Spinner' windows added. (0xb7b9ab40)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/TabButton' windows added. (0xb7b9aa80)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/TabControl' windows added. (0xb7b9a9c0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Thumb' windows added. (0xb7b9a900)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Titlebar' windows added. (0xb7b9a840)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Tooltip' windows added. (0xb7b9a780)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/ItemListbox' windows added. (0xb7b9a6c0)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/GroupBox' windows added. (0xb7b9a600)
-03/03/2009 03:53:39 (Std) 	WindowFactory for 'CEGUI/Tree' windows added. (0xb7b9a540)
-03/03/2009 03:53:39 (Std) 	Window type alias named 'DefaultGUISheet' added for window type 'DefaultWindow'.
-03/03/2009 03:53:39 (Std) 	CEGUI::System singleton created. (0x9e086d8)
-03/03/2009 03:53:39 (Std) 	---- CEGUI System initialisation completed ----
-03/03/2009 03:53:39 (Std) 	---- Version 0.6.2 ----
-03/03/2009 03:53:39 (Std) 	---- Renderer module is: CEGUI::OgreRenderer - Official Ogre based renderer module for CEGUI ----
-03/03/2009 03:53:39 (Std) 	---- XML Parser module is: CEGUI::ExpatParser - Official expat based parser module for CEGUI ----
-03/03/2009 03:53:39 (Std) 	---- Scripting module is: None ----
-03/03/2009 03:53:39 (Std) 	Attempting to load Scheme from file 'TaharezLookSkin.scheme'.
-03/03/2009 03:53:39 (Info) 	Started creation of Scheme 'TaharezLook' via XML file.
-03/03/2009 03:53:39 (Info) 	Finished creation of Scheme 'TaharezLook' via XML file.
-03/03/2009 03:53:39 (Info) 	Loaded GUI scheme 'TaharezLook' from data in file 'TaharezLookSkin.scheme'. (0x9e23820)
-03/03/2009 03:53:39 (Info) 	---- Begining resource loading for GUI scheme 'TaharezLook' ----
-03/03/2009 03:53:39 (Std) 	Attempting to create an Imageset from the information specified in file 'TaharezLook.imageset'.
-03/03/2009 03:53:39 (Std) 	Started creation of Imageset from XML specification:
-03/03/2009 03:53:39 (Std) 	---- CEGUI Imageset name: TaharezLook
-03/03/2009 03:53:39 (Std) 	---- Source texture file: TaharezLook.tga in resource group: (Default)
-03/03/2009 03:53:39 (Info) 	Finished creation of Imageset 'TaharezLook' via XML file. (0x9e29f68)
-03/03/2009 03:53:39 (Std) 	Attempting to create Font from the information specified in file 'bluehighway-12.font'.
-03/03/2009 03:53:39 (Std) 	Started creation of FreeType Font:
-03/03/2009 03:53:39 (Std) 	---- CEGUI font name: BlueHighway-12
-03/03/2009 03:53:39 (Std) 	----     Source file: bluehigh.ttf in resource group: (Default)
-03/03/2009 03:53:39 (Std) 	---- Real point size: 12
-03/03/2009 03:53:39 (Std) 	Succsessfully loaded 289 glyphs
-03/03/2009 03:53:39 (Info) 	Finished creation of Font 'BlueHighway-12' via XML file. (0x9e3dc78)
-03/03/2009 03:53:39 (Std) 	Attempting to create Font from the information specified in file 'bluehighway-10.font'.
-03/03/2009 03:53:39 (Std) 	Started creation of FreeType Font:
-03/03/2009 03:53:39 (Std) 	---- CEGUI font name: BlueHighway-10
-03/03/2009 03:53:39 (Std) 	----     Source file: bluehigh.ttf in resource group: (Default)
-03/03/2009 03:53:39 (Std) 	---- Real point size: 10
-03/03/2009 03:53:39 (Std) 	Succsessfully loaded 289 glyphs
-03/03/2009 03:53:39 (Info) 	Finished creation of Font 'BlueHighway-10' via XML file. (0x9e5ec48)
-03/03/2009 03:53:39 (Std) 	Attempting to create Font from the information specified in file 'bluehighway-8.font'.
-03/03/2009 03:53:39 (Std) 	Started creation of FreeType Font:
-03/03/2009 03:53:39 (Std) 	---- CEGUI font name: BlueHighway-8
-03/03/2009 03:53:39 (Std) 	----     Source file: bluehigh.ttf in resource group: (Default)
-03/03/2009 03:53:39 (Std) 	---- Real point size: 8
-03/03/2009 03:53:39 (Std) 	Succsessfully loaded 289 glyphs
-03/03/2009 03:53:39 (Info) 	Finished creation of Font 'BlueHighway-8' via XML file. (0x9e72f28)
-03/03/2009 03:53:39 (Std) 	===== Falagard 'root' element: look and feel parsing begins =====
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Button'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Button'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/RadioButton'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/RadioButton'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Checkbox'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Checkbox'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Editbox'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Editbox'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Titlebar'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Titlebar'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/FrameWindow'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/FrameWindow'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/ProgressBar'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/ProgressBar'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/AltProgressBar'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/AltProgressBar'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/VUMeter'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/VUMeter'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/SliderThumb'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/SliderThumb'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Slider'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Slider'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/HorizontalScrollbarThumb'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/HorizontalScrollbarThumb'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/HorizontalScrollbar'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/HorizontalScrollbar'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/VerticalScrollbarThumb'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/VerticalScrollbarThumb'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/VerticalScrollbar'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/VerticalScrollbar'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Listbox'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Listbox'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/ComboDropList'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/ComboDropList'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/ComboEditbox'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/ComboEditbox'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Combobox'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Combobox'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Spinner'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Spinner'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/StaticShared'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/StaticShared'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/StaticImage'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/StaticImage'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/StaticText'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/StaticText'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/ListHeaderSegment'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/ListHeaderSegment'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/ListHeader'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/ListHeader'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/MultiColumnList'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/MultiColumnList'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/MultiLineEditbox'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/MultiLineEditbox'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Tooltip'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Tooltip'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/ScrollablePane'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/ScrollablePane'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/TabButton'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/TabButton'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/TabContentPane'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/TabContentPane'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/TabButtonPane'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/TabButtonPane'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/TabControl'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/TabControl'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/MenuItem'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/MenuItem'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/PopupMenu'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/PopupMenu'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/Menubar'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/Menubar'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/LargeVerticalScrollbarThumb'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/LargeVerticalScrollbarThumb'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/LargeVerticalScrollbar'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/LargeVerticalScrollbar'.
-03/03/2009 03:53:39 (Info) 	---> Start of definition for widget look 'TaharezLook/ImageButton'.
-03/03/2009 03:53:39 (Info) 	---< End of definition for widget look 'TaharezLook/ImageButton'.
-03/03/2009 03:53:39 (Std) 	===== Look and feel parsing completed =====
-03/03/2009 03:53:39 (Std) 	No window renderer factories specified for module 'CEGUIFalagardWRBase' - adding all available factories...
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Button' added. (0xb4687880)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Default' added. (0xb4687920)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Editbox' added. (0xb46879c0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/FrameWindow' added. (0xb4687a60)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/ItemEntry' added. (0xb4687b00)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/ListHeader' added. (0xb4687ba0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/ListHeaderSegment' added. (0xb4687c40)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Listbox' added. (0xb4687ce0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Menubar' added. (0xb4687d80)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/MenuItem' added. (0xb4687e20)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/MultiColumnList' added. (0xb4687ec0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/MultiLineEditbox' added. (0xb4687f60)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/PopupMenu' added. (0xb4688000)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/ProgressBar' added. (0xb46880a0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/ScrollablePane' added. (0xb4688140)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Scrollbar' added. (0xb46881e0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Slider' added. (0xb4688280)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Static' added. (0xb4688320)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/StaticImage' added. (0xb46883c0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/StaticText' added. (0xb4688460)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/SystemButton' added. (0xb4688500)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/TabButton' added. (0xb46885a0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/TabControl' added. (0xb4688640)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Titlebar' added. (0xb46886e0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/ToggleButton' added. (0xb4688780)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Tooltip' added. (0xb4688820)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/ItemListbox' added. (0xb46888c0)
-03/03/2009 03:53:39 (Std) 	WindowRendererFactory 'Falagard/Tree' added. (0xb4688960)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Button' using base type 'CEGUI/PushButton', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/Button'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Checkbox' using base type 'CEGUI/Checkbox', window renderer 'Falagard/ToggleButton' and Look'N'Feel 'TaharezLook/Checkbox'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/ImageButton' using base type 'CEGUI/PushButton', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/ImageButton'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/RadioButton' using base type 'CEGUI/RadioButton', window renderer 'Falagard/ToggleButton' and Look'N'Feel 'TaharezLook/RadioButton'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/FrameWindow' using base type 'CEGUI/FrameWindow', window renderer 'Falagard/FrameWindow' and Look'N'Feel 'TaharezLook/FrameWindow'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Titlebar' using base type 'CEGUI/Titlebar', window renderer 'Falagard/Titlebar' and Look'N'Feel 'TaharezLook/Titlebar'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/SystemButton' using base type 'CEGUI/PushButton', window renderer 'Falagard/SystemButton' and Look'N'Feel 'TaharezLook/Button'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Editbox' using base type 'CEGUI/Editbox', window renderer 'Falagard/Editbox' and Look'N'Feel 'TaharezLook/Editbox'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/MultiLineEditbox' using base type 'CEGUI/MultiLineEditbox', window renderer 'Falagard/MultiLineEditbox' and Look'N'Feel 'TaharezLook/MultiLineEditbox'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Menubar' using base type 'CEGUI/Menubar', window renderer 'Falagard/Menubar' and Look'N'Feel 'TaharezLook/Menubar'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/PopupMenu' using base type 'CEGUI/PopupMenu', window renderer 'Falagard/PopupMenu' and Look'N'Feel 'TaharezLook/PopupMenu'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/MenuItem' using base type 'CEGUI/MenuItem', window renderer 'Falagard/MenuItem' and Look'N'Feel 'TaharezLook/MenuItem'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/AlternateProgressBar' using base type 'CEGUI/ProgressBar', window renderer 'Falagard/ProgressBar' and Look'N'Feel 'TaharezLook/AltProgressBar'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/ProgressBar' using base type 'CEGUI/ProgressBar', window renderer 'Falagard/ProgressBar' and Look'N'Feel 'TaharezLook/ProgressBar'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/VUMeter' using base type 'CEGUI/ProgressBar', window renderer 'Falagard/ProgressBar' and Look'N'Feel 'TaharezLook/VUMeter'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/VerticalScrollbar' using base type 'CEGUI/Scrollbar', window renderer 'Falagard/Scrollbar' and Look'N'Feel 'TaharezLook/VerticalScrollbar'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/HorizontalScrollbar' using base type 'CEGUI/Scrollbar', window renderer 'Falagard/Scrollbar' and Look'N'Feel 'TaharezLook/HorizontalScrollbar'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/VerticalScrollbarThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/VerticalScrollbarThumb'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/HorizontalScrollbarThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/HorizontalScrollbarThumb'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/LargeVerticalScrollbar' using base type 'CEGUI/Scrollbar', window renderer 'Falagard/Scrollbar' and Look'N'Feel 'TaharezLook/LargeVerticalScrollbar'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/LargeVerticalScrollbarThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/LargeVerticalScrollbarThumb'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/TabButton' using base type 'CEGUI/TabButton', window renderer 'Falagard/TabButton' and Look'N'Feel 'TaharezLook/TabButton'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/TabControl' using base type 'CEGUI/TabControl', window renderer 'Falagard/TabControl' and Look'N'Feel 'TaharezLook/TabControl'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/TabContentPane' using base type 'DefaultWindow', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/TabContentPane'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/TabButtonPane' using base type 'DefaultWindow', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/TabButtonPane'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/ComboDropList' using base type 'CEGUI/ComboDropList', window renderer 'Falagard/Listbox' and Look'N'Feel 'TaharezLook/ComboDropList'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/ComboEditbox' using base type 'CEGUI/Editbox', window renderer 'Falagard/Editbox' and Look'N'Feel 'TaharezLook/ComboEditbox'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Combobox' using base type 'CEGUI/Combobox', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/Combobox'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Listbox' using base type 'CEGUI/Listbox', window renderer 'Falagard/Listbox' and Look'N'Feel 'TaharezLook/Listbox'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/ListHeader' using base type 'CEGUI/ListHeader', window renderer 'Falagard/ListHeader' and Look'N'Feel 'TaharezLook/ListHeader'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/ListHeaderSegment' using base type 'CEGUI/ListHeaderSegment', window renderer 'Falagard/ListHeaderSegment' and Look'N'Feel 'TaharezLook/ListHeaderSegment'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/MultiColumnList' using base type 'CEGUI/MultiColumnList', window renderer 'Falagard/MultiColumnList' and Look'N'Feel 'TaharezLook/MultiColumnList'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Slider' using base type 'CEGUI/Slider', window renderer 'Falagard/Slider' and Look'N'Feel 'TaharezLook/Slider'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/SliderThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/SliderThumb'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/ScrollablePane' using base type 'CEGUI/ScrollablePane', window renderer 'Falagard/ScrollablePane' and Look'N'Feel 'TaharezLook/ScrollablePane'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Spinner' using base type 'CEGUI/Spinner', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/Spinner'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/Tooltip' using base type 'CEGUI/Tooltip', window renderer 'Falagard/Tooltip' and Look'N'Feel 'TaharezLook/Tooltip'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/StaticImage' using base type 'DefaultWindow', window renderer 'Falagard/StaticImage' and Look'N'Feel 'TaharezLook/StaticImage'. (0xbfaaf414)
-03/03/2009 03:53:39 (Std) 	Creating falagard mapping for type 'TaharezLook/StaticText' using base type 'DefaultWindow', window renderer 'Falagard/StaticText' and Look'N'Feel 'TaharezLook/StaticText'. (0xbfaaf414)
-03/03/2009 03:53:39 (Info) 	---- Resource loading for GUI scheme 'TaharezLook' completed ----
-03/03/2009 03:53:39 (Info) 	---- Beginning loading of GUI layout from 'welcome.layout' ----
-03/03/2009 03:53:39 (Info) 	Window 'Main' of type 'TaharezLook/FrameWindow' has been created. (0x9ee37c0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'Main'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'Main'.
-03/03/2009 03:53:39 (Info) 	Window 'Main__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x9ee6548)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'Main__auto_titlebar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'Main__auto_titlebar__'.
-03/03/2009 03:53:39 (Info) 	Window 'Main__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x9ee92e0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'Main__auto_closebutton__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'Main__auto_closebutton__'.
-03/03/2009 03:53:39 (Info) 	Window 'cmdPlay' of type 'TaharezLook/Button' has been created. (0x9eee038)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdPlay'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdPlay'.
-03/03/2009 03:53:39 (Info) 	Window 'cmdOptions' of type 'TaharezLook/Button' has been created. (0x9ef1e50)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdOptions'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdOptions'.
-03/03/2009 03:53:39 (Info) 	Window 'cmdQuit' of type 'TaharezLook/Button' has been created. (0x9ef5eb0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdQuit'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdQuit'.
-03/03/2009 03:53:39 (Std) 	---- Successfully completed loading of GUI layout from 'welcome.layout' ----
-03/03/2009 03:53:39 (Info) 	---- Beginning loading of GUI layout from 'settings.layout' ----
-03/03/2009 03:53:39 (Info) 	Window 'Settings' of type 'TaharezLook/FrameWindow' has been created. (0x9efa008)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'Settings'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'Settings'.
-03/03/2009 03:53:39 (Info) 	Window 'Settings__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x9efd3c0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'Settings__auto_titlebar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'Settings__auto_titlebar__'.
-03/03/2009 03:53:39 (Info) 	Window 'Settings__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x9f00158)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'Settings__auto_closebutton__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'Settings__auto_closebutton__'.
-03/03/2009 03:53:39 (Info) 	Window 'frameOptions' of type 'TaharezLook/FrameWindow' has been created. (0x9f04e00)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'frameOptions'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'frameOptions'.
-03/03/2009 03:53:39 (Info) 	Window 'frameOptions__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x9f076e8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'frameOptions__auto_titlebar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'frameOptions__auto_titlebar__'.
-03/03/2009 03:53:39 (Info) 	Window 'frameOptions__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x9f0a508)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'frameOptions__auto_closebutton__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'frameOptions__auto_closebutton__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension' of type 'TaharezLook/StaticText' has been created. (0x9f0f450)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelDimension'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelDimension'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x9f119b0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelDimension__auto_hscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelDimension__auto_hscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9f14db8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_hscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9f18a08)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_hscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x9f1c5b8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelDimension__auto_hscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x9f20018)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelDimension__auto_vscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelDimension__auto_vscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9f234b0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_vscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9f270f8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_vscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x9f2aca0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelDimension__auto_vscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Std) 	Attempting to create Imageset 'BlueHighway-12_auto_glyph_images_ ' with texture only.
-03/03/2009 03:53:39 (Info) 	Window 'txtDimension' of type 'TaharezLook/Spinner' has been created. (0x9f4a700)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'txtDimension'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Spinner' to window 'txtDimension'.
-03/03/2009 03:53:39 (Info) 	Window 'txtDimension__auto_editbox__' of type 'TaharezLook/Editbox' has been created. (0x9f4ca50)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'txtDimension__auto_editbox__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Editbox' to window 'txtDimension__auto_editbox__'.
-03/03/2009 03:53:39 (Info) 	Window 'txtDimension__auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9f50600)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'txtDimension__auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'txtDimension__auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'txtDimension__auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fa6f98)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'txtDimension__auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'txtDimension__auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA' of type 'TaharezLook/StaticText' has been created. (0x9fab1e8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelPlayerA'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelPlayerA'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x9fad4f8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerA__auto_hscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelPlayerA__auto_hscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fb08f0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_hscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fb4490)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_hscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x9fb8020)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelPlayerA__auto_hscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x9fbb9b8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerA__auto_vscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelPlayerA__auto_vscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fbedb0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_vscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fc29d8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_vscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x9fc6560)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelPlayerA__auto_vscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA' of type 'TaharezLook/Combobox' has been created. (0x9fcb948)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'comboPlayerA'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Combobox' to window 'comboPlayerA'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_editbox__' of type 'TaharezLook/ComboEditbox' has been created. (0x9fcd7b8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'comboPlayerA__auto_editbox__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ComboEditbox' to window 'comboPlayerA__auto_editbox__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist__' of type 'TaharezLook/ComboDropList' has been created. (0x9fd15a0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Listbox' to the window 'comboPlayerA__auto_droplist__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ComboDropList' to window 'comboPlayerA__auto_droplist__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x9fd44e0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'comboPlayerA__auto_droplist____auto_hscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fd7af8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fdb668)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x9fdf310)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x9fe2ef8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'comboPlayerA__auto_droplist____auto_vscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fe6448)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9fea0e0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x9fedd80)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerA__auto_button__' of type 'TaharezLook/ImageButton' has been created. (0x9ff1b08)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_button__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_button__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB' of type 'TaharezLook/StaticText' has been created. (0x9ff8110)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelPlayerB'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelPlayerB'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x9ffa238)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerB__auto_hscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelPlayerB__auto_hscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x9ffd630)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_hscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0xa001268)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_hscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0xa004df8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelPlayerB__auto_hscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0xa008998)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerB__auto_vscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelPlayerB__auto_vscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0xa00bda0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_vscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0xa00f9c8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_vscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0xa0135e8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelPlayerB__auto_vscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB' of type 'TaharezLook/Combobox' has been created. (0x9ff7ae0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'comboPlayerB'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Combobox' to window 'comboPlayerB'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_editbox__' of type 'TaharezLook/ComboEditbox' has been created. (0xa01ab88)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'comboPlayerB__auto_editbox__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ComboEditbox' to window 'comboPlayerB__auto_editbox__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist__' of type 'TaharezLook/ComboDropList' has been created. (0xa01e938)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Listbox' to the window 'comboPlayerB__auto_droplist__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ComboDropList' to window 'comboPlayerB__auto_droplist__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0xa021878)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'comboPlayerB__auto_droplist____auto_hscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0xa024e90)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0xa028a00)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0xa02c6a8)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0xa030290)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'comboPlayerB__auto_droplist____auto_vscrollbar__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0xa0337e0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0xa037478)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0xa03b118)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__'.
-03/03/2009 03:53:39 (Info) 	Window 'comboPlayerB__auto_button__' of type 'TaharezLook/ImageButton' has been created. (0xa03ee80)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_button__'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_button__'.
-03/03/2009 03:53:39 (Info) 	Window 'cmdCancel' of type 'TaharezLook/Button' has been created. (0xa0189b0)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdCancel'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdCancel'.
-03/03/2009 03:53:39 (Info) 	Window 'cmdOk' of type 'TaharezLook/Button' has been created. (0xa045e28)
-03/03/2009 03:53:39 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdOk'
-03/03/2009 03:53:39 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdOk'.
-03/03/2009 03:53:39 (Std) 	---- Successfully completed loading of GUI layout from 'settings.layout' ----
+05/03/2009 19:37:16 (Std) 	CEGUI::Logger singleton created. (0x84408f0)
+05/03/2009 19:37:16 (Std) 	---- Begining CEGUI System initialisation ----
+05/03/2009 19:37:16 (Std) 	CEGUI::ImagesetManager singleton created (0x8449698)
+05/03/2009 19:37:16 (Std) 	CEGUI::FontManager singleton created. (0x8449d20)
+05/03/2009 19:37:16 (Std) 	CEGUI::WindowFactoryManager singleton created
+05/03/2009 19:37:16 (Std) 	CEGUI::WindowManager singleton created (0x84496b8)
+05/03/2009 19:37:16 (Std) 	CEGUI::SchemeManager singleton created. (0x8440bd0)
+05/03/2009 19:37:16 (Std) 	CEGUI::MouseCursor singleton created. (0x843e1f0)
+05/03/2009 19:37:16 (Std) 	CEGUI::GlobalEventSet singleton created. (0x8440bf0)
+05/03/2009 19:37:16 (Std) 	CEGUI::WidgetLookManager singleton created. (0x843e248)
+05/03/2009 19:37:16 (Std) 	CEGUI::WindowRendererManager singleton created (0x843e268)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'DefaultWindow' windows added. (0xb7a3cd40)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'DragContainer' windows added. (0xb7a3cc80)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'ScrolledContainer' windows added. (0xb7a3cbc0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'ClippedContainer' windows added. (0xb7a3cb00)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Checkbox' windows added. (0xb7a3ca40)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/PushButton' windows added. (0xb7a3bf00)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/RadioButton' windows added. (0xb7a3be40)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Combobox' windows added. (0xb7a3c8c0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/ComboDropList' windows added. (0xb7a3c980)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Editbox' windows added. (0xb7a3c800)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/FrameWindow' windows added. (0xb7a3c740)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/ItemEntry' windows added. (0xb7a3c680)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Listbox' windows added. (0xb7a3c440)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/ListHeader' windows added. (0xb7a3c5c0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/ListHeaderSegment' windows added. (0xb7a3c500)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Menubar' windows added. (0xb7a3c2c0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/PopupMenu' windows added. (0xb7a3c080)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/MenuItem' windows added. (0xb7a3c380)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/MultiColumnList' windows added. (0xb7a3c200)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/MultiLineEditbox' windows added. (0xb7a3c140)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/ProgressBar' windows added. (0xb7a3bfc0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/ScrollablePane' windows added. (0xb7a3bd80)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Scrollbar' windows added. (0xb7a3bcc0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Slider' windows added. (0xb7a3bc00)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Spinner' windows added. (0xb7a3bb40)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/TabButton' windows added. (0xb7a3ba80)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/TabControl' windows added. (0xb7a3b9c0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Thumb' windows added. (0xb7a3b900)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Titlebar' windows added. (0xb7a3b840)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Tooltip' windows added. (0xb7a3b780)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/ItemListbox' windows added. (0xb7a3b6c0)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/GroupBox' windows added. (0xb7a3b600)
+05/03/2009 19:37:16 (Std) 	WindowFactory for 'CEGUI/Tree' windows added. (0xb7a3b540)
+05/03/2009 19:37:16 (Std) 	Window type alias named 'DefaultGUISheet' added for window type 'DefaultWindow'.
+05/03/2009 19:37:16 (Std) 	CEGUI::System singleton created. (0x8440730)
+05/03/2009 19:37:16 (Std) 	---- CEGUI System initialisation completed ----
+05/03/2009 19:37:16 (Std) 	---- Version 0.6.2 ----
+05/03/2009 19:37:16 (Std) 	---- Renderer module is: CEGUI::OgreRenderer - Official Ogre based renderer module for CEGUI ----
+05/03/2009 19:37:16 (Std) 	---- XML Parser module is: CEGUI::ExpatParser - Official expat based parser module for CEGUI ----
+05/03/2009 19:37:16 (Std) 	---- Scripting module is: None ----
+05/03/2009 19:37:16 (Std) 	Attempting to load Scheme from file 'TaharezLookSkin.scheme'.
+05/03/2009 19:37:16 (Info) 	Started creation of Scheme 'TaharezLook' via XML file.
+05/03/2009 19:37:16 (Info) 	Finished creation of Scheme 'TaharezLook' via XML file.
+05/03/2009 19:37:16 (Info) 	Loaded GUI scheme 'TaharezLook' from data in file 'TaharezLookSkin.scheme'. (0x845b878)
+05/03/2009 19:37:16 (Info) 	---- Begining resource loading for GUI scheme 'TaharezLook' ----
+05/03/2009 19:37:16 (Std) 	Attempting to create an Imageset from the information specified in file 'TaharezLook.imageset'.
+05/03/2009 19:37:16 (Std) 	Started creation of Imageset from XML specification:
+05/03/2009 19:37:16 (Std) 	---- CEGUI Imageset name: TaharezLook
+05/03/2009 19:37:16 (Std) 	---- Source texture file: TaharezLook.tga in resource group: (Default)
+05/03/2009 19:37:16 (Info) 	Finished creation of Imageset 'TaharezLook' via XML file. (0x8461fc0)
+05/03/2009 19:37:16 (Std) 	Attempting to create Font from the information specified in file 'bluehighway-12.font'.
+05/03/2009 19:37:16 (Std) 	Started creation of FreeType Font:
+05/03/2009 19:37:16 (Std) 	---- CEGUI font name: BlueHighway-12
+05/03/2009 19:37:16 (Std) 	----     Source file: bluehigh.ttf in resource group: (Default)
+05/03/2009 19:37:16 (Std) 	---- Real point size: 12
+05/03/2009 19:37:16 (Std) 	Succsessfully loaded 289 glyphs
+05/03/2009 19:37:16 (Info) 	Finished creation of Font 'BlueHighway-12' via XML file. (0x8475cd0)
+05/03/2009 19:37:16 (Std) 	Attempting to create Font from the information specified in file 'bluehighway-10.font'.
+05/03/2009 19:37:16 (Std) 	Started creation of FreeType Font:
+05/03/2009 19:37:16 (Std) 	---- CEGUI font name: BlueHighway-10
+05/03/2009 19:37:16 (Std) 	----     Source file: bluehigh.ttf in resource group: (Default)
+05/03/2009 19:37:16 (Std) 	---- Real point size: 10
+05/03/2009 19:37:16 (Std) 	Succsessfully loaded 289 glyphs
+05/03/2009 19:37:16 (Info) 	Finished creation of Font 'BlueHighway-10' via XML file. (0x8496ca0)
+05/03/2009 19:37:16 (Std) 	Attempting to create Font from the information specified in file 'bluehighway-8.font'.
+05/03/2009 19:37:16 (Std) 	Started creation of FreeType Font:
+05/03/2009 19:37:16 (Std) 	---- CEGUI font name: BlueHighway-8
+05/03/2009 19:37:16 (Std) 	----     Source file: bluehigh.ttf in resource group: (Default)
+05/03/2009 19:37:16 (Std) 	---- Real point size: 8
+05/03/2009 19:37:16 (Std) 	Succsessfully loaded 289 glyphs
+05/03/2009 19:37:16 (Info) 	Finished creation of Font 'BlueHighway-8' via XML file. (0x84aaf80)
+05/03/2009 19:37:16 (Std) 	===== Falagard 'root' element: look and feel parsing begins =====
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Button'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Button'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/RadioButton'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/RadioButton'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Checkbox'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Checkbox'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Editbox'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Editbox'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Titlebar'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Titlebar'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/FrameWindow'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/FrameWindow'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/ProgressBar'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/ProgressBar'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/AltProgressBar'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/AltProgressBar'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/VUMeter'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/VUMeter'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/SliderThumb'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/SliderThumb'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Slider'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Slider'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/HorizontalScrollbarThumb'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/HorizontalScrollbarThumb'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/HorizontalScrollbar'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/HorizontalScrollbar'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/VerticalScrollbarThumb'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/VerticalScrollbarThumb'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/VerticalScrollbar'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/VerticalScrollbar'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Listbox'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Listbox'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/ComboDropList'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/ComboDropList'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/ComboEditbox'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/ComboEditbox'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Combobox'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Combobox'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Spinner'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Spinner'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/StaticShared'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/StaticShared'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/StaticImage'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/StaticImage'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/StaticText'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/StaticText'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/ListHeaderSegment'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/ListHeaderSegment'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/ListHeader'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/ListHeader'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/MultiColumnList'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/MultiColumnList'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/MultiLineEditbox'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/MultiLineEditbox'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Tooltip'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Tooltip'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/ScrollablePane'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/ScrollablePane'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/TabButton'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/TabButton'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/TabContentPane'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/TabContentPane'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/TabButtonPane'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/TabButtonPane'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/TabControl'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/TabControl'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/MenuItem'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/MenuItem'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/PopupMenu'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/PopupMenu'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/Menubar'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/Menubar'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/LargeVerticalScrollbarThumb'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/LargeVerticalScrollbarThumb'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/LargeVerticalScrollbar'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/LargeVerticalScrollbar'.
+05/03/2009 19:37:16 (Info) 	---> Start of definition for widget look 'TaharezLook/ImageButton'.
+05/03/2009 19:37:16 (Info) 	---< End of definition for widget look 'TaharezLook/ImageButton'.
+05/03/2009 19:37:16 (Std) 	===== Look and feel parsing completed =====
+05/03/2009 19:37:16 (Std) 	No window renderer factories specified for module 'CEGUIFalagardWRBase' - adding all available factories...
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Button' added. (0xb4529880)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Default' added. (0xb4529920)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Editbox' added. (0xb45299c0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/FrameWindow' added. (0xb4529a60)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/ItemEntry' added. (0xb4529b00)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/ListHeader' added. (0xb4529ba0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/ListHeaderSegment' added. (0xb4529c40)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Listbox' added. (0xb4529ce0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Menubar' added. (0xb4529d80)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/MenuItem' added. (0xb4529e20)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/MultiColumnList' added. (0xb4529ec0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/MultiLineEditbox' added. (0xb4529f60)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/PopupMenu' added. (0xb452a000)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/ProgressBar' added. (0xb452a0a0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/ScrollablePane' added. (0xb452a140)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Scrollbar' added. (0xb452a1e0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Slider' added. (0xb452a280)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Static' added. (0xb452a320)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/StaticImage' added. (0xb452a3c0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/StaticText' added. (0xb452a460)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/SystemButton' added. (0xb452a500)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/TabButton' added. (0xb452a5a0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/TabControl' added. (0xb452a640)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Titlebar' added. (0xb452a6e0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/ToggleButton' added. (0xb452a780)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Tooltip' added. (0xb452a820)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/ItemListbox' added. (0xb452a8c0)
+05/03/2009 19:37:16 (Std) 	WindowRendererFactory 'Falagard/Tree' added. (0xb452a960)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Button' using base type 'CEGUI/PushButton', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/Button'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Checkbox' using base type 'CEGUI/Checkbox', window renderer 'Falagard/ToggleButton' and Look'N'Feel 'TaharezLook/Checkbox'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/ImageButton' using base type 'CEGUI/PushButton', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/ImageButton'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/RadioButton' using base type 'CEGUI/RadioButton', window renderer 'Falagard/ToggleButton' and Look'N'Feel 'TaharezLook/RadioButton'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/FrameWindow' using base type 'CEGUI/FrameWindow', window renderer 'Falagard/FrameWindow' and Look'N'Feel 'TaharezLook/FrameWindow'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Titlebar' using base type 'CEGUI/Titlebar', window renderer 'Falagard/Titlebar' and Look'N'Feel 'TaharezLook/Titlebar'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/SystemButton' using base type 'CEGUI/PushButton', window renderer 'Falagard/SystemButton' and Look'N'Feel 'TaharezLook/Button'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Editbox' using base type 'CEGUI/Editbox', window renderer 'Falagard/Editbox' and Look'N'Feel 'TaharezLook/Editbox'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/MultiLineEditbox' using base type 'CEGUI/MultiLineEditbox', window renderer 'Falagard/MultiLineEditbox' and Look'N'Feel 'TaharezLook/MultiLineEditbox'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Menubar' using base type 'CEGUI/Menubar', window renderer 'Falagard/Menubar' and Look'N'Feel 'TaharezLook/Menubar'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/PopupMenu' using base type 'CEGUI/PopupMenu', window renderer 'Falagard/PopupMenu' and Look'N'Feel 'TaharezLook/PopupMenu'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/MenuItem' using base type 'CEGUI/MenuItem', window renderer 'Falagard/MenuItem' and Look'N'Feel 'TaharezLook/MenuItem'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/AlternateProgressBar' using base type 'CEGUI/ProgressBar', window renderer 'Falagard/ProgressBar' and Look'N'Feel 'TaharezLook/AltProgressBar'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/ProgressBar' using base type 'CEGUI/ProgressBar', window renderer 'Falagard/ProgressBar' and Look'N'Feel 'TaharezLook/ProgressBar'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/VUMeter' using base type 'CEGUI/ProgressBar', window renderer 'Falagard/ProgressBar' and Look'N'Feel 'TaharezLook/VUMeter'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/VerticalScrollbar' using base type 'CEGUI/Scrollbar', window renderer 'Falagard/Scrollbar' and Look'N'Feel 'TaharezLook/VerticalScrollbar'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/HorizontalScrollbar' using base type 'CEGUI/Scrollbar', window renderer 'Falagard/Scrollbar' and Look'N'Feel 'TaharezLook/HorizontalScrollbar'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/VerticalScrollbarThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/VerticalScrollbarThumb'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/HorizontalScrollbarThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/HorizontalScrollbarThumb'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/LargeVerticalScrollbar' using base type 'CEGUI/Scrollbar', window renderer 'Falagard/Scrollbar' and Look'N'Feel 'TaharezLook/LargeVerticalScrollbar'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/LargeVerticalScrollbarThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/LargeVerticalScrollbarThumb'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/TabButton' using base type 'CEGUI/TabButton', window renderer 'Falagard/TabButton' and Look'N'Feel 'TaharezLook/TabButton'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/TabControl' using base type 'CEGUI/TabControl', window renderer 'Falagard/TabControl' and Look'N'Feel 'TaharezLook/TabControl'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/TabContentPane' using base type 'DefaultWindow', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/TabContentPane'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/TabButtonPane' using base type 'DefaultWindow', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/TabButtonPane'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/ComboDropList' using base type 'CEGUI/ComboDropList', window renderer 'Falagard/Listbox' and Look'N'Feel 'TaharezLook/ComboDropList'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/ComboEditbox' using base type 'CEGUI/Editbox', window renderer 'Falagard/Editbox' and Look'N'Feel 'TaharezLook/ComboEditbox'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Combobox' using base type 'CEGUI/Combobox', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/Combobox'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Listbox' using base type 'CEGUI/Listbox', window renderer 'Falagard/Listbox' and Look'N'Feel 'TaharezLook/Listbox'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/ListHeader' using base type 'CEGUI/ListHeader', window renderer 'Falagard/ListHeader' and Look'N'Feel 'TaharezLook/ListHeader'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/ListHeaderSegment' using base type 'CEGUI/ListHeaderSegment', window renderer 'Falagard/ListHeaderSegment' and Look'N'Feel 'TaharezLook/ListHeaderSegment'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/MultiColumnList' using base type 'CEGUI/MultiColumnList', window renderer 'Falagard/MultiColumnList' and Look'N'Feel 'TaharezLook/MultiColumnList'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Slider' using base type 'CEGUI/Slider', window renderer 'Falagard/Slider' and Look'N'Feel 'TaharezLook/Slider'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/SliderThumb' using base type 'CEGUI/Thumb', window renderer 'Falagard/Button' and Look'N'Feel 'TaharezLook/SliderThumb'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/ScrollablePane' using base type 'CEGUI/ScrollablePane', window renderer 'Falagard/ScrollablePane' and Look'N'Feel 'TaharezLook/ScrollablePane'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Spinner' using base type 'CEGUI/Spinner', window renderer 'Falagard/Default' and Look'N'Feel 'TaharezLook/Spinner'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/Tooltip' using base type 'CEGUI/Tooltip', window renderer 'Falagard/Tooltip' and Look'N'Feel 'TaharezLook/Tooltip'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/StaticImage' using base type 'DefaultWindow', window renderer 'Falagard/StaticImage' and Look'N'Feel 'TaharezLook/StaticImage'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Std) 	Creating falagard mapping for type 'TaharezLook/StaticText' using base type 'DefaultWindow', window renderer 'Falagard/StaticText' and Look'N'Feel 'TaharezLook/StaticText'. (0xbfa4ed84)
+05/03/2009 19:37:16 (Info) 	---- Resource loading for GUI scheme 'TaharezLook' completed ----
+05/03/2009 19:37:16 (Info) 	---- Beginning loading of GUI layout from 'welcome.layout' ----
+05/03/2009 19:37:16 (Info) 	Window 'Main' of type 'TaharezLook/FrameWindow' has been created. (0x85432f0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'Main'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'Main'.
+05/03/2009 19:37:16 (Info) 	Window 'Main__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x85457b8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'Main__auto_titlebar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'Main__auto_titlebar__'.
+05/03/2009 19:37:16 (Info) 	Window 'Main__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x8548560)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'Main__auto_closebutton__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'Main__auto_closebutton__'.
+05/03/2009 19:37:16 (Info) 	Window 'cmdPlay' of type 'TaharezLook/Button' has been created. (0x854d578)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdPlay'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdPlay'.
+05/03/2009 19:37:16 (Info) 	Window 'cmdOptions' of type 'TaharezLook/Button' has been created. (0x85516b8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdOptions'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdOptions'.
+05/03/2009 19:37:16 (Info) 	Window 'cmdQuit' of type 'TaharezLook/Button' has been created. (0x8555458)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdQuit'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdQuit'.
+05/03/2009 19:37:16 (Std) 	---- Successfully completed loading of GUI layout from 'welcome.layout' ----
+05/03/2009 19:37:16 (Info) 	---- Beginning loading of GUI layout from 'settings.layout' ----
+05/03/2009 19:37:16 (Info) 	Window 'Settings' of type 'TaharezLook/FrameWindow' has been created. (0x85595c0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'Settings'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'Settings'.
+05/03/2009 19:37:16 (Info) 	Window 'Settings__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x855c968)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'Settings__auto_titlebar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'Settings__auto_titlebar__'.
+05/03/2009 19:37:16 (Info) 	Window 'Settings__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x855f720)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'Settings__auto_closebutton__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'Settings__auto_closebutton__'.
+05/03/2009 19:37:16 (Info) 	Window 'frameOptions' of type 'TaharezLook/FrameWindow' has been created. (0x85644e0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'frameOptions'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'frameOptions'.
+05/03/2009 19:37:16 (Info) 	Window 'frameOptions__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x8566dc8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'frameOptions__auto_titlebar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'frameOptions__auto_titlebar__'.
+05/03/2009 19:37:16 (Info) 	Window 'frameOptions__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x8569bf8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'frameOptions__auto_closebutton__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'frameOptions__auto_closebutton__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension' of type 'TaharezLook/StaticText' has been created. (0x856ebf0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelDimension'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelDimension'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x8571150)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelDimension__auto_hscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelDimension__auto_hscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8574558)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85781a8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x857bd58)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelDimension__auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x857f8a8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelDimension__auto_vscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelDimension__auto_vscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8582d50)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8586998)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x858a540)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelDimension__auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Std) 	Attempting to create Imageset 'BlueHighway-12_auto_glyph_images_ ' with texture only.
+05/03/2009 19:37:16 (Info) 	Window 'txtDimension' of type 'TaharezLook/Spinner' has been created. (0x863d470)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'txtDimension'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Spinner' to window 'txtDimension'.
+05/03/2009 19:37:16 (Info) 	Window 'txtDimension__auto_editbox__' of type 'TaharezLook/Editbox' has been created. (0x863f0e0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'txtDimension__auto_editbox__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Editbox' to window 'txtDimension__auto_editbox__'.
+05/03/2009 19:37:16 (Info) 	Window 'txtDimension__auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8642ef8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'txtDimension__auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'txtDimension__auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'txtDimension__auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8646828)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'txtDimension__auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'txtDimension__auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA' of type 'TaharezLook/StaticText' has been created. (0x864ac48)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelPlayerA'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelPlayerA'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x864cfb8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerA__auto_hscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelPlayerA__auto_hscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x86503c0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8653f60)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x8657af0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelPlayerA__auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x865b5e0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerA__auto_vscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelPlayerA__auto_vscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x865e9e8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8662610)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x8666198)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelPlayerA__auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA' of type 'TaharezLook/Combobox' has been created. (0x866b900)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'comboPlayerA'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Combobox' to window 'comboPlayerA'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_editbox__' of type 'TaharezLook/ComboEditbox' has been created. (0x866d770)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'comboPlayerA__auto_editbox__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ComboEditbox' to window 'comboPlayerA__auto_editbox__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist__' of type 'TaharezLook/ComboDropList' has been created. (0x8671450)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Listbox' to the window 'comboPlayerA__auto_droplist__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ComboDropList' to window 'comboPlayerA__auto_droplist__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x8674390)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'comboPlayerA__auto_droplist____auto_hscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x86779b8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x867b658)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x85e4ee8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x85e8c28)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'comboPlayerA__auto_droplist____auto_vscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85ec188)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85efe20)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x85f3ac0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerA__auto_button__' of type 'TaharezLook/ImageButton' has been created. (0x85f79c0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_button__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_button__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB' of type 'TaharezLook/StaticText' has been created. (0x85fdfd0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelPlayerB'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelPlayerB'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x8600130)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerB__auto_hscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelPlayerB__auto_hscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8603538)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x86070d8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x860ac68)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelPlayerB__auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x860e748)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerB__auto_vscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelPlayerB__auto_vscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8611b50)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8615778)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x8619300)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelPlayerB__auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB' of type 'TaharezLook/Combobox' has been created. (0x85fd9a0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'comboPlayerB'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Combobox' to window 'comboPlayerB'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_editbox__' of type 'TaharezLook/ComboEditbox' has been created. (0x86208f0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'comboPlayerB__auto_editbox__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ComboEditbox' to window 'comboPlayerB__auto_editbox__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist__' of type 'TaharezLook/ComboDropList' has been created. (0x867ecc8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Listbox' to the window 'comboPlayerB__auto_droplist__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ComboDropList' to window 'comboPlayerB__auto_droplist__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x8681c08)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'comboPlayerB__auto_droplist____auto_hscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8685220)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8688e28)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x868cad0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x86906b8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'comboPlayerB__auto_droplist____auto_vscrollbar__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8693c08)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x86978a0)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x869b540)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:37:16 (Info) 	Window 'comboPlayerB__auto_button__' of type 'TaharezLook/ImageButton' has been created. (0x869f288)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_button__'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_button__'.
+05/03/2009 19:37:16 (Info) 	Window 'cmdCancel' of type 'TaharezLook/Button' has been created. (0x861e718)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdCancel'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdCancel'.
+05/03/2009 19:37:16 (Info) 	Window 'cmdOk' of type 'TaharezLook/Button' has been created. (0x86a61b8)
+05/03/2009 19:37:16 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdOk'
+05/03/2009 19:37:16 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdOk'.
+05/03/2009 19:37:16 (Std) 	---- Successfully completed loading of GUI layout from 'settings.layout' ----
+05/03/2009 19:37:17 (Info) 	Window 'Settings__auto_titlebar__' has been added to dead pool. (0x855c968)
+05/03/2009 19:37:17 (Info) 	Window 'Settings__auto_closebutton__' has been added to dead pool. (0x855f720)
+05/03/2009 19:37:17 (Info) 	Window 'frameOptions__auto_titlebar__' has been added to dead pool. (0x8566dc8)
+05/03/2009 19:37:17 (Info) 	Window 'frameOptions__auto_closebutton__' has been added to dead pool. (0x8569bf8)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x8574558)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x85781a8)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x857bd58)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_hscrollbar__' has been added to dead pool. (0x8571150)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x8582d50)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x8586998)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x858a540)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension__auto_vscrollbar__' has been added to dead pool. (0x857f8a8)
+05/03/2009 19:37:17 (Info) 	Window 'labelDimension' has been added to dead pool. (0x856ebf0)
+05/03/2009 19:37:17 (Info) 	Window 'txtDimension__auto_editbox__' has been added to dead pool. (0x863f0e0)
+05/03/2009 19:37:17 (Info) 	Window 'txtDimension__auto_incbtn__' has been added to dead pool. (0x8642ef8)
+05/03/2009 19:37:17 (Info) 	Window 'txtDimension__auto_decbtn__' has been added to dead pool. (0x8646828)
+05/03/2009 19:37:17 (Info) 	Window 'txtDimension' has been added to dead pool. (0x863d470)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x86503c0)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x8653f60)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x8657af0)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_hscrollbar__' has been added to dead pool. (0x864cfb8)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x865e9e8)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x8662610)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x8666198)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA__auto_vscrollbar__' has been added to dead pool. (0x865b5e0)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerA' has been added to dead pool. (0x864ac48)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_editbox__' has been added to dead pool. (0x866d770)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x86779b8)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x867b658)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x85e4ee8)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar__' has been added to dead pool. (0x8674390)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x85ec188)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x85efe20)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x85f3ac0)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar__' has been added to dead pool. (0x85e8c28)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_droplist__' has been added to dead pool. (0x8671450)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA__auto_button__' has been added to dead pool. (0x85f79c0)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerA' has been added to dead pool. (0x866b900)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x8603538)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x86070d8)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x860ac68)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_hscrollbar__' has been added to dead pool. (0x8600130)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x8611b50)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x8615778)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x8619300)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB__auto_vscrollbar__' has been added to dead pool. (0x860e748)
+05/03/2009 19:37:17 (Info) 	Window 'labelPlayerB' has been added to dead pool. (0x85fdfd0)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_editbox__' has been added to dead pool. (0x86208f0)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x8685220)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x8688e28)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x868cad0)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar__' has been added to dead pool. (0x8681c08)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x8693c08)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x86978a0)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x869b540)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar__' has been added to dead pool. (0x86906b8)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_droplist__' has been added to dead pool. (0x867ecc8)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB__auto_button__' has been added to dead pool. (0x869f288)
+05/03/2009 19:37:17 (Info) 	Window 'comboPlayerB' has been added to dead pool. (0x85fd9a0)
+05/03/2009 19:37:17 (Info) 	Window 'cmdCancel' has been added to dead pool. (0x861e718)
+05/03/2009 19:37:17 (Info) 	Window 'cmdOk' has been added to dead pool. (0x86a61b8)
+05/03/2009 19:37:17 (Info) 	Window 'frameOptions' has been added to dead pool. (0x85644e0)
+05/03/2009 19:37:17 (Info) 	Window 'Settings' has been added to dead pool. (0x85595c0)
+05/03/2009 19:37:17 (Info) 	Window 'Main__auto_titlebar__' has been added to dead pool. (0x85457b8)
+05/03/2009 19:37:17 (Info) 	Window 'Main__auto_closebutton__' has been added to dead pool. (0x8548560)
+05/03/2009 19:37:17 (Info) 	Window 'cmdPlay' has been added to dead pool. (0x854d578)
+05/03/2009 19:37:17 (Info) 	Window 'cmdOptions' has been added to dead pool. (0x85516b8)
+05/03/2009 19:37:17 (Info) 	Window 'cmdQuit' has been added to dead pool. (0x8555458)
+05/03/2009 19:37:17 (Info) 	Window 'Main' has been added to dead pool. (0x85432f0)
+05/03/2009 19:38:09 (Info) 	---- Beginning loading of GUI layout from 'welcome.layout' ----
+05/03/2009 19:38:09 (Info) 	Window 'Main' of type 'TaharezLook/FrameWindow' has been created. (0x86a69e8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'Main'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'Main'.
+05/03/2009 19:38:09 (Info) 	Window 'Main__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x86614c8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'Main__auto_titlebar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'Main__auto_titlebar__'.
+05/03/2009 19:38:09 (Info) 	Window 'Main__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x86495c8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'Main__auto_closebutton__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'Main__auto_closebutton__'.
+05/03/2009 19:38:09 (Info) 	Window 'cmdPlay' of type 'TaharezLook/Button' has been created. (0x86a1ca8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdPlay'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdPlay'.
+05/03/2009 19:38:09 (Info) 	Window 'cmdOptions' of type 'TaharezLook/Button' has been created. (0x86aa3a8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdOptions'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdOptions'.
+05/03/2009 19:38:09 (Info) 	Window 'cmdQuit' of type 'TaharezLook/Button' has been created. (0x8577740)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdQuit'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdQuit'.
+05/03/2009 19:38:09 (Std) 	---- Successfully completed loading of GUI layout from 'welcome.layout' ----
+05/03/2009 19:38:09 (Info) 	---- Beginning loading of GUI layout from 'settings.layout' ----
+05/03/2009 19:38:09 (Info) 	Window 'Settings' of type 'TaharezLook/FrameWindow' has been created. (0x86c86e0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'Settings'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'Settings'.
+05/03/2009 19:38:09 (Info) 	Window 'Settings__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x853c948)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'Settings__auto_titlebar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'Settings__auto_titlebar__'.
+05/03/2009 19:38:09 (Info) 	Window 'Settings__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x867b898)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'Settings__auto_closebutton__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'Settings__auto_closebutton__'.
+05/03/2009 19:38:09 (Info) 	Window 'frameOptions' of type 'TaharezLook/FrameWindow' has been created. (0x8525c80)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/FrameWindow' to the window 'frameOptions'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/FrameWindow' to window 'frameOptions'.
+05/03/2009 19:38:09 (Info) 	Window 'frameOptions__auto_titlebar__' of type 'TaharezLook/Titlebar' has been created. (0x8562140)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Titlebar' to the window 'frameOptions__auto_titlebar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Titlebar' to window 'frameOptions__auto_titlebar__'.
+05/03/2009 19:38:09 (Info) 	Window 'frameOptions__auto_closebutton__' of type 'TaharezLook/SystemButton' has been created. (0x85504f8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/SystemButton' to the window 'frameOptions__auto_closebutton__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'frameOptions__auto_closebutton__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension' of type 'TaharezLook/StaticText' has been created. (0x8557e48)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelDimension'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelDimension'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x8555458)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelDimension__auto_hscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelDimension__auto_hscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8552aa8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x86208f0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x85704e0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_hscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelDimension__auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x85fedc0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelDimension__auto_vscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelDimension__auto_vscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8543730)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x863e990)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelDimension__auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x866bf20)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelDimension__auto_vscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelDimension__auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'txtDimension' of type 'TaharezLook/Spinner' has been created. (0x861f4e8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'txtDimension'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Spinner' to window 'txtDimension'.
+05/03/2009 19:38:09 (Info) 	Window 'txtDimension__auto_editbox__' of type 'TaharezLook/Editbox' has been created. (0x8565288)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'txtDimension__auto_editbox__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Editbox' to window 'txtDimension__auto_editbox__'.
+05/03/2009 19:38:09 (Info) 	Window 'txtDimension__auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x86a1288)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'txtDimension__auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'txtDimension__auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'txtDimension__auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85f8028)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'txtDimension__auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'txtDimension__auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA' of type 'TaharezLook/StaticText' has been created. (0x8561910)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelPlayerA'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelPlayerA'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x8644bd0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerA__auto_hscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelPlayerA__auto_hscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x855c968)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8567f30)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x8688e10)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_hscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelPlayerA__auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x86472f8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerA__auto_vscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelPlayerA__auto_vscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8587e30)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85743c8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerA__auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x8578d68)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerA__auto_vscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelPlayerA__auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA' of type 'TaharezLook/Combobox' has been created. (0x86946f8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'comboPlayerA'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Combobox' to window 'comboPlayerA'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_editbox__' of type 'TaharezLook/ComboEditbox' has been created. (0x8685090)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'comboPlayerA__auto_editbox__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ComboEditbox' to window 'comboPlayerA__auto_editbox__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist__' of type 'TaharezLook/ComboDropList' has been created. (0x867fc60)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Listbox' to the window 'comboPlayerA__auto_droplist__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ComboDropList' to window 'comboPlayerA__auto_droplist__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x86635c8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'comboPlayerA__auto_droplist____auto_hscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8673078)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x863f0e0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x866e060)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x861a778)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'comboPlayerA__auto_droplist____auto_vscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x857d608)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8573748)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x8665eb0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerA__auto_button__' of type 'TaharezLook/ImageButton' has been created. (0x86824a8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerA__auto_button__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerA__auto_button__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB' of type 'TaharezLook/StaticText' has been created. (0x8614c60)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/StaticText' to the window 'labelPlayerB'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/StaticText' to window 'labelPlayerB'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x86168f0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerB__auto_hscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'labelPlayerB__auto_hscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85f0900)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8698388)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x869c0c0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_hscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'labelPlayerB__auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x85f3ff0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'labelPlayerB__auto_vscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'labelPlayerB__auto_vscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85e4678)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x868bd00)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'labelPlayerB__auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x860e728)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'labelPlayerB__auto_vscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'labelPlayerB__auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB' of type 'TaharezLook/Combobox' has been created. (0x8614630)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Default' to the window 'comboPlayerB'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Combobox' to window 'comboPlayerB'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_editbox__' of type 'TaharezLook/ComboEditbox' has been created. (0x865cba8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Editbox' to the window 'comboPlayerB__auto_editbox__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ComboEditbox' to window 'comboPlayerB__auto_editbox__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist__' of type 'TaharezLook/ComboDropList' has been created. (0x8660620)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Listbox' to the window 'comboPlayerB__auto_droplist__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ComboDropList' to window 'comboPlayerB__auto_droplist__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar__' of type 'TaharezLook/HorizontalScrollbar' has been created. (0x85eaea0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbar' to window 'comboPlayerB__auto_droplist____auto_hscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x85ee4c8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x8677790)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__' of type 'TaharezLook/HorizontalScrollbarThumb' has been created. (0x86b5a80)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/HorizontalScrollbarThumb' to window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar__' of type 'TaharezLook/VerticalScrollbar' has been created. (0x86b97b0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Scrollbar' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbar' to window 'comboPlayerB__auto_droplist____auto_vscrollbar__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__' of type 'TaharezLook/ImageButton' has been created. (0x86bcd10)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__' of type 'TaharezLook/ImageButton' has been created. (0x871e088)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__' of type 'TaharezLook/VerticalScrollbarThumb' has been created. (0x8721d28)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/VerticalScrollbarThumb' to window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__'.
+05/03/2009 19:38:09 (Info) 	Window 'comboPlayerB__auto_button__' of type 'TaharezLook/ImageButton' has been created. (0x851d120)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'comboPlayerB__auto_button__'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/ImageButton' to window 'comboPlayerB__auto_button__'.
+05/03/2009 19:38:09 (Info) 	Window 'cmdCancel' of type 'TaharezLook/Button' has been created. (0x86138e8)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdCancel'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdCancel'.
+05/03/2009 19:38:09 (Info) 	Window 'cmdOk' of type 'TaharezLook/Button' has been created. (0x85230e0)
+05/03/2009 19:38:09 (Info) 	Assigning the window renderer 'Falagard/Button' to the window 'cmdOk'
+05/03/2009 19:38:09 (Info) 	Assigning LookNFeel 'TaharezLook/Button' to window 'cmdOk'.
+05/03/2009 19:38:09 (Std) 	---- Successfully completed loading of GUI layout from 'settings.layout' ----
+05/03/2009 19:38:10 (Info) 	Window 'Settings__auto_titlebar__' has been added to dead pool. (0x853c948)
+05/03/2009 19:38:10 (Info) 	Window 'Settings__auto_closebutton__' has been added to dead pool. (0x867b898)
+05/03/2009 19:38:10 (Info) 	Window 'frameOptions__auto_titlebar__' has been added to dead pool. (0x8562140)
+05/03/2009 19:38:10 (Info) 	Window 'frameOptions__auto_closebutton__' has been added to dead pool. (0x85504f8)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x8552aa8)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x86208f0)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x85704e0)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_hscrollbar__' has been added to dead pool. (0x8555458)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x8543730)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x863e990)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x866bf20)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension__auto_vscrollbar__' has been added to dead pool. (0x85fedc0)
+05/03/2009 19:38:10 (Info) 	Window 'labelDimension' has been added to dead pool. (0x8557e48)
+05/03/2009 19:38:10 (Info) 	Window 'txtDimension__auto_editbox__' has been added to dead pool. (0x8565288)
+05/03/2009 19:38:10 (Info) 	Window 'txtDimension__auto_incbtn__' has been added to dead pool. (0x86a1288)
+05/03/2009 19:38:10 (Info) 	Window 'txtDimension__auto_decbtn__' has been added to dead pool. (0x85f8028)
+05/03/2009 19:38:10 (Info) 	Window 'txtDimension' has been added to dead pool. (0x861f4e8)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x855c968)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x8567f30)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x8688e10)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_hscrollbar__' has been added to dead pool. (0x8644bd0)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x8587e30)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x85743c8)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x8578d68)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA__auto_vscrollbar__' has been added to dead pool. (0x86472f8)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerA' has been added to dead pool. (0x8561910)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_editbox__' has been added to dead pool. (0x8685090)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x8673078)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x863f0e0)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x866e060)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_hscrollbar__' has been added to dead pool. (0x86635c8)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x857d608)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x8573748)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x8665eb0)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist____auto_vscrollbar__' has been added to dead pool. (0x861a778)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_droplist__' has been added to dead pool. (0x867fc60)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA__auto_button__' has been added to dead pool. (0x86824a8)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerA' has been added to dead pool. (0x86946f8)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x85f0900)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x8698388)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x869c0c0)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_hscrollbar__' has been added to dead pool. (0x86168f0)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x85e4678)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x868bd00)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x860e728)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB__auto_vscrollbar__' has been added to dead pool. (0x85f3ff0)
+05/03/2009 19:38:10 (Info) 	Window 'labelPlayerB' has been added to dead pool. (0x8614c60)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_editbox__' has been added to dead pool. (0x865cba8)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_incbtn__' has been added to dead pool. (0x85ee4c8)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_decbtn__' has been added to dead pool. (0x8677790)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar____auto_thumb__' has been added to dead pool. (0x86b5a80)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_hscrollbar__' has been added to dead pool. (0x85eaea0)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_incbtn__' has been added to dead pool. (0x86bcd10)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_decbtn__' has been added to dead pool. (0x871e088)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar____auto_thumb__' has been added to dead pool. (0x8721d28)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist____auto_vscrollbar__' has been added to dead pool. (0x86b97b0)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_droplist__' has been added to dead pool. (0x8660620)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB__auto_button__' has been added to dead pool. (0x851d120)
+05/03/2009 19:38:10 (Info) 	Window 'comboPlayerB' has been added to dead pool. (0x8614630)
+05/03/2009 19:38:10 (Info) 	Window 'cmdCancel' has been added to dead pool. (0x86138e8)
+05/03/2009 19:38:10 (Info) 	Window 'cmdOk' has been added to dead pool. (0x85230e0)
+05/03/2009 19:38:10 (Info) 	Window 'frameOptions' has been added to dead pool. (0x8525c80)
+05/03/2009 19:38:10 (Info) 	Window 'Settings' has been added to dead pool. (0x86c86e0)
+05/03/2009 19:38:10 (Info) 	Window 'Main__auto_titlebar__' has been added to dead pool. (0x86614c8)
+05/03/2009 19:38:10 (Info) 	Window 'Main__auto_closebutton__' has been added to dead pool. (0x86495c8)
+05/03/2009 19:38:10 (Info) 	Window 'cmdPlay' has been added to dead pool. (0x86a1ca8)
+05/03/2009 19:38:10 (Info) 	Window 'cmdOptions' has been added to dead pool. (0x86aa3a8)
+05/03/2009 19:38:10 (Info) 	Window 'cmdQuit' has been added to dead pool. (0x8577740)
+05/03/2009 19:38:10 (Info) 	Window 'Main' has been added to dead pool. (0x86a69e8)

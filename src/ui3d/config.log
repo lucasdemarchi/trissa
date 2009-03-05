@@ -1,4 +1,4 @@
-file /home/lucas/programming/ogre/trissa/SConstruct,line 18:
+file /home/lucas/programming/trissa/src/ui3d/SConstruct,line 32:
 	Configure(confdir = .sconf_temp)
 scons: Configure: Checking for C++ library OIS... 
 scons: Configure: ".sconf_temp/conftest_0.cpp" is up to date.
@@ -17,7 +17,7 @@ scons: Configure: The original builder output was:
   |
 scons: Configure: ".sconf_temp/conftest_0.o" is up to date.
 scons: Configure: The original builder output was:
-  |g++ -o .sconf_temp/conftest_0.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_0.cpp
+  |g++ -o .sconf_temp/conftest_0.o -c -Wall -Wmissing-include-dirs -DEXT_HASH -O3 -Wuninitialized -Winit-self -I/usr/share/OGRE/Samples/Common/include -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_0.cpp
   |
 scons: Configure: ".sconf_temp/conftest_0" is up to date.
 scons: Configure: The original builder output was:
@@ -42,7 +42,7 @@ scons: Configure: The original builder output was:
   |
 scons: Configure: ".sconf_temp/conftest_1.o" is up to date.
 scons: Configure: The original builder output was:
-  |g++ -o .sconf_temp/conftest_1.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_1.cpp
+  |g++ -o .sconf_temp/conftest_1.o -c -Wall -Wmissing-include-dirs -DEXT_HASH -O3 -Wuninitialized -Winit-self -I/usr/share/OGRE/Samples/Common/include -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_1.cpp
   |
 scons: Configure: ".sconf_temp/conftest_1" is up to date.
 scons: Configure: The original builder output was:
@@ -67,7 +67,7 @@ scons: Configure: The original builder output was:
   |
 scons: Configure: ".sconf_temp/conftest_2.o" is up to date.
 scons: Configure: The original builder output was:
-  |g++ -o .sconf_temp/conftest_2.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_2.cpp
+  |g++ -o .sconf_temp/conftest_2.o -c -Wall -Wmissing-include-dirs -DEXT_HASH -O3 -Wuninitialized -Winit-self -I/usr/share/OGRE/Samples/Common/include -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_2.cpp
   |
 scons: Configure: ".sconf_temp/conftest_2" is up to date.
 scons: Configure: The original builder output was:
@@ -92,7 +92,7 @@ scons: Configure: The original builder output was:
   |
 scons: Configure: ".sconf_temp/conftest_3.o" is up to date.
 scons: Configure: The original builder output was:
-  |g++ -o .sconf_temp/conftest_3.o -c -O3 -Wall -I/usr/share/OGRE/Samples/Common/include -DEXT_HASH -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_3.cpp
+  |g++ -o .sconf_temp/conftest_3.o -c -Wall -Wmissing-include-dirs -DEXT_HASH -O3 -Wuninitialized -Winit-self -I/usr/share/OGRE/Samples/Common/include -DOGRE_GUI_GLX -DOGRE_CONFIG_LITTLE_ENDIAN -I/usr/include/OGRE -I/usr/include/OIS -I/usr/include/CEGUI .sconf_temp/conftest_3.cpp
   |
 scons: Configure: ".sconf_temp/conftest_3" is up to date.
 scons: Configure: The original builder output was:

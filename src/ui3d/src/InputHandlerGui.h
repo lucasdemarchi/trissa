@@ -1,5 +1,5 @@
 /*
- * Menu.h
+ * InputHandlerGui.h
  * This file is part of Trissa
  *
  * Copyright (C) 2009 - Lucas De Marchi
@@ -19,33 +19,27 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef _TRISSA_MENU_H
-#define _TRISSA_MENU_H 1
+#ifndef _TRISSA_INPUTHANDLERGUI_H_
+#define _TRISSA_INPUTHANDLERGUI_H_ 1
 
+#include "InputHandler.h"
 
-#include "CEGUIWindow.h"
+#include <OISEvents.h>
 
-namespace CEGUI
-{
-	class System;
-	class Window;
-}
+#include <OgreRenderWindow.h>
+#include <CEGUISystem.h>
 
 class StateManager;
 
-class Menu {
+class InputHandlerGui : public InputHandler {
 public:
-    Menu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father);
-    virtual ~Menu();
-    CEGUI::Window* getWindow();
-
-protected:
-
-    CEGUI::System* mCEGUISystem;
-    CEGUI::Window* mWindow;
-    StateManager* mStateManager;
-    Menu* mFather;
+    InputHandlerGui(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem);
+    ~InputHandlerGui();
+    bool mouseMoved(const OIS::MouseEvent &e);
+    bool mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id);
+    bool mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id);
+    bool keyPressed(const OIS::KeyEvent &e);
+    bool keyReleased(const OIS::KeyEvent &e);
 };
 
-
-#endif
+#endif //_TRISSA_INPUTHANDLERGUI_H_

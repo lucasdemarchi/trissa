@@ -1,5 +1,5 @@
 /*
- * Menu.h
+ * StateManager.h
  * This file is part of Trissa
  *
  * Copyright (C) 2009 - Lucas De Marchi
@@ -19,33 +19,40 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef _TRISSA_MENU_H
-#define _TRISSA_MENU_H 1
+#ifndef _TRISSA_STATEMANAGER_H_
+#define _TRISSA_STATEMANAGER_H_ 1
+#include <vector>
+#include <map>
 
+typedef enum {
+	STARTUP,
+	GUI,
+//	LOADING,
+//	CANCEL_LOADING,
+	GAME,
+	SHUTDOWN
+} GameState;
 
-#include "CEGUIWindow.h"
+class StateManager {
 
-namespace CEGUI
-{
-	class System;
-	class Window;
-}
-
-class StateManager;
-
-class Menu {
 public:
-    Menu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father);
-    virtual ~Menu();
-    CEGUI::Window* getWindow();
+	StateManager(GameState state);
+	virtual ~StateManager();
+
+	GameState getCurrentState();
+
+	bool lockState();
+	bool unlockState();
+
+	bool requestStateChange(GameState state);
+
+//	void setFrameTime(float ms);
+//	inline float getFrameTime() { return m_frame_time; }
 
 protected:
-
-    CEGUI::System* mCEGUISystem;
-    CEGUI::Window* mWindow;
-    StateManager* mStateManager;
-    Menu* mFather;
+	GameState mState;
+	bool mLocked;
+//	float mFrameTime;
 };
 
-
-#endif
+#endif //_TRISSA_STATEMANAGER_H_
