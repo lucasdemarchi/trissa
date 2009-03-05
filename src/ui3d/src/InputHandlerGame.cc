@@ -84,30 +84,29 @@ bool InputHandlerGame::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonI
 
 // KeyListener
 bool InputHandlerGame::keyPressed(const OIS::KeyEvent &e) {
-    SceneNode* camNode = 0;
     switch (e.key){
         case OIS::KC_ESCAPE:
             mStateManager->requestStateChange( GUI );
             break;
         case OIS::KC_1:
             mCamera->getParentSceneNode()->detachObject(mCamera);
-            camNode = mSceneMgr->getSceneNode(CAMERA_POS_1);
-            camNode->attachObject(mCamera);
+            mCameraNode = mSceneMgr->getSceneNode(CAMERA_POS_1);
+            mCameraNode->attachObject(mCamera);
             break;
         case OIS::KC_2:
             mCamera->getParentSceneNode()->detachObject(mCamera);
-            camNode = mSceneMgr->getSceneNode(CAMERA_POS_2);
-            camNode->attachObject(mCamera);
+            mCameraNode = mSceneMgr->getSceneNode(CAMERA_POS_2);
+            mCameraNode->attachObject(mCamera);
             break;
         case OIS::KC_3:
             mCamera->getParentSceneNode()->detachObject(mCamera);
-            camNode = mSceneMgr->getSceneNode(CAMERA_POS_3);
-            camNode->attachObject(mCamera);
+            mCameraNode = mSceneMgr->getSceneNode(CAMERA_POS_3);
+            mCameraNode->attachObject(mCamera);
             break;
         case OIS::KC_4:
             mCamera->getParentSceneNode()->detachObject(mCamera);
-            camNode = mSceneMgr->getSceneNode(CAMERA_POS_4);
-            camNode->attachObject(mCamera);
+            mCameraNode = mSceneMgr->getSceneNode(CAMERA_POS_4);
+            mCameraNode->attachObject(mCamera);
             break;
         default:
             break;
