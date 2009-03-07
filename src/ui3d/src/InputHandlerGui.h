@@ -35,6 +35,7 @@ class InputHandlerGui : public InputHandler {
 public:
     InputHandlerGui(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem);
     ~InputHandlerGui();
+
     bool mouseMoved(const OIS::MouseEvent &e);
     bool mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id);
     bool mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id);

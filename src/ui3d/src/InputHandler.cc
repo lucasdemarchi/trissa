@@ -53,6 +53,9 @@ void InputHandler::capture(){
     mMouse->capture();
 }
 
+void InputHandler::treatPressingEvents(){
+}
+
 // MouseListener
 bool InputHandler::mouseMoved(const OIS::MouseEvent &evt) {
     return mCEGUISystem->injectMouseMove(evt.state.X.rel, evt.state.Y.rel);

@@ -1,0 +1,14 @@
+
+material ball/mat0
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			cull_hardware none
+		}
+
+	}
+
+}

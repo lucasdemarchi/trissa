@@ -38,9 +38,20 @@ class StateManager;
 
 class InputHandlerGame : public InputHandler {
 public:
+
+    enum QueryFlags {
+        POSITION_AVAILABLE_MASK = 1 << 0,
+        POSITION_OCCUPIED_MASK = 1 << 1,
+        PLANE_MASK = 1 << 2,
+        CAMERA_MASK = 1 << 3,
+        LIGHT_MASK = 1 << 4,
+        STICK_MASK = 1 << 5,
+        BALL_MASK = 1 << 6
+    };
+
     InputHandlerGame(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem, Ogre::SceneManager* sceneMgr);
     ~InputHandlerGame();
-
+    void treatPressingEvents();
     bool mouseMoved(const OIS::MouseEvent &e);
     bool mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id);
     bool mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id);
@@ -52,10 +63,25 @@ protected:
     Ogre::Camera* mCamera;
     Ogre::SceneNode* mBoardNode;
     Ogre::SceneNode* mCameraNode;
+
+    //Selection Variables
+    Ogre::RaySceneQuery *mRaySceneQuery;
+    Ogre::Entity *mSelPos;
+    bool mWaitingSelConfirmation;
+
     Ogre::Real mRotateSpeed;
+    Ogre::Real mCameraRotateSpeed;
     Ogre::Real mMoveSpeed;
     Ogre::Real mZoomSpeed;
-    Ogre::Vector3 mDirection;
+    Ogre::Real mZoomSens;
+    Ogre::Real mZoomPrev;
+    Ogre::Real mMovingY;
+
+    //Eye-candy
+    int mNumScreenshots;
+
+    //Ogre::Vector3 mDirection;
+
 };
 
 #endif //_TRISSA_INPUTHANDLERGAME_H_

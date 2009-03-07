@@ -29,6 +29,7 @@
 
 #include <OgreStringConverter.h>
 #include <OgreSceneNode.h>
+#include <OgreEntity.h>
 #include <OISException.h>
 
 #define CAMERA_NAME "Camera1"
@@ -42,30 +43,50 @@ using namespace Ogre;
 InputHandlerGame::InputHandlerGame(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem,
                                     SceneManager* sceneMgr) :
     InputHandler( win, stateManager, CEGUISystem ),
-    mSceneMgr( sceneMgr ),
-    mCamera( 0 ),
-    mRotateSpeed( 0.5 ),
-    mMoveSpeed( 0.3 ),
-    mZoomSpeed( 0.6 ) {
-    //TODO: change mouse speed according to configuration
+    mSceneMgr( sceneMgr ), mCamera( 0 ), mBoardNode( 0 ), mCameraNode( 0 ), mRaySceneQuery( 0 ), mSelPos( 0 ), mWaitingSelConfirmation( false ),
+    mRotateSpeed( 0.5 ), mCameraRotateSpeed( 0.13 ), mMoveSpeed( 1 ), mZoomSpeed( 0.6 ), mZoomSens( 100 ), mZoomPrev ( 0 ),
+    mMovingY( false ),
+    mNumScreenshots( 0 ) {
+
+    //TODO: create a menu to configure input parameters and set all of them according to this config
+
     mCamera = mSceneMgr->getCamera(CAMERA_NAME);
-    //if( mCamera != 0 && mCamera->isAttached() )
-        mCameraNode = mCamera->getParentSceneNode();
-    //else
-      //  throw std::exception();
+    mCameraNode = mCamera->getParentSceneNode();
 
     mBoardNode = mSceneMgr->getSceneNode("BoardNode");
 
+    mRaySceneQuery = mSceneMgr->createRayQuery(Ray());
+    mRaySceneQuery->setQueryMask( POSITION_AVAILABLE_MASK );
 }
 
 InputHandlerGame::~InputHandlerGame(){
 }
 
+void InputHandlerGame::treatPressingEvents(){
+    if( mMovingY ){
+        mCameraNode->translate( 0, mMovingY, 0 );
+    }
+}
+
 // MouseListener
 bool InputHandlerGame::mouseMoved(const OIS::MouseEvent &evt) {
     bool ret = InputHandler::mouseMoved(evt);
-    if(evt.state.Z.rel != 0)
-        mCameraNode->translate( Vector3( 0, 0, -evt.state.Z.rel * mZoomSpeed), Node::TS_LOCAL );
+    //Zoom, using mouse sensibility
+    if(evt.state.Z.rel){
+        mZoomPrev += evt.state.Z.rel;
+        if(abs(mZoomPrev) > mZoomSens){
+            mCameraNode->translate( Vector3( 0, 0, -evt.state.Z.rel * mZoomSpeed), Node::TS_LOCAL );
+            mZoomPrev = 0;
+        }
+    }
+    else
+        mZoomPrev = 0;
+
+    //Mouse free-look
+    if( evt.state.buttonDown(OIS::MB_Middle) ){
+        mCameraNode->yaw(Degree(-mCameraRotateSpeed * evt.state.X.rel), Node::TS_WORLD);
+        mCameraNode->pitch(Degree(-mCameraRotateSpeed * evt.state.Y.rel), Node::TS_LOCAL);
+    }
 
     if (evt.state.buttonDown(OIS::MB_Right) && evt.state.X.rel != 0 ){
         mBoardNode->yaw(Degree(-mRotateSpeed * evt.state.X.rel), Node::TS_WORLD);
@@ -76,6 +97,38 @@ bool InputHandlerGame::mouseMoved(const OIS::MouseEvent &evt) {
     return ret;
 }
 bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
+    if( id == OIS::MB_Left ){
+        if(!mWaitingSelConfirmation){
+            CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
+            Ray mouseRay = mCamera->getCameraToViewportRay(mousePos.d_x/float(e.state.width), mousePos.d_y/float(e.state.height));
+            mRaySceneQuery->setRay(mouseRay);
+            mRaySceneQuery->setSortByDistance(true);
+            RaySceneQueryResult &result = mRaySceneQuery->execute();
+            for ( RaySceneQueryResult::iterator itr = result.begin( ); itr != result.end(); itr++){
+                if (itr->movable && itr->movable != mCamera ){
+                    mSelPos = mSceneMgr->getEntity(itr->movable->getName());
+                    mSelPos->setMaterialName("Trissa/RedGlass");
+                    mWaitingSelConfirmation = true;
+                    break;
+                }
+            }
+        }
+        else {
+            //put a ball
+            Entity* ent = mSceneMgr->createEntity(mSelPos->getName() + "Ball", "ball.mesh");
+            ent->setQueryFlags(BALL_MASK);
+            mSelPos->getParentSceneNode()->attachObject(ent);
+            mSelPos->setQueryFlags(POSITION_OCCUPIED_MASK);
+            mSelPos->setMaterialName("glass/glass");
+            mWaitingSelConfirmation = false;
+            mSelPos = 0;
+        }
+    }
+    else if(mWaitingSelConfirmation && id == OIS::MB_Right ){
+        mWaitingSelConfirmation = false;
+        mSelPos->setMaterialName("glass/glass");
+        mSelPos = 0;
+    }
     return true;
 }
 bool InputHandlerGame::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
@@ -108,11 +161,41 @@ bool InputHandlerGame::keyPressed(const OIS::KeyEvent &e) {
             mCameraNode = mSceneMgr->getSceneNode(CAMERA_POS_4);
             mCameraNode->attachObject(mCamera);
             break;
+		case OIS::KC_PGUP:
+		case OIS::KC_W:
+		case OIS::KC_UP:
+            mMovingY = mMoveSpeed;
+            break;
+		case OIS::KC_PGDOWN:
+        case OIS::KC_DOWN:
+        case OIS::KC_S:
+			mMovingY = -mMoveSpeed;
+			break;
+        case OIS::KC_SYSRQ:  // take a screenshot
+        case OIS::KC_P:
+			{
+			    std::ostringstream ss;
+                ss << "../screenshots/screenshot_" << mNumScreenshots++ << ".png";
+                mWindow->writeContentsToFile(ss.str());
+			}
+
         default:
             break;
     }
     return true;
 }
 bool InputHandlerGame::keyReleased(const OIS::KeyEvent &e) {
+    switch( e.key ){
+		case OIS::KC_PGUP:
+		case OIS::KC_W:
+		case OIS::KC_UP:
+		case OIS::KC_PGDOWN:
+        case OIS::KC_DOWN:
+        case OIS::KC_S:
+            mMovingY = 0;
+            break;
+        default:
+            break;
+    }
     return true;
 }

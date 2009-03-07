@@ -44,6 +44,7 @@ public:
     virtual ~InputHandler();
 
     void capture();
+    virtual void treatPressingEvents();
     virtual bool mouseMoved(const OIS::MouseEvent &e);
     virtual bool mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id);
     virtual bool mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonID id);

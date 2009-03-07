@@ -34,8 +34,11 @@
 #include <CEGUIWindowManager.h>
 #include <CEGUISchemeManager.h>
 
+#include <sstream>
+
 using namespace Ogre;
 
+#define boardDimension 5
 
 class Application
 {
@@ -72,6 +75,7 @@ public:
             createScene();
             while(mStateManager->getCurrentState() == GAME) {
                 mInputHandler->capture();
+                mInputHandler->treatPressingEvents();
                 WindowEventUtilities::messagePump();
                 mRoot->renderOneFrame();
             }
@@ -120,6 +124,11 @@ private:
     CEGUI::System* mCEGUISystem;
 
     MainMenu* mMainMenu;
+    SceneNode* mBoardNode;
+
+    static const Real VAR_DIST_PLANES;
+    static const String posNames;
+    static const Real QUAD_SIZE;
 
     bool mForceConfigDialogDisplay;
 
@@ -172,6 +181,7 @@ private:
         CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative);
         // use this CEGUI scheme definition (see CEGUI docs for more)
         CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"TaharezLookSkin.scheme");
+        //CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"SleekSpace.scheme");
 
         mCEGUISystem->setDefaultMouseCursor((CEGUI::utf8*)"TaharezLook", (CEGUI::utf8*)"MouseArrow");
         mCEGUISystem->setDefaultFont((CEGUI::utf8*)"BlueHighway-12");
@@ -200,46 +210,112 @@ private:
         mSceneMgr->setAmbientLight(ColourValue(0.25, 0.25, 0.25));
 
         Entity *ent = 0;
+        SceneNode *node = 0;
+        Light* light = 0;
 
+        mCamera->setQueryFlags( InputHandlerGame::CAMERA_MASK );
+        //Ground
         Plane plane( Vector3::UNIT_Y, 0 );
         MeshManager::getSingleton().createPlane("ground", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, 1500,1500,20,20,true,1,5,5,Vector3::UNIT_Z);
         ent = mSceneMgr->createEntity( "GroundEntity", "ground" );
         mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(ent);
-        ent->setMaterialName( "BumpyMetal" );
+        ent->setMaterialName( "Ground" );
         ent->setCastShadows( false );
+        ent->setQueryFlags( InputHandlerGame::PLANE_MASK );
 
+        light = mSceneMgr->createLight( "Light1" );
+        light->setType( Light::LT_POINT );
+        light->setPosition( Vector3( 0, 150, 250 ) );
+        light->setDiffuseColour(0.2, 0.2, 0.2);
+        light->setSpecularColour(0.2, 0.2, 0.2);
+        light->setQueryFlags( InputHandlerGame::LIGHT_MASK );
 
-        // add the Board
-        ent = mSceneMgr->createEntity("Board", "ninja.mesh");
-        SceneNode *node = mSceneMgr->getRootSceneNode()->createChildSceneNode("BoardNode", Vector3( 0, 20, 0 ) );
+        light = mSceneMgr->createLight("Light3");
+        light->setType(Light::LT_DIRECTIONAL);
+        light->setDiffuseColour(ColourValue(.25, .25, .25));
+        light->setSpecularColour(ColourValue(.25, .25, .25));
+        light->setDirection(Vector3( 0, -1, 1 ));
+        light->setQueryFlags( InputHandlerGame::LIGHT_MASK );
+
+        //Board
+        Real init_position = (boardDimension*QUAD_SIZE)/2 -QUAD_SIZE/2;
+        mBoardNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(String("BoardNode"));
+        for(int j = 0 ; j < boardDimension ; j++){
+            //initial Z and X
+        //    SceneNode* nodePlane = mBoardNode->createChildSceneNode();
+            for(int i = 0 ; i < boardDimension; i++){
+                for (int k = 0 ; k < boardDimension ; k++){
+                    std::stringstream sName(posNames);
+                    sName << "[" << i << "][" << j << "][" << k << "]";
+                    ent = mSceneMgr->createEntity(sName.str(), "glass.mesh" );
+                    //ent->setMaterialName("Trissa/Glass");
+                    ent->setQueryFlags( InputHandlerGame::POSITION_AVAILABLE_MASK );
+          //          SceneNode* sc = nodePlane->createChildSceneNode();
+                    SceneNode* sc = mBoardNode->createChildSceneNode();
+                    sc->setPosition(init_position - (QUAD_SIZE * i),                     //X
+                                    QUAD_SIZE + (j * VAR_DIST_PLANES * boardDimension),  //Y
+                                    init_position - (QUAD_SIZE * k)
+                                    );                                                                     //Z
+                    sc->attachObject(ent);
+                }
+            }
+        }
+
+        //sticks
+        init_position +=  QUAD_SIZE/2;
+
+        ent = mSceneMgr->createEntity("stick1", "Cylinder.mesh");
+        ent->setQueryFlags( InputHandlerGame::STICK_MASK );
+        //ent->setMaterialName( "Trissa/Ground" );
+        Vector3 vScale(1, 2 + QUAD_SIZE + (VAR_DIST_PLANES * boardDimension * (boardDimension-1)), 1);
+        node = mBoardNode->createChildSceneNode(Vector3(init_position , 0, init_position));
+        node->setScale(vScale);
         node->attachObject(ent);
-        //node->roll( Degree( -90 ) );
 
-        // create the light
-        Light *light = mSceneMgr->createLight("Light1");
-        light->setType(Light::LT_POINT);
-        light->setPosition(Vector3(250, 150, 250));
-        light->setDiffuseColour(ColourValue::White);
-        light->setSpecularColour(ColourValue::White);
+        ent = mSceneMgr->createEntity("stick2", "Cylinder.mesh");
+        ent->setQueryFlags( InputHandlerGame::STICK_MASK );
+        //ent->setMaterialName( "Trissa/Ground" );
+        node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0, init_position));
+        node->setScale(vScale);
+        node->attachObject(ent);
 
-        mCamera->setPosition( Vector3( 0, 50, 500 ) );
-        mCamera->lookAt( Vector3( 0, 0, 0 ) );
+        ent = mSceneMgr->createEntity("stick3", "Cylinder.mesh");
+        ent->setQueryFlags( InputHandlerGame::STICK_MASK );
+        //ent->setMaterialName( "Trissa/Ground" );
+        node = mBoardNode->createChildSceneNode(Vector3(init_position , 0, -init_position));
+        node->setScale(vScale);
+        node->attachObject(ent);
 
-        // Create the scene nodes
-        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode1", Vector3(-300, 200, 300));
+        ent = mSceneMgr->createEntity("stick4", "Cylinder.mesh");
+        ent->setQueryFlags( InputHandlerGame::STICK_MASK );
+        //ent->setMaterialName( "Trissa/Ground" );
+        node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0, -init_position));
+        node->setScale(vScale);
+        node->attachObject(ent);
+
+
+        // Create the scene nodes for cameras
+        //Calculate the Y position according to board size:
+
+
+        //Vector3 cornerPos(init_position, yPos = QUAD_SIZE + (VAR_DIST_PLANES * boardDimension * (boardDimension-1)), init_position);
+
+        Real yPos = QUAD_SIZE + (VAR_DIST_PLANES * boardDimension * (boardDimension-1));
+
+        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode1", Vector3(-300, yPos, 300));
         node->yaw( Degree( -45 ) );
-        node->lookAt( Vector3( 0, 0, 0 ), Node::TS_PARENT );
+        node->lookAt( Vector3( 0, Real(QUAD_SIZE) + Real(VAR_DIST_PLANES) * Real(boardDimension* (boardDimension-1)) , 0 ), Node::TS_PARENT );
         node->attachObject(mCamera);
 
-        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode2", Vector3(300, 200, 300));
+        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode2", Vector3(300, yPos, 300));
         node->yaw( Degree( 45 ) );
         node->lookAt( Vector3( 0, 0, 0 ), Node::TS_PARENT );
 
-        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode3", Vector3(-300, 200, -300));
+        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode3", Vector3(-300, yPos, -300));
         node->yaw( Degree( -135 ) );
         node->lookAt( Vector3( 0, 0, 0 ), Node::TS_PARENT );
 
-        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode4", Vector3(300, 200, -300));
+        node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode4", Vector3(300, yPos, -300));
         node->yaw( Degree( 135 ) );
         node->lookAt( Vector3( 0, 0, 0 ), Node::TS_PARENT );
 
@@ -258,6 +334,10 @@ private:
     }
 
 };
+const Real Application::VAR_DIST_PLANES = 6;
+const String Application::posNames("BoardPlace");
+const Real Application::QUAD_SIZE = 20;
+
 
 #if OGRE_PLATFORM == PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 #define WIN32_LEAN_AND_MEAN
