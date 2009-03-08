@@ -29,9 +29,21 @@
 #include <CEGUIWindowManager.h>
 #include <elements/CEGUIPushButton.h>
 
+#include <OgreTexture.h>
+
 MainMenu::MainMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
     Menu ( CEGUISystem, pSheet, stateManager, 0 ),
     mSettingsMenu( 0 ) {
+
+    //TexturePtr texBackground = TextureManager::getSingleton().load("texBackground.jpg",
+    //                                                                ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TEX_TYPE_2D, 1);
+
+//    CEGUI::Texture *texBackground = mRenderer->createTexture((CEGUI::utf8*)"texBackground.jpg");
+//    CEGUI::Imageset *imageSet = CEGUI::ImagesetManager::getSingleton().createImageset((CEGUI::utf8*)"RttImageset", cTex);
+//    imageSet->defineImage((CEGUI::utf8*)"RttImage",
+//            CEGUI::Point(0.0f, 0.0f),
+//            CEGUI::Size(cTex->getWidth(), cTex->getHeight()),
+//            CEGUI::Point(0.0f,0.0f));
 
 	CEGUI::PushButton* pPlayButton = (CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdPlay");
 	pPlayButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainMenu::play_OnClick, this));
