@@ -5,18 +5,7 @@
         <Property Name="FrameEnabled" Value="false" />
         <Property Name="TitlebarEnabled" Value="false" />
         <Property Name="CloseButtonEnabled" Value="False" />
-    
         <Window Type="QuadraticLook/StaticImage" Name="Background" >
-            <Property Name="BackgroundImage" Value="set:QuadraticLook image:StaticBackdrop" />
-            <Property Name="BottomFrameImage" Value="set:QuadraticLook image:StaticBottom" />
-            <Property Name="BottomLeftFrameImage" Value="set:QuadraticLook image:StaticBottomLeft" />
-            <Property Name="BottomRightFrameImage" Value="set:QuadraticLook image:StaticBottomRight" />
-            <Property Name="FrameEnabled" Value="False" />
-            <Property Name="LeftFrameImage" Value="set:QuadraticLook image:StaticLeft" />
-            <Property Name="RightFrameImage" Value="set:QuadraticLook image:StaticRight" />
-            <Property Name="TopFrameImage" Value="set:QuadraticLook image:StaticTop" />
-            <Property Name="TopLeftFrameImage" Value="set:QuadraticLook image:StaticTopLeft" />
-            <Property Name="TopRightFrameImage" Value="set:QuadraticLook image:StaticTopRight" />
             <Property Name="UnifiedAreaRect" Value="{{0.000000,0.000000},{0.000000,0.000000},{1.000000,0.000000},{1.000000,0.000000}}" />
             <Property Name="UnifiedMaxSize" Value="{{1.000000,0.000000},{1.000000,0.000000}}" />
             <Property Name="Image" Value="set:Background image:Background" />
@@ -24,14 +13,20 @@
         <Window Type="QuadraticLook/Button" Name="cmdPlay">
             <Property Name="Text" Value="Play" />
             <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.25,0},{0.9,0},{0.35,0}}" />
+            <Property Name="EnableBorder" Value="0" />
+            <Property Name="Font" Value="BlueHighway-20" />
         </Window>
         <Window Type="QuadraticLook/Button" Name="cmdOptions">
             <Property Name="Text" Value="Options" />
             <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.45,0},{0.9,0},{0.55,0}}" />
+            <Property Name="EnableBorder" Value="0" />
+            <Property Name="Font" Value="BlueHighway-20" />
         </Window>
         <Window Type="QuadraticLook/Button" Name="cmdQuit">
             <Property Name="Text" Value="Quit" />
             <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.65,0},{0.9,0},{0.75,0}}" />
+            <Property Name="EnableBorder" Value="0" />
+            <Property Name="Font" Value="BlueHighway-20" />
         </Window>
     </Window>
 </GUILayout>
