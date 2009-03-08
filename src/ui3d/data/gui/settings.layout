@@ -1,47 +1,47 @@
 <?xml version="1.0" ?>
 <GUILayout>
-    <Window Type="TaharezLook/FrameWindow" Name="Settings">
+    <Window Type="QuadraticLook/FrameWindow" Name="Settings">
         <Property Name="UnifiedAreaRect" Value="{{0.0,0},{0.0,0},{1.0,0},{1.0,0}}" />
         <Property Name="FrameEnabled" Value="false" />
         <Property Name="TitlebarEnabled" Value="false" />
         <Property Name="CloseButtonEnabled" Value="False" />
-        <Window Type="TaharezLook/FrameWindow" Name="frameOptions">
+        <Window Type="QuadraticLook/FrameWindow" Name="frameOptions">
             <Property Name="UnifiedAreaRect" Value="{{0.25,0},{0.3,0},{0.8,0},{0.7,0}}" />
             <Property Name="FrameEnabled" Value="true" />
             <Property Name="TitlebarEnabled" Value="true" />
             <Property Name="CloseButtonEnabled" Value="False" />
             <Property Name="Text" Value="Trissa 3D - Game Options" />
-            <Window Type="TaharezLook/StaticText" Name="labelDimension">
+            <Window Type="QuadraticLook/StaticText" Name="labelDimension">
                 <Property Name="Text" Value="Dimension:" />
                 <Property Name="UnifiedAreaRect" Value="{{0.15,0},{0.15,0},{0.45,0},{0.25,0}}" />
             </Window>
-            <Window Type="TaharezLook/Spinner" Name="txtDimension">
+            <Window Type="QuadraticLook/Spinner" Name="txtDimension">
                 <Property Name="Text" Value="3" />
                 <Property Name="UnifiedAreaRect" Value="{{0.5,0},{0.15,0},{0.85,0},{0.25,0}}" />
             </Window>
             
-            <Window Type="TaharezLook/StaticText" Name="labelPlayerA">
+            <Window Type="QuadraticLook/StaticText" Name="labelPlayerA">
                 <Property Name="Text" Value="Player A:" />
                 <Property Name="UnifiedAreaRect" Value="{{0.15,0},{0.35,0},{0.45,0},{0.45,0}}" />
             </Window>
-            <Window Type="TaharezLook/Combobox" Name="comboPlayerA">
+            <Window Type="QuadraticLook/Combobox" Name="comboPlayerA">
                 <Property Name="Text" Value="Human" />
                 <Property Name="UnifiedAreaRect" Value="{{0.5,0},{0.35,0},{0.85,0},{0.45,0}}" />
             </Window>
             
-            <Window Type="TaharezLook/StaticText" Name="labelPlayerB">
+            <Window Type="QuadraticLook/StaticText" Name="labelPlayerB">
                 <Property Name="Text" Value="Player B:" />
                 <Property Name="UnifiedAreaRect" Value="{{0.15,0},{0.55,0},{0.45,0},{0.65,0}}" />
             </Window>
-            <Window Type="TaharezLook/Combobox" Name="comboPlayerB">
+            <Window Type="QuadraticLook/Combobox" Name="comboPlayerB">
                 <Property Name="Text" Value="Minmax" />
                 <Property Name="UnifiedAreaRect" Value="{{0.5,0},{0.55,0},{0.85,0},{0.65,0}}" />
             </Window>    
-            <Window Type="TaharezLook/Button" Name="cmdCancel">
+            <Window Type="QuadraticLook/Button" Name="cmdCancel">
                 <Property Name="Text" Value="Cancel" />
                 <Property Name="UnifiedAreaRect" Value="{{0.40,0},{0.8,0},{0.60,0},{0.90,0}}" />
             </Window>
-            <Window Type="TaharezLook/Button" Name="cmdOk">
+            <Window Type="QuadraticLook/Button" Name="cmdOk">
                 <Property Name="Text" Value="Ok" />
                 <Property Name="UnifiedAreaRect" Value="{{0.65,0},{0.8,0},{0.85,0},{0.90,0}}" />
             </Window>

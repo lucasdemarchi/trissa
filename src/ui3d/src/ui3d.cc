@@ -180,10 +180,9 @@ private:
         // tell us a lot about what is going on (see CEGUI.log in the working directory)
         CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative);
         // use this CEGUI scheme definition (see CEGUI docs for more)
-        CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"TaharezLookSkin.scheme");
-        //CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"SleekSpace.scheme");
+        CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"QuadraticLook.scheme");
 
-        mCEGUISystem->setDefaultMouseCursor((CEGUI::utf8*)"TaharezLook", (CEGUI::utf8*)"MouseArrow");
+        mCEGUISystem->setDefaultMouseCursor((CEGUI::utf8*)"QuadraticLook", (CEGUI::utf8*)"MouseArrow");
         mCEGUISystem->setDefaultFont((CEGUI::utf8*)"BlueHighway-12");
 
     }
