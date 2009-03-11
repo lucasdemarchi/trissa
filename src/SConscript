@@ -1,6 +1,6 @@
 #VariantDir('build', 'src')
 #
-env = Environment(LIBS=['dl','boost_filesystem'])
+env = Environment(LIBS=['dl','boost_filesystem', 'boost_program_options'])
 
 #vars = Variables('custrom.py')
 #vars.Add('RELEASE', 'Set to 1 do build for release', 0)
@@ -15,7 +15,7 @@ else:
 
 env['LINKFLAGS']+=['-rdynamic']
 #env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)
-env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)
+env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc', 'ConfigManager.cc'], variables = vars)
 
 #dict = env.Dictionary()
 #keys = dict.keys();
