@@ -21,5 +21,28 @@
 #ifndef CONFIGMANAGER_H_
 #define CONFIGMANAGER_H_
 
+#include <string>
+#include <boost/program_options.hpp>
+#include <boost/filesystem/path.hpp>
+
+namespace trissa{
+    namespace po = boost::program_options;
+    namespace fs = boost::filesystem;
+
+class ConfigManager {
+public:
+    ConfigManager(std::string path, int argc, char* argv[]);
+    ~ConfigManager();
+
+    void printUsage();
+private:
+    po::options_description configFile;
+    po::options_description commandLine;
+    po::options_description gameOptions;
+    po::variables_map optionsMap;
+};
+
+}
+
 
 #endif

@@ -21,6 +21,7 @@
 #ifndef GAME_H__
 #define GAME_H__
 #include "common.h"
+#include "ConfigManager.h"
 #include <string>
 
 namespace trissa {
@@ -29,11 +30,12 @@ namespace trissa {
 	class Player;
 	class PlayerFactory;
 	class UI;
+	class ConfigManager;
 
 	class Game {
 	public:
 		//Game();
-		Game(std::string playersPath);
+		Game(int argc, char *argv[]);
 		void run();
 		int isFinished();
 		~Game();
@@ -46,6 +48,7 @@ namespace trissa {
 		PlayerFactory* playerFactory;
 		Cube* board;
 		UI* ui;
+		ConfigManager configManager;
 	};
 
 }

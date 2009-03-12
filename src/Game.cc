@@ -35,8 +35,12 @@ namespace trissa {
 //	Game::Game(){
 //	}
 
-	Game::Game(string playersPath){
-		playerFactory = new PlayerFactory(playersPath);
+	Game::Game(int argc, char *argv[]) :
+        //TODO: FIXME
+        configManager ( "./", argc, argv ){
+
+        //TODO: FIXME
+		playerFactory = new PlayerFactory("./players/");
 		ui = new UI();
 
 		unsigned int dimension = ui->getDimension();
@@ -62,6 +66,8 @@ namespace trissa {
 
 	void Game::run()
 	{
+	    configManager.printUsage();
+	    return;
 		unsigned int turn;
 		Move* move = playerA->firstPlay();
 		Player* player = playerA;
@@ -183,18 +189,10 @@ namespace trissa {
 
 }
 
-void print_usage(){
-	cout << "Usage: trissa path_to_players" << endl;
-}
 
 int main (int argc, char * argv[]){
 
-	if(argc != 2){
-		print_usage();
-		return -1;
-	}
-
-	trissa::Game game(argv[1]);
+	trissa::Game game(argc, argv);
 	game.run();
 
 
