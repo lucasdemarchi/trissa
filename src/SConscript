@@ -15,7 +15,8 @@ else:
 
 env['LINKFLAGS']+=['-rdynamic']
 #env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)
-env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc', 'ConfigManager.cc', 'StateManager.cc'], variables = vars)
+env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc', 'UIText.cc', \
+                       'ConfigManager.cc', 'StateManager.cc'], variables = vars)
 
 #dict = env.Dictionary()
 #keys = dict.keys();

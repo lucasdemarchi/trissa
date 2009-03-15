@@ -120,6 +120,8 @@ namespace trissa {
             ("path,p", po::value<std::string>(), "Path to search for Player's implementations."
                                                  "This option overrides path from configuration file ")
             ("dimension,d", po::value<int>(), "Game's dimension. This option overrides that from configuration file")
+            ("ui,u", po::value<std::string>()->default_value("text"), "Only text interface available yet. "
+                                                                      "Configuration is here for future use");
             ;
 
         mConfigFile.add_options()
@@ -131,7 +133,7 @@ namespace trissa {
 
         mGameOptions.add( mCommandLine ).add( mConfigFile );
     }
-
+    const char * ConfigManager::DEFAULT_UI("text");
     const char * ConfigManager::DEFAULT_CONFIG_FILE ("./trissa.cfg");
     const char * ConfigManager::DEFAULT_PLAYERS_PATH("./players/");
 

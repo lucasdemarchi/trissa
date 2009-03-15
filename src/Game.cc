@@ -22,6 +22,7 @@
 #include "PlayerFactory.h"
 #include "Player.h"
 #include "UI.h"
+#include "UIText.h"
 #include "common.h"
 
 #include <iostream>
@@ -58,7 +59,7 @@ namespace trissa {
         mPlayerFactory = new PlayerFactory( mConfigManager.getPlayersPath() );
 
         //TODO: verify in ConfigManager if requested UI is 3D or not and load specified UI
-        mUi = new UI(&mConfigManager, mPlayerFactory, &mStateManager);
+        mUi = new UIText(&mConfigManager, mPlayerFactory, &mStateManager);
 
         if( mStateManager.getCurrentState() != GUI ) {
             //Probably an error loading resources.

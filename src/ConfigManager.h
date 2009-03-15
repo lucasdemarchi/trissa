@@ -31,6 +31,7 @@ namespace trissa {
 
     class ConfigManager {
     public:
+        static const char * DEFAULT_UI;
         static const char * DEFAULT_CONFIG_FILE;
         static const char * DEFAULT_PLAYERS_PATH;
 

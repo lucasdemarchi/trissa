@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef UI_H__
-#define UI_H__
+#ifndef _UI_H_
+#define _UI_H_ 1
 #include <vector>
 #include <string>
 #include <iostream>
@@ -36,12 +36,13 @@ namespace trissa {
         UI(ConfigManager* cm, PlayerFactory* pf, StateManager* sm);
         ~UI();
 
-        void configure();
-        void start();
-        void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
-        void refresh(Cube const& board, Move const& lastMove, bool wait);
-    private:
-        void refresh(Cube const& board, Move const& lastMove);
+        virtual void configure();
+        virtual void start();
+        //void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
+        virtual void refresh(Cube const& board, Move const& lastMove, bool wait);
+        virtual void setPos(Move m, PlayerType player) = 0;
+    protected:
+        virtual void refresh(Cube const& board, Move const& lastMove);
         ConfigManager* mCm;
         PlayerFactory* mPf;
         StateManager* mSm;
@@ -49,4 +50,4 @@ namespace trissa {
 }
 
 
-#endif /* UI_H__ */
+#endif /* _UI_H_ */
