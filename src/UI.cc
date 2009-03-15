@@ -19,41 +19,59 @@
  * Boston, MA  02110-1301  USA
  */
 #include "UI.h"
+#include "ConfigManager.h"
+#include "PlayerFactory.h"
+#include "StateManager.h"
 #include <cstring>
 #include <string>
 
 namespace trissa {
 	using namespace std;
 
-	//TODO: all
-	UI::UI(){
+	UI::UI(ConfigManager* cm, PlayerFactory* pf, StateManager* sm) :
+        mCm( cm ),
+        mPf( pf ),
+        mSm( sm ){
+
+        // CONFIGURE STUFF: in a Text UI, could be only "linking" to an output text file
+        //                  in a 3D UI, must configure the window, renderer system, etc
+        mSm->requestStateChange(GUI);
+
 	}
 
-	//TODO: all
+    void UI::configure(){
+        // If it's monothreaded, it must remain here till changing state
+        //.
+        //.
+        //.
+        //TODO: interact with ConfigManager and PlayerFactory to change options
+        //.
+        //.
+        //.
+        mSm->requestStateChange(GAME);
+    }
+
+    void UI::start() {
+        // Finish loading resources and, render stuff
+    }
+
 	UI::~UI(){
-
 	}
 
-	unsigned int UI::getDimension(){
-		int d;
-		cout << "Dimension of desired game: ";
-		cin >> d;
-		return d;
-	}
-
-	void UI::getPlayers(vector<string> strplayers, string& strplayerA, string& strplayerB){
-		cout << "Available players: " << endl;
-		for (unsigned int i=0; i < strplayers.size(); i++){
-			cout << i << ": " << strplayers[i] << endl;
-		}
-		int playerA, playerB;
-		cout << "Enter number for player A (it will have the first move): ";
-		cin >> playerA;
-		cout << "Enter number for player B: ";
-		cin >> playerB;
-		strplayerA = strplayers[playerA];
-		strplayerB = strplayers[playerB];
-	}
+    //TODO: remove this and put it to set the player into ConfigManager
+//	void UI::getPlayers(vector<string> strplayers, string& strplayerA, string& strplayerB){
+//		cout << "Available players: " << endl;
+//		for (unsigned int i=0; i < strplayers.size(); i++){
+//			cout << i << ": " << strplayers[i] << endl;
+//		}
+//		int playerA, playerB;
+//		cout << "Enter number for player A (it will have the first move): ";
+//		cin >> playerA;
+//		cout << "Enter number for player B: ";
+//		cin >> playerB;
+//		strplayerA = strplayers[playerA];
+//		strplayerB = strplayers[playerB];
+//	}
 
 
 	void UI::refresh(Cube const& board, Move const& lastMove){

@@ -1,8 +1,8 @@
 /*
- * common.h
+ * StateManager.h
  * This file is part of Trissa
  *
- * Copyright (C) 2008 - Lucas De Marchi
+ * Copyright (C) 2009 - Lucas De Marchi
  *
  * Trissa is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as published by
@@ -18,42 +18,36 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef COMMON_H__
-#define COMMON_H__
-#ifndef TRISSA_VERSION
-#define TRISSA_VERSION 0.5
-#endif
 
-#ifndef TRISSA_CONF_UI3D
-#define TRISSA_CONF_UI3D 0
-#endif
-
+#ifndef _TRISSA_STATEMANAGER_H_
+#define _TRISSA_STATEMANAGER_H_ 1
 #include <vector>
+#include <map>
+namespace trissa {
+    typedef enum {
+        STARTUP,
+        LOADING,
+        GUI,
+        GAME,
+        SHUTDOWN
+    } GameState;
 
-namespace trissa{
-	class Player;
-	enum PlayerType {PLAYER_BLANK, PLAYER_CROSS, PLAYER_CIRCLE};
+    class StateManager {
 
-	typedef Player * (*function_creator_ptr)(int, PlayerType);
-	typedef struct Move {
-		unsigned int x;
-		unsigned int y;
-		unsigned int z;
-		void operator-=(Move a){
-			x -= a.x;
-			y -= a.y;
-			z -= a.z;
-		}
-		void operator+=(Move a){
-			x += a.x;
-			y += a.y;
-			z += a.z;
-		}
-	} Move;
+    public:
+        StateManager(GameState state);
+        virtual ~StateManager();
 
-	typedef std::vector<std::vector<std::vector<PlayerType> > > Cube;
+        GameState getCurrentState();
 
+        bool lockState();
+        bool unlockState();
 
+        bool requestStateChange(GameState state);
+    protected:
+        GameState mState;
+        bool mLocked;
+//	float mFrameTime;
+    };
 }
-
-#endif /* COMMON_H__ */
+#endif //_TRISSA_STATEMANAGER_H_

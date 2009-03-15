@@ -29,172 +29,206 @@
 
 using namespace std;
 
+
+
 namespace trissa {
 
-	//TODO: all
-//	Game::Game(){
-//	}
+    Game::Game(int argc, char *argv[]) :
+        mBoard( 0 ),
+        mUi( 0 ),
+        mPlayerFactory( 0 ),
+        mConfigManager ( argc, argv ),
+        mStateManager(STARTUP) {
 
-	Game::Game(int argc, char *argv[]) :
-        //TODO: FIXME
-        configManager ( "./", argc, argv ){
+        if( mConfigManager.isGetUsage() ){
+            mConfigManager.printVersion();
+            mConfigManager.printUsage();
+            mStateManager.requestStateChange( SHUTDOWN );
+            return;
+        }
+        if( mConfigManager.isGetVersion() ) {
+            mConfigManager.printVersion();
+            mStateManager.requestStateChange( SHUTDOWN );
+            return;
+        }
+        mStateManager.requestStateChange(LOADING);
+    }
+    void Game::load() {
 
-        //TODO: FIXME
-		playerFactory = new PlayerFactory("./players/");
-		ui = new UI();
+        mPlayerFactory = new PlayerFactory( mConfigManager.getPlayersPath() );
 
-		unsigned int dimension = ui->getDimension();
-		this->dimension = dimension;
-//		//Is there a better way of doing this?
-		board = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
+        //TODO: verify in ConfigManager if requested UI is 3D or not and load specified UI
+        mUi = new UI(&mConfigManager, mPlayerFactory, &mStateManager);
 
-		vector<string> strplayers;
-		string strplayerA, strplayerB;
-		playerFactory->getPlayersList(strplayers);
+        if( mStateManager.getCurrentState() != GUI ) {
+            //Probably an error loading resources.
+            //TODO: write it to log
+            if( mStateManager.requestStateChange( SHUTDOWN ) )
+                return;
+            else {
+                //TODO: write this bug to log
+                return;
+            }
+        }
+    }
 
-		ui->getPlayers(strplayers, strplayerA, strplayerB);
-		playerA = playerFactory->create_player(strplayerA, dimension, PLAYER_CROSS);
-		playerB = playerFactory->create_player(strplayerB, dimension, PLAYER_CIRCLE);
+    void Game::configure(){
+        //TODO: call UI to configure the game, i.e change fields in ConfigManager
 
-	}
+        mUi->configure();  //GUI -> GAME  || GUI -> SHUTDOWN
+    }
 
-	Game::~Game(){
-		delete playerFactory; //and all players...
-		delete board;
-		delete ui;
-	}
+    void Game::run() {
+        //Finish loading configurations
+        unsigned int dimension  = mConfigManager.getDimension();
+        if( mBoard )
+            delete mBoard;
+        mBoard = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
 
-	void Game::run()
-	{
-	    configManager.printUsage();
-	    return;
-		unsigned int turn;
-		Move* move = playerA->firstPlay();
-		Player* player = playerA;
+        if( mPlayerA || mPlayerB )
+            mPlayerFactory->destroyPlayers();
 
-		if(move->z < dimension && move->y < dimension &&
-		   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_BLANK)
-		{
-			(*board)[move->z][move->y][move->x] = playerA->getPlayerType();
-		}
-        else{
+        mPlayerA = mPlayerFactory->create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS );
+        mPlayerB = mPlayerFactory->create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE );
+
+
+//Start game
+        unsigned int turn;
+        Move* move = mPlayerA->firstPlay();
+        Player* player = mPlayerA;
+
+        if (move->z < dimension && move->y < dimension &&
+                move->x < dimension && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) {
+            (*mBoard)[move->z][move->y][move->x] = mPlayerA->getPlayerType();
+        } else {
             cerr << "Player returned invalid position (z,y,x): ["
-                 << move->z << "," << move->y << "," << move->x << "]\n";
+            << move->z << "," << move->y << "," << move->x << "]\n";
         }
 
-		ui->refresh(*board,*move, true);
+        mUi->refresh(*mBoard,*move, true);
 
 
-		for(turn = 1;
-		    goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
-		    && turn < (dimension*dimension*dimension)
-		    ; turn++)
-		{
-			if(turn%2)
-				player = playerB;
-			else
-				player = playerA;
+        for (turn = 1;
+                goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
+                && turn < (dimension*dimension*dimension)
+                ; turn++) {
+            if (turn%2)
+                player = mPlayerB;
+            else
+                player = mPlayerA;
 
-			move = player->play(*board,*move);
+            move = player->play(*mBoard,*move);
 
-			if(move->z < dimension && move->y < dimension &&
-			   move->x < dimension && (*board)[move->z][move->y][move->x] == PLAYER_BLANK)
-			{
-				(*board)[move->z][move->y][move->x] = player->getPlayerType();
-			}
-			else{
-				cerr << "Player returned invalid position (z,y,x): ["
-					 << move->z << "," << move->y << "," << move->x << "]\n";
-			}
-			ui->refresh(*board,*move, true);
-		}
-		ui->refresh(*board,*move,true);
-	}
+            if (move->z < dimension && move->y < dimension &&
+                    move->x < dimension && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) {
+                (*mBoard)[move->z][move->y][move->x] = player->getPlayerType();
+            } else {
+                cerr << "Player returned invalid position (z,y,x): ["
+                << move->z << "," << move->y << "," << move->x << "]\n";
+            }
+            mUi->refresh(*mBoard,*move, true);
+        }
+        mUi->refresh(*mBoard,*move,true);
+    }
 
-	//PlayerType Game::goalTest() const
-	//{
-        //return NULL;
-	//}
-	PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
-	{
-		Move directions[] = {
-			{1,0,0} , {0,1,0} , {0,0,1} ,
-			{1,1,0} , {1,0,1} , {0,1,1} ,
-			{1,-1,0}, {1,0,-1}, {0,1,-1},
-			{1,1,1} , {1,-1,1}, {-1,1,1}, {1,1,-1}
-		};
-		int n_directions = 13;
+    Game::~Game() {
+        if( mUi ) delete mUi;
+        if( mPlayerFactory ) delete mPlayerFactory; //and all players...
+        if( mBoard ) delete mBoard;
+    }
 
 
-		for(int i=0; i < n_directions; i++){
-			bool invalid_direction = false;
-			Move new_pos;
-			new_pos.x = lastMove.x;
-			new_pos.y = lastMove.y;
-			new_pos.z = lastMove.z;
-			unsigned int n_pieces = 1;
-			//first subtract direction
-			while (true){
-				new_pos -= directions[i];
-				if(new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-				   new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension)
-				{
-					if( (*board)[new_pos.z][new_pos.y][new_pos.x] != player_type){
-						invalid_direction = true;
-						break;
-					}
-					else
-						n_pieces++;
-				}
-				else{ //out of cube
-					break;
-				}
-			}
-			if(invalid_direction) continue; //next direction, this is not a winner direction
+    PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type) {
+        Move directions[] = {
+            {1,0,0} , {0,1,0} , {0,0,1} ,
+            {1,1,0} , {1,0,1} , {0,1,1} ,
+            {1,-1,0}, {1,0,-1}, {0,1,-1},
+            {1,1,1} , {1,-1,1}, {-1,1,1}, {1,1,-1}
+        };
+        int n_directions = 13;
 
-			//add direction to position until go out of cube
+        unsigned int dimension = mConfigManager.getDimension();
+        for (int i=0; i < n_directions; i++) {
+            bool invalid_direction = false;
+            Move new_pos;
             new_pos.x = lastMove.x;
-			new_pos.y = lastMove.y;
-			new_pos.z = lastMove.z;
-			while (true){
-				new_pos += directions[i];
-				if(new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-				   new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension)
-				{
-					if( (*board)[new_pos.z][new_pos.y][new_pos.x] != player_type){
-						invalid_direction = true;
-						break;
-					}
-					else
-						n_pieces++;
-				}
-				else{ //out of cube
-					break;
-				}
-			}
-			if(!invalid_direction && n_pieces == dimension){
-				//TODO: set member variable for winner direction(s) and point
+            new_pos.y = lastMove.y;
+            new_pos.z = lastMove.z;
+            unsigned int n_pieces = 1;
+            //first subtract direction
+            while (true) {
+                new_pos -= directions[i];
+                if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
+                        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
+                    if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
+                        invalid_direction = true;
+                        break;
+                    } else
+                        n_pieces++;
+                } else { //out of cube
+                    break;
+                }
+            }
+            if (invalid_direction) continue; //next direction, this is not a winner direction
+
+            //add direction to position until go out of cube
+            new_pos.x = lastMove.x;
+            new_pos.y = lastMove.y;
+            new_pos.z = lastMove.z;
+            while (true) {
+                new_pos += directions[i];
+                if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
+                        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
+                    if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
+                        invalid_direction = true;
+                        break;
+                    } else
+                        n_pieces++;
+                } else { //out of cube
+                    break;
+                }
+            }
+            if (!invalid_direction && n_pieces == dimension) {
+                //TODO: set member variable for winner direction(s) and point
 #ifdef _trissa_debug_
-				cout << "Winner direction: ["
-				     << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
-				cout << "Last position played: ["
-				     << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
+                cout << "Winner direction: ["
+                << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
+                cout << "Last position played: ["
+                << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
 #endif // _trissa_debug_
-				return (player_type);
-			}
-		}
-		return PLAYER_BLANK;
+                return (player_type);
+            }
+        }
+        return PLAYER_BLANK;
 
-	}
+    }
+    int main (int argc, char * argv[]) {
+    //STARTUP -> LOADING STATE
+        trissa::Game game(argc, argv);
+        if( game.mStateManager.getCurrentState() == SHUTDOWN ){
+            return 0;
+        }
+    //LOADING -> GUI STATE
+        game.load();
+    //GUI -> GAME STATE
+        while( game.mStateManager.getCurrentState() != SHUTDOWN ){
+
+            // run configurations (a.k.a Menus in 3D or some questions in text)
+            game.configure();
+            if( game.mStateManager.getCurrentState() == GAME ){
+                game.run();
+            }
+
+        }
+
+        return 0;
+    }
+
 
 }
 
-
-int main (int argc, char * argv[]){
-
-	trissa::Game game(argc, argv);
-	game.run();
-
-
-	return 0;
+int main(int argc, char * argv[]) {
+    return trissa::main(argc, argv);
 }
+
+

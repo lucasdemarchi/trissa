@@ -26,17 +26,26 @@
 #include "common.h"
 
 namespace trissa {
-	class UI{
-	public:
-		UI();
-		~UI();
-		unsigned int getDimension();
-		void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
-    private:
-		void refresh(Cube const& board, Move const& lastMove);
+    class ConfigManager;
+    class PlayerFactory;
+    class StateManager;
+    //TODO: allow changing of playersPath in UI
+    class UI {
+
     public:
-		void refresh(Cube const& board, Move const& lastMove, bool wait);
-	};
+        UI(ConfigManager* cm, PlayerFactory* pf, StateManager* sm);
+        ~UI();
+
+        void configure();
+        void start();
+        void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
+        void refresh(Cube const& board, Move const& lastMove, bool wait);
+    private:
+        void refresh(Cube const& board, Move const& lastMove);
+        ConfigManager* mCm;
+        PlayerFactory* mPf;
+        StateManager* mSm;
+    };
 }
 
 

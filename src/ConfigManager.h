@@ -18,29 +18,61 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef CONFIGMANAGER_H_
-#define CONFIGMANAGER_H_
+#ifndef _CONFIGMANAGER_H_
+#define _CONFIGMANAGER_H_ 1
 
 #include <string>
 #include <boost/program_options.hpp>
 #include <boost/filesystem/path.hpp>
 
-namespace trissa{
+namespace trissa {
     namespace po = boost::program_options;
     namespace fs = boost::filesystem;
 
-class ConfigManager {
-public:
-    ConfigManager(std::string path, int argc, char* argv[]);
-    ~ConfigManager();
+    class ConfigManager {
+    public:
+        static const char * DEFAULT_CONFIG_FILE;
+        static const char * DEFAULT_PLAYERS_PATH;
 
-    void printUsage();
-private:
-    po::options_description configFile;
-    po::options_description commandLine;
-    po::options_description gameOptions;
-    po::variables_map optionsMap;
-};
+        ConfigManager( int argc, char* argv[] );
+        ~ConfigManager();
+
+        void printVersion() const;
+        void printUsage() const;
+
+        //Getters and setters
+        unsigned int getDimension() const;
+        void setDimension(unsigned int dimension);
+
+        std::string getPlayersPath() const;
+        //TODO:
+        //void setPlayersPath(std::string path);
+
+        std::string getPlayerA() const;
+        void setPlayerA(std::string player);
+
+        std::string getPlayerB() const;
+        void setPlayerB(std::string player);
+
+        bool isGetUsage() const;
+        bool isGetVersion() const;
+
+    private:
+        po::options_description mConfigFile;
+        po::options_description mCommandLine;
+        po::options_description mGameOptions;
+        po::variables_map mOptionsMap;
+
+        unsigned int mDimension;
+        std::string mPlayersPath;
+        std::string mPlayerA;
+        std::string mPlayerB;
+
+        bool mGetUsage;
+        bool mGetVersion;
+
+        void setAvailableOptions();
+    };
 
 }
 

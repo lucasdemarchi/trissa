@@ -77,8 +77,7 @@ namespace trissa {
 	}
 	PlayerFactory::~PlayerFactory(){
 
-		for(unsigned int i = 0; i < created_players.size(); i++)
-			delete (created_players[i]);
+        destroyPlayers();
 
 		//iterate through factory and close all dlibs
 		for (map<string, Player_details>::iterator it = factory.begin();
@@ -87,6 +86,12 @@ namespace trissa {
 			dlclose(it->second.dlib);
 		}
 	}
+
+    void PlayerFactory::destroyPlayers(){
+        for(unsigned int i = 0; i < created_players.size(); i++)
+			delete (created_players[i]);
+        created_players.clear();
+    }
 
 	Player* PlayerFactory::create_player (string player_name, int dimension, PlayerType player_type){
 		Player* p;

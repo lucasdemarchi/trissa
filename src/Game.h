@@ -18,39 +18,47 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef GAME_H__
-#define GAME_H__
+#ifndef _GAME_H_
+#define _GAME_H_ 1
 #include "common.h"
 #include "ConfigManager.h"
+#include "StateManager.h"
 #include <string>
+
+
 
 namespace trissa {
 
-	//forward declarations
+    //forward declarations
+
+    int main (int argc, char * argv[]);
+
 	class Player;
 	class PlayerFactory;
 	class UI;
 	class ConfigManager;
 
 	class Game {
+	    friend int main (int argc, char * argv[]);
 	public:
 		//Game();
 		Game(int argc, char *argv[]);
+		void load();
+		void configure();
 		void run();
-		int isFinished();
 		~Game();
 	private:
 		//PlayerType goalTest() const;
 		PlayerType goalTest(Move const& lastMove, PlayerType player_type);
-		unsigned int dimension;
-		Player* playerA;
-		Player* playerB;
-		PlayerFactory* playerFactory;
-		Cube* board;
-		UI* ui;
-		ConfigManager configManager;
+		Player* mPlayerA;
+		Player* mPlayerB;
+		Cube* mBoard;
+		UI* mUi;
+		PlayerFactory* mPlayerFactory;
+		ConfigManager mConfigManager;
+		StateManager mStateManager;
 	};
 
 }
 
-#endif /* GAME_H__ */
+#endif /* _GAME_H_ */

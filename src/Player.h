@@ -4,7 +4,7 @@
  *
  * Copyright (C) 2008 - Lucas De Marchi
  *
- 
+
  * Trissa is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as published by
  * the Free Software Foundation.
@@ -16,11 +16,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Trissa; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef PLAYER_H__
-#define PLAYER_H__
+#ifndef PLAYER_H_
+#define PLAYER_H_ 1
 
 #include <string>
 
@@ -47,7 +47,7 @@ namespace trissa {
 		int idException;
 		Player* player;
 	};
-	
+
 	class Player{
 	public:
 		Player(unsigned int dimension, PlayerType player_type) throw (PlayerException);

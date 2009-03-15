@@ -15,11 +15,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Trissa; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef PLAYER_FACTORY_H__
-#define PLAYER_FACTORY_H__
+#ifndef PLAYER_FACTORY_H_
+#define PLAYER_FACTORY_H_ 1
 #include <vector>
 #include <map>
 #include <string>
@@ -40,8 +40,9 @@ namespace trissa {
 		public:
 			PlayerFactory(std::string path);
 			~PlayerFactory();
-			
+
 			Player * create_player (std::string player_name, int dimension, PlayerType player_type);
+			void destroyPlayers();
 			void getPlayersList(std::vector<std::string>& strplayers);
 		private:
 			std::map<std::string, Player_details> factory;
