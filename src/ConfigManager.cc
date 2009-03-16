@@ -29,8 +29,7 @@ namespace trissa {
     ConfigManager::ConfigManager(int argc, char* argv[]) :
             mConfigFile("Configuration File Options"),
             mCommandLine("Command Line Options"),
-            mGameOptions("Game Options"),
-            mGetUsage( false ), mGetVersion( false ) {
+            mGameOptions("Game Options") {
 
 
         setAvailableOptions();
@@ -38,10 +37,10 @@ namespace trissa {
         //parse Command Line
         po::store(po::parse_command_line(argc, argv, mGameOptions), mOptionsMap);
         po::notify( mOptionsMap );
-        if( mOptionsMap.count("version") )
-            mGetVersion = true;
-        if( mOptionsMap.count("help") )
-            mGetUsage = true;
+        if ( mOptionsMap.count("version") )
+            return;
+        if ( mOptionsMap.count("help") )
+            return;
 
         std::string path;
         //If set, the string passed by command line, otherwise,
@@ -65,7 +64,7 @@ namespace trissa {
     ConfigManager::~ConfigManager() {
     }
 
-    void ConfigManager::printVersion() const{
+    void ConfigManager::printVersion() const {
         using namespace std;
         cout << "Trissa v" << TRISSA_VERSION << endl;
         cout << "Copyright (C) 2008 - Lucas De Marchi" << endl;
@@ -77,10 +76,10 @@ namespace trissa {
         cout << "Dimension: " << mOptionsMap["dimension"].as<int>()  << endl;
     }
 
-    unsigned int ConfigManager::getDimension() const{
+    unsigned int ConfigManager::getDimension() const {
         return mDimension;
     }
-    void ConfigManager::setDimension(unsigned int dimension){
+    void ConfigManager::setDimension(unsigned int dimension) {
         mDimension = dimension;
     }
 
@@ -104,31 +103,31 @@ namespace trissa {
         mPlayerB = std::string(player);
     }
 
-    bool ConfigManager::isGetVersion() const{
-        return mGetVersion;
+    bool ConfigManager::isGetVersion() const {
+        return (mOptionsMap.count("version") >= 1);
     }
     bool ConfigManager::isGetUsage() const {
-        return mGetUsage;
+        return (mOptionsMap.count("help") >= 1);
     }
 
     void ConfigManager::setAvailableOptions() {
 
         mCommandLine.add_options()
-            ("help,h", "print this help message and exit")
-            ("vesion,v", "print version number and exit")
-            ("config,c", po::value<std::string>()->default_value(DEFAULT_CONFIG_FILE), "set config file to parse")
-            ("path,p", po::value<std::string>(), "Path to search for Player's implementations."
-                                                 "This option overrides path from configuration file ")
-            ("dimension,d", po::value<int>(), "Game's dimension. This option overrides that from configuration file")
-            ("ui,u", po::value<std::string>()->default_value("text"), "Only text interface available yet. "
-                                                                      "Configuration is here for future use");
-            ;
+        ("help,h", "print this help message and exit")
+        ("vesion,v", "print version number and exit")
+        ("config,c", po::value<std::string>()->default_value(DEFAULT_CONFIG_FILE), "set config file to parse")
+        ("path,p", po::value<std::string>(), "Path to search for Player's implementations."
+         "This option overrides path from configuration file ")
+        ("dimension,d", po::value<int>(), "Game's dimension. This option overrides that from configuration file")
+        ("ui,u", po::value<std::string>()->default_value("text"), "Only text interface available yet. "
+         "Configuration is here for future use");
+        ;
 
         mConfigFile.add_options()
-            ("selectedA", po::value<std::string>()->default_value(""), "Selected player A. Must be the same name exported by one"
-                                                                       "of the player in players' path")
-            ("selectedB", po::value<std::string>()->default_value(""), "Selected player B. Must be the same name exported by one"
-                                                                       "of the player in players' path")
+        ("selectedA", po::value<std::string>()->default_value(""), "Selected player A. Must be the same name exported by one"
+         "of the player in players' path")
+        ("selectedB", po::value<std::string>()->default_value(""), "Selected player B. Must be the same name exported by one"
+         "of the player in players' path")
         ;
 
         mGameOptions.add( mCommandLine ).add( mConfigFile );

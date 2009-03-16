@@ -33,31 +33,31 @@ namespace trissa {
 
     int main (int argc, char * argv[]);
 
-	class Player;
-	class PlayerFactory;
-	class UI;
-	class ConfigManager;
+    class Player;
+    class PlayerFactory;
+    class UI;
+    class ConfigManager;
 
-	class Game {
-	    friend int main (int argc, char * argv[]);
-	public:
-		//Game();
-		Game(int argc, char *argv[]);
-		void load();
-		void configure();
-		void run();
-		~Game();
-	private:
-		//PlayerType goalTest() const;
-		PlayerType goalTest(Move const& lastMove, PlayerType player_type);
-		Player* mPlayerA;
-		Player* mPlayerB;
-		Cube* mBoard;
-		UI* mUi;
-		PlayerFactory* mPlayerFactory;
-		ConfigManager mConfigManager;
-		StateManager mStateManager;
-	};
+    class Game {
+        friend int main (int argc, char * argv[]);
+    public:
+        //Game();
+        Game(int argc, char *argv[]);
+        void load();
+        void configure();
+        void run();
+        ~Game();
+    private:
+        //PlayerType goalTest() const;
+        PlayerType goalTest(Move const& lastMove, PlayerType player_type);
+        Player* mPlayerA;
+        Player* mPlayerB;
+        Cube* mBoard;
+        UI* mUi;
+        PlayerFactory* mPlayerFactory;
+        ConfigManager mConfigManager;
+        StateManager mStateManager;
+    };
 
 }
 

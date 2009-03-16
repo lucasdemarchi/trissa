@@ -15,40 +15,39 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Trissa; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin St, Fifth Floor, 
+ * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
 #include "Player.h"
 #include <iostream>
 namespace trissa {
-			
-	PlayerException::PlayerException(int idException, Player*  player): 
-			idException(idException),
-			player(player){
-	}
-	const char* PlayerException::what(){
-		std::string str_error("Player error: ");
-		if (idException == BOARD_NOT_KNOWN) {
-			str_error += (player->getName());
-			str_error += " doesn't know how to play in board with size ";
-			str_error += (player->dimension);
-			return str_error.c_str();
-		}
-		return "Unknown error";
-	}
-	
-	PlayerType Player::getPlayerType() const {
-		return this->player_type;
-	}
-	
-	Player::Player(unsigned int dimension, PlayerType player_type) throw (PlayerException) : 
-		dimension(dimension), player_type(player_type)
-	{	
-	}
-		
-	Player::~Player(){
-	}
-	
+
+    PlayerException::PlayerException(int idException, Player*  player):
+            idException(idException),
+            player(player) {
+    }
+    const char* PlayerException::what() {
+        std::string str_error("Player error: ");
+        if (idException == BOARD_NOT_KNOWN) {
+            str_error += (player->getName());
+            str_error += " doesn't know how to play in board with size ";
+            str_error += (player->dimension);
+            return str_error.c_str();
+        }
+        return "Unknown error";
+    }
+
+    PlayerType Player::getPlayerType() const {
+        return this->player_type;
+    }
+
+    Player::Player(unsigned int dimension, PlayerType player_type) throw (PlayerException) :
+            dimension(dimension), player_type(player_type) {
+    }
+
+    Player::~Player() {
+    }
+
 }
 
 

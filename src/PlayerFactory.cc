@@ -30,7 +30,7 @@ namespace trissa {
 	using namespace std;
 	namespace fs = boost::filesystem;
 
-	PlayerFactory::PlayerFactory(string path){
+	PlayerFactory::PlayerFactory(std::string path){
 		fs::path full_path(fs::system_complete(path));
 
 		if( fs::exists( full_path ) && fs::is_directory( full_path )){
@@ -93,7 +93,7 @@ namespace trissa {
         created_players.clear();
     }
 
-	Player* PlayerFactory::create_player (string player_name, int dimension, PlayerType player_type){
+	Player* PlayerFactory::create_player (std::string player_name, int dimension, PlayerType player_type){
 		Player* p;
 		try{
 			p = (factory[player_name].player_creator_ptr)(dimension, player_type);
@@ -108,7 +108,7 @@ namespace trissa {
 		return p;
 	}
 
-	void PlayerFactory::getPlayersList(vector<string>& strplayers){
+	void PlayerFactory::getPlayersList(std::vector<std::string>& strplayers){
 		for (map<string, Player_details>::iterator it = factory.begin();
 			it != factory.end();
 			it++){

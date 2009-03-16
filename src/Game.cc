@@ -35,19 +35,19 @@ using namespace std;
 namespace trissa {
 
     Game::Game(int argc, char *argv[]) :
-        mBoard( 0 ),
-        mUi( 0 ),
-        mPlayerFactory( 0 ),
-        mConfigManager ( argc, argv ),
-        mStateManager(STARTUP) {
+            mBoard( 0 ),
+            mUi( 0 ),
+            mPlayerFactory( 0 ),
+            mConfigManager ( argc, argv ),
+            mStateManager(STARTUP) {
 
-        if( mConfigManager.isGetUsage() ){
+        if ( mConfigManager.isGetUsage() ) {
             mConfigManager.printVersion();
             mConfigManager.printUsage();
             mStateManager.requestStateChange( SHUTDOWN );
             return;
         }
-        if( mConfigManager.isGetVersion() ) {
+        if ( mConfigManager.isGetVersion() ) {
             mConfigManager.printVersion();
             mStateManager.requestStateChange( SHUTDOWN );
             return;
@@ -61,10 +61,10 @@ namespace trissa {
         //TODO: verify in ConfigManager if requested UI is 3D or not and load specified UI
         mUi = new UIText(&mConfigManager, mPlayerFactory, &mStateManager);
 
-        if( mStateManager.getCurrentState() != GUI ) {
+        if ( mStateManager.getCurrentState() != GUI ) {
             //Probably an error loading resources.
             //TODO: write it to log
-            if( mStateManager.requestStateChange( SHUTDOWN ) )
+            if ( mStateManager.requestStateChange( SHUTDOWN ) )
                 return;
             else {
                 //TODO: write this bug to log
@@ -73,7 +73,7 @@ namespace trissa {
         }
     }
 
-    void Game::configure(){
+    void Game::configure() {
         //TODO: call UI to configure the game, i.e change fields in ConfigManager
 
         mUi->configure();  //GUI -> GAME  || GUI -> SHUTDOWN
@@ -82,11 +82,11 @@ namespace trissa {
     void Game::run() {
         //Finish loading configurations
         unsigned int dimension  = mConfigManager.getDimension();
-        if( mBoard )
+        if ( mBoard )
             delete mBoard;
         mBoard = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
 
-        if( mPlayerA || mPlayerB )
+        if ( mPlayerA || mPlayerB )
             mPlayerFactory->destroyPlayers();
 
         mPlayerA = mPlayerFactory->create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS );
@@ -133,9 +133,9 @@ namespace trissa {
     }
 
     Game::~Game() {
-        if( mUi ) delete mUi;
-        if( mPlayerFactory ) delete mPlayerFactory; //and all players...
-        if( mBoard ) delete mBoard;
+        if ( mUi ) delete mUi;
+        if ( mPlayerFactory ) delete mPlayerFactory; //and all players...
+        if ( mBoard ) delete mBoard;
     }
 
 
@@ -204,19 +204,19 @@ namespace trissa {
 
     }
     int main (int argc, char * argv[]) {
-    //STARTUP -> LOADING STATE
+        //STARTUP -> LOADING STATE
         trissa::Game game(argc, argv);
-        if( game.mStateManager.getCurrentState() == SHUTDOWN ){
+        if ( game.mStateManager.getCurrentState() == SHUTDOWN ) {
             return 0;
         }
-    //LOADING -> GUI STATE
+        //LOADING -> GUI STATE
         game.load();
-    //GUI -> GAME STATE
-        while( game.mStateManager.getCurrentState() != SHUTDOWN ){
+        //GUI -> GAME STATE
+        while ( game.mStateManager.getCurrentState() != SHUTDOWN ) {
 
             // run configurations (a.k.a Menus in 3D or some questions in text)
             game.configure();
-            if( game.mStateManager.getCurrentState() == GAME ){
+            if ( game.mStateManager.getCurrentState() == GAME ) {
                 game.run();
             }
 
