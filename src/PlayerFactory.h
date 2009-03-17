@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef PLAYER_FACTORY_H_
-#define PLAYER_FACTORY_H_ 1
+#ifndef _PLAYER_FACTORY_H_
+#define _PLAYER_FACTORY_H_ 1
 #include <vector>
 #include <map>
 #include <string>
@@ -30,23 +30,43 @@ namespace trissa {
 	//Forward declaration of player
 	class Player;
 
-	//TODO: Put a list with boards player knows how to play into.
+    /** Struct that contains details for each player, not instantiated yet
+      *
+      */
 	typedef struct Player_details {
-		function_creator_ptr player_creator_ptr;
-		void * dlib;
+		function_creator_ptr player_creator_ptr; /**< Pointer to a function that creates a new player*/
+		void * dlib; /** Pointer to dynamic lybrary loaded*/
 	} Player_details;
 
 	class PlayerFactory {
 		public:
+            /** Constructor
+              * @param path The path where to look for players
+              */
 			PlayerFactory(std::string path);
 			~PlayerFactory();
 
+            /** Factory function
+              * @remarks It creates a player using function pointer player_creator_ptr of the player specified by player_name
+              * @param player_name The Player to be created
+              * @param dimension The dimension of the game to be passed to player (just to check if it can play in this board)
+              * @param player_type Cross or Circle
+              */
 			Player * create_player (std::string player_name, int dimension, PlayerType player_type);
+
+			/** Go through all created Players and call their destructors
+			  * @remarks It doesn't actually unload dynamic libraries. It just "uninstantiate" all Players
+			  */
 			void destroyPlayers();
+
+			/** Get list of known players
+			  * @param strplayers A vector of strings in which will be put all Player's names
+			  */
 			void getPlayersList(std::vector<std::string>& strplayers);
 		private:
-			std::map<std::string, Player_details> factory;
+			std::map<std::string, Player_details> factory; /**< A map between each Player's name and its Player_details*/
+			/** A vector carrying pointers to all created Players (since it's a 2 players game, it should have 2 or less elements*/
 			std::vector<Player*> created_players;
 	};
 }
-#endif /* PLAYER_FACTORY_H__ */
+#endif /* _PLAYER_FACTORY_H_ */
