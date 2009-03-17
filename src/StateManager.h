@@ -19,35 +19,54 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef _TRISSA_STATEMANAGER_H_
-#define _TRISSA_STATEMANAGER_H_ 1
+#ifndef _STATEMANAGER_H_
+#define _STATEMANAGER_H_ 1
 #include <vector>
 #include <map>
 namespace trissa {
+    /** Enum with possible states of the game*/
     typedef enum {
-        STARTUP,
-        LOADING,
-        GUI,
-        GAME,
-        SHUTDOWN
+        STARTUP,    /**< When starting game*/
+        LOADING,    /**< When loading resources, before loading any graphics*/
+        GUI,        /**< While in configuration screens*/
+        GAME,       /**< After has configured game, the final loading and resources and game loop*/
+        SHUTDOWN    /**< Any time a SHUTDOWN request is received, game starts the shutdown process*/
     } GameState;
 
     class StateManager {
 
     public:
+        /** Constructor
+          * @param The initial state. No special purpose to this parameter; it must be STARTUP
+          */
         StateManager(GameState state);
         virtual ~StateManager();
 
+        /** Get current state of game
+          * @return One of GameState enum values
+          */
         GameState getCurrentState();
 
+        /** Lock the state so anyone asking to change it get blocked
+          * @remarks Not used yet
+          */
         bool lockState();
+
+        /** Unlock the state so anyone blocked because has asked to change is waken up
+          * @remarks Not used yet
+          */
         bool unlockState();
 
+        /** Request for changing the current state
+          * @remarks The name "request" was chosen instead of "set" because who is calling it could have
+          * the change rejected. In fact, in future the caller will get blocked in this function
+          */
         bool requestStateChange(GameState state);
     protected:
-        GameState mState;
-        bool mLocked;
-//	float mFrameTime;
+
+        GameState mState; /**< Current state of the game*/
+        bool mLocked; /** For future use... locking mechanism */
+
     };
 }
-#endif //_TRISSA_STATEMANAGER_H_
+#endif //_STATEMANAGER_H_
