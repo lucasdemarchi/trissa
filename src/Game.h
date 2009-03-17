@@ -54,7 +54,7 @@ namespace trissa {
         Player* mPlayerB;
         Cube* mBoard;
         UI* mUi;
-        PlayerFactory* mPlayerFactory;
+        PlayerFactory mPlayerFactory;
         ConfigManager mConfigManager;
         StateManager mStateManager;
     };

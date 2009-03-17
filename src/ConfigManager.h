@@ -24,6 +24,7 @@
 #include <string>
 #include <boost/program_options.hpp>
 #include <boost/filesystem/path.hpp>
+#include "PlayerFactory.h"
 
 namespace trissa {
     namespace po = boost::program_options;
@@ -39,11 +40,14 @@ namespace trissa {
         static const char * DEFAULT_PLAYERS_PATH; /**< Default path where to look for Players classes */
 
         /** Constructor
-        *   @param argc Parameter <i>argc</i> received from main, which must be passed to this class in order to parse command line
-        *   @param argv Parameter <i>argv</i> received from main, which must be passed to this class in order to parse command line
+          * @param argc Parameter <i>argc</i> received from main, which must be passed to this class in order to parse command line
+          * @param argv Parameter <i>argv</i> received from main, which must be passed to this class in order to parse command line
         */
         ConfigManager( int argc, char* argv[] );
+
         ~ConfigManager();
+
+        void attachPlayerFactory(PlayerFactory* playerFactory);
 
         /** Print Trissa's version to standard output */
         void printVersion() const;
@@ -63,58 +67,63 @@ namespace trissa {
         void setDimension(unsigned int dimension);
 
         /** Get path where to look for Players classes
-        */
+          */
         std::string getPlayersPath() const;
+
         void setPlayersPath(std::string path);
 
         /** Get PlayerA's name
-        *   @remarks Must be the same name used by Player to register itself in PlayerFactory
-        *   @note Limitation: there's no two players with same name
-        */
+          * @remarks Must be the same name used by Player to register itself in PlayerFactory
+          * @note Limitation: there's no two players with same name
+          */
         std::string getPlayerA() const;
         /** Set PlayerA's name
-        *   @remarks To be called when parsing command line, getting configuration from config file or whether there's
-        *   an option in GUI, before game begins, to select player
-        */
+          * @remarks To be called when parsing command line, getting configuration from config file or whether there's
+          * an option in GUI, before game begins, to select player
+          */
         void setPlayerA(std::string player);
 
         /** Get PlayerA's name
-        *   @remarks Must be the same name used by Player to register itself in PlayerFactory
-        *   @note Limitation: there's no two players with same name
-        */
+          * @remarks Must be the same name used by Player to register itself in PlayerFactory
+          * @note Limitation: there's no two players with same name
+          */
         std::string getPlayerB() const;
         /** Set PlayerB's name
-        *   @remarks To be called when parsing command line, getting configuration from config file or whether there's
-        *   an option in GUI, before game begins, to select player.
-        */
+          * @remarks To be called when parsing command line, getting configuration from config file or whether there's
+          * an option in GUI, before game begins, to select player.
+          */
         void setPlayerB(std::string player);
 
         /** Test if option to print usage is set by command line option
-        *   @return True if option is set, false otherwise
-        */
+          * @return True if option is set, false otherwise
+          */
         bool isGetUsage() const;
         /** Test if option to print Trissa's version is set by command line option
-        *   @return True if option is set, false otherwise
-        */
+          * @return True if option is set, false otherwise
+          */
         bool isGetVersion() const;
 
     private:
         /** Member function responsible to set class' attribute of available options either for command line or config file
-        */
+          *
+          */
         void setAvailableOptions();
 
         po::options_description mConfigFile; /**< Attribute that holds available options to be set in config file*/
         po::options_description mCommandLine; /**< Attribute that holds available options to be set as command line arguments*/
         po::options_description mGameOptions; /**< Attribute that holds available options*/
+
         /** A map that holds pairs of type <key,value> for all available options either in command line or in config file
-        *   Each option is a key and values are that set by command line, config file and GUI
-        */
+          * Each option is a key and values are that set by command line, config file and GUI
+          */
         po::variables_map mOptionsMap;
 
         unsigned int mDimension; /**< Attibute that holds game's dimension */
         std::string mPlayersPath; /**< Attibute that holds player's path */
         std::string mPlayerA; /**< Attribute that holds selected player for PlayerA*/
         std::string mPlayerB; /**< Attribute that holds selected player for PlayerB*/
+
+        PlayerFactory *mPlayerFactory;
 
     };
 

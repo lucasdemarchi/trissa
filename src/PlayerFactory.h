@@ -75,7 +75,7 @@ namespace trissa {
 			/** Get list of known players
 			  * @param strplayers A vector of strings in which will be put all Player's names
 			  */
-			void getPlayersList(std::vector<std::string>& strplayers);
+			void getPlayersList(std::vector<std::string>& strplayers) const;
 		private:
 			std::map<std::string, Player_details> factory; /**< A map between each Player's name and its Player_details*/
 			/** A vector carrying pointers to all created Players (since it's a 2 players game, it should have 2 or less elements*/

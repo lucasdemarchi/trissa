@@ -29,7 +29,8 @@ namespace trissa {
     ConfigManager::ConfigManager(int argc, char* argv[]) :
             mConfigFile("Configuration File Options"),
             mCommandLine("Command Line Options"),
-            mGameOptions("Game Options") {
+            mGameOptions("Game Options"),
+            mPlayerFactory( 0 ) {
 
 
         setAvailableOptions();
@@ -58,10 +59,14 @@ namespace trissa {
 
         mPlayersPath = mOptionsMap["path"].as<std::string>();
         mDimension = mOptionsMap["dimension"].as<unsigned int>();
-
     }
 
     ConfigManager::~ConfigManager() {
+    }
+
+    void ConfigManager::attachPlayerFactory(PlayerFactory* playerFactory){
+        mPlayerFactory = playerFactory;
+        mPlayerFactory->loadPlayerLibraries(mPlayersPath);
     }
 
     void ConfigManager::printVersion() const {
@@ -87,7 +92,8 @@ namespace trissa {
         return std::string(mPlayersPath);
     }
     void ConfigManager::setPlayersPath(std::string path){
-
+        mPlayerFactory->unloadPlayerLibraries();
+        mPlayerFactory->loadPlayerLibraries(path);
     }
 
     std::string ConfigManager::getPlayerA() const {

@@ -123,8 +123,8 @@ namespace trissa {
 		return p;
 	}
 
-	void PlayerFactory::getPlayersList(std::vector<std::string>& strplayers){
-		for (map<string, Player_details>::iterator it = factory.begin();
+	void PlayerFactory::getPlayersList(std::vector<std::string>& strplayers) const{
+		for (map<string, Player_details>::const_iterator it = factory.begin();
 			it != factory.end();
 			it++){
 

@@ -33,7 +33,7 @@ namespace trissa {
     class UI {
 
     public:
-        UI(ConfigManager* cm, PlayerFactory* pf, StateManager* sm);
+        UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
         ~UI();
 
         virtual void configure();
@@ -44,8 +44,8 @@ namespace trissa {
     protected:
         virtual void refresh(Cube const& board, Move const& lastMove);
         ConfigManager* mCm;
-        PlayerFactory* mPf;
         StateManager* mSm;
+        PlayerFactory const* mPf;
     };
 }
 

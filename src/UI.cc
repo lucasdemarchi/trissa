@@ -28,10 +28,10 @@
 namespace trissa {
 	using namespace std;
 
-	UI::UI(ConfigManager* cm, PlayerFactory* pf, StateManager* sm) :
+	UI::UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
         mCm( cm ),
-        mPf( pf ),
-        mSm( sm ){
+        mSm( sm ),
+        mPf( pf ){
 
         // CONFIGURE STUFF: in a Text UI, could be only "linking" to an output text file
         //                  in a 3D UI, must configure the window, renderer system, etc

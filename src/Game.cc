@@ -19,7 +19,6 @@
  * Boston, MA  02110-1301  USA
  */
 #include "Game.h"
-#include "PlayerFactory.h"
 #include "Player.h"
 #include "UI.h"
 #include "UIText.h"
@@ -37,7 +36,6 @@ namespace trissa {
     Game::Game(int argc, char *argv[]) :
             mBoard( 0 ),
             mUi( 0 ),
-            mPlayerFactory( 0 ),
             mConfigManager ( argc, argv ),
             mStateManager(STARTUP) {
 
@@ -53,13 +51,15 @@ namespace trissa {
             return;
         }
         mStateManager.requestStateChange(LOADING);
+
     }
     void Game::load() {
 
-        mPlayerFactory = new PlayerFactory( mConfigManager.getPlayersPath() );
+        //attach and load Player libraries
+        mConfigManager.attachPlayerFactory(&mPlayerFactory);
 
         //TODO: verify in ConfigManager if requested UI is 3D or not and load specified UI
-        mUi = new UIText(&mConfigManager, mPlayerFactory, &mStateManager);
+        mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
 
         if ( mStateManager.getCurrentState() != GUI ) {
             //Probably an error loading resources.
@@ -74,23 +74,22 @@ namespace trissa {
     }
 
     void Game::configure() {
-        //TODO: call UI to configure the game, i.e change fields in ConfigManager
-
-        mUi->configure();  //GUI -> GAME  || GUI -> SHUTDOWN
+        mUi->configure();
     }
 
     void Game::run() {
         //Finish loading configurations
         unsigned int dimension  = mConfigManager.getDimension();
+
         if ( mBoard )
             delete mBoard;
         mBoard = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
 
         if ( mPlayerA || mPlayerB )
-            mPlayerFactory->destroyPlayers();
+            mPlayerFactory.destroyPlayers();
 
-        mPlayerA = mPlayerFactory->create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS );
-        mPlayerB = mPlayerFactory->create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE );
+        mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS );
+        mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE );
 
 
 //Start game
@@ -134,7 +133,7 @@ namespace trissa {
 
     Game::~Game() {
         if ( mUi ) delete mUi;
-        if ( mPlayerFactory ) delete mPlayerFactory; //and all players...
+        //if ( mPlayerFactory ) delete mPlayerFactory; //and all players...
         if ( mBoard ) delete mBoard;
     }
 
@@ -204,12 +203,12 @@ namespace trissa {
 
     }
     int main (int argc, char * argv[]) {
-        //STARTUP -> LOADING STATE
+
         trissa::Game game(argc, argv);
         if ( game.mStateManager.getCurrentState() == SHUTDOWN ) {
             return 0;
         }
-        //LOADING -> GUI STATE
+
         game.load();
         //GUI -> GAME STATE
         while ( game.mStateManager.getCurrentState() != SHUTDOWN ) {

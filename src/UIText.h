@@ -26,7 +26,7 @@
 namespace trissa {
     class UIText : public UI {
     public:
-        UIText(ConfigManager* cm, PlayerFactory* pf, StateManager* sm) : UI(cm, pf, sm){ }
+        UIText(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) : UI(cm, sm, pf){ }
         void configure();
         void start();
         void refresh(Cube const& board, Move const& lastMove, bool wait);
