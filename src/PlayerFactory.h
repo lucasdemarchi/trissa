@@ -40,11 +40,24 @@ namespace trissa {
 
 	class PlayerFactory {
 		public:
+
             /** Constructor
+              * @remarks A call to loadPlayerLibraries need to be made before trying to create players
+              */
+            PlayerFactory();
+            /** Constructor
+              * @remarks Automatically load Player's libraries at path
               * @param path The path where to look for players
               */
 			PlayerFactory(std::string path);
+
+			/** Destructor
+			  * @remarks Call unloadPlayerLibraries and close all dynamic libraries
+			  */
 			~PlayerFactory();
+
+			void loadPlayerLibraries(std::string path);
+			void unloadPlayerLibraries();
 
             /** Factory function
               * @remarks It creates a player using function pointer player_creator_ptr of the player specified by player_name

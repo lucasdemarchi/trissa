@@ -37,7 +37,7 @@ namespace trissa {
 
     public:
         /** Constructor
-          * @param The initial state. No special purpose to this parameter; it must be STARTUP
+          * @param state Initial state. No special purpose to this parameter; it must be STARTUP
           */
         StateManager(GameState state);
         virtual ~StateManager();
@@ -60,6 +60,7 @@ namespace trissa {
         /** Request for changing the current state
           * @remarks The name "request" was chosen instead of "set" because who is calling it could have
           * the change rejected. In fact, in future the caller will get blocked in this function
+          * @param state The state to change to
           */
         bool requestStateChange(GameState state);
     protected:

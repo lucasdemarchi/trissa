@@ -30,7 +30,18 @@ namespace trissa {
 	using namespace std;
 	namespace fs = boost::filesystem;
 
-	PlayerFactory::PlayerFactory(std::string path){
+    PlayerFactory::PlayerFactory(){
+    }
+
+    PlayerFactory::PlayerFactory(std::string path){
+        loadPlayerLibraries(path);
+    }
+
+    PlayerFactory::~PlayerFactory(){
+        unloadPlayerLibraries();
+	}
+
+	void PlayerFactory::loadPlayerLibraries(std::string path){
 		fs::path full_path(fs::system_complete(path));
 
 		if( fs::exists( full_path ) && fs::is_directory( full_path )){
@@ -75,7 +86,10 @@ namespace trissa {
 			}
 		}
 	}
-	PlayerFactory::~PlayerFactory(){
+
+
+
+	void PlayerFactory::unloadPlayerLibraries(){
 
         destroyPlayers();
 
@@ -85,6 +99,7 @@ namespace trissa {
 				it++){
 			dlclose(it->second.dlib);
 		}
+		factory.clear();
 	}
 
     void PlayerFactory::destroyPlayers(){

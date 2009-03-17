@@ -65,7 +65,7 @@ namespace trissa {
         /** Get path where to look for Players classes
         */
         std::string getPlayersPath() const;
-        /** TODO: void setPlayersPath(std::string path); */
+        void setPlayersPath(std::string path);
 
         /** Get PlayerA's name
         *   @remarks Must be the same name used by Player to register itself in PlayerFactory

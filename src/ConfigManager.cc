@@ -86,8 +86,9 @@ namespace trissa {
     std::string ConfigManager::getPlayersPath() const {
         return std::string(mPlayersPath);
     }
-//    void ConfigManager::setPlayersPath(){
-//    }
+    void ConfigManager::setPlayersPath(std::string path){
+
+    }
 
     std::string ConfigManager::getPlayerA() const {
         return std::string( mPlayerA );
