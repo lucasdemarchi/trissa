@@ -19,6 +19,7 @@
  * Boston, MA  02110-1301  USA
  */
 #include "ConfigManager.h"
+#include "PlayerFactory.h"
 #include "common.h"
 #include <boost/filesystem/operations.hpp>
 #include <fstream>
@@ -78,7 +79,6 @@ namespace trissa {
     void ConfigManager::printUsage() const {
         using namespace std;
         cout << "Usage: trissa [options] " << endl << endl << mCommandLine << endl;
-        cout << "Dimension: " << mOptionsMap["dimension"].as<int>()  << endl;
     }
 
     unsigned int ConfigManager::getDimension() const {
@@ -121,11 +121,11 @@ namespace trissa {
 
         mCommandLine.add_options()
         ("help,h", "print this help message and exit")
-        ("vesion,v", "print version number and exit")
+        ("version,v", "print version number and exit")
         ("config,c", po::value<std::string>()->default_value(DEFAULT_CONFIG_FILE), "set config file to parse")
         ("path,p", po::value<std::string>(), "Path to search for Player's implementations."
          "This option overrides path from configuration file ")
-        ("dimension,d", po::value<int>(), "Game's dimension. This option overrides that from configuration file")
+        ("dimension,d", po::value<unsigned int>(), "Game's dimension. This option overrides that from configuration file")
         ("ui,u", po::value<std::string>()->default_value("text"), "Only text interface available yet. "
          "Configuration is here for future use");
         ;

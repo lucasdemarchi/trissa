@@ -24,11 +24,13 @@
 #include <string>
 #include <boost/program_options.hpp>
 #include <boost/filesystem/path.hpp>
-#include "PlayerFactory.h"
+
 
 namespace trissa {
     namespace po = boost::program_options;
     namespace fs = boost::filesystem;
+
+    class PlayerFactory;
 
     /** This $name class manage all settings for Trissa.
     *

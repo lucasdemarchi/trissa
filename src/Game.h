@@ -22,6 +22,7 @@
 #define _GAME_H_ 1
 #include "common.h"
 #include "ConfigManager.h"
+#include "PlayerFactory.h"
 #include "StateManager.h"
 #include <string>
 
@@ -34,7 +35,6 @@ namespace trissa {
     int main (int argc, char * argv[]);
 
     class Player;
-    class PlayerFactory;
     class UI;
     class ConfigManager;
 
