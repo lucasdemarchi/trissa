@@ -47,6 +47,11 @@ namespace trissa {
 
         ~ConfigManager();
 
+        /** In loading phase, this is used to actually pass a PlayerFactory to ConfigManager
+          * @remarks Current value of mPlayersPath is used to populate mPlayerFactory with players
+          * @param playerFactory a pointer to PlayerFactory (the only 1 that is instantiated at any given time),
+          * instantiated by Game
+          */
         void attachPlayerFactory(PlayerFactory* playerFactory);
 
         /** Print Trissa's version to standard output */
@@ -57,19 +62,25 @@ namespace trissa {
 
         //Getters and setters
         /** Get dimension of game
-        *   @return Dimension
-        */
+          * @return Dimension
+          */
         unsigned int getDimension() const;
         /** Set dimenions of game
-        *   @remarks To be called when parsing command line, getting configuration from config file or whether there's
-        *   an option in GUI, before starting the game, to set the dimension
-        */
+          * @remarks To be called when parsing command line, getting configuration from config file or whether there's
+          * an option in GUI, before starting the game, to set the dimension
+          */
         void setDimension(unsigned int dimension);
 
         /** Get path where to look for Players classes
           */
         std::string getPlayersPath() const;
 
+        /** Set Player's path
+          * @remarks Destroy all currently instantiated players, close all dynamic libraries and search for libraries in
+          * path
+          * @param Path to location where to look for dynamic libraries, i.e. players. Attention that is not checked if
+          * current path is the same that was already loaded
+          */
         void setPlayersPath(std::string path);
 
         /** Get PlayerA's name
@@ -123,7 +134,7 @@ namespace trissa {
         std::string mPlayerA; /**< Attribute that holds selected player for PlayerA*/
         std::string mPlayerB; /**< Attribute that holds selected player for PlayerB*/
 
-        PlayerFactory *mPlayerFactory;
+        PlayerFactory *mPlayerFactory; /**< Attribute that holds a pointer to PlayerFactory*/
 
     };
 
