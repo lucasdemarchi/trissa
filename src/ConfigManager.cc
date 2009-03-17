@@ -123,7 +123,7 @@ namespace trissa {
         ("help,h", "print this help message and exit")
         ("version,v", "print version number and exit")
         ("config,c", po::value<std::string>()->default_value(DEFAULT_CONFIG_FILE), "set config file to parse")
-        ("path,p", po::value<std::string>(), "Path to search for Player's implementations."
+        ("path,p", po::value<std::string>()->default_value(DEFAULT_PLAYERS_PATH), "Path to search for Player's implementations."
          "This option overrides path from configuration file ")
         ("dimension,d", po::value<unsigned int>(), "Game's dimension. This option overrides that from configuration file")
         ("ui,u", po::value<std::string>()->default_value("text"), "Only text interface available yet. "
