@@ -162,6 +162,16 @@ namespace trissa {
 	        getline(cin,s);
 	    }
     }
+    bool UIText::gameOver(){
+        string resp;
+        cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
+        cin >> resp;
+        if (resp == "yes")
+            return true;
+        return false;
+
+    }
+
     void UIText::setPos(Move m, PlayerType player){
 
     }

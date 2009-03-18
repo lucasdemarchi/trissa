@@ -48,6 +48,10 @@ namespace trissa {
         // Finish loading resources and, render stuff
     }
 
+    bool UI::gameOver(){
+
+    }
+
 	UI::~UI(){
 	}
 

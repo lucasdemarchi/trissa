@@ -53,17 +53,17 @@ namespace trissa {
     }
 
     bool StateManager::requestStateChange( GameState state ) {
-        if ( mState == state )
+        if ( mState == state ){
             throw std::exception();
-        if ( mState == STARTUP ) {
+            return false;
+        }
+        if ( ( state == SHUTDOWN ) || ( mState == STARTUP && state == LOADING ) ||
+             ( mState == LOADING && state == GUI) || ( mState == GUI && state == GAME ) ||
+             ( mState == GAME && state == GUI ) ) {
             mLocked = false;
             mState = state;
             return true;
-        } else if ( ( mState == GUI || mState == GAME ) && ( state != STARTUP && state != mState ) ) {
-            mState = state;
-            return true;
-        } else if ( mState == SHUTDOWN )
-            return false;
+        }
         else
             return false;
     }

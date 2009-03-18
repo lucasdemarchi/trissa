@@ -104,7 +104,7 @@ namespace trissa {
             cerr << "Player returned invalid position (z,y,x): ["
             << move->z << "," << move->y << "," << move->x << "]\n";
         }
-
+        cin.sync();
         mUi->refresh(*mBoard,*move, true);
 
 
@@ -112,6 +112,7 @@ namespace trissa {
                 goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
                 && turn < (dimension*dimension*dimension)
                 ; turn++) {
+
             if (turn%2)
                 player = mPlayerB;
             else
@@ -129,6 +130,10 @@ namespace trissa {
             mUi->refresh(*mBoard,*move, true);
         }
         mUi->refresh(*mBoard,*move,true);
+        if(mUi->gameOver())
+            mStateManager.requestStateChange(GUI);
+        else
+            mStateManager.requestStateChange(SHUTDOWN);
     }
 
     Game::~Game() {

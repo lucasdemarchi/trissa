@@ -40,6 +40,7 @@ namespace trissa {
         virtual void start();
         //void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
         virtual void refresh(Cube const& board, Move const& lastMove, bool wait);
+        virtual bool gameOver();
         virtual void setPos(Move m, PlayerType player) = 0;
     protected:
         virtual void refresh(Cube const& board, Move const& lastMove);

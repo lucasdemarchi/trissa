@@ -30,6 +30,7 @@ namespace trissa {
         void configure();
         void start();
         void refresh(Cube const& board, Move const& lastMove, bool wait);
+        bool gameOver();
         void setPos(Move m, PlayerType player);
     private:
         bool confirmConfig();
