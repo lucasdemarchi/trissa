@@ -21,24 +21,41 @@
 #include "UIText.h"
 #include "ConfigManager.h"
 #include "PlayerFactory.h"
+#include <boost/lexical_cast.hpp>
 #include <vector>
 
 namespace trissa {
     using namespace std;
     void UIText::configure(){
-        do{
-            int i = 0;
-            if( i>0 || !mCm->getDimension()) mCm->setDimension(getDimension());
-            if( i>0 || mCm->getPlayerA() == "" )  mCm->setPlayerA(getPlayer("Player A"));
-            if( i>0 || mCm->getPlayerB() == "" )  mCm->setPlayerB(getPlayer("Player B"));
-            i++;
-        } while( !confirmConfig() );
+        cout << endl << "=== Configuration Options === " << endl;
+        if(!mCm->getDimension())
+            mCm->setDimension(getDimension());
+        else
+            cout << "Dimension: " << mCm->getDimension() << endl;
+
+        if(mCm->getPlayerA() == "" )
+            mCm->setPlayerA(getPlayer("Player A"));
+        else
+            cout << "Player A (it will start): " << mCm->getPlayerA() << endl;
 
 
+        if(mCm->getPlayerB() == "" )
+            mCm->setPlayerB(getPlayer("Player B"));
+        else
+            cout << "Player B: " << mCm->getPlayerB() << endl;
+
+
+        while ( !confirmConfig() ){
+            cout << endl << endl << "=== Configuration Options === " << endl;
+            mCm->setDimension(getDimension());
+            mCm->setPlayerA(getPlayer("Player A"));
+            mCm->setPlayerB(getPlayer("Player B"));
+        }
         UI::configure();
     }
     bool UIText::confirmConfig(){
         string resp;
+        cout << endl << "Current configuration: " << endl;
         cout << "Dimension: " << mCm->getDimension() << endl;
         cout << "Player A (it will start): " << mCm->getPlayerA() << endl;
         cout << "Player B: " << mCm->getPlayerB() << endl;
@@ -47,11 +64,19 @@ namespace trissa {
         return (resp == "yes");
     }
     unsigned int UIText::getDimension(){
-        unsigned int d;
+        int d;
+        string s;
+        cin.sync();
         do{
             cout << "Enter game's dimension ( >= 3): ";
-            cin >> d;
-        } while (d < 3);
+            cin >> s;
+            try {
+                d = boost::lexical_cast<int>( s );
+            } catch ( boost::bad_lexical_cast const& ) {
+                cerr << "Not a good value. It must be a number and >= 3" << endl;
+                d=0;
+            }
+        } while ( d < 3 );
         return d;
     }
     string UIText::getPlayer(std::string player){
@@ -62,13 +87,22 @@ namespace trissa {
         for (unsigned int i=0; i < strplayers.size(); i++){
             cout << i << ": " << strplayers[i] << endl;
         }
-        int player_n;
 		while(true) {
+		    int player_n;
+		    string s;
+
+		    cin.sync();
             cout << "Enter number for " << player << ": ";
-            cin >> player_n;
+            cin >> s;
+
+            try {
+                player_n = boost::lexical_cast<int>( s );
+            } catch ( boost::bad_lexical_cast const& ) {
+                player_n = -1;
+            }
 
             if ( player_n < 0 || player_n >= static_cast<int>(strplayers.size()))
-                cout << endl << "Invalid player option. Choose one from the list above." << endl;
+                cerr << endl << "Invalid player option. Choose one from the list above." << endl;
             else
                 return string( strplayers[player_n] );
 
