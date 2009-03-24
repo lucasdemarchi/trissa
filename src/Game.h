@@ -43,6 +43,9 @@ namespace trissa {
     public:
         //Game();
         Game(int argc, char *argv[]);
+        /** Abc
+          *
+          */
         void load();
         void configure();
         void run();

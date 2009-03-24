@@ -79,7 +79,7 @@ namespace trissa {
 
     void Game::run() {
         //Finish loading configurations
-        unsigned int dimension  = mConfigManager.getDimension();
+        int dimension  = (int) mConfigManager.getDimension();
 
         if ( mBoard )
             delete mBoard;
@@ -93,7 +93,7 @@ namespace trissa {
 
 
 //Start game
-        unsigned int turn;
+        int turn;
         Move* move = mPlayerA->firstPlay();
         Player* player = mPlayerA;
 
@@ -152,7 +152,7 @@ namespace trissa {
         };
         int n_directions = 13;
 
-        unsigned int dimension = mConfigManager.getDimension();
+        int dimension = mConfigManager.getDimension();
         for (int i=0; i < n_directions; i++) {
             bool invalid_direction = false;
             Move new_pos;
@@ -193,7 +193,7 @@ namespace trissa {
                     break;
                 }
             }
-            if (!invalid_direction && n_pieces == dimension) {
+            if (!invalid_direction && (int)n_pieces == dimension) {
                 //TODO: set member variable for winner direction(s) and point
 #ifdef _trissa_debug_
                 cout << "Winner direction: ["

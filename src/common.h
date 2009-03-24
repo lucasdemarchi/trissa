@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor,
  * Boston, MA  02110-1301  USA
  */
-#ifndef COMMON_H__
-#define COMMON_H__
+#ifndef _COMMON_H_
+#define _COMMON_H_ 1
 #ifndef TRISSA_VERSION
 #define TRISSA_VERSION 0.5
 #endif
@@ -36,9 +36,9 @@ namespace trissa{
 
 	typedef Player * (*function_creator_ptr)(int, PlayerType);
 	typedef struct Move {
-		unsigned int x;
-		unsigned int y;
-		unsigned int z;
+		int x;
+		int y;
+		int z;
 		void operator-=(Move a){
 			x -= a.x;
 			y -= a.y;
@@ -56,4 +56,4 @@ namespace trissa{
 
 }
 
-#endif /* COMMON_H__ */
+#endif /* _COMMON_H_ */

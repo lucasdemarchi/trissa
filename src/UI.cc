@@ -25,42 +25,50 @@
 #include <cstring>
 #include <string>
 
-namespace trissa {
-	using namespace std;
+namespace trissa
+{
+using namespace std;
 
-	UI::UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
-        mCm( cm ),
-        mSm( sm ),
-        mPf( pf ){
+UI::UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
+                mCm( cm ),
+                mSm( sm ),
+                mPf( pf )
+{
 
         // CONFIGURE STUFF: in a Text UI, could be only "linking" to an output text file
         //                  in a 3D UI, must configure the window, renderer system, etc
         mSm->requestStateChange(GUI);
-	}
+}
 
-    void UI::configure(){
+void UI::configure()
+{
         // If it's monothreaded, it must remain here till changing state
         //TODO: interact with ConfigManager and PlayerFactory to change options
         mSm->requestStateChange(GAME);
-    }
+}
 
-    void UI::start() {
+void UI::start()
+{
         // Finish loading resources and, render stuff
-    }
+}
 
-    bool UI::gameOver(){
+bool UI::gameOver()
+{
+        return true;
+}
 
-    }
+UI::~UI()
+{
+}
 
-	UI::~UI(){
-	}
+void UI::refresh(Cube const& board, Move const& lastMove)
+{
 
-	void UI::refresh(Cube const& board, Move const& lastMove){
+}
 
-	}
+void UI::refresh(Cube const& board, Move const& lastMove, bool wait)
+{
 
-	void UI::refresh(Cube const& board, Move const& lastMove, bool wait){
-
-	}
+}
 
 }
