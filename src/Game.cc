@@ -22,6 +22,7 @@
 #include "Player.h"
 #include "UI.h"
 #include "UIText.h"
+//#include "UIInputOutput.h"
 #include "common.h"
 
 #include <iostream>
@@ -93,11 +94,13 @@ void Game::run()
     if ( mPlayerA || mPlayerB )
         mPlayerFactory.destroyPlayers();
 
-    mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS );
-    mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE );
+    mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS, mUi );
+    mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE, mUi );
 
 
 //Start game
+    mUi->refresh(*mBoard, Move(-1,-1,-1), true);
+
     int turn;
     Move* move = mPlayerA->firstPlay();
     Player* player = mPlayerA;
@@ -109,9 +112,6 @@ void Game::run()
         cerr << "Player returned invalid position (z,y,x): ["
              << move->z << "," << move->y << "," << move->x << "]\n";
     }
-    cin.sync();
-    mUi->refresh(*mBoard,*move, true);
-
 
     for (turn = 1;
             goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
@@ -123,6 +123,8 @@ void Game::run()
         else
             player = mPlayerA;
 
+        mUi->refresh(*mBoard,*move, true);
+    
         move = player->play(*mBoard,*move);
 
         if (move->z < dimension && move->y < dimension &&
@@ -131,10 +133,10 @@ void Game::run()
         } else {
             cerr << "Player returned invalid position (z,y,x): ["
                  << move->z << "," << move->y << "," << move->x << "]\n";
+            --turn;
         }
-        mUi->refresh(*mBoard,*move, true);
     }
-    mUi->refresh(*mBoard,*move,true);
+    mUi->refresh(*mBoard,*move,false);
     if (mUi->gameOver())
         mStateManager.requestStateChange(GUI);
     else

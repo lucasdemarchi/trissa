@@ -20,7 +20,7 @@ class MinmaxPlayer : public trissa::Player
 {
 public:
     static char* name;
-    MinmaxPlayer(int dimension, trissa::PlayerType player_type) :
+    MinmaxPlayer(int dimension, trissa::PlayerType player_type, trissa::UIInputOutput* ui) :
             trissa::Player(dimension, player_type, NULL),
             next_move(0,0,0),
             depth(2) //,

@@ -25,6 +25,7 @@
 #include <iostream>
 
 #include "Player.h"
+#include "UIInputOutput.h"
 
 namespace trissa
 {
@@ -114,11 +115,11 @@ void PlayerFactory::destroyPlayers()
     created_players.clear();
 }
 
-Player* PlayerFactory::create_player (std::string player_name, int dimension, PlayerType player_type)
+Player* PlayerFactory::create_player (std::string player_name, int dimension, PlayerType player_type, UIInputOutput* ui)
 {
     Player* p;
     try {
-        p = (factory[player_name].player_creator_ptr)(dimension, player_type);
+        p = (factory[player_name].player_creator_ptr)(dimension, player_type, ui);
     } catch (exception& ex) {
         cerr << ex.what();
         return NULL;

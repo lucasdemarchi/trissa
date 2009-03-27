@@ -24,7 +24,7 @@
 #include <map>
 #include <string>
 #include "common.h"
-
+#include "UIInputOutput.h"
 
 namespace trissa
 {
@@ -67,7 +67,7 @@ public:
       * @param dimension The dimension of the game to be passed to player (just to check if it can play in this board)
       * @param player_type Cross or Circle
       */
-    Player * create_player (std::string player_name, int dimension, PlayerType player_type);
+    Player * create_player (std::string player_name, int dimension, PlayerType player_type, UIInputOutput* ui);
 
     /** Go through all created Players and call their destructors
       * @remarks It doesn't actually unload dynamic libraries. It just "uninstantiate" all Players

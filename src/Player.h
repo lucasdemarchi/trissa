@@ -29,8 +29,8 @@
 #include "UIInputOutput.h"
 
 #define REGISTER_PLAYER(classname) \
-    extern "C" trissa::Player * create_player(int dimension, trissa::PlayerType player_type){\
-        return new classname (dimension, player_type);\
+extern "C" trissa::Player * create_player(int dimension, trissa::PlayerType player_type, trissa::UIInputOutput* ui){\
+        return new classname (dimension, player_type, ui);\
     }\
     extern "C" char * getPlayerName(){\
         return classname::name;\
@@ -47,8 +47,8 @@ public:
     static const int NEED_UIINPUTOUTPUT = 1;
     PlayerException(int idException, Player*  player);
     virtual const char* what();
-private:
     int idException;
+private:
     Player* player;
 };
 

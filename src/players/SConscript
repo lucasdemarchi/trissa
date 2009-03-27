@@ -10,3 +10,4 @@ else:
 
 env.SharedLibrary(['RandomPlayer.cc'], variables = vars)
 env.SharedLibrary(['MinmaxPlayer.cc'], variables = vars)
+env.SharedLibrary(['HumanPlayer.cc'], variables = vars)

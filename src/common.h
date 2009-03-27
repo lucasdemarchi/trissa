@@ -33,9 +33,10 @@
 namespace trissa
 {
 class Player;
+class UIInputOutput;
 enum PlayerType {PLAYER_BLANK, PLAYER_CROSS, PLAYER_CIRCLE};
 
-typedef Player * (*function_creator_ptr)(int, PlayerType);
+typedef Player * (*function_creator_ptr)(int, PlayerType, UIInputOutput* ui);
 class Move
 {
 public:
