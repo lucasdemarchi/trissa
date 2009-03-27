@@ -46,9 +46,11 @@ public:
         //update our copy of board
         (*my_board)[opponentMove.z][opponentMove.y][opponentMove.x] = other_player;
 
-        int r = maximize(depth,-INF,INF, player_type, NULL);
 #ifdef _trissa_debug_
+        int r = maximize(depth,-INF,INF, player_type, NULL);
         cout << "Ret: " << r << endl;
+#else
+        maximize(depth,-INF,INF, player_type, NULL);
 #endif
         (*my_board)[next_move.z][next_move.y][next_move.x] = player_type;
         return &next_move;
@@ -86,7 +88,7 @@ private:
             while (true) {
                 new_pos -= directions[i];
                 if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-                        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
+                    new_pos.x < (int)dimension && new_pos.y < (int)dimension && new_pos.z < (int)dimension) {
                     if ( (*my_board)[new_pos.z][new_pos.y][new_pos.x] != player) {
                         invalid_direction = true;
                         break;
@@ -105,7 +107,7 @@ private:
             while (true) {
                 new_pos += directions[i];
                 if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-                        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
+                    new_pos.x < (int)dimension && new_pos.y < (int)dimension && new_pos.z < (int)dimension) {
                     if ( (*my_board)[new_pos.z][new_pos.y][new_pos.x] != player) {
                         invalid_direction = true;
                         break;
@@ -128,9 +130,9 @@ private:
             return eval();
         }
         int v = -INF;
-        for (unsigned int k=0; k < dimension; k++) {				// | For each
-            for (unsigned int j=0; j < dimension; j++) {			// | child of
-                for (unsigned int i=0; i < dimension; i++) {		// | current node
+        for (unsigned int k=0; k < dimension; k++) {                // | For each
+            for (unsigned int j=0; j < dimension; j++) {            // | child of
+                for (unsigned int i=0; i < dimension; i++) {        // | current node
                     if ((*my_board)[k][j][i] == trissa::PLAYER_BLANK) {
                         (*my_board)[k][j][i] = player;                  //play in a blank position
                         trissa::Move move = {i,j,k};
@@ -202,10 +204,10 @@ private:
      *where i = 1,..,dimension
      */
     int eval() {
-#define UPDATE_BOARDEVAL					\
-        if(n_mine>0 && n_opponent==0 ) 			    \
-            boardEval.mine[n_mine]++;               \
-        else if (n_opponent>0 && n_mine==0 )        \
+#define UPDATE_BOARDEVAL                     \
+        if(n_mine>0 && n_opponent==0 )       \
+            boardEval.mine[n_mine]++;        \
+        else if (n_opponent>0 && n_mine==0 ) \
             boardEval.opponent[n_opponent]++;
 
         //trissa::PlayerType& my_player = this->player_type;
