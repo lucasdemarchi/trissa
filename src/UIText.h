@@ -34,10 +34,12 @@ public:
     void refresh(Cube const& board, Move const& lastMove, bool wait);
     bool gameOver();
     void setPos(Move m, PlayerType player);
-    
-    Move getUserInput(){ return Move(0,0,0);}
-    void printWinnerMessage(std::string msg){ }
-    void printLooserMessage(std::string msg){ }
+
+    Move getUserInput() {
+        return Move(0,0,0);
+    }
+    void printWinnerMessage(std::string msg) { }
+    void printLooserMessage(std::string msg) { }
 private:
     bool confirmConfig();
     unsigned int getDimension();

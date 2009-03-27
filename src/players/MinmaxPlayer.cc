@@ -21,7 +21,7 @@ class MinmaxPlayer : public trissa::Player
 public:
     static char* name;
     MinmaxPlayer(int dimension, trissa::PlayerType player_type) :
-            trissa::Player(dimension, player_type),
+            trissa::Player(dimension, player_type, NULL),
             next_move(0,0,0),
             depth(2) //,
             //my_player(player_type)
@@ -86,7 +86,7 @@ private:
             while (true) {
                 new_pos -= directions[i];
                 if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-                    new_pos.x < (int)dimension && new_pos.y < (int)dimension && new_pos.z < (int)dimension) {
+                        new_pos.x < (int)dimension && new_pos.y < (int)dimension && new_pos.z < (int)dimension) {
                     if ( (*my_board)[new_pos.z][new_pos.y][new_pos.x] != player) {
                         invalid_direction = true;
                         break;
@@ -105,7 +105,7 @@ private:
             while (true) {
                 new_pos += directions[i];
                 if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-                    new_pos.x < (int)dimension && new_pos.y < (int)dimension && new_pos.z < (int)dimension) {
+                        new_pos.x < (int)dimension && new_pos.y < (int)dimension && new_pos.z < (int)dimension) {
                     if ( (*my_board)[new_pos.z][new_pos.y][new_pos.x] != player) {
                         invalid_direction = true;
                         break;

@@ -36,8 +36,9 @@ class Player;
 enum PlayerType {PLAYER_BLANK, PLAYER_CROSS, PLAYER_CIRCLE};
 
 typedef Player * (*function_creator_ptr)(int, PlayerType);
-class Move {
-    public:
+class Move
+{
+public:
     int x;
     int y;
     int z;

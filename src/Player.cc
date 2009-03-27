@@ -31,13 +31,21 @@ PlayerException::PlayerException(int idException, Player*  player):
 const char* PlayerException::what()
 {
     std::string str_error("Player error: ");
-    if (idException == BOARD_NOT_KNOWN) {
+    switch (idException) {
+    case BOARD_NOT_KNOWN:
         str_error += (player->getName());
         str_error += " doesn't know how to play in board with size ";
         str_error += (player->dimension);
-        return str_error.c_str();
+        break;
+    case NEED_UIINPUTOUTPUT:
+        str_error += (player->getName());
+        str_error += " need user input to play ";
+        break;
+    default:
+        str_error += "Unknown error";
+        break;
     }
-    return "Unknown error";
+    return str_error.c_str();
 }
 
 PlayerType Player::getPlayerType() const
@@ -45,8 +53,8 @@ PlayerType Player::getPlayerType() const
     return this->player_type;
 }
 
-Player::Player(unsigned int dimension, PlayerType player_type) throw (PlayerException) :
-        dimension(dimension), player_type(player_type)
+Player::Player(unsigned int dimension, PlayerType player_type, UIInputOutput* ui) throw (PlayerException) :
+        dimension(dimension), player_type(player_type), ui(ui)
 {
 }
 

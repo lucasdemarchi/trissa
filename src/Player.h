@@ -26,6 +26,7 @@
 
 #include <exception>
 #include "common.h"
+#include "UIInputOutput.h"
 
 #define REGISTER_PLAYER(classname) \
     extern "C" trissa::Player * create_player(int dimension, trissa::PlayerType player_type){\
@@ -43,6 +44,7 @@ class PlayerException : public std::exception
 {
 public:
     static const int BOARD_NOT_KNOWN = 0;
+    static const int NEED_UIINPUTOUTPUT = 1;
     PlayerException(int idException, Player*  player);
     virtual const char* what();
 private:
@@ -63,7 +65,7 @@ public:
       * @throw PlayerException with <i>idException</i> = BOARD_NOT_KNOWN if implementation
       * of this Player does not know how to play in this dimension
       */
-    Player(unsigned int dimension, PlayerType player_type) throw (PlayerException);
+    Player(unsigned int dimension, PlayerType player_type, UIInputOutput* ui) throw (PlayerException);
     virtual ~Player();
 
     /** Its the main function of Player. It's called every time Player has a turn
@@ -103,7 +105,7 @@ protected:
       * @remarks Since is no sense changing player's type after game's begin, it can be set only upon Player's construction
       */
     PlayerType player_type;
-
+    UIInputOutput* ui;
     /** Allow PlayerException to access private/protected methods/attributes */
     friend class PlayerException;
 };

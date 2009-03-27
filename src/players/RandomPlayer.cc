@@ -9,9 +9,8 @@ class RandomPlayer : public trissa::Player
 public:
     static char* name;
     RandomPlayer(int dimension, trissa::PlayerType player_type) :
-        trissa::Player(dimension, player_type),
-        next_move(0,0,0)
-    {
+            trissa::Player(dimension, player_type, NULL),
+            next_move(0,0,0) {
         srand (time(NULL));
         //For firstPlay usage
         next_move.x = dimension /2;
