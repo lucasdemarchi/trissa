@@ -152,20 +152,17 @@ Game::~Game()
 PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 {
     Move directions[] = {
-        {1,0,0} , {0,1,0} , {0,0,1} ,
-        {1,1,0} , {1,0,1} , {0,1,1} ,
-        {1,-1,0}, {1,0,-1}, {0,1,-1},
-        {1,1,1} , {1,-1,1}, {-1,1,1}, {1,1,-1}
+        Move(1,0,0) , Move(0,1,0) , Move(0,0,1) ,
+        Move(1,1,0) , Move(1,0,1) , Move(0,1,1) ,
+        Move(1,-1,0), Move(1,0,-1), Move(0,1,-1),
+        Move(1,1,1) , Move(1,-1,1), Move(-1,1,1), Move(1,1,-1)
     };
     int n_directions = 13;
 
     int dimension = mConfigManager.getDimension();
     for (int i=0; i < n_directions; i++) {
         bool invalid_direction = false;
-        Move new_pos;
-        new_pos.x = lastMove.x;
-        new_pos.y = lastMove.y;
-        new_pos.z = lastMove.z;
+        Move new_pos(lastMove.x,lastMove.y,lastMove.z);
         unsigned int n_pieces = 1;
         //first subtract direction
         while (true) {

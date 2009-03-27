@@ -22,6 +22,7 @@ public:
     static char* name;
     MinmaxPlayer(int dimension, trissa::PlayerType player_type) :
             trissa::Player(dimension, player_type),
+            next_move(0,0,0),
             depth(2) //,
             //my_player(player_type)
     {
@@ -69,20 +70,17 @@ public:
 private:
     bool goalTest(trissa::Move const& lastMove) {
         trissa::Move directions[] = {
-            {1,0,0} , {0,1,0} , {0,0,1} ,
-            {1,1,0} , {1,0,1} , {0,1,1} ,
-            {1,-1,0}, {1,0,-1}, {0,1,-1},
-            {1,1,1} , {1,-1,1}, {-1,1,1}, {1,1,-1}
+            trissa::Move(1,0,0) , trissa::Move(0,1,0) , trissa::Move(0,0,1) ,
+            trissa::Move(1,1,0) , trissa::Move(1,0,1) , trissa::Move(0,1,1) ,
+            trissa::Move(1,-1,0), trissa::Move(1,0,-1), trissa::Move(0,1,-1),
+            trissa::Move(1,1,1) , trissa::Move(1,-1,1), trissa::Move(-1,1,1), trissa::Move(1,1,-1)
         };
         int n_directions = 13;
         trissa::PlayerType player = (*my_board)[lastMove.z][lastMove.y][lastMove.x];
 
         for (int i=0; i < n_directions; i++) {
             bool invalid_direction = false;
-            trissa::Move new_pos;
-            new_pos.x = lastMove.x;
-            new_pos.y = lastMove.y;
-            new_pos.z = lastMove.z;
+            trissa::Move new_pos(lastMove.x,lastMove.y,lastMove.z);
             unsigned int n_pieces = 1;
             //first subtract direction
             while (true) {
@@ -135,7 +133,7 @@ private:
                 for (unsigned int i=0; i < dimension; i++) {        // | current node
                     if ((*my_board)[k][j][i] == trissa::PLAYER_BLANK) {
                         (*my_board)[k][j][i] = player;                  //play in a blank position
-                        trissa::Move move = {i,j,k};
+                        trissa::Move move(i,j,k);
                         int v2 = minimize(depth-1, alpha, beta, THE_OTHER, &move);
                         (*my_board)[k][j][i] = trissa::PLAYER_BLANK;    //undo played position
                         if (v2 > v) {
@@ -185,7 +183,7 @@ private:
                     if ((*my_board)[k][j][i] == trissa::PLAYER_BLANK) {
                         (*my_board)[k][j][i] = player;                  //play in a blank position
 
-                        trissa::Move move = {i,j,k};
+                        trissa::Move move(i,j,k);
                         v = MIN (v, maximize(depth-1, alpha, beta, THE_OTHER, &move));
 
                         (*my_board)[k][j][i] = trissa::PLAYER_BLANK;    //undo played position

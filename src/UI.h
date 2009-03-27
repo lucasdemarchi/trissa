@@ -23,7 +23,9 @@
 #include <vector>
 #include <string>
 #include <iostream>
+
 #include "common.h"
+#include "UIInputOutput.h"
 
 namespace trissa
 {
@@ -31,7 +33,7 @@ class ConfigManager;
 class PlayerFactory;
 class StateManager;
 //TODO: allow changing of playersPath in UI
-class UI
+class UI : public UIInputOutput
 {
 
 public:

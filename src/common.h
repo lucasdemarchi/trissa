@@ -36,10 +36,13 @@ class Player;
 enum PlayerType {PLAYER_BLANK, PLAYER_CROSS, PLAYER_CIRCLE};
 
 typedef Player * (*function_creator_ptr)(int, PlayerType);
-typedef struct Move {
+class Move {
+    public:
     int x;
     int y;
     int z;
+    Move(int x, int y, int z) : x(x), y(y), z(z) {}
+    //Move(){}
     void operator-=(Move a) {
         x -= a.x;
         y -= a.y;
@@ -50,7 +53,7 @@ typedef struct Move {
         y += a.y;
         z += a.z;
     }
-} Move;
+};
 
 typedef std::vector<std::vector<std::vector<PlayerType> > > Cube;
 
