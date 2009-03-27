@@ -21,51 +21,57 @@
 #include "StateManager.h"
 #include <exception>
 
-namespace trissa {
+namespace trissa
+{
 
-    StateManager::StateManager(GameState state) :
-            mState( state ) {
-    }
+StateManager::StateManager(GameState state) :
+        mState( state )
+{
+}
 
-    StateManager::~StateManager() {
-    }
+StateManager::~StateManager()
+{
+}
 
-    GameState StateManager::getCurrentState() {
-        return mState;
-    }
+GameState StateManager::getCurrentState()
+{
+    return mState;
+}
 //TODO Implement StateManager::lockState
-    bool StateManager::lockState() {
+bool StateManager::lockState()
+{
 //    if( mLocked == false ) {
 //        mLocked = true;
 //        return true;
 //    } else
 //        return false;
-        return true;
-    }
+    return true;
+}
 //TODO Implement StateManager::unlockState
-    bool StateManager::unlockState() {
+bool StateManager::unlockState()
+{
 //    if( mLocked == true ) {
 //        mLocked = false;
 //        return true;
 //    } else
 //        return false;
-        return true;
-    }
+    return true;
+}
 
-    bool StateManager::requestStateChange( GameState state ) {
-        if ( mState == state ){
-            throw std::exception();
-            return false;
-        }
-        if ( ( state == SHUTDOWN ) || ( mState == STARTUP && state == LOADING ) ||
-             ( mState == LOADING && state == GUI) || ( mState == GUI && state == GAME ) ||
-             ( mState == GAME && state == GUI ) ) {
-            mLocked = false;
-            mState = state;
-            return true;
-        }
-        else
-            return false;
+bool StateManager::requestStateChange( GameState state )
+{
+    if ( mState == state ) {
+        throw std::exception();
+        return false;
     }
+    if ( ( state == SHUTDOWN ) || ( mState == STARTUP && state == LOADING ) ||
+            ( mState == LOADING && state == GUI) || ( mState == GUI && state == GAME ) ||
+            ( mState == GAME && state == GUI ) ) {
+        mLocked = false;
+        mState = state;
+        return true;
+    } else
+        return false;
+}
 
 }

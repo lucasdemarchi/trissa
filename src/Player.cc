@@ -20,33 +20,39 @@
  */
 #include "Player.h"
 #include <iostream>
-namespace trissa {
+namespace trissa
+{
 
-    PlayerException::PlayerException(int idException, Player*  player):
-            idException(idException),
-            player(player) {
+PlayerException::PlayerException(int idException, Player*  player):
+        idException(idException),
+        player(player)
+{
+}
+const char* PlayerException::what()
+{
+    std::string str_error("Player error: ");
+    if (idException == BOARD_NOT_KNOWN) {
+        str_error += (player->getName());
+        str_error += " doesn't know how to play in board with size ";
+        str_error += (player->dimension);
+        return str_error.c_str();
     }
-    const char* PlayerException::what() {
-        std::string str_error("Player error: ");
-        if (idException == BOARD_NOT_KNOWN) {
-            str_error += (player->getName());
-            str_error += " doesn't know how to play in board with size ";
-            str_error += (player->dimension);
-            return str_error.c_str();
-        }
-        return "Unknown error";
-    }
+    return "Unknown error";
+}
 
-    PlayerType Player::getPlayerType() const {
-        return this->player_type;
-    }
+PlayerType Player::getPlayerType() const
+{
+    return this->player_type;
+}
 
-    Player::Player(unsigned int dimension, PlayerType player_type) throw (PlayerException) :
-            dimension(dimension), player_type(player_type) {
-    }
+Player::Player(unsigned int dimension, PlayerType player_type) throw (PlayerException) :
+        dimension(dimension), player_type(player_type)
+{
+}
 
-    Player::~Player() {
-    }
+Player::~Player()
+{
+}
 
 }
 

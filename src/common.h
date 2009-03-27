@@ -30,28 +30,29 @@
 
 #include <vector>
 
-namespace trissa{
-	class Player;
-	enum PlayerType {PLAYER_BLANK, PLAYER_CROSS, PLAYER_CIRCLE};
+namespace trissa
+{
+class Player;
+enum PlayerType {PLAYER_BLANK, PLAYER_CROSS, PLAYER_CIRCLE};
 
-	typedef Player * (*function_creator_ptr)(int, PlayerType);
-	typedef struct Move {
-		int x;
-		int y;
-		int z;
-		void operator-=(Move a){
-			x -= a.x;
-			y -= a.y;
-			z -= a.z;
-		}
-		void operator+=(Move a){
-			x += a.x;
-			y += a.y;
-			z += a.z;
-		}
-	} Move;
+typedef Player * (*function_creator_ptr)(int, PlayerType);
+typedef struct Move {
+    int x;
+    int y;
+    int z;
+    void operator-=(Move a) {
+        x -= a.x;
+        y -= a.y;
+        z -= a.z;
+    }
+    void operator+=(Move a) {
+        x += a.x;
+        y += a.y;
+        z += a.z;
+    }
+} Move;
 
-	typedef std::vector<std::vector<std::vector<PlayerType> > > Cube;
+typedef std::vector<std::vector<std::vector<PlayerType> > > Cube;
 
 
 }

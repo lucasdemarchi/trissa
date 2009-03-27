@@ -26,110 +26,117 @@
 
 #include "Player.h"
 
-namespace trissa {
-	using namespace std;
-	namespace fs = boost::filesystem;
+namespace trissa
+{
+using namespace std;
+namespace fs = boost::filesystem;
 
-    PlayerFactory::PlayerFactory(){
+PlayerFactory::PlayerFactory()
+{
+}
+
+PlayerFactory::PlayerFactory(std::string path)
+{
+    loadPlayerLibraries(path);
+}
+
+PlayerFactory::~PlayerFactory()
+{
+    unloadPlayerLibraries();
+}
+
+void PlayerFactory::loadPlayerLibraries(std::string path)
+{
+    fs::path full_path(fs::system_complete(path));
+
+    if ( fs::exists( full_path ) && fs::is_directory( full_path )) {
+        fs::directory_iterator end_iter;
+        for ( fs::directory_iterator dir_itr( full_path );
+                dir_itr != end_iter;
+                ++dir_itr ) {
+            Player_details player_details;
+            try {
+                if ( fs::is_regular_file(dir_itr->status()) && dir_itr->path().extension() == ".so" ) {
+                    // Try to load dynamic library
+                    const string& filename = dir_itr->path().string();
+
+                    player_details.dlib = dlopen(filename.c_str(), RTLD_NOW);
+                    if (player_details.dlib == NULL) {
+                        cerr<< "PlayerFactory: " << "Unable to load library " << filename << endl << dlerror() << endl;
+                        continue;
+                    }
+
+                    //Get a pointer to function that creates this player and insert it in factory map;
+                    player_details.player_creator_ptr = (function_creator_ptr) dlsym(player_details.dlib, "create_player");
+                    if (dlerror()) {
+                        cerr<< "PlayerFactory: " << "Unable to get Player's  creator function from library " << filename;
+                        dlclose(player_details.dlib);
+                    }
+
+                    //Execute function "getPlayerName" inside library
+                    string playerName = ((char *(*)())dlsym(player_details.dlib, "getPlayerName"))();
+                    if (dlerror()) {
+                        cerr<< "PlayerFactory: " << "Unable to get Player name from library " << filename;
+                        dlclose(player_details.dlib);
+                        continue;
+                    }
+
+                    this->factory[playerName] = player_details;
+                }
+            } catch ( const std::exception & ex ) {
+                cerr<< "PlayerFactory: " << "Unable to access file " << dir_itr->path().filename() << endl;
+                cerr << ex.what() << endl;
+            }
+        }
+    }
+}
+
+
+
+void PlayerFactory::unloadPlayerLibraries()
+{
+
+    destroyPlayers();
+
+    //iterate through factory and close all dlibs
+    for (map<string, Player_details>::iterator it = factory.begin();
+            it != factory.end();
+            it++) {
+        dlclose(it->second.dlib);
+    }
+    factory.clear();
+}
+
+void PlayerFactory::destroyPlayers()
+{
+    for (unsigned int i = 0; i < created_players.size(); i++)
+        delete (created_players[i]);
+    created_players.clear();
+}
+
+Player* PlayerFactory::create_player (std::string player_name, int dimension, PlayerType player_type)
+{
+    Player* p;
+    try {
+        p = (factory[player_name].player_creator_ptr)(dimension, player_type);
+    } catch (exception& ex) {
+        cerr << ex.what();
+        return NULL;
     }
 
-    PlayerFactory::PlayerFactory(std::string path){
-        loadPlayerLibraries(path);
+    created_players.push_back(p);
+
+    return p;
+}
+
+void PlayerFactory::getPlayersList(std::vector<std::string>& strplayers) const
+{
+    for (map<string, Player_details>::const_iterator it = factory.begin();
+            it != factory.end();
+            it++) {
+
+        strplayers.push_back(it->first);
     }
-
-    PlayerFactory::~PlayerFactory(){
-        unloadPlayerLibraries();
-	}
-
-	void PlayerFactory::loadPlayerLibraries(std::string path){
-		fs::path full_path(fs::system_complete(path));
-
-		if( fs::exists( full_path ) && fs::is_directory( full_path )){
-			fs::directory_iterator end_iter;
-			for ( fs::directory_iterator dir_itr( full_path );
-					dir_itr != end_iter;
-					++dir_itr ){
-				Player_details player_details;
-				try{
-					if ( fs::is_regular_file(dir_itr->status()) && dir_itr->path().extension() == ".so" ){
-						// Try to load dynamic library
-						const string& filename = dir_itr->path().string();
-
-						player_details.dlib = dlopen(filename.c_str(), RTLD_NOW);
-						if(player_details.dlib == NULL){
-							cerr<< "PlayerFactory: " << "Unable to load library " << filename << endl << dlerror() << endl;
-							continue;
-						}
-
-						//Get a pointer to function that creates this player and insert it in factory map;
-						player_details.player_creator_ptr = (function_creator_ptr) dlsym(player_details.dlib, "create_player");
-						if(dlerror()){
-							cerr<< "PlayerFactory: " << "Unable to get Player's  creator function from library " << filename;
-							dlclose(player_details.dlib);
-						}
-
-						//Execute function "getPlayerName" inside library
-						string playerName = ((char *(*)())dlsym(player_details.dlib, "getPlayerName"))();
-						if(dlerror()){
-							cerr<< "PlayerFactory: " << "Unable to get Player name from library " << filename;
-							dlclose(player_details.dlib);
-							continue;
-						}
-
-						this->factory[playerName] = player_details;
-					}
-				}
-				catch ( const std::exception & ex ){
-					cerr<< "PlayerFactory: " << "Unable to access file " << dir_itr->path().filename() << endl;
-					cerr << ex.what() << endl;
-				}
-			}
-		}
-	}
-
-
-
-	void PlayerFactory::unloadPlayerLibraries(){
-
-        destroyPlayers();
-
-		//iterate through factory and close all dlibs
-		for (map<string, Player_details>::iterator it = factory.begin();
-				it != factory.end();
-				it++){
-			dlclose(it->second.dlib);
-		}
-		factory.clear();
-	}
-
-    void PlayerFactory::destroyPlayers(){
-        for(unsigned int i = 0; i < created_players.size(); i++)
-			delete (created_players[i]);
-        created_players.clear();
-    }
-
-	Player* PlayerFactory::create_player (std::string player_name, int dimension, PlayerType player_type){
-		Player* p;
-		try{
-			p = (factory[player_name].player_creator_ptr)(dimension, player_type);
-		}
-		catch(exception& ex){
-			cerr << ex.what();
-			return NULL;
-		}
-
-		created_players.push_back(p);
-
-		return p;
-	}
-
-	void PlayerFactory::getPlayersList(std::vector<std::string>& strplayers) const{
-		for (map<string, Player_details>::const_iterator it = factory.begin();
-			it != factory.end();
-			it++){
-
-			strplayers.push_back(it->first);
-		}
-	}
+}
 
 }

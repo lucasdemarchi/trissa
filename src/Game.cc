@@ -31,208 +31,217 @@ using namespace std;
 
 
 
-namespace trissa {
+namespace trissa
+{
 
-    Game::Game(int argc, char *argv[]) :
-            mBoard( 0 ),
-            mUi( 0 ),
-            mConfigManager ( argc, argv ),
-            mStateManager(STARTUP) {
+Game::Game(int argc, char *argv[]) :
+        mBoard( 0 ),
+        mUi( 0 ),
+        mConfigManager ( argc, argv ),
+        mStateManager(STARTUP)
+{
 
-        if ( mConfigManager.isGetUsage() ) {
-            mConfigManager.printVersion();
-            mConfigManager.printUsage();
-            mStateManager.requestStateChange( SHUTDOWN );
+    if ( mConfigManager.isGetUsage() ) {
+        mConfigManager.printVersion();
+        mConfigManager.printUsage();
+        mStateManager.requestStateChange( SHUTDOWN );
+        return;
+    }
+    if ( mConfigManager.isGetVersion() ) {
+        mConfigManager.printVersion();
+        mStateManager.requestStateChange( SHUTDOWN );
+        return;
+    }
+    mStateManager.requestStateChange(LOADING);
+
+}
+void Game::load()
+{
+
+    //attach and load Player libraries
+    mConfigManager.attachPlayerFactory(&mPlayerFactory);
+
+    //TODO: verify in ConfigManager if requested UI is 3D or not and load specified UI
+    mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
+
+    if ( mStateManager.getCurrentState() != GUI ) {
+        //Probably an error loading resources.
+        //TODO: write it to log
+        if ( mStateManager.requestStateChange( SHUTDOWN ) )
+            return;
+        else {
+            //TODO: write this bug to log
             return;
         }
-        if ( mConfigManager.isGetVersion() ) {
-            mConfigManager.printVersion();
-            mStateManager.requestStateChange( SHUTDOWN );
-            return;
-        }
-        mStateManager.requestStateChange(LOADING);
-
     }
-    void Game::load() {
+}
 
-        //attach and load Player libraries
-        mConfigManager.attachPlayerFactory(&mPlayerFactory);
+void Game::configure()
+{
+    mUi->configure();
+}
 
-        //TODO: verify in ConfigManager if requested UI is 3D or not and load specified UI
-        mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
+void Game::run()
+{
+    //Finish loading configurations
+    int dimension  = (int) mConfigManager.getDimension();
 
-        if ( mStateManager.getCurrentState() != GUI ) {
-            //Probably an error loading resources.
-            //TODO: write it to log
-            if ( mStateManager.requestStateChange( SHUTDOWN ) )
-                return;
-            else {
-                //TODO: write this bug to log
-                return;
-            }
-        }
-    }
+    if ( mBoard )
+        delete mBoard;
+    mBoard = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
 
-    void Game::configure() {
-        mUi->configure();
-    }
+    if ( mPlayerA || mPlayerB )
+        mPlayerFactory.destroyPlayers();
 
-    void Game::run() {
-        //Finish loading configurations
-        int dimension  = (int) mConfigManager.getDimension();
-
-        if ( mBoard )
-            delete mBoard;
-        mBoard = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
-
-        if ( mPlayerA || mPlayerB )
-            mPlayerFactory.destroyPlayers();
-
-        mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS );
-        mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE );
+    mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS );
+    mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE );
 
 
 //Start game
-        int turn;
-        Move* move = mPlayerA->firstPlay();
-        Player* player = mPlayerA;
+    int turn;
+    Move* move = mPlayerA->firstPlay();
+    Player* player = mPlayerA;
+
+    if (move->z < dimension && move->y < dimension &&
+            move->x < dimension && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) {
+        (*mBoard)[move->z][move->y][move->x] = mPlayerA->getPlayerType();
+    } else {
+        cerr << "Player returned invalid position (z,y,x): ["
+             << move->z << "," << move->y << "," << move->x << "]\n";
+    }
+    cin.sync();
+    mUi->refresh(*mBoard,*move, true);
+
+
+    for (turn = 1;
+            goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
+            && turn < (dimension*dimension*dimension)
+            ; turn++) {
+
+        if (turn%2)
+            player = mPlayerB;
+        else
+            player = mPlayerA;
+
+        move = player->play(*mBoard,*move);
 
         if (move->z < dimension && move->y < dimension &&
                 move->x < dimension && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) {
-            (*mBoard)[move->z][move->y][move->x] = mPlayerA->getPlayerType();
+            (*mBoard)[move->z][move->y][move->x] = player->getPlayerType();
         } else {
             cerr << "Player returned invalid position (z,y,x): ["
-            << move->z << "," << move->y << "," << move->x << "]\n";
+                 << move->z << "," << move->y << "," << move->x << "]\n";
         }
-        cin.sync();
         mUi->refresh(*mBoard,*move, true);
+    }
+    mUi->refresh(*mBoard,*move,true);
+    if (mUi->gameOver())
+        mStateManager.requestStateChange(GUI);
+    else
+        mStateManager.requestStateChange(SHUTDOWN);
+}
+
+Game::~Game()
+{
+    if ( mUi ) delete mUi;
+    //if ( mPlayerFactory ) delete mPlayerFactory; //and all players...
+    if ( mBoard ) delete mBoard;
+}
 
 
-        for (turn = 1;
-                goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
-                && turn < (dimension*dimension*dimension)
-                ; turn++) {
+PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
+{
+    Move directions[] = {
+        {1,0,0} , {0,1,0} , {0,0,1} ,
+        {1,1,0} , {1,0,1} , {0,1,1} ,
+        {1,-1,0}, {1,0,-1}, {0,1,-1},
+        {1,1,1} , {1,-1,1}, {-1,1,1}, {1,1,-1}
+    };
+    int n_directions = 13;
 
-            if (turn%2)
-                player = mPlayerB;
-            else
-                player = mPlayerA;
-
-            move = player->play(*mBoard,*move);
-
-            if (move->z < dimension && move->y < dimension &&
-                    move->x < dimension && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) {
-                (*mBoard)[move->z][move->y][move->x] = player->getPlayerType();
-            } else {
-                cerr << "Player returned invalid position (z,y,x): ["
-                << move->z << "," << move->y << "," << move->x << "]\n";
+    int dimension = mConfigManager.getDimension();
+    for (int i=0; i < n_directions; i++) {
+        bool invalid_direction = false;
+        Move new_pos;
+        new_pos.x = lastMove.x;
+        new_pos.y = lastMove.y;
+        new_pos.z = lastMove.z;
+        unsigned int n_pieces = 1;
+        //first subtract direction
+        while (true) {
+            new_pos -= directions[i];
+            if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
+                    new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
+                if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
+                    invalid_direction = true;
+                    break;
+                } else
+                    n_pieces++;
+            } else { //out of cube
+                break;
             }
-            mUi->refresh(*mBoard,*move, true);
         }
-        mUi->refresh(*mBoard,*move,true);
-        if(mUi->gameOver())
-            mStateManager.requestStateChange(GUI);
-        else
-            mStateManager.requestStateChange(SHUTDOWN);
-    }
+        if (invalid_direction) continue; //next direction, this is not a winner direction
 
-    Game::~Game() {
-        if ( mUi ) delete mUi;
-        //if ( mPlayerFactory ) delete mPlayerFactory; //and all players...
-        if ( mBoard ) delete mBoard;
-    }
-
-
-    PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type) {
-        Move directions[] = {
-            {1,0,0} , {0,1,0} , {0,0,1} ,
-            {1,1,0} , {1,0,1} , {0,1,1} ,
-            {1,-1,0}, {1,0,-1}, {0,1,-1},
-            {1,1,1} , {1,-1,1}, {-1,1,1}, {1,1,-1}
-        };
-        int n_directions = 13;
-
-        int dimension = mConfigManager.getDimension();
-        for (int i=0; i < n_directions; i++) {
-            bool invalid_direction = false;
-            Move new_pos;
-            new_pos.x = lastMove.x;
-            new_pos.y = lastMove.y;
-            new_pos.z = lastMove.z;
-            unsigned int n_pieces = 1;
-            //first subtract direction
-            while (true) {
-                new_pos -= directions[i];
-                if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-                        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
-                    if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
-                        invalid_direction = true;
-                        break;
-                    } else
-                        n_pieces++;
-                } else { //out of cube
+        //add direction to position until go out of cube
+        new_pos.x = lastMove.x;
+        new_pos.y = lastMove.y;
+        new_pos.z = lastMove.z;
+        while (true) {
+            new_pos += directions[i];
+            if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
+                    new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
+                if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
+                    invalid_direction = true;
                     break;
-                }
+                } else
+                    n_pieces++;
+            } else { //out of cube
+                break;
             }
-            if (invalid_direction) continue; //next direction, this is not a winner direction
-
-            //add direction to position until go out of cube
-            new_pos.x = lastMove.x;
-            new_pos.y = lastMove.y;
-            new_pos.z = lastMove.z;
-            while (true) {
-                new_pos += directions[i];
-                if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-                        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
-                    if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
-                        invalid_direction = true;
-                        break;
-                    } else
-                        n_pieces++;
-                } else { //out of cube
-                    break;
-                }
-            }
-            if (!invalid_direction && (int)n_pieces == dimension) {
-                //TODO: set member variable for winner direction(s) and point
+        }
+        if (!invalid_direction && (int)n_pieces == dimension) {
+            //TODO: set member variable for winner direction(s) and point
 #ifdef _trissa_debug_
-                cout << "Winner direction: ["
-                << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
-                cout << "Last position played: ["
-                << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
+            cout << "Winner direction: ["
+                 << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
+            cout << "Last position played: ["
+                 << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
 #endif // _trissa_debug_
-                return (player_type);
-            }
+            return (player_type);
         }
-        return PLAYER_BLANK;
-
     }
-    int main (int argc, char * argv[]) {
+    return PLAYER_BLANK;
 
-        trissa::Game game(argc, argv);
-        if ( game.mStateManager.getCurrentState() == SHUTDOWN ) {
-            return 0;
-        }
+}
+int main (int argc, char * argv[])
+{
 
-        game.load();
-        //GUI -> GAME STATE
-        while ( game.mStateManager.getCurrentState() != SHUTDOWN ) {
-
-            // run configurations (a.k.a Menus in 3D or some questions in text)
-            game.configure();
-            if ( game.mStateManager.getCurrentState() == GAME ) {
-                game.run();
-            }
-
-        }
-
+    trissa::Game game(argc, argv);
+    if ( game.mStateManager.getCurrentState() == SHUTDOWN ) {
         return 0;
     }
+
+    game.load();
+    //GUI -> GAME STATE
+    while ( game.mStateManager.getCurrentState() != SHUTDOWN ) {
+
+        // run configurations (a.k.a Menus in 3D or some questions in text)
+        game.configure();
+        if ( game.mStateManager.getCurrentState() == GAME ) {
+            game.run();
+        }
+
+    }
+
+    return 0;
+}
 
 
 }
 
-int main(int argc, char * argv[]) {
+int main(int argc, char * argv[])
+{
     return trissa::main(argc, argv);
 }
 
