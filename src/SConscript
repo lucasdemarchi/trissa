@@ -7,16 +7,57 @@ env = Environment(LIBS=['dl','boost_filesystem', 'boost_program_options'])
 #Help(vars.GenerateHelpText(env))
 
 debug = ARGUMENTS.get('debug', 0)
+ui3d = ARGUMENTS.get('ui3d', 0)
 if int(debug):
-	env['CCFLAGS'] = ['-g', '-D_trissa_debug_', '-Wall']
+	print 'Debug mode enabled'
+	env['CCFLAGS'] = ['-ggdb', '-pg', '-g3', '-D_trissa_debug_', '-Wall']
+	env['LINKFLAGS']+=['-pg']
 else:
+	print 'Release mode enabled'
 	env['CCFLAGS'] = ['-O3', '-Wall']
 
-
 env['LINKFLAGS']+=['-rdynamic']
-#env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc'], variables = vars)
+
+if int(ui3d):
+	env['CCFLAGS']+=['-DEXT_HASH']
+	#check Ogre3D stuff
+	## Got some fugly stuff ( || true ) in there to supress unreadable crashes, it
+	# ends up using the nicer formatted error messages below 
+	env.ParseConfig('pkg-config --silence-errors --libs --cflags OGRE || true')
+	env.ParseConfig('pkg-config --silence-errors --libs --cflags OIS || true')
+	env.ParseConfig('pkg-config --silence-errors --libs --cflags CEGUI-OGRE || true')
+	#env.ParseConfig('pkg-config --silence-errors --libs --cflags OgreOde_Core || true')
+	
+	# Get out current config so we can verify we have everything we need.
+	# There is an autoadd method here, but then we'd have to specify full paths for 
+	# the libs and headers, which is lame.
+	config = Configure(env)
+	
+	# Everyone needs OIS :)
+	if not config.CheckLibWithHeader('OIS', 'OISPrereqs.h', 'C++'):
+		print 'OIS must be installed to use UI3D!'
+		Exit(1)
+	
+	# this should work to get Ogre included
+	if not config.CheckLibWithHeader( 'OgreMain', 'Ogre.h', 'C++' ):
+		print "Ogre Must be installed to use UI3D!"
+		Exit(1)
+	
+	# Substitute with your GUI of choice
+	if not config.CheckLibWithHeader('CEGUIBase', 'CEGUI.h', 'C++'):
+		print "You need CEGUI to use UI3D"
+		Exit(1);
+	
+	if not config.CheckLibWithHeader('CEGUIOgreRenderer', 'OgreCEGUIRenderer.h', 'C++'):
+		print "You need OGRE-CEGUI to compile this program"
+		Exit(1);
+	
+	# Validate the configuration and assign it to our env
+	env = config.Finish(); 
+
 env.Program('trissa', ['Player.cc', 'PlayerFactory.cc', 'Game.cc', 'UI.cc', 'UIText.cc', \
                        'ConfigManager.cc', 'StateManager.cc'], variables = vars)
+
 
 #dict = env.Dictionary()
 #keys = dict.keys();

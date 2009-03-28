@@ -2,8 +2,8 @@
 #
 env = Environment(CPPPATH=['../'])
 
-debug = ARGUMENTS.get('debug', 0)
-if int(debug):
+debug = ARGUMENTS.get('debug', False)
+if debug == True:
 	env['CCFLAGS'] = ['-g', '-Wall', '-D_trissa_debug_']
 else:
 	env['CCFLAGS'] = ['-O3','-Wall']

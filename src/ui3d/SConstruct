@@ -1,0 +1,58 @@
+VariantDir('bin','src',duplicate=0)
+env = Environment()
+
+
+debug = ARGUMENTS.get('debug', 0)
+
+env['CCFLAGS'] += ['-Wall', '-Wmissing-include-dirs']
+#definitions
+env['CCFLAGS'] += ['-DEXT_HASH']
+if int(debug):
+	print 'Debug mode enabled'
+	env['CCFLAGS'] += ['-ggdb', '-pg', '-g3', '-D_trissa_debug_']
+	env['LINKFLAGS']+=['-pg']
+else:
+    print 'Release mode enabled'
+    #Optimization and Warnings
+    env['CCFLAGS'] +=  ['-O3', '-Wuninitialized', '-Winit-self']
+    #Include dirs
+    env['CCFLAGS'] += ['-I/usr/share/OGRE/Samples/Common/include']
+
+#check Ogre3D stuff
+#Got some fugly stuff ( || true ) in there to supress unreadable crashes, it
+#ends up using the nicer formatted error messages below
+env.ParseConfig('pkg-config --silence-errors --libs --cflags OGRE || true')
+env.ParseConfig('pkg-config --silence-errors --libs --cflags OIS || true')
+env.ParseConfig('pkg-config --silence-errors --libs --cflags CEGUI-OGRE || true')
+#env.ParseConfig('pkg-config --silence-errors --libs --cflags OgreOde_Core || true')
+
+# Get out current config so we can verify we have everything we need.
+# There is an autoadd method here, but then we'd have to specify full paths for
+# the libs and headers, which is lame.
+config = Configure(env)
+
+# Everyone needs OIS :)
+if not config.CheckLibWithHeader('OIS', 'OISPrereqs.h', 'C++'):
+	print 'OIS must be installed!'
+	Exit(1)
+
+# this should work to get Ogre included
+if not config.CheckLibWithHeader( 'OgreMain', 'Ogre.h', 'C++' ):
+	print "Ogre Must be installed!"
+	Exit(1)
+
+# Substitute with your GUI of choice
+if not config.CheckLibWithHeader('CEGUIBase', 'CEGUI.h', 'C++'):
+	print "You need CEGUI to compile this program"
+	Exit(1);
+
+if not config.CheckLibWithHeader('CEGUIOgreRenderer', 'OgreCEGUIRenderer.h', 'C++'):
+	print "You need OGRE-CEGUI to compile this program"
+	Exit(1);
+
+# Validate the configuration and assign it to our env
+env = config.Finish();
+
+env.Program('bin/ui3d', ['bin/ui3d.cc', 'bin/StateManager.cc', \
+                        'bin/InputHandler.cc', 'bin/InputHandlerGui.cc', 'bin/InputHandlerGame.cc' , \
+                        'bin/Menu.cc', 'bin/MainMenu.cc', 'bin/SettingsMenu.cc'])
