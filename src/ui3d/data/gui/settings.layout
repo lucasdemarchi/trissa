@@ -4,12 +4,21 @@
         <Property Name="UnifiedAreaRect" Value="{{0.0,0},{0.0,0},{1.0,0},{1.0,0}}" />
         <Property Name="FrameEnabled" Value="false" />
         <Property Name="TitlebarEnabled" Value="false" />
-        <Property Name="CloseButtonEnabled" Value="False" />
+	<Property Name="CloseButtonEnabled" Value="False" />
+	<Window Type="QuadraticLook/StaticImage" Name="Background2" >
+            <Property Name="UnifiedAreaRect" Value="{{0.000000,0.000000},{0.000000,0.000000},{1.000000,0.000000},{1.000000,0.000000}}" />
+            <Property Name="UnifiedMaxSize" Value="{{1.000000,0.000000},{1.000000,0.000000}}" />
+            <Property Name="Image" Value="set:Background image:Background" />
+        </Window>
         <Window Type="QuadraticLook/FrameWindow" Name="frameOptions">
             <Property Name="UnifiedAreaRect" Value="{{0.25,0},{0.3,0},{0.8,0},{0.7,0}}" />
-            <Property Name="FrameEnabled" Value="true" />
+            <Property Name="FrameEnabled" Value="false" />
             <Property Name="TitlebarEnabled" Value="true" />
-            <Property Name="CloseButtonEnabled" Value="False" />
+	    <Property Name="CloseButtonEnabled" Value="false" />
+	    <Property Name="DragMovingEnabled" Value="false" />
+	    <Property Name="AlwaysOnTop" Value="true" />
+	    <Property Name="InheritsAlpha" Value="false" />
+	    <Property Name="Alpha" Value="1" />
             <Property Name="Text" Value="Trissa 3D - Game Options" />
             <Window Type="QuadraticLook/StaticText" Name="labelDimension">
                 <Property Name="Text" Value="Dimension:" />

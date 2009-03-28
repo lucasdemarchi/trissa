@@ -27,4 +27,5 @@
 	<Image Name = "RadioButtonNormal" XPos = "4" YPos = "127" Width = "12" Height = "12" />
 	<Image Name = "RadioButtonMark_hover" XPos = "4" YPos = "155" Width = "12" Height = "12" />
 	<Image Name = "RadioButtonMark" XPos = "4" YPos = "141" Width = "12" Height = "12" />
+	<Image Name = "WindowBack" XPos = "1" YPos = "42" Width = "1" Hight = "1" />
 </Imageset> 

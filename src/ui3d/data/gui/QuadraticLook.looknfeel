@@ -7,8 +7,8 @@
 	***************************************************
 	-->
 	<WidgetLook name = "QuadraticLook/Button">
-		<PropertyDefinition name = "NormalTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
-		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
+		<PropertyDefinition name = "NormalTextColour" initialValue = "FF0000FF" redrawOnWrite = "true" />
+		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFF0000" redrawOnWrite = "true" />
 		<PropertyDefinition name = "PushedTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
         	<PropertyDefinition name = "DisabledTextColour" initialValue = "FF7F7F7F" redrawOnWrite = "true" />
 		<Property name = "WantsMultiClickEvents" value = "False" />
@@ -22,7 +22,7 @@
 		<PropertyDefinition name = "VertImageFormatting" initialValue = "CentreAligned" redrawOnWrite = "true" />
 		<PropertyDefinition name = "HorzImageFormatting" initialValue = "CentreAligned" redrawOnWrite = "true" />
 		<PropertyDefinition name = "EnableBackdrop" initialValue = "0" redrawOnWrite = "true" />
-		<PropertyDefinition name = "EnableBorder" initialValue="1" redrawOnWrite = "true" />
+		<PropertyDefinition name = "EnableBorder" initialValue="0" redrawOnWrite = "true" />
 		<ImagerySection name = "normal">
 			<FrameComponent>
 				<Area>
@@ -42,7 +42,7 @@
 					<Dim type = "Height">
 						<UnifiedDim scale = "1" type = "Height">
 							<DimOperator op = "Multiply">
-								<PropertyDim name = "EnableBackdrop" />
+								<PropertyDim name = "EnableBorder" />
 							</DimOperator>
 						</UnifiedDim>
 					</Dim>
@@ -105,11 +105,19 @@
 					<Dim type = "TopEdge">
 						<AbsoluteDim value = "0" />
 					</Dim>
-					<Dim type = "RightEdge">
-						<UnifiedDim scale = "1" offset = "0" type = "RightEdge" />
+					<Dim type = "Width">
+						<UnifiedDim scale = "1" type = "Width">
+							<DimOperator op = "Multiply">
+								<PropertyDim name = "EnableBorder" />
+							</DimOperator>
+						</UnifiedDim>
 					</Dim>
-					<Dim type = "BottomEdge">
-						<UnifiedDim scale = "1" offset = "0" type = "BottomEdge" />
+					<Dim type = "Height">
+						<UnifiedDim scale = "1" type = "Height">
+							<DimOperator op = "Multiply">
+								<PropertyDim name = "EnableBorder" />
+							</DimOperator>
+						</UnifiedDim>
 					</Dim>
 				</Area>
 				<Image type = "TopLeftCorner" imageset = "QuadraticLook" image = "Border" />
@@ -120,7 +128,7 @@
 				<Image type = "RightEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "TopEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "BottomEdge" imageset = "QuadraticLook" image = "Border" />
-				<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_hover" />
+		<!--		<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_hover" /> -->
 				<VertFormat type = "Stretched" />
 				<HorzFormat type = "Stretched" />
 			</FrameComponent>
@@ -131,7 +139,8 @@
 					<Dim type = "Width" ><UnifiedDim scale = "1" type = "Width" /></Dim>
 					<Dim type = "Height" ><UnifiedDim scale = "1" type = "Height" /></Dim>
 				</Area>
-				<ImageProperty name = "HoverImage" />
+				<ImageProperty name = "NormalImage" />
+				<!--<ImageProperty name = "HoverImage" /> -->
 				<VertFormatProperty name = "VertImageFormatting" />
 				<HorzFormatProperty name = "HorzImageFormatting" />
             		</ImageryComponent>
@@ -145,11 +154,19 @@
 					<Dim type = "TopEdge">
 						<AbsoluteDim value = "0" />
 					</Dim>
-					<Dim type = "RightEdge">
-						<UnifiedDim scale = "1" offset = "0" type = "RightEdge" />
+					<Dim type = "Width">
+						<UnifiedDim scale = "1" type = "Width">
+							<DimOperator op = "Multiply">
+								<PropertyDim name = "EnableBorder" />
+							</DimOperator>
+						</UnifiedDim>
 					</Dim>
-					<Dim type = "BottomEdge">
-						<UnifiedDim scale = "1" offset = "0" type = "BottomEdge" />
+					<Dim type = "Height">
+						<UnifiedDim scale = "1" type = "Height">
+							<DimOperator op = "Multiply">
+								<PropertyDim name = "EnableBorder" />
+							</DimOperator>
+						</UnifiedDim>
 					</Dim>
 				</Area>
 				<Image type = "TopLeftCorner" imageset = "QuadraticLook" image = "Border" />
@@ -160,10 +177,12 @@
 				<Image type = "RightEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "TopEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "BottomEdge" imageset = "QuadraticLook" image = "Border" />
-				<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_hover" />
+				<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_normal" />
+				<!--<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_hover" />-->
 				<VertFormat type = "Stretched" />
 				<HorzFormat type = "Stretched" />
 			</FrameComponent>
+
 			<ImageryComponent>
 				<Area>
 					<Dim type = "LeftEdge" ><AbsoluteDim value = "0" /></Dim>
@@ -3587,7 +3606,8 @@
 				<Image type = "LeftEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "RightEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "BottomEdge" imageset = "QuadraticLook" image = "Border" />
-				<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_filled" />
+				<!--	<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_filled" /> -->
+				<Image type = "Background" imageset = "QuadraticLook" image = "WindowBack" /> 			
 				<VertFormat type = "Stretched" />
 				<HorzFormat type = "Stretched" />
 			</FrameComponent>
@@ -3615,7 +3635,8 @@
 				<Image type = "LeftEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "RightEdge" imageset = "QuadraticLook" image = "Border" />
 				<Image type = "BottomEdge" imageset = "QuadraticLook" image = "Border" />
-				<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_filled" />
+				<!--	<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_filled" /> -->
+				<Image type = "Background" imageset = "QuadraticLook" image = "WindowBack" /> 			
 				<VertFormat type = "Stretched" />
 				<HorzFormat type = "Stretched" />
 			</FrameComponent>
@@ -3636,7 +3657,8 @@
 						<UnifiedDim scale = "1" type = "BottomEdge" />
 					</Dim>
 				</Area>
-				<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_filled" />
+				<!--	<Image type = "Background" imageset = "QuadraticLook" image = "ButtonBG_filled" /> -->
+				<Image type = "Background" imageset = "QuadraticLook" image = "WindowBack" /> 
 				<VertFormat type = "Stretched" />
 				<HorzFormat type = "Stretched" />
 			</ImageryComponent>

@@ -4,12 +4,12 @@
         <Property Name="UnifiedAreaRect" Value="{{0.0,0},{0.0,0},{1.0,0},{1.0,0}}" />
         <Property Name="FrameEnabled" Value="false" />
         <Property Name="TitlebarEnabled" Value="false" />
-        <Property Name="CloseButtonEnabled" Value="False" />
-        <Window Type="QuadraticLook/StaticImage" Name="Background" >
+	<Property Name="CloseButtonEnabled" Value="False" />
+	<Window Type="QuadraticLook/StaticImage" Name="Background" >
             <Property Name="UnifiedAreaRect" Value="{{0.000000,0.000000},{0.000000,0.000000},{1.000000,0.000000},{1.000000,0.000000}}" />
             <Property Name="UnifiedMaxSize" Value="{{1.000000,0.000000},{1.000000,0.000000}}" />
             <Property Name="Image" Value="set:Background image:Background" />
-        </Window>
+	</Window>
         <Window Type="QuadraticLook/Button" Name="cmdPlay">
             <Property Name="Text" Value="Play" />
             <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.25,0},{0.9,0},{0.35,0}}" />
