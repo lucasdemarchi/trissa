@@ -162,8 +162,11 @@ void UIText::refresh(Cube const& board, Move const& lastMove, bool wait)
     string s;
     this->refresh(board, lastMove);
     if (wait) {
-        cin.ignore(1,'\n');
         cout << "Press [ENTER] to get next move" << endl;
+        if(cin.fail()){
+            cin.clear();
+            std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
+        }
         getline(cin,s);
     }
 }
