@@ -139,6 +139,11 @@ void Game::run()
         }
         if(retry)
             (*mBoard)[move->z][move->y][move->x] = player_type;
+        else {
+            cerr << "Player \'" << player->getName() << "\' returned an invalid position for more than" << n_retry
+                 << "times. Please fix your algorithm before trying to play. The other player is proclaimed winner";
+            break;
+        }
     }
     mUi->refresh(*mBoard,*move,false);
     if (mUi->gameOver())
