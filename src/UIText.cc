@@ -183,10 +183,13 @@ void UIText::setPos(Move m, PlayerType player)
 
 }
 
-Move UIText::getUserInput(){
+Move UIText::getUserInput()
+{
     Move m(0,0,0);
     cout << "Enter position to play separated by spaces (z y x): ";
-    cin >> m.z; cin >> m.y; cin >> m.x;
+    cin >> m.z;
+    cin >> m.y;
+    cin >> m.x;
     return m;
 }
 

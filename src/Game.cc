@@ -124,7 +124,7 @@ void Game::run()
             player = mPlayerA;
 
         mUi->refresh(*mBoard,*move, true);
-    
+
         move = player->play(*mBoard,*move);
 
         if (move->z < dimension && move->y < dimension &&

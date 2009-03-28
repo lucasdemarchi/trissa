@@ -10,18 +10,18 @@ public:
     static char* name;
 
     HumanPlayer(int dimension, trissa::PlayerType my_player, trissa::UIInputOutput* ui) :
-        trissa::Player(dimension, my_player, ui),
-        next_move(0,0,0) {
+            trissa::Player(dimension, my_player, ui),
+            next_move(0,0,0) {
 
     }
-    ~HumanPlayer(){
+    ~HumanPlayer() {
     }
-    
+
     trissa::Move* play(trissa::Cube const& board, trissa::Move const& opponentMove) {
         next_move = ui->getUserInput();
         return &next_move;
     }
-    trissa::Move* firstPlay(){
+    trissa::Move* firstPlay() {
         next_move = ui->getUserInput();
         return &next_move;
     }
