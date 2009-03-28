@@ -82,7 +82,7 @@ public:
     /** Set Player's path
       * @remarks Destroy all currently instantiated players, close all dynamic libraries and search for libraries in
       * path
-      * @param Path to location where to look for dynamic libraries, i.e. players. Attention that is not checked if
+      * @param path to location where to look for dynamic libraries, i.e. players. Attention that is not checked if
       * current path is the same that was already loaded
       */
     void setPlayersPath(std::string path);

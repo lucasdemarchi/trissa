@@ -66,6 +66,7 @@ public:
       * @param player_name The Player to be created
       * @param dimension The dimension of the game to be passed to player (just to check if it can play in this board)
       * @param player_type Cross or Circle
+      * @param ui Interface of player with UI
       */
     Player * create_player (std::string player_name, int dimension, PlayerType player_type, UIInputOutput* ui);
 

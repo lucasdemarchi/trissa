@@ -62,6 +62,7 @@ public:
     /** Constructor
       * @param dimension Desired dimension of game
       * @param player_type
+      * @param ui Interface of UI
       * @throw PlayerException with <i>idException</i> = BOARD_NOT_KNOWN if implementation
       * of this Player does not know how to play in this dimension
       */
