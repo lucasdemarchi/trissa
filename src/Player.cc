@@ -58,6 +58,10 @@ Player::Player(unsigned int dimension, PlayerType player_type, UIInputOutput* ui
 {
 }
 
+void Player::signalInvalidPosition()
+{
+}
+
 Player::~Player()
 {
 }

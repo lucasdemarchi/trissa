@@ -117,24 +117,28 @@ void Game::run()
             goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
             && turn < (dimension*dimension*dimension)
             ; turn++) {
-
-        if (turn%2)
+        PlayerType player_type ;
+        if (turn%2){
             player = mPlayerB;
-        else
+            player_type = PLAYER_CIRCLE;
+        }else{
             player = mPlayerA;
-
-        mUi->refresh(*mBoard,*move, true);
-
-        move = player->play(*mBoard,*move);
-
-        if (move->z < dimension && move->y < dimension &&
-                move->x < dimension && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) {
-            (*mBoard)[move->z][move->y][move->x] = player->getPlayerType();
-        } else {
-            cerr << "Player returned invalid position (z,y,x): ["
-                 << move->z << "," << move->y << "," << move->x << "]\n";
-            --turn;
+            player_type = PLAYER_CROSS;
         }
+        mUi->refresh(*mBoard,*move, true);
+        
+        int retry = n_retry;
+        for(move = player->play(*mBoard,*move);
+            !(move->z < dimension && move->y < dimension && move->x < dimension  //Move is inside the board
+            && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) && retry;   //It's a free position
+            move = player->play(*mBoard,*move))                                  //Continue playing
+        {
+                cerr << "Player returned invalid position (z,y,x): ["
+                    << move->z << "," << move->y << "," << move->x << "]\n";
+                cerr << "This is probably a bug in Player's algorithm\n";
+        }
+        if(retry)
+            (*mBoard)[move->z][move->y][move->x] = player_type;
     }
     mUi->refresh(*mBoard,*move,false);
     if (mUi->gameOver())
@@ -213,6 +217,8 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
     return PLAYER_BLANK;
 
 }
+const int Game::n_retry = 3;
+
 int main (int argc, char * argv[])
 {
 

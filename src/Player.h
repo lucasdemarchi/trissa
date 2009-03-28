@@ -100,6 +100,8 @@ public:
       *
       */
     PlayerType getPlayerType() const;
+    
+    virtual void signalInvalidPosition();
 protected:
     unsigned int dimension; /**< Dimension of game*/
     /** Player type, i.e. <em>Cross</em> or <em>Circle</em>

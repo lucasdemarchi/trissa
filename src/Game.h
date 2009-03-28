@@ -62,6 +62,7 @@ private:
     PlayerFactory mPlayerFactory;
     ConfigManager mConfigManager;
     StateManager mStateManager;
+    static const int n_retry; /**< Number of chances to give a player when it previously returned an invalid position */
 };
 
 }
