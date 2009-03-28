@@ -1,0 +1,89 @@
+# -*- coding: utf-8 -*-
+import os
+import sys
+import string
+import re
+import SCons
+
+version='0.9'
+try:
+    f = open("subversion", 'r')
+    subversion = f.readline().strip()
+    f.close()
+except:
+    subversion = '0'
+
+def create_new_version(autoversion):
+    if autoversion == 'auto':
+        f = open('subversion', 'w')
+        s = str(int(subversion) + 1) + '\n'
+        f.write(s)
+        f.close()
+        return version + '.' + s
+    elif autoversion == 'keepold':
+        return version + '.' + subversion
+    else:
+        return version
+
+#Taken from Gazebo
+def optimize_for_cpu(env):
+    cpuAtr = ['mmx', 'sse', 'sse2', 'sse3', '3dnow']
+    line_atr =""
+    if (os.path.isfile("/proc/cpuinfo")):
+        f_proc = open("/proc/cpuinfo")
+        for line in f_proc:
+            if (re.match('flags', line)):
+                for atr in cpuAtr:
+                    if (re.search(atr, line) and not re.search(atr, line_atr)):
+                        line_atr+= "-m" + atr + " "
+    env['CCFLAGS'] += Split (line_atr)
+    print "detected CPU atributes: " +line_atr
+
+
+def CheckPkgConfig(context, version):
+    context.Message( 'Checking for pkg-config... ' )
+    ret = context.TryAction('pkg-config --atleast-pkgconfig-version=%s' % version)[0]
+    context.Result( ret )
+    return ret
+
+def CheckPkg(context, name):
+    context.Message( 'Checking for %s...' % name)
+    pkg_config_cmd = "pkg-config"
+    if os.environ.has_key("PKG_CONFIG_PATH"):
+        pkg_config_cmd = "PKG_CONFIG_PATH=" + os.environ["PKG_CONFIG_PATH"] + " pkg-config"
+    action = '%s --exists \'%s\'' % (pkg_config_cmd, name);
+
+    ret = context.TryAction(action)[0]
+    context.Result(ret)
+    return ret
+
+
+def Config(env, packages):
+    conf = Configure(env, custom_tests = {  'CheckPkgConfig' : CheckPkgConfig,
+                                            'CheckPkg' : CheckPkg })
+    if not conf.CheckPkgConfig(PKG_CONFIG_VERSION):
+        print '  Error: pkg-config version >= ' + PKG_CONFIG_VERSION + ' not found.'
+        Exit(1)
+    
+    for key in packages:
+        check = packages[key]['check']
+        libcheck = packages[key]['libcheck']
+        headercheck = packages[key]['headercheck']
+        msg = packages[key]['msg']
+        web = packages[key]['web']
+        if not conf.CheckPkg(key):
+            print '  !!' + msg + key + ' not found.'
+            print '  See: ' + web
+            Exit(1)
+        else:
+            try:
+                env.ParseConfig('pkg-config --libs --cflags ' + key)
+            except:
+                print 'no'
+                print 'Unable to parse config file'
+                Exit(1)
+            if not conf.CheckLibWithHeader(libcheck, headercheck, 'C++'):
+                print 'Unable to link to lib or find required header'
+                Exit(1)
+    
+    env = conf.Finish()

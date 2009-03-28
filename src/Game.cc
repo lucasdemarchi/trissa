@@ -201,12 +201,12 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
         }
         if (!invalid_direction && (int)n_pieces == dimension) {
             //TODO: set member variable for winner direction(s) and point
-#ifdef _trissa_debug_
+#ifdef _TRISSA_DEBUG_
             cout << "Winner direction: ["
                  << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
             cout << "Last position played: ["
                  << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
-#endif // _trissa_debug_
+#endif // _TRISSA_DEBUG_
             return (player_type);
         }
     }

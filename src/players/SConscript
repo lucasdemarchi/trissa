@@ -1,13 +1,5 @@
-#VariantDir('build', 'src')
-#
-env = Environment(CPPPATH=['../'])
-
-debug = ARGUMENTS.get('debug', False)
-if debug == True:
-	env['CCFLAGS'] = ['-g', '-Wall', '-D_trissa_debug_']
-else:
-	env['CCFLAGS'] = ['-O3','-Wall']
-
-env.SharedLibrary(['RandomPlayer.cc'], variables = vars)
-env.SharedLibrary(['MinmaxPlayer.cc'], variables = vars)
-env.SharedLibrary(['HumanPlayer.cc'], variables = vars)
+Import('*')
+VariantDir('#build/players/','.',duplicate=0)
+sharedobjs.append(env.SharedLibrary(['#build/players/RandomPlayer.cc'], variables = opts))
+sharedobjs.append(env.SharedLibrary(['#build/players/MinmaxPlayer.cc'], variables = opts))
+sharedobjs.append(env.SharedLibrary(['#build/players/HumanPlayer.cc'], variables = opts))

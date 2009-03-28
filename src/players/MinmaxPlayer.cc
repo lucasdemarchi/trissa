@@ -47,7 +47,7 @@ public:
         //update our copy of board
         (*my_board)[opponentMove.z][opponentMove.y][opponentMove.x] = other_player;
 
-#ifdef _trissa_debug_
+#ifdef _TRISSA_DEBUG_
         int r = maximize(depth,-INF,INF, player_type, NULL);
         cout << "Ret: " << r << endl;
 #else
@@ -144,7 +144,7 @@ private:
                                 next_move.z = k;
                             }
                         }
-#ifdef _trissa_debug_
+#ifdef _TRISSA_DEBUG_
                         if (depth == this->depth) {
                             cout << "[MINMAX] Son: [" << k << "," << j << "," << i <<"]" << endl << endl;
                         }
@@ -163,7 +163,7 @@ private:
     int minimize(unsigned int depth, int alpha, int beta, trissa::PlayerType player, trissa::Move const* lastMove) {
         if (depth == 0 || (lastMove != NULL && goalTest(*lastMove))) {
             int r = eval();
-#ifdef _trissa_debug_
+#ifdef _TRISSA_DEBUG_
             cout << "[MINIMAX] mine: ";
             for (unsigned int i=0; i <= dimension; i++)
                 cout << boardEval.mine[i] << " | ";
