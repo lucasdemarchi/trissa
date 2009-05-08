@@ -126,7 +126,7 @@ void Game::run()
             player_type = PLAYER_CROSS;
         }
         mUi->refresh(*mBoard,*move, true);
-        
+
         int retry = n_retry;
         for(move = player->play(*mBoard,*move);
             !(move->z < dimension && move->y < dimension && move->x < dimension  //Move is inside the board
@@ -136,12 +136,13 @@ void Game::run()
                 cerr << "Player returned invalid position (z,y,x): ["
                     << move->z << "," << move->y << "," << move->x << "]\n";
                 cerr << "This is probably a bug in Player's algorithm\n";
+                retry--;
         }
         if(retry)
             (*mBoard)[move->z][move->y][move->x] = player_type;
         else {
-            cerr << "Player \'" << player->getName() << "\' returned an invalid position for more than" << n_retry
-                 << "times. Please fix your algorithm before trying to play. The other player is proclaimed winner";
+            cerr << "Player \'" << player->getName() << "\' returned an invalid position for more than " << n_retry
+                 << "times.\nPlease fix your algorithm before trying to play. The other player is proclaimed winner";
             break;
         }
     }
