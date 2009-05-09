@@ -41,18 +41,20 @@ class ConfigManager;
 
 class Game
 {
-    friend int main (int argc, char * argv[]);
+    //friend int main (int argc, char * argv[]);
 public:
     //Game();
     Game(int argc, char *argv[]);
     /** Abc
       *
       */
+    int startGame();
+    ~Game();
+private:
     void load();
     void configure();
     void run();
-    ~Game();
-private:
+
     //PlayerType goalTest() const;
     PlayerType goalTest(Move const& lastMove, PlayerType player_type);
     Player* mPlayerA;

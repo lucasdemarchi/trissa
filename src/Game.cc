@@ -56,6 +56,27 @@ Game::Game(int argc, char *argv[]) :
     mStateManager.requestStateChange(LOADING);
 
 }
+
+int Game::startGame(){
+
+    if ( this->mStateManager.getCurrentState() == SHUTDOWN ) {
+        return 0;
+    }
+
+    this->load();
+    //GUI -> GAME STATE
+    while ( this->mStateManager.getCurrentState() != SHUTDOWN ) {
+
+        // run configurations (a.k.a Menus in 3D or some questions in text)
+        this->configure();
+        if ( this->mStateManager.getCurrentState() == GAME ) {
+            this->run();
+        }
+
+    }
+
+    return 0;
+}
 void Game::load()
 {
 
@@ -225,35 +246,11 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 }
 const int Game::n_retry = 3;
 
-int main (int argc, char * argv[])
-{
-
-    trissa::Game game(argc, argv);
-    if ( game.mStateManager.getCurrentState() == SHUTDOWN ) {
-        return 0;
-    }
-
-    game.load();
-    //GUI -> GAME STATE
-    while ( game.mStateManager.getCurrentState() != SHUTDOWN ) {
-
-        // run configurations (a.k.a Menus in 3D or some questions in text)
-        game.configure();
-        if ( game.mStateManager.getCurrentState() == GAME ) {
-            game.run();
-        }
-
-    }
-
-    return 0;
-}
-
 
 }
 
 int main(int argc, char * argv[])
 {
-    return trissa::main(argc, argv);
+    trissa::Game game(argc, argv);
+    return game.startGame();
 }
-
-
