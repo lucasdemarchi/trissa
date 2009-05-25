@@ -87,3 +87,8 @@ def Config(env, packages):
                 Exit(1)
     
     env = conf.Finish()
+
+def GenerateTags():    
+    os.system('ctags -R --c++-kinds=+p --fields=+iaS --extra=+q src/')
+
+

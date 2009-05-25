@@ -53,7 +53,7 @@ if 'help' in COMMAND_LINE_TARGETS:
     print opts.GenerateHelpText(env)
     Exit(0)
 
-if not env.GetOption('clean'):
+if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS:
     version = create_new_version(env['version'])
 
 print 'Trissa ' + version
@@ -135,6 +135,11 @@ for subdir in subdirs:
     SConscript('%s/SConscript' % subdir)
 
 print ''
+
+if 'tags' in COMMAND_LINE_TARGETS:
+    print 'Making ctags...'
+    GenerateTags()
+    Exit(0)
 
 if not 'configure' in COMMAND_LINE_TARGETS:
     #VariantDir('build','src')
