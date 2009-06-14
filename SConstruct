@@ -6,6 +6,7 @@ exec(open('custom.py'))
 
 PKG_CONFIG_VERSION='0.22'
 OGRE_VERSION='>=1.6.0'
+BOOST_VERSION='1.3.0'
 
 ###################
 # Setup the Options
@@ -118,9 +119,16 @@ if 'players' in COMMAND_LINE_TARGETS:
 else:
     subdirs = ['src','src/players']
     if env['enable_ui3d']:
-        env['CCFLAGS']+=['-DEXT_HASH']
+        env['CCFLAGS']+=['-DEXT_HASH', '-D_TRISSA_UI3D_']
         if not env.GetOption('clean'):
             Config(env, packages_ui3d)
+
+#Boost is needed by players, ui3d and core:
+if not env.GetOption('clean'):
+    conf = Configure(env, custom_tests = { 'CheckBoost' : CheckBoost })
+    if not (conf.CheckBoost(BOOST_VERSION)):
+        print 'Boost version >=' + BOOST_VERSION + ' is needed'
+        Exit(1)
 
 headers=[]
 objs=[]
