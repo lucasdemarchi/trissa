@@ -87,10 +87,23 @@ void ConfigManager::printUsage() const
     cout << "Usage: trissa [options] " << endl << endl << mCommandLine << endl;
 }
 
+ConfigManager::UI_OPTIONS ConfigManager::getUIType() const
+{
+    std::string ui = mOptionsMap["ui"].as<std::string>();
+    if(ui == "text")
+        return UI_TEXT;
+#ifdef _TRISSA_UI3D_
+    else if (ui == "3d" || ui == "3D")
+        return UI_3D;
+#endif
+    return UI_UNAVAILABLE;
+}
+
 unsigned int ConfigManager::getDimension() const
 {
     return mDimension;
 }
+
 void ConfigManager::setDimension(unsigned int dimension)
 {
     mDimension = dimension;
@@ -143,10 +156,11 @@ void ConfigManager::setAvailableOptions()
     ("path,p", po::value<std::string>()->default_value(DEFAULT_PLAYERS_PATH), "Path to search for Player's implementations."
      "This option overrides path from configuration file ")
     ("dimension,d", po::value<unsigned int>(), "Game's dimension. This option overrides that from configuration file")
-    ("ui,u", po::value<std::string>()->default_value("text"), "Only text interface available yet. "
-     "Configuration is here for future use");
-    ;
-
+#ifdef _TRISSA_UI3D_    
+    ("ui,u", po::value<std::string>()->default_value(DEFAULT_UI), "Available interfaces: Text ('text' option) and 3D ('ui3d' option)");
+#else
+    ("ui,u", po::value<std::string>()->default_value(DEFAULT_UI), "Available interfaces: Text ('text' option)");
+#endif
     mConfigFile.add_options()
     ("selectedA", po::value<std::string>()->default_value(""), "Selected player A. Must be the same name exported by one"
      "of the player in players' path")

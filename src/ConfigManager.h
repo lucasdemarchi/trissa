@@ -42,6 +42,14 @@ public:
     static const char * DEFAULT_UI; /**< Default UI to be used when there's no configuration about it */
     static const char * DEFAULT_CONFIG_FILE; /**< Default config file to be used when not specified in command line */
     static const char * DEFAULT_PLAYERS_PATH; /**< Default path where to look for Players classes */
+    
+    enum UI_OPTIONS {
+        UI_UNAVAILABLE = -1,
+        UI_TEXT,
+#ifdef _TRISSA_UI3D_
+        UI_3D
+#endif
+    };
 
     /** Constructor
       * @param argc Parameter <i>argc</i> received from main, which must be passed to this class in order to parse command line
@@ -65,6 +73,11 @@ public:
     void printUsage() const;
 
     //Getters and setters
+    /** Get type of game's UI
+      * @return a const defined at enum UI_OPTIONS
+      */
+    UI_OPTIONS getUIType() const;
+    
     /** Get dimension of game
       * @return Dimension
       */

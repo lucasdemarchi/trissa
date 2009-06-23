@@ -38,6 +38,7 @@ namespace trissa
 Game::Game(int argc, char *argv[]) :
         mBoard( 0 ),
         mUi( 0 ),
+        mPlayerFactory(),
         mConfigManager ( argc, argv ),
         mStateManager(STARTUP)
 {
@@ -62,8 +63,12 @@ int Game::startGame(){
     if ( this->mStateManager.getCurrentState() == SHUTDOWN ) {
         return 0;
     }
-
-    this->load();
+    
+    //LOADING -> GUI
+    if(this->load() < 0)
+        return -1;  // error: it was not possible to load
+                    // required gui
+    
     //GUI -> GAME STATE
     while ( this->mStateManager.getCurrentState() != SHUTDOWN ) {
 
@@ -77,25 +82,35 @@ int Game::startGame(){
 
     return 0;
 }
-void Game::load()
+int Game::load()
 {
 
     //attach and load Player libraries
     mConfigManager.attachPlayerFactory(&mPlayerFactory);
 
-    //TODO: verify in ConfigManager if requested UI is 3D or not and load specified UI
-    mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
+    //Create the UI based on the parameter got through ConfigManager
+#ifdef _TRISSA_UI3D_
+    if(mConfigManager.getUIType() == ConfigManager::UI_3D)
+        //mUi = new UI3d(&ConfigManager, &mStateManager, &mPlayerFactory)
+        return -1;
+    else
+#endif
+    if (mConfigManager.getUIType() == ConfigManager::UI_TEXT)
+        mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
+    else
+        return -1;
 
     if ( mStateManager.getCurrentState() != GUI ) {
         //Probably an error loading resources.
         //TODO: write it to log
         if ( mStateManager.requestStateChange( SHUTDOWN ) )
-            return;
+            return -3;
         else {
             //TODO: write this bug to log
-            return;
+            return -2;
         }
     }
+    return 0;
 }
 
 void Game::configure()

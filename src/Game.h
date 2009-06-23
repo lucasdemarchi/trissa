@@ -51,7 +51,7 @@ public:
     int startGame();
     ~Game();
 private:
-    void load();
+    int load();
     void configure();
     void run();
 
