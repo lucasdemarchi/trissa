@@ -35,54 +35,54 @@ class Player;
   *
   */
 typedef struct Player_details {
-    function_creator_ptr player_creator_ptr; /**< Pointer to a function that creates a new player*/
-    void * dlib; /** Pointer to dynamic lybrary loaded*/
+	function_creator_ptr player_creator_ptr; /**< Pointer to a function that creates a new player*/
+	void * dlib; /** Pointer to dynamic lybrary loaded*/
 } Player_details;
 
 class PlayerFactory
 {
 public:
 
-    /** Constructor
-      * @remarks A call to loadPlayerLibraries need to be made before trying to create players
-      */
-    PlayerFactory();
-    /** Constructor
-      * @remarks Automatically load Player's libraries at path
-      * @param path The path where to look for players
-      */
-    PlayerFactory(std::string path);
+	/** Constructor
+	  * @remarks A call to loadPlayerLibraries need to be made before trying to create players
+	  */
+	PlayerFactory();
+	/** Constructor
+	  * @remarks Automatically load Player's libraries at path
+	  * @param path The path where to look for players
+	  */
+	PlayerFactory(std::string path);
 
-    /** Destructor
-      * @remarks Call unloadPlayerLibraries and close all dynamic libraries
-      */
-    ~PlayerFactory();
+	/** Destructor
+	  * @remarks Call unloadPlayerLibraries and close all dynamic libraries
+	  */
+	~PlayerFactory();
 
-    void loadPlayerLibraries(std::string path);
-    void unloadPlayerLibraries();
+	void loadPlayerLibraries(std::string path);
+	void unloadPlayerLibraries();
 
-    /** Factory function
-      * @remarks It creates a player using function pointer player_creator_ptr of the player specified by player_name
-      * @param player_name The Player to be created
-      * @param dimension The dimension of the game to be passed to player (just to check if it can play in this board)
-      * @param player_type Cross or Circle
-      * @param ui Interface of player with UI
-      */
-    Player * create_player (std::string player_name, int dimension, PlayerType player_type, UIInputOutput* ui);
+	/** Factory function
+	  * @remarks It creates a player using function pointer player_creator_ptr of the player specified by player_name
+	  * @param player_name The Player to be created
+	  * @param dimension The dimension of the game to be passed to player (just to check if it can play in this board)
+	  * @param player_type Cross or Circle
+	  * @param ui Interface of player with UI
+	  */
+	Player * create_player (std::string player_name, int dimension, PlayerType player_type, UIInputOutput* ui);
 
-    /** Go through all created Players and call their destructors
-      * @remarks It doesn't actually unload dynamic libraries. It just "uninstantiate" all Players
-      */
-    void destroyPlayers();
+	/** Go through all created Players and call their destructors
+	  * @remarks It doesn't actually unload dynamic libraries. It just "uninstantiate" all Players
+	  */
+	void destroyPlayers();
 
-    /** Get list of known players
-      * @param strplayers A vector of strings in which will be put all Player's names
-      */
-    void getPlayersList(std::vector<std::string>& strplayers) const;
+	/** Get list of known players
+	  * @param strplayers A vector of strings in which will be put all Player's names
+	  */
+	void getPlayersList(std::vector<std::string>& strplayers) const;
 private:
-    std::map<std::string, Player_details> factory; /**< A map between each Player's name and its Player_details*/
-    /** A vector carrying pointers to all created Players (since it's a 2 players game, it should have 2 or less elements*/
-    std::vector<Player*> created_players;
+	std::map<std::string, Player_details> factory; /**< A map between each Player's name and its Player_details*/
+	/** A vector carrying pointers to all created Players (since it's a 2 players game, it should have 2 or less elements*/
+	std::vector<Player*> created_players;
 };
 }
 #endif /* _PLAYER_FACTORY_H_ */

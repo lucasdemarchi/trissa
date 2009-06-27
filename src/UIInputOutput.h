@@ -32,9 +32,9 @@ namespace trissa
 class UIInputOutput
 {
 public:
-    virtual Move getUserInput() = 0;
-    virtual void printWinnerMessage(std::string msg) = 0;
-    virtual void printLooserMessage(std::string msg) = 0;
+	virtual Move getUserInput() = 0;
+	virtual void printWinnerMessage(std::string msg) = 0;
+	virtual void printLooserMessage(std::string msg) = 0;
 private:
 
 };

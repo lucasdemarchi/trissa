@@ -28,22 +28,22 @@ namespace trissa
 class UIText : public UI
 {
 public:
-    UIText(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) : UI(cm, sm, pf) { }
-    void configure();
-    void start();
-    void refresh(Cube const& board, Move const& lastMove, bool wait);
-    bool gameOver();
-    void setPos(Move m, PlayerType player);
+	UIText(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) : UI(cm, sm, pf) { }
+	void configure();
+	void start();
+	void refresh(Cube const& board, Move const& lastMove, bool wait);
+	bool gameOver();
+	void setPos(Move m, PlayerType player);
 
-    Move getUserInput();
-    void printWinnerMessage(std::string msg) { }
-    void printLooserMessage(std::string msg) { }
+	Move getUserInput();
+	void printWinnerMessage(std::string msg) { }
+	void printLooserMessage(std::string msg) { }
 private:
-    bool confirmConfig();
-    unsigned int getDimension();
-    std::string getPlayer(std::string player);
+	bool confirmConfig();
+	unsigned int getDimension();
+	std::string getPlayer(std::string player);
 
-    void refresh(Cube const& board, Move const& lastMove);
+	void refresh(Cube const& board, Move const& lastMove);
 };
 }
 

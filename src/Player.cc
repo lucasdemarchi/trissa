@@ -24,37 +24,37 @@ namespace trissa
 {
 
 PlayerException::PlayerException(int idException, Player*  player):
-        idException(idException),
-        player(player)
+		idException(idException),
+		player(player)
 {
 }
 const char* PlayerException::what()
 {
-    std::string str_error("Player error: ");
-    switch (idException) {
-    case BOARD_NOT_KNOWN:
-        str_error += (player->getName());
-        str_error += " doesn't know how to play in board with size ";
-        str_error += (player->dimension);
-        break;
-    case NEED_UIINPUTOUTPUT:
-        str_error += (player->getName());
-        str_error += " need user input to play ";
-        break;
-    default:
-        str_error += "Unknown error";
-        break;
-    }
-    return str_error.c_str();
+	std::string str_error("Player error: ");
+	switch (idException) {
+	case BOARD_NOT_KNOWN:
+		str_error += (player->getName());
+		str_error += " doesn't know how to play in board with size ";
+		str_error += (player->dimension);
+		break;
+	case NEED_UIINPUTOUTPUT:
+		str_error += (player->getName());
+		str_error += " need user input to play ";
+		break;
+	default:
+		str_error += "Unknown error";
+		break;
+	}
+	return str_error.c_str();
 }
 
 PlayerType Player::getPlayerType() const
 {
-    return this->player_type;
+	return this->player_type;
 }
 
 Player::Player(unsigned int dimension, PlayerType player_type, UIInputOutput* ui) throw (PlayerException) :
-        dimension(dimension), player_type(player_type), ui(ui)
+		dimension(dimension), player_type(player_type), ui(ui)
 {
 }
 

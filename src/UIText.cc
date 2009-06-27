@@ -29,155 +29,155 @@ namespace trissa
 using namespace std;
 void UIText::configure()
 {
-    cout << endl << "=== Configuration Options === " << endl;
-    if (!mCm->getDimension())
-        mCm->setDimension(getDimension());
-    else
-        cout << "Dimension: " << mCm->getDimension() << endl;
+	cout << endl << "=== Configuration Options === " << endl;
+	if (!mCm->getDimension())
+		mCm->setDimension(getDimension());
+	else
+		cout << "Dimension: " << mCm->getDimension() << endl;
 
-    if (mCm->getPlayerA() == "" )
-        mCm->setPlayerA(getPlayer("Player A"));
-    else
-        cout << "Player A (it will start): " << mCm->getPlayerA() << endl;
-
-
-    if (mCm->getPlayerB() == "" )
-        mCm->setPlayerB(getPlayer("Player B"));
-    else
-        cout << "Player B: " << mCm->getPlayerB() << endl;
+	if (mCm->getPlayerA() == "" )
+		mCm->setPlayerA(getPlayer("Player A"));
+	else
+		cout << "Player A (it will start): " << mCm->getPlayerA() << endl;
 
 
-    while ( !confirmConfig() ) {
-        cout << endl << endl << "=== Configuration Options === " << endl;
-        mCm->setDimension(getDimension());
-        mCm->setPlayerA(getPlayer("Player A"));
-        mCm->setPlayerB(getPlayer("Player B"));
-    }
-    UI::configure();
+	if (mCm->getPlayerB() == "" )
+		mCm->setPlayerB(getPlayer("Player B"));
+	else
+		cout << "Player B: " << mCm->getPlayerB() << endl;
+
+
+	while ( !confirmConfig() ) {
+		cout << endl << endl << "=== Configuration Options === " << endl;
+		mCm->setDimension(getDimension());
+		mCm->setPlayerA(getPlayer("Player A"));
+		mCm->setPlayerB(getPlayer("Player B"));
+	}
+	UI::configure();
 }
 bool UIText::confirmConfig()
 {
-    string resp;
-    cout << endl << "Current configuration: " << endl;
-    cout << "Dimension: " << mCm->getDimension() << endl;
-    cout << "Player A (it will start): " << mCm->getPlayerA() << endl;
-    cout << "Player B: " << mCm->getPlayerB() << endl;
-    cout << "Confirm configuration for game? (yes/no): ";
-    cin >> resp;
-    return (resp == "yes");
+	string resp;
+	cout << endl << "Current configuration: " << endl;
+	cout << "Dimension: " << mCm->getDimension() << endl;
+	cout << "Player A (it will start): " << mCm->getPlayerA() << endl;
+	cout << "Player B: " << mCm->getPlayerB() << endl;
+	cout << "Confirm configuration for game? (yes/no): ";
+	cin >> resp;
+	return (resp == "yes");
 }
 unsigned int UIText::getDimension()
 {
-    int d;
-    string s;
-    cin.sync();
-    do {
-        cout << "Enter game's dimension ( >= 3): ";
-        cin >> s;
-        try {
-            d = boost::lexical_cast<int>( s );
-        } catch ( boost::bad_lexical_cast const& ) {
-            cerr << "Not a good value. It must be a number and >= 3" << endl;
-            d=0;
-        }
-    } while ( d < 3 );
-    return d;
+	int d;
+	string s;
+	cin.sync();
+	do {
+		cout << "Enter game's dimension ( >= 3): ";
+		cin >> s;
+		try {
+			d = boost::lexical_cast<int>( s );
+		} catch ( boost::bad_lexical_cast const& ) {
+			cerr << "Not a good value. It must be a number and >= 3" << endl;
+			d=0;
+		}
+	} while ( d < 3 );
+	return d;
 }
 string UIText::getPlayer(std::string player)
 {
-    vector<string> strplayers;
-    mPf->getPlayersList(strplayers);
+	vector<string> strplayers;
+	mPf->getPlayersList(strplayers);
 
-    cout << "Available players: " << endl;
-    for (unsigned int i=0; i < strplayers.size(); i++) {
-        cout << i << ": " << strplayers[i] << endl;
-    }
-    while (true) {
-        int player_n;
-        string s;
+	cout << "Available players: " << endl;
+	for (unsigned int i=0; i < strplayers.size(); i++) {
+		cout << i << ": " << strplayers[i] << endl;
+	}
+	while (true) {
+		int player_n;
+		string s;
 
-        cin.sync();
-        cout << "Enter number for " << player << ": ";
-        cin >> s;
+		cin.sync();
+		cout << "Enter number for " << player << ": ";
+		cin >> s;
 
-        try {
-            player_n = boost::lexical_cast<int>( s );
-        } catch ( boost::bad_lexical_cast const& ) {
-            player_n = -1;
-        }
+		try {
+			player_n = boost::lexical_cast<int>( s );
+		} catch ( boost::bad_lexical_cast const& ) {
+			player_n = -1;
+		}
 
-        if ( player_n < 0 || player_n >= static_cast<int>(strplayers.size()))
-            cerr << endl << "Invalid player option. Choose one from the list above." << endl;
-        else
-            return string( strplayers[player_n] );
+		if ( player_n < 0 || player_n >= static_cast<int>(strplayers.size()))
+			cerr << endl << "Invalid player option. Choose one from the list above." << endl;
+		else
+			return string( strplayers[player_n] );
 
-    }
+	}
 
 }
 void UIText::start()
 {
-    UI::start();
+	UI::start();
 }
 void UIText::refresh(Cube const& board, Move const& lastMove)
 {
-    char * dash_space = (char*) "---";
-    char * blank_space = (char*) "   ";
+	char * dash_space = (char*) "---";
+	char * blank_space = (char*) "   ";
 
-    for (unsigned int j = 0; j < board.size(); j++) {
-        for (unsigned int k = 0; k < board.size(); k++) {
-            cout << "|";
-            for (unsigned int i=0; i<board.size()-1; i++)
-                cout << dash_space << "+";
-            cout << dash_space << "| ";
-        }
+	for (unsigned int j = 0; j < board.size(); j++) {
+		for (unsigned int k = 0; k < board.size(); k++) {
+			cout << "|";
+			for (unsigned int i=0; i<board.size()-1; i++)
+				cout << dash_space << "+";
+			cout << dash_space << "| ";
+		}
 
-        cout << "\n";
-        for (unsigned int k = 0; k < board.size(); k++) {
-            cout << "|";
-            for (unsigned int i=0; i<board.size(); i++) {
-                if (board[k][j][i] == PLAYER_BLANK)
-                    cout << blank_space;
-                else if (board[k][j][i] == PLAYER_CROSS)
-                    cout << " X ";
-                else
-                    cout << " O ";
+		cout << "\n";
+		for (unsigned int k = 0; k < board.size(); k++) {
+			cout << "|";
+			for (unsigned int i=0; i<board.size(); i++) {
+				if (board[k][j][i] == PLAYER_BLANK)
+					cout << blank_space;
+				else if (board[k][j][i] == PLAYER_CROSS)
+					cout << " X ";
+				else
+					cout << " O ";
 
-                cout << "|";
-            }
-            cout << " ";
-        }
-        cout << "\n";
-    }
-    for (unsigned int k = 0; k < board.size(); k++) {
-        cout << "|";
-        for (unsigned int i=0; i<board.size()-1; i++)
-            cout << dash_space << "+";
-        cout << dash_space << "| ";
-    }
+				cout << "|";
+			}
+			cout << " ";
+		}
+		cout << "\n";
+	}
+	for (unsigned int k = 0; k < board.size(); k++) {
+		cout << "|";
+		for (unsigned int i=0; i<board.size()-1; i++)
+			cout << dash_space << "+";
+		cout << dash_space << "| ";
+	}
 
-    cout << "\n\n";
+	cout << "\n\n";
 }
 void UIText::refresh(Cube const& board, Move const& lastMove, bool wait)
 {
-    string s;
-    this->refresh(board, lastMove);
-    if (wait) {
-        cout << "Press [ENTER] to get next move" << endl;
-        if(cin.fail()){
-            cin.clear();
-            std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
-        }
-        getline(cin,s);
-    }
+	string s;
+	this->refresh(board, lastMove);
+	if (wait) {
+		cout << "Press [ENTER] to get next move" << endl;
+		if (cin.fail()) {
+			cin.clear();
+			std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
+		}
+		getline(cin,s);
+	}
 }
 bool UIText::gameOver()
 {
-    string resp;
-    cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
-    cin >> resp;
-    if (resp == "yes")
-        return true;
-    return false;
+	string resp;
+	cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
+	cin >> resp;
+	if (resp == "yes")
+		return true;
+	return false;
 
 }
 
@@ -188,12 +188,12 @@ void UIText::setPos(Move m, PlayerType player)
 
 Move UIText::getUserInput()
 {
-    Move m(0,0,0);
-    cout << "Enter position to play separated by spaces (z y x): ";
-    cin >> m.z;
-    cin >> m.y;
-    cin >> m.x;
-    return m;
+	Move m(0,0,0);
+	cout << "Enter position to play separated by spaces (z y x): ";
+	cin >> m.z;
+	cin >> m.y;
+	cin >> m.x;
+	return m;
 }
 
 

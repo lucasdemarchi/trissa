@@ -25,7 +25,7 @@ namespace trissa
 {
 
 StateManager::StateManager(GameState state) :
-        mState( state )
+		mState( state )
 {
 }
 
@@ -35,7 +35,7 @@ StateManager::~StateManager()
 
 GameState StateManager::getCurrentState()
 {
-    return mState;
+	return mState;
 }
 //TODO Implement StateManager::lockState
 bool StateManager::lockState()
@@ -45,7 +45,7 @@ bool StateManager::lockState()
 //        return true;
 //    } else
 //        return false;
-    return true;
+	return true;
 }
 //TODO Implement StateManager::unlockState
 bool StateManager::unlockState()
@@ -55,23 +55,23 @@ bool StateManager::unlockState()
 //        return true;
 //    } else
 //        return false;
-    return true;
+	return true;
 }
 
 bool StateManager::requestStateChange( GameState state )
 {
-    if ( mState == state ) {
-        throw std::exception();
-        return false;
-    }
-    if ( ( state == SHUTDOWN ) || ( mState == STARTUP && state == LOADING ) ||
-            ( mState == LOADING && state == GUI) || ( mState == GUI && state == GAME ) ||
-            ( mState == GAME && state == GUI ) ) {
-        mLocked = false;
-        mState = state;
-        return true;
-    } else
-        return false;
+	if ( mState == state ) {
+		throw std::exception();
+		return false;
+	}
+	if ( ( state == SHUTDOWN ) || ( mState == STARTUP && state == LOADING ) ||
+	        ( mState == LOADING && state == GUI) || ( mState == GUI && state == GAME ) ||
+	        ( mState == GAME && state == GUI ) ) {
+		mLocked = false;
+		mState = state;
+		return true;
+	} else
+		return false;
 }
 
 }

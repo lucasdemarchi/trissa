@@ -37,20 +37,20 @@ class UI : public UIInputOutput
 {
 
 public:
-    UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
-    ~UI();
+	UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
+	~UI();
 
-    virtual void configure();
-    virtual void start();
-    //void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
-    virtual void refresh(Cube const& board, Move const& lastMove, bool wait);
-    virtual bool gameOver();
-    virtual void setPos(Move m, PlayerType player) = 0;
+	virtual void configure();
+	virtual void start();
+	//void getPlayers(std::vector<std::string> strplayers, std::string& strplayerA, std::string& strplayerB);
+	virtual void refresh(Cube const& board, Move const& lastMove, bool wait);
+	virtual bool gameOver();
+	virtual void setPos(Move m, PlayerType player) = 0;
 protected:
-    virtual void refresh(Cube const& board, Move const& lastMove);
-    ConfigManager* mCm;
-    StateManager* mSm;
-    PlayerFactory const* mPf;
+	virtual void refresh(Cube const& board, Move const& lastMove);
+	ConfigManager* mCm;
+	StateManager* mSm;
+	PlayerFactory const* mPf;
 };
 }
 

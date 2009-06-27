@@ -30,31 +30,31 @@ namespace trissa
 using namespace std;
 
 UI::UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
-        mCm( cm ),
-        mSm( sm ),
-        mPf( pf )
+		mCm( cm ),
+		mSm( sm ),
+		mPf( pf )
 {
 
-    // CONFIGURE STUFF: in a Text UI, could be only "linking" to an output text file
-    //                  in a 3D UI, must configure the window, renderer system, etc
-    mSm->requestStateChange(GUI);
+	// CONFIGURE STUFF: in a Text UI, could be only "linking" to an output text file
+	//                  in a 3D UI, must configure the window, renderer system, etc
+	mSm->requestStateChange(GUI);
 }
 
 void UI::configure()
 {
-    // If it's monothreaded, it must remain here till changing state
-    //TODO: interact with ConfigManager and PlayerFactory to change options
-    mSm->requestStateChange(GAME);
+	// If it's monothreaded, it must remain here till changing state
+	//TODO: interact with ConfigManager and PlayerFactory to change options
+	mSm->requestStateChange(GAME);
 }
 
 void UI::start()
 {
-    // Finish loading resources and, render stuff
+	// Finish loading resources and, render stuff
 }
 
 bool UI::gameOver()
 {
-    return true;
+	return true;
 }
 
 UI::~UI()

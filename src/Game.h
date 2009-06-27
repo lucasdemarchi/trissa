@@ -41,30 +41,30 @@ class ConfigManager;
 
 class Game
 {
-    //friend int main (int argc, char * argv[]);
+	//friend int main (int argc, char * argv[]);
 public:
-    //Game();
-    Game(int argc, char *argv[]);
-    /** Abc
-      *
-      */
-    int startGame();
-    ~Game();
+	//Game();
+	Game(int argc, char *argv[]);
+	/** Abc
+	  *
+	  */
+	int startGame();
+	~Game();
 private:
-    int load();
-    void configure();
-    void run();
+	int load();
+	void configure();
+	void run();
 
-    //PlayerType goalTest() const;
-    PlayerType goalTest(Move const& lastMove, PlayerType player_type);
-    Player* mPlayerA;
-    Player* mPlayerB;
-    Cube* mBoard;
-    UI* mUi;
-    PlayerFactory mPlayerFactory;
-    ConfigManager mConfigManager;
-    StateManager mStateManager;
-    static const int n_retry; /**< Number of chances to give a player when it previously returned an invalid position */
+	//PlayerType goalTest() const;
+	PlayerType goalTest(Move const& lastMove, PlayerType player_type);
+	Player* mPlayerA;
+	Player* mPlayerB;
+	Cube* mBoard;
+	UI* mUi;
+	PlayerFactory mPlayerFactory;
+	ConfigManager mConfigManager;
+	StateManager mStateManager;
+	static const int n_retry; /**< Number of chances to give a player when it previously returned an invalid position */
 };
 
 }

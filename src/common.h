@@ -40,21 +40,21 @@ typedef Player * (*function_creator_ptr)(int, PlayerType, UIInputOutput* ui);
 class Move
 {
 public:
-    int x;
-    int y;
-    int z;
-    Move(int x, int y, int z) : x(x), y(y), z(z) {}
-    //Move(){}
-    void operator-=(Move a) {
-        x -= a.x;
-        y -= a.y;
-        z -= a.z;
-    }
-    void operator+=(Move a) {
-        x += a.x;
-        y += a.y;
-        z += a.z;
-    }
+	int x;
+	int y;
+	int z;
+	Move(int x, int y, int z) : x(x), y(y), z(z) {}
+	//Move(){}
+	void operator-=(Move a) {
+		x -= a.x;
+		y -= a.y;
+		z -= a.z;
+	}
+	void operator+=(Move a) {
+		x += a.x;
+		y += a.y;
+		z += a.z;
+	}
 };
 
 typedef std::vector<std::vector<std::vector<PlayerType> > > Cube;
