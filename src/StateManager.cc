@@ -37,24 +37,20 @@ GameState StateManager::getCurrentState()
 {
 	return mState;
 }
-//TODO Implement StateManager::lockState
+
 bool StateManager::lockState()
 {
-//    if( mLocked == false ) {
-//        mLocked = true;
-//        return true;
-//    } else
-//        return false;
+	mMutex.lock();
+	mLocked = true;
 	return true;
 }
-//TODO Implement StateManager::unlockState
+
 bool StateManager::unlockState()
 {
-//    if( mLocked == true ) {
-//        mLocked = false;
-//        return true;
-//    } else
-//        return false;
+	if(mLocked == false)
+		return false;
+
+	mMutex.unlock();
 	return true;
 }
 

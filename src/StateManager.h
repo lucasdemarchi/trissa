@@ -23,6 +23,8 @@
 #define _STATEMANAGER_H_ 1
 #include <vector>
 #include <map>
+#include <boost/thread/mutex.hpp>
+
 namespace trissa
 {
 /** Enum with possible states of the game*/
@@ -38,6 +40,7 @@ class StateManager
 {
 
 public:
+	typedef boost::mutex::scoped_lock scoped_lock;
 	/** Constructor
 	  * @param state Initial state. No special purpose to this parameter; it must be STARTUP
 	  */
@@ -69,6 +72,7 @@ protected:
 
 	GameState mState; /**< Current state of the game*/
 	bool mLocked; /** For future use... locking mechanism */
+	boost::mutex mMutex;
 
 };
 }

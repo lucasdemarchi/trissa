@@ -32,7 +32,7 @@ env = Environment(
     CC = 'gcc',
     CXX = 'g++',
     CPPPATH = [ '#src' ],
-    LIBS = ['dl','boost_filesystem', 'boost_program_options'],
+    LIBS = ['dl','boost_filesystem', 'boost_program_options', 'boost_thread-mt'],
     LINKFLAGS = ['-rdynamic'],
     
     #CXXCOMSTR = 'Compiling $TARGET',
