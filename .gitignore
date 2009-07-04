@@ -7,3 +7,11 @@ build/*
 .ctagsdb
 .sconsign.dblite
 cscope.out
+*.swp
+*.out
+*.log
+*.swo
+tags
+*.pyc
+.sconf_temp
+doc/html

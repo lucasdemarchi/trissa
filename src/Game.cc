@@ -96,10 +96,10 @@ int Game::load()
 		return -1;
 	else
 #endif
-		if (mConfigManager.getUIType() == ConfigManager::UI_TEXT)
-			mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
-		else
-			return -1;
+	if (mConfigManager.getUIType() == ConfigManager::UI_TEXT)
+		mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
+	else
+		return -1;
 
 	if ( mStateManager.getCurrentState() != GUI ) {
 		//Probably an error loading resources.
@@ -166,9 +166,9 @@ void Game::run()
 
 		int retry = n_retry;
 		for (move = player->play(*mBoard,*move);
-		        !(move->z < dimension && move->y < dimension && move->x < dimension  //Move is inside the board
-		          && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) && retry;   //It's a free position
-		        move = player->play(*mBoard,*move)) {                                //Continue playing
+		        !(move->z < dimension && move->y < dimension && move->x < dimension  //Move is not inside the board or
+		          && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) && retry; //It's not a free position && retry>0
+		        move = player->play(*mBoard,*move)) {                                //try again
 			cerr << "Player returned invalid position (z,y,x): ["
 			     << move->z << "," << move->y << "," << move->x << "]\n";
 			cerr << "This is probably a bug in Player's algorithm\n";
