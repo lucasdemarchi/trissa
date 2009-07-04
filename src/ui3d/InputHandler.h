@@ -34,8 +34,10 @@
 
 #include <CEGUISystem.h>
 
-class StateManager;
+namespace trissa
+{
 
+class StateManager;
 class InputHandler :
             public OIS::MouseListener,
             public OIS::KeyListener {
@@ -65,5 +67,5 @@ protected:
 
     CEGUI::System* mCEGUISystem;
 };
-
+}
 #endif //_TRISSA_INPUT_H_

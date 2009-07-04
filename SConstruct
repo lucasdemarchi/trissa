@@ -119,6 +119,7 @@ if 'players' in COMMAND_LINE_TARGETS:
 else:
     subdirs = ['src','src/players']
     if env['enable_ui3d']:
+        subdirs.append('src/ui3d')
         env['CCFLAGS']+=['-DEXT_HASH', '-D_TRISSA_UI3D_']
         if not env.GetOption('clean'):
             Config(env, packages_ui3d)

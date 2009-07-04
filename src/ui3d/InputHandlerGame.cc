@@ -40,6 +40,10 @@
 
 using namespace Ogre;
 
+namespace trissa
+{
+
+
 InputHandlerGame::InputHandlerGame(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem,
                                     SceneManager* sceneMgr) :
     InputHandler( win, stateManager, CEGUISystem ),
@@ -198,4 +202,6 @@ bool InputHandlerGame::keyReleased(const OIS::KeyEvent &e) {
             break;
     }
     return true;
+}
+
 }

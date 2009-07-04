@@ -38,7 +38,7 @@ class UI : public UIInputOutput
 
 public:
 	UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
-	~UI();
+	virtual ~UI();
 
 	virtual void configure();
 	virtual void start();

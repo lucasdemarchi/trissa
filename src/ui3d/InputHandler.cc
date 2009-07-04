@@ -27,6 +27,9 @@
 
 using namespace Ogre;
 
+namespace trissa 
+{
+
 InputHandler::InputHandler(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem) :
     mWindow( win ),
     mStateManager( stateManager ),
@@ -123,6 +126,7 @@ CEGUI::MouseButton InputHandler::convertButton(OIS::MouseButtonID btn){
 
 }
 
+}
 //bool InputHandler::windowClosing(RenderWindow* rw){
 //    if( rw == mWindow){
 //        mStateManager->requestStateChange( SHUTDOWN );

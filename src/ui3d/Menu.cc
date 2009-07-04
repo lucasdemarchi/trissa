@@ -1,5 +1,5 @@
 /*
- * SettingsMenu.h
+ * Menu.cc
  * This file is part of Trissa
  *
  * Copyright (C) 2009 - Lucas De Marchi
@@ -19,26 +19,28 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef _TRISSA_SETTINGSMENU_H
-#define _TRISSA_SETTINGSMENU_H 1
-
 #include "Menu.h"
-#include <CEGUIWindow.h>
+#include "StateManager.h"
 
-namespace CEGUI
+#include <CEGUISystem.h>
+#include <CEGUIWindow.h>
+#include <CEGUIWindowManager.h>
+
+namespace trissa
 {
-	class System;
-	class Window;
+
+Menu::Menu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
+    mCEGUISystem( CEGUISystem ),
+    mWindow( pSheet ),
+    mStateManager( stateManager ),
+    mFather( father ) {
+}
+Menu::~Menu(){
+    CEGUI::WindowManager::getSingleton().destroyWindow( mWindow );
 }
 
-class StateManager;
-class MainMenu;
+CEGUI::Window* Menu::getWindow(){
+    return mWindow;
+}
 
-class SettingsMenu : public Menu{
-public:
-    SettingsMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father);
-    bool ok_OnClick(const CEGUI::EventArgs &args);
-};
-
-
-#endif
+}

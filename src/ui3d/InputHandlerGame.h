@@ -34,6 +34,9 @@
 //CEGUI includes
 #include <CEGUISystem.h>
 
+namespace trissa
+{
+
 class StateManager;
 
 class InputHandlerGame : public InputHandler {
@@ -84,4 +87,5 @@ protected:
 
 };
 
+}
 #endif //_TRISSA_INPUTHANDLERGAME_H_

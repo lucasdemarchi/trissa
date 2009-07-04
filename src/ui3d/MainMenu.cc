@@ -31,6 +31,9 @@
 
 #include <OgreTexture.h>
 
+namespace trissa
+{
+
 MainMenu::MainMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
     Menu ( CEGUISystem, pSheet, stateManager, 0 ),
     mSettingsMenu( 0 ) {
@@ -76,4 +79,6 @@ bool MainMenu::options_OnClick( const CEGUI::EventArgs &args ){
 bool MainMenu::play_OnClick(const CEGUI::EventArgs &args){
     mStateManager->requestStateChange(GAME);
     return true;
+}
+
 }

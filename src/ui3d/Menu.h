@@ -31,6 +31,9 @@ namespace CEGUI
 	class Window;
 }
 
+namespace trissa
+{
+
 class StateManager;
 
 class Menu {
@@ -47,5 +50,6 @@ protected:
     Menu* mFather;
 };
 
+}
 
 #endif

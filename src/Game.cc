@@ -22,7 +22,10 @@
 #include "Player.h"
 #include "UI.h"
 #include "UIText.h"
-//#include "UIInputOutput.h"
+#ifdef _TRISSA_UI3D_
+#include "ui3d/UI3d.h"
+#endif
+// #include "UIInputOutput.h"
 #include "common.h"
 
 #include <iostream>

@@ -1,5 +1,5 @@
 /*
- * Menu.cc
+ * SettingsMenu.cc
  * This file is part of Trissa
  *
  * Copyright (C) 2009 - Lucas De Marchi
@@ -19,23 +19,30 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include "Menu.h"
+#include "SettingsMenu.h"
 #include "StateManager.h"
+#include "MainMenu.h"
 
 #include <CEGUISystem.h>
 #include <CEGUIWindow.h>
 #include <CEGUIWindowManager.h>
+#include <elements/CEGUIPushButton.h>
 
-Menu::Menu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
-    mCEGUISystem( CEGUISystem ),
-    mWindow( pSheet ),
-    mStateManager( stateManager ),
-    mFather( father ) {
-}
-Menu::~Menu(){
-    CEGUI::WindowManager::getSingleton().destroyWindow( mWindow );
+
+namespace trissa
+{
+
+SettingsMenu::SettingsMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
+    Menu( CEGUISystem, pSheet, stateManager, father ) {
+
+	CEGUI::PushButton* pPlayButton = (CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOk");
+	pPlayButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&SettingsMenu::ok_OnClick, this));
+
 }
 
-CEGUI::Window* Menu::getWindow(){
-    return mWindow;
+bool SettingsMenu::ok_OnClick(const CEGUI::EventArgs &args){
+    mCEGUISystem->setGUISheet( mFather->getWindow() );
+    return true;
+}
+
 }

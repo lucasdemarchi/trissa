@@ -31,6 +31,9 @@ namespace CEGUI
 	class Window;
 }
 
+namespace trissa
+{
+
 class StateManager;
 class SettingsMenu;
 
@@ -45,6 +48,6 @@ public:
 protected:
     SettingsMenu* mSettingsMenu;
 };
-
+}
 
 #endif

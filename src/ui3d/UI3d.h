@@ -46,6 +46,7 @@ class UI3d : public UI
 {
 public:
 	UI3d (ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
+	~UI3d();
 	void configure();
 	void start();
 	void refresh(Cube const& board, Move const& lastMove, bool wait);

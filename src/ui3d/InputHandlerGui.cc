@@ -31,6 +31,9 @@
 
 using namespace Ogre;
 
+namespace trissa 
+{
+
 InputHandlerGui::InputHandlerGui(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem) :
     InputHandler( win, stateManager, CEGUISystem ){
 
@@ -61,4 +64,6 @@ bool InputHandlerGui::keyPressed(const OIS::KeyEvent &e) {
 bool InputHandlerGui::keyReleased(const OIS::KeyEvent &e) {
     mCEGUISystem->injectKeyUp(e.key);
     return true;
+}
+
 }

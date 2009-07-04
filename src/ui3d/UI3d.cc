@@ -75,7 +75,7 @@ UI3d::~UI3d()
 void UI3d::configure()
 {
 	createGUI();
-	while(mStateManager->getCurrentState() == GUI) {
+	while(mSm->getCurrentState() == GUI) {
 		mInputHandler->capture();
 		WindowEventUtilities::messagePump();
 		mRoot->renderOneFrame();
@@ -85,13 +85,25 @@ void UI3d::configure()
 
 void UI3d::start()
 {
+	createScene();
+	while(mSm->getCurrentState() == GAME) {
+		mInputHandler->capture();
+		mInputHandler->treatPressingEvents();
+		WindowEventUtilities::messagePump();
+		mRoot->renderOneFrame();
+	}
+	destroyScene();
 
+}
+void UI3d::refresh(Cube const& board, Move const& lastMove)
+{
 }
 void UI3d::refresh(Cube const& board, Move const& lastMove, bool wait)
 {
 }
 bool UI3d::gameOver()
 {
+	return false;
 }
 void UI3d::setPos(Move m, PlayerType player)
 {
@@ -99,6 +111,7 @@ void UI3d::setPos(Move m, PlayerType player)
 
 Move UI3d::getUserInput()
 {
+	return Move(0,0,0);
 }
 void UI3d::printWinnerMessage(std::string msg)
 {
@@ -107,7 +120,7 @@ void UI3d::printLooserMessage(std::string msg)
 {
 }
 
-void setupResources() {
+void UI3d::setupResources() {
 	String secName, typeName, archName;
 	ConfigFile cf;
 	cf.load("resources.cfg");
@@ -165,10 +178,10 @@ void UI3d::setupCEGUI() {
 
 void UI3d::createGUI(){
 	if(!mMainMenu){
-		mInputHandler = new InputHandlerGui ( mWindow, mStateManager, mCEGUISystem );
+		mInputHandler = new InputHandlerGui ( mWindow, mSm, mCEGUISystem );
 		CEGUI::Window* pLayout = CEGUI::WindowManager::getSingleton().loadWindowLayout("welcome.layout");
 		mCEGUISystem->setGUISheet(pLayout);
-		mMainMenu = new MainMenu( mCEGUISystem, pLayout, mStateManager, 0 );
+		mMainMenu = new MainMenu( mCEGUISystem, pLayout, mSm, 0 );
 	}
 	else
 		throw std::exception();
@@ -212,6 +225,7 @@ void UI3d::createScene(){
 	light->setQueryFlags( InputHandlerGame::LIGHT_MASK );
 
 	//Board
+	int boardDimension = mCm->getDimension();
 	Real init_position = (boardDimension*QUAD_SIZE)/2 -QUAD_SIZE/2;
 	mBoardNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(String("BoardNode"));
 	for(int j = 0 ; j < boardDimension ; j++){
@@ -293,7 +307,7 @@ void UI3d::createScene(){
 	node->yaw( Degree( 135 ) );
 	node->lookAt( Vector3( 0, 0, 0 ), Node::TS_PARENT );
 
-	mInputHandler = new InputHandlerGame( mWindow, mStateManager, mCEGUISystem, mSceneMgr );
+	mInputHandler = new InputHandlerGame( mWindow, mSm, mCEGUISystem, mSceneMgr );
 
 }
 

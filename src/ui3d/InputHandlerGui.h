@@ -29,6 +29,9 @@
 #include <OgreRenderWindow.h>
 #include <CEGUISystem.h>
 
+namespace trissa
+{
+
 class StateManager;
 
 class InputHandlerGui : public InputHandler {
@@ -42,5 +45,6 @@ public:
     bool keyPressed(const OIS::KeyEvent &e);
     bool keyReleased(const OIS::KeyEvent &e);
 };
+}
 
 #endif //_TRISSA_INPUTHANDLERGUI_H_

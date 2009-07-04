@@ -1,5 +1,5 @@
 /*
- * SettingsMenu.cc
+ * SettingsMenu.h
  * This file is part of Trissa
  *
  * Copyright (C) 2009 - Lucas De Marchi
@@ -19,25 +19,29 @@
  * Boston, MA  02110-1301  USA
  */
 
-#include "SettingsMenu.h"
-#include "StateManager.h"
-#include "MainMenu.h"
+#ifndef _TRISSA_SETTINGSMENU_H
+#define _TRISSA_SETTINGSMENU_H 1
 
-#include <CEGUISystem.h>
+#include "Menu.h"
 #include <CEGUIWindow.h>
-#include <CEGUIWindowManager.h>
-#include <elements/CEGUIPushButton.h>
 
-
-SettingsMenu::SettingsMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
-    Menu( CEGUISystem, pSheet, stateManager, father ) {
-
-	CEGUI::PushButton* pPlayButton = (CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOk");
-	pPlayButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&SettingsMenu::ok_OnClick, this));
-
+namespace CEGUI
+{
+	class System;
+	class Window;
 }
 
-bool SettingsMenu::ok_OnClick(const CEGUI::EventArgs &args){
-    mCEGUISystem->setGUISheet( mFather->getWindow() );
-    return true;
+namespace trissa
+{
+
+class StateManager;
+class MainMenu;
+
+class SettingsMenu : public Menu{
+public:
+    SettingsMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father);
+    bool ok_OnClick(const CEGUI::EventArgs &args);
+};
+
 }
+#endif
