@@ -42,14 +42,9 @@ UI::UI(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
 
 void UI::configure()
 {
-	// If it's monothreaded, it must remain here till changing state
-	//TODO: interact with ConfigManager and PlayerFactory to change options
+	// sub-classes must override this method and after all work is done call
+	// UI::configure() to make this requestStateChange
 	mSm->requestStateChange(GAME);
-}
-
-void UI::start()
-{
-	// Finish loading resources and, render stuff
 }
 
 bool UI::gameOver()
@@ -59,16 +54,6 @@ bool UI::gameOver()
 
 UI::~UI()
 {
-}
-
-void UI::refresh(Cube const& board, Move const& lastMove)
-{
-
-}
-
-void UI::refresh(Cube const& board, Move const& lastMove, bool wait)
-{
-
 }
 
 }

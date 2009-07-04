@@ -83,14 +83,21 @@ void UI3d::configure()
 	destroyGUI();
 }
 
-void UI3d::start()
+void UI3d::start(Cube const& board)
 {
-	createScene();
+
 	assert(!mThread);
 	mThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&UI3d::start_thread, this)));
 }
+
+void UI3d::wait_end()
+{
+	assert(mThread);
+	mThread->join();
+}
 void UI3d::start_thread()
 {
+	createScene();
 	while(mSm->getCurrentState() == GAME) {
 		mInputHandler->capture();
 		mInputHandler->treatPressingEvents();
@@ -102,17 +109,11 @@ void UI3d::start_thread()
 	//thread finishes here and mThread is automagically freeed
 }
 
-void UI3d::refresh(Cube const& board, Move const& lastMove)
-{
-}
-void UI3d::refresh(Cube const& board, Move const& lastMove, bool wait)
-{
-}
 bool UI3d::gameOver()
 {
 	return false;
 }
-void UI3d::setPos(Move m, PlayerType player)
+void UI3d::setPos(Move const &m, PlayerType player)
 {
 }
 

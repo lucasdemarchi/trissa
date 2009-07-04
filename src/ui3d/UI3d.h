@@ -49,18 +49,18 @@ public:
 	UI3d (ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
 	~UI3d();
 	void configure();
-	void start();
-	void refresh(Cube const& board, Move const& lastMove, bool wait);
-	bool gameOver();
-	void setPos(Move m, PlayerType player);
+	void start(Cube const& board);	
+	void wait_end();
+	void setPos(Move const& m, PlayerType player);
 
+	bool gameOver();
+
+	
 	Move getUserInput();
 	void printWinnerMessage(std::string msg);
 	void printLooserMessage(std::string msg);
 
 private:
-	void refresh(Cube const& board, Move const& lastMove);
-
 	Ogre::Root* mRoot;
 	Ogre::RenderWindow* mWindow;
 	Ogre::SceneManager* mSceneMgr;

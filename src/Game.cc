@@ -138,11 +138,11 @@ void Game::run()
 	mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE, mUi );
 
 
-//Start game
-	mUi->refresh(*mBoard, Move(-1,-1,-1), true);
+	//Start game
+	mUi->start(*mBoard);
 
 	int turn;
-	Move* move = mPlayerA->firstPlay();
+/*	Move* move = mPlayerA->firstPlay();
 	Player* player = mPlayerA;
 
 	if (move->z < dimension && move->y < dimension &&
@@ -185,7 +185,7 @@ void Game::run()
 			break;
 		}
 	}
-	mUi->refresh(*mBoard,*move,false);
+	mUi->refresh(*mBoard,*move,false);*/
 	if (mUi->gameOver())
 		mStateManager.requestStateChange(GUI);
 	else

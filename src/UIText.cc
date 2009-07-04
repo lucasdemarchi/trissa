@@ -114,30 +114,32 @@ string UIText::getPlayer(std::string player)
 	}
 
 }
-void UIText::start()
+void UIText::start(Cube const& board)
 {
-	UI::start();
+	mBoard = &board;
+	this->refresh();
 }
-void UIText::refresh(Cube const& board, Move const& lastMove)
+
+void UIText::refresh()
 {
 	char * dash_space = (char*) "---";
 	char * blank_space = (char*) "   ";
 
-	for (unsigned int j = 0; j < board.size(); j++) {
-		for (unsigned int k = 0; k < board.size(); k++) {
+	for (unsigned int j = 0; j < mBoard->size(); j++) {
+		for (unsigned int k = 0; k < mBoard->size(); k++) {
 			cout << "|";
-			for (unsigned int i=0; i<board.size()-1; i++)
+			for (unsigned int i=0; i<mBoard->size()-1; i++)
 				cout << dash_space << "+";
 			cout << dash_space << "| ";
 		}
 
 		cout << "\n";
-		for (unsigned int k = 0; k < board.size(); k++) {
+		for (unsigned int k = 0; k < mBoard->size(); k++) {
 			cout << "|";
-			for (unsigned int i=0; i<board.size(); i++) {
-				if (board[k][j][i] == PLAYER_BLANK)
+			for (unsigned int i=0; i<mBoard->size(); i++) {
+				if ((*mBoard)[k][j][i] == PLAYER_BLANK)
 					cout << blank_space;
-				else if (board[k][j][i] == PLAYER_CROSS)
+				else if ((*mBoard)[k][j][i] == PLAYER_CROSS)
 					cout << " X ";
 				else
 					cout << " O ";
@@ -148,28 +150,30 @@ void UIText::refresh(Cube const& board, Move const& lastMove)
 		}
 		cout << "\n";
 	}
-	for (unsigned int k = 0; k < board.size(); k++) {
+	for (unsigned int k = 0; k < mBoard->size(); k++) {
 		cout << "|";
-		for (unsigned int i=0; i<board.size()-1; i++)
+		for (unsigned int i=0; i<mBoard->size()-1; i++)
 			cout << dash_space << "+";
 		cout << dash_space << "| ";
 	}
 
 	cout << "\n\n";
 }
-void UIText::refresh(Cube const& board, Move const& lastMove, bool wait)
-{
-	string s;
-	this->refresh(board, lastMove);
-	if (wait) {
-		cout << "Press [ENTER] to get next move" << endl;
-		if (cin.fail()) {
-			cin.clear();
-			std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
-		}
-		getline(cin,s);
-	}
-}
+
+//void UIText::refresh(Cube const * const board, Move const& lastMove, bool wait)
+//{
+//	string s;
+//	this->refresh(board, lastMove);
+//	if (wait) {
+//		cout << "Press [ENTER] to get next move" << endl;
+//		if (cin.fail()) {
+//			cin.clear();
+//			std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n');
+//		}
+//		getline(cin,s);
+//	}
+//}
+
 bool UIText::gameOver()
 {
 	string resp;
@@ -181,9 +185,14 @@ bool UIText::gameOver()
 
 }
 
-void UIText::setPos(Move m, PlayerType player)
+void UIText::setPos(Move const &m, PlayerType player)
 {
+	this->refresh();
+}
 
+void UIText::wait_end()
+{
+	//this is not threaded... just return
 }
 
 Move UIText::getUserInput()
