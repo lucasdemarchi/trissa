@@ -86,6 +86,11 @@ void UI3d::configure()
 void UI3d::start()
 {
 	createScene();
+	assert(!mThread);
+	mThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&UI3d::start_thread, this)));
+}
+void UI3d::start_thread()
+{
 	while(mSm->getCurrentState() == GAME) {
 		mInputHandler->capture();
 		mInputHandler->treatPressingEvents();
@@ -94,7 +99,9 @@ void UI3d::start()
 	}
 	destroyScene();
 
+	//thread finishes here and mThread is automagically freeed
 }
+
 void UI3d::refresh(Cube const& board, Move const& lastMove)
 {
 }

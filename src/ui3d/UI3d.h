@@ -38,6 +38,7 @@
 
 #include <sstream>
 #include <boost/thread/thread.hpp>
+#include <boost/shared_ptr.hpp>
 
 namespace trissa
 {
@@ -78,6 +79,7 @@ private:
 	static const Ogre::Real QUAD_SIZE;
 
 	bool mForceConfigDialogDisplay;
+	boost::shared_ptr<boost::thread> mThread;
 
 	void setupResources();
 	void setupRenderSystem();
@@ -90,6 +92,7 @@ private:
 	void createScene();
 	void destroyScene();
 
+	void start_thread();
 };
 
 
