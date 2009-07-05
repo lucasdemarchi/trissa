@@ -71,7 +71,6 @@ int Game::startGame()
 	//LOADING -> GUI
 	if (this->load() < 0)
 		return -1;  // error: it was not possible to load
-	// required gui
 
 	//GUI -> GAME STATE
 	while ( this->mStateManager.getCurrentState() != SHUTDOWN ) {
@@ -94,14 +93,20 @@ int Game::load()
 
 	//Create the UI based on the parameter got through ConfigManager
 #ifdef _TRISSA_UI3D_
-	if (mConfigManager.getUIType() == ConfigManager::UI_3D)
+	if (mConfigManager.getUIType() == ConfigManager::UI_3D){
+		cout << "ui3d...\n";
 		mUi = new UI3d(&mConfigManager, &mStateManager, &mPlayerFactory);
+	}
 	else
 #endif
-	if (mConfigManager.getUIType() == ConfigManager::UI_TEXT)
+	if (mConfigManager.getUIType() == ConfigManager::UI_TEXT){
+		cout << "text... \n";
 		mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
-	else
+	}
+	else{
+		cout << "not available...\n";
 		return -1;
+	}
 
 	if ( mStateManager.getCurrentState() != GUI ) {
 		//Probably an error loading resources.
@@ -124,72 +129,93 @@ void Game::configure()
 void Game::run()
 {
 	//Finish loading configurations
-	int dimension  = (int) mConfigManager.getDimension();
+	mDimension  = (int) mConfigManager.getDimension();
 
 	if ( mBoard )
 		delete mBoard;
-	mBoard = new vector<vector<vector<PlayerType> > >(dimension, vector<vector<PlayerType> >(dimension, vector<PlayerType>(dimension, PLAYER_BLANK)));
+	mBoard = new vector<vector<vector<PlayerType> > >(mDimension, vector<vector<PlayerType> >(mDimension, vector<PlayerType>(mDimension, PLAYER_BLANK)));
 
 	if ( mPlayerA || mPlayerB )
 		mPlayerFactory.destroyPlayers();
 
-	mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), dimension, PLAYER_CROSS, mUi );
-	mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), dimension, PLAYER_CIRCLE, mUi );
+	mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), mDimension, PLAYER_CROSS, mUi );
+	mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), mDimension, PLAYER_CIRCLE, mUi );
 
 
 	//Start game
 	mUi->start(*mBoard);
 
-	int turn;
-/*	Move* move = mPlayerA->firstPlay();
-	Player* player = mPlayerA;
 
-	if (move->z < dimension && move->y < dimension &&
-	        move->x < dimension && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) {
-		(*mBoard)[move->z][move->y][move->x] = mPlayerA->getPlayerType();
+	int turn = 0;
+	int retry = n_retry;
+	Move* move = mPlayerA->firstPlay();
+	Player* player_p = mPlayerA;
+	PlayerType player = PLAYER_CROSS;
+	PlayerType winner = PLAYER_BLANK;
+
+	if (isInsideBoard(*move) && isFreePosition(*move)) {
+		(*mBoard)[move->z][move->y][move->x] = player;
 	} else {
-		cerr << "Player returned invalid position (z,y,x): ["
+		cerr << "PlayerA returned invalid position in first play (z,y,x): ["
 		     << move->z << "," << move->y << "," << move->x << "]\n";
+		winner = PLAYER_CIRCLE;
+		goto out;
 	}
 
-	for (turn = 1;
-	        goalTest(*move,player->getPlayerType()) == PLAYER_BLANK
-	        && turn < (dimension*dimension*dimension)
-	        ; turn++) {
-		PlayerType player_type ;
+	for (turn = 1 ; winner == PLAYER_BLANK                                  //while there's no winner 
+		            && turn < (mDimension*mDimension*mDimension); turn++) {    //and not all positions are occupied
+		//decide which player plays next
+		//they take turns
 		if (turn%2) {
-			player = mPlayerB;
-			player_type = PLAYER_CIRCLE;
+			player_p = mPlayerB;
+			player = PLAYER_CIRCLE;
 		} else {
-			player = mPlayerA;
-			player_type = PLAYER_CROSS;
+			player_p = mPlayerA;
+			player = PLAYER_CROSS;
 		}
-		mUi->refresh(*mBoard,*move, true);
+		
 
-		int retry = n_retry;
-		for (move = player->play(*mBoard,*move);
-		        !(move->z < dimension && move->y < dimension && move->x < dimension  //Move is not inside the board or
-		          && (*mBoard)[move->z][move->y][move->x] == PLAYER_BLANK) && retry; //It's not a free position && retry>0
-		        move = player->play(*mBoard,*move)) {                                //try again
+		// ask Player the position to play and keep trying n_retry times
+		// if it returns an invalid position
+		for (move = player_p->play(*mBoard,*move)
+		    ;!(isInsideBoard(*move) && isFreePosition(*move)) && retry
+			;move = player_p->play(*mBoard,*move)) {   //try again
+
 			cerr << "Player returned invalid position (z,y,x): ["
 			     << move->z << "," << move->y << "," << move->x << "]\n";
 			cerr << "This is probably a bug in Player's algorithm\n";
 			retry--;
 		}
-		if (retry)
-			(*mBoard)[move->z][move->y][move->x] = player_type;
+		if (retry){
+			(*mBoard)[move->z][move->y][move->x] = player;
+			mUi->setPos(*move, player);
+			winner = goalTest(*move,player_p->getPlayerType());
+		}
 		else {
-			cerr << "Player \'" << player->getName() << "\' returned an invalid position for more than " << n_retry
+			cerr << "Player \'" << player_p->getName() << "\' returned an invalid position for more than " << n_retry
 			     << "times.\nPlease fix your algorithm before trying to play. The other player is proclaimed winner";
-			break;
+			winner = (player == PLAYER_CROSS) ? PLAYER_CIRCLE:PLAYER_CROSS; //the other player
 		}
 	}
-	mUi->refresh(*mBoard,*move,false);*/
-	if (mUi->gameOver())
-		mStateManager.requestStateChange(GUI);
-	else
+out:
+
+	mStateManager.requestStateChange(GUI);
+	if (!mUi->gameOver())
 		mStateManager.requestStateChange(SHUTDOWN);
+
+	mUi->wait_end();
 }
+
+inline bool Game::isInsideBoard(Move &move)
+{
+	return (move.z < mDimension && move.y < mDimension && move.z < mDimension);
+}
+
+inline bool Game::isFreePosition(Move &move)
+{
+	return ( (*mBoard)[move.z][move.y][move.x] == PLAYER_BLANK );
+}
+
 
 Game::~Game()
 {

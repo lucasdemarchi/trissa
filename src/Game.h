@@ -55,6 +55,10 @@ private:
 	void configure();
 	void run();
 
+	//helper functions
+	bool isInsideBoard(Move &m);
+	bool isFreePosition(Move &m);
+
 	//PlayerType goalTest() const;
 	PlayerType goalTest(Move const& lastMove, PlayerType player_type);
 	Player* mPlayerA;
@@ -64,7 +68,11 @@ private:
 	PlayerFactory mPlayerFactory;
 	ConfigManager mConfigManager;
 	StateManager mStateManager;
+
+	int mDimension;
+
 	static const int n_retry; /**< Number of chances to give a player when it previously returned an invalid position */
+
 };
 
 }

@@ -78,7 +78,7 @@ void ConfigManager::printVersion() const
 {
 	using namespace std;
 	cout << "Trissa v" << TRISSA_VERSION << endl;
-	cout << "Copyright (C) 2008 - Lucas De Marchi" << endl;
+	cout << "Copyright (C) 2008-2009 - Lucas De Marchi" << endl;
 	cout << "Distributed under GPLv2" << endl << endl;
 }
 void ConfigManager::printUsage() const
@@ -157,7 +157,7 @@ void ConfigManager::setAvailableOptions()
 	 "This option overrides path from configuration file ")
 	("dimension,d", po::value<unsigned int>(), "Game's dimension. This option overrides that from configuration file")
 #ifdef _TRISSA_UI3D_
-	("ui,u", po::value<std::string>()->default_value(DEFAULT_UI), "Available interfaces: Text ('text' option) and 3D ('ui3d' option)");
+	("ui,u", po::value<std::string>()->default_value(DEFAULT_UI), "Available interfaces: Text ('text' option) and 3D ('3d' option)");
 #else
 	("ui,u", po::value<std::string>()->default_value(DEFAULT_UI), "Available interfaces: Text ('text' option)");
 #endif
