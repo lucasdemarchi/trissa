@@ -95,8 +95,7 @@ int Game::load()
 	//Create the UI based on the parameter got through ConfigManager
 #ifdef _TRISSA_UI3D_
 	if (mConfigManager.getUIType() == ConfigManager::UI_3D)
-		//mUi = new UI3d(&ConfigManager, &mStateManager, &mPlayerFactory)
-		return -1;
+		mUi = new UI3d(&mConfigManager, &mStateManager, &mPlayerFactory);
 	else
 #endif
 	if (mConfigManager.getUIType() == ConfigManager::UI_TEXT)
