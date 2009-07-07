@@ -54,7 +54,7 @@ if 'help' in COMMAND_LINE_TARGETS:
     print opts.GenerateHelpText(env)
     Exit(0)
 
-if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS:
+if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS and not 'cscope' in COMMAND_LINE_TARGETS:
     version = create_new_version(env['version'])
 
 print 'Trissa ' + version
@@ -121,11 +121,11 @@ else:
     if env['enable_ui3d']:
         subdirs.append('src/ui3d')
         env['CCFLAGS']+=['-DEXT_HASH', '-D_TRISSA_UI3D_']
-        if not env.GetOption('clean'):
+        if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS and not 'cscope' in COMMAND_LINE_TARGETS:
             Config(env, packages_ui3d)
 
 #Boost is needed by players, ui3d and core:
-if not env.GetOption('clean'):
+if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS and not 'cscope' in COMMAND_LINE_TARGETS:
     conf = Configure(env, custom_tests = { 'CheckBoost' : CheckBoost })
     if not (conf.CheckBoost(BOOST_VERSION)):
         print 'Boost version >=' + BOOST_VERSION + ' is needed'
@@ -148,6 +148,11 @@ print ''
 if 'tags' in COMMAND_LINE_TARGETS:
     print 'Making ctags...'
     GenerateTags()
+    Exit(0)
+
+if 'cscope' in COMMAND_LINE_TARGETS:
+    print 'Making cscope db...'
+    GenerateCscope()
     Exit(0)
 
 if not 'configure' in COMMAND_LINE_TARGETS:

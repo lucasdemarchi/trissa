@@ -91,6 +91,9 @@ def Config(env, packages):
 def GenerateTags():    
     os.system('ctags -R --c++-kinds=+p --fields=+iaS --extra=+q src/')
 
+def GenerateCscope():
+	os.system('cscope -b -R -I./players/ -I./ui3d/ -I/usr/include/OGRE/ -I/usr/include/')
+
 def CheckBoost(context, version):
     # Boost versions are in format major.minor.subminor
     v_arr = version.split(".")
