@@ -5,25 +5,25 @@ import string
 import re
 import SCons
 
-version='0.9'
-try:
-    f = open("subversion", 'r')
-    subversion = f.readline().strip()
-    f.close()
-except:
-    subversion = '0'
+version='0.92'
+#try:
+#    f = open("subversion", 'r')
+#    subversion = f.readline().strip()
+#    f.close()
+#except:
+subversion = '0'
 
 def create_new_version(autoversion):
-    if autoversion == 'auto':
-        f = open('subversion', 'w')
-        s = str(int(subversion) + 1) + '\n'
-        f.write(s)
-        f.close()
-        return version + '.' + s
-    elif autoversion == 'keepold':
-        return version + '.' + subversion
-    else:
-        return version
+#    if autoversion == 'auto':
+#        f = open('subversion', 'w')
+#        s = str(int(subversion) + 1) + '\n'
+#        f.write(s)
+#        f.close()
+#        return version + '.' + s
+#    elif autoversion == 'keepold':
+#        return version + '.' + subversion
+#    else:
+     return version
 
 #Taken from Gazebo
 def optimize_for_cpu(env):
