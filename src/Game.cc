@@ -2,7 +2,7 @@
  * Game.cc
  * This file is part of Trissa
  *
- * Copyright (C) 2008 - Lucas De Marchi
+ * Copyright (C) 2008-2009 - Lucas De Marchi
  *
  * Trissa is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as published by
@@ -133,13 +133,24 @@ void Game::run()
 
 	if ( mBoard )
 		delete mBoard;
-	mBoard = new vector<vector<vector<PlayerType> > >(mDimension, vector<vector<PlayerType> >(mDimension, vector<PlayerType>(mDimension, PLAYER_BLANK)));
+
+	mBoard = new vector<vector<vector<PlayerType> > >
+		(mDimension, vector<vector<PlayerType> >
+		 (mDimension, vector<PlayerType>(mDimension, PLAYER_BLANK)));
 
 	if ( mPlayerA || mPlayerB )
 		mPlayerFactory.destroyPlayers();
 
-	mPlayerA = mPlayerFactory.create_player ( mConfigManager.getPlayerA(), mDimension, PLAYER_CROSS, mUi );
-	mPlayerB = mPlayerFactory.create_player ( mConfigManager.getPlayerB(), mDimension, PLAYER_CIRCLE, mUi );
+	try{
+		mPlayerA = mPlayerFactory.create_player (mConfigManager.getPlayerA(),
+	                                         mDimension, PLAYER_CROSS, mUi);
+		mPlayerB = mPlayerFactory.create_player (mConfigManager.getPlayerB(),
+	                                         mDimension, PLAYER_CIRCLE, mUi );
+	} catch(exception& ex) {
+		cerr<< "Error creating Player. " << ex.what() << ex.what();
+		exit(1);
+	}
+
 
 
 	//Start game
@@ -162,8 +173,11 @@ void Game::run()
 		goto out;
 	}
 
-	for (turn = 1 ; winner == PLAYER_BLANK                                  //while there's no winner 
-		            && turn < (mDimension*mDimension*mDimension); turn++) {    //and not all positions are occupied
+	//while there's no winner 
+	//and not all positions are occupied
+	for (turn = 1 ; winner == PLAYER_BLANK                                     
+		            && turn < (mDimension*mDimension*mDimension); turn++) {    
+
 		//decide which player plays next
 		//they take turns
 		if (turn%2) {
@@ -192,9 +206,13 @@ void Game::run()
 			winner = goalTest(*move,player_p->getPlayerType());
 		}
 		else {
-			cerr << "Player \'" << player_p->getName() << "\' returned an invalid position for more than " << n_retry
-			     << "times.\nPlease fix your algorithm before trying to play. The other player is proclaimed winner";
-			winner = (player == PLAYER_CROSS) ? PLAYER_CIRCLE:PLAYER_CROSS; //the other player
+			cerr << "Player \'" << player_p->getName() << "\'"
+				"returned an invalid position for more than " << n_retry 
+				<< "times.\nPlease fix your algorithm before trying to play. "
+				"The other player is proclaimed winner";
+			
+			//the other player
+			winner = (player == PLAYER_CROSS) ? PLAYER_CIRCLE:PLAYER_CROSS; 
 		}
 	}
 out:
@@ -244,8 +262,10 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 		while (true) {
 			new_pos -= directions[i];
 			if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-			        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
-				if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
+			        new_pos.x < dimension && new_pos.y < dimension &&
+					new_pos.z < dimension) {
+
+				if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type){
 					invalid_direction = true;
 					break;
 				} else
@@ -254,7 +274,10 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 				break;
 			}
 		}
-		if (invalid_direction) continue; //next direction, this is not a winner direction
+
+		//next direction, this is not a winner direction
+		if (invalid_direction)
+			continue;
 
 		//add direction to position until go out of cube
 		new_pos.x = lastMove.x;
@@ -263,8 +286,9 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 		while (true) {
 			new_pos += directions[i];
 			if (new_pos.x >=0 && new_pos.y >=0 && new_pos.z >=0 &&
-			        new_pos.x < dimension && new_pos.y < dimension && new_pos.z < dimension) {
-				if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type) {
+			        new_pos.x < dimension && new_pos.y < dimension &&
+					new_pos.z < dimension) {
+				if ( (*mBoard)[new_pos.z][new_pos.y][new_pos.x] != player_type){
 					invalid_direction = true;
 					break;
 				} else
@@ -275,7 +299,7 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 		}
 		if (!invalid_direction && (int)n_pieces == dimension) {
 			//TODO: set member variable for winner direction(s) and point
-#ifdef _TRISSA_DEBUG_
+#ifdef _TRISSA_DEBUG_ //TODO: should put this in output, not here
 			cout << "Winner direction: ["
 			     << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
 			cout << "Last position played: ["
