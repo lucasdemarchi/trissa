@@ -14,19 +14,22 @@
             <Property Name="Text" Value="Play" />
             <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.25,0},{0.9,0},{0.35,0}}" />
             <Property Name="EnableBorder" Value="0" />
-            <Property Name="Font" Value="BlueHighway-20" />
+	    <Property Name="Font" Value="BlueHighway-20" />
+	    <Property Name="AlwaysOnTop" Value="true" />
         </Window>
         <Window Type="QuadraticLook/Button" Name="cmdOptions">
             <Property Name="Text" Value="Options" />
             <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.45,0},{0.9,0},{0.55,0}}" />
             <Property Name="EnableBorder" Value="0" />
-            <Property Name="Font" Value="BlueHighway-20" />
+	    <Property Name="Font" Value="BlueHighway-20" />
+	    <Property Name="AlwaysOnTop" Value="true" />
         </Window>
         <Window Type="QuadraticLook/Button" Name="cmdQuit">
             <Property Name="Text" Value="Quit" />
             <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.65,0},{0.9,0},{0.75,0}}" />
             <Property Name="EnableBorder" Value="0" />
             <Property Name="Font" Value="BlueHighway-20" />
+	    <Property Name="AlwaysOnTop" Value="true" />
         </Window>
     </Window>
 </GUILayout>
