@@ -95,10 +95,17 @@ public:
 	/** Set Player's path
 	  * @remarks Destroy all currently instantiated players, close all dynamic libraries and search for libraries in
 	  * path
-	  * @param path to location where to look for dynamic libraries, i.e. players. Attention that is not checked if
+	  * @param path Location where to look for dynamic libraries, i.e. players. Attention that is not checked if
 	  * current path is the same that was already loaded
 	  */
 	void setPlayersPath(std::string path);
+
+	/** Ger a vector of strings with Players' names
+	  * @param strplayers A vector to populate with players' names
+	  * @remarks It's simply a call to PlayerFactory's method to obtain
+	  * the list
+	  */
+	void getPlayersList(std::vector<std::string> &strplayers);
 
 	/** Get PlayerA's name
 	  * @remarks Must be the same name used by Player to register itself in PlayerFactory
