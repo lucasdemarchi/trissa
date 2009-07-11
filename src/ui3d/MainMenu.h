@@ -35,12 +35,17 @@ namespace trissa
 {
 
 class StateManager;
+class ConfigManager;
+
 class SettingsMenu;
+
 
 class MainMenu : public Menu {
 public:
-    MainMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father);
-    virtual ~MainMenu();
+	MainMenu(CEGUI::System* CEGUISystem, StateManager* stateManager,
+		ConfigManager* configManager);
+    
+	virtual ~MainMenu();
 
     bool quit_OnClick( const CEGUI::EventArgs &args );
     bool options_OnClick( const CEGUI::EventArgs &args );

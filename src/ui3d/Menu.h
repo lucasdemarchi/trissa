@@ -35,18 +35,24 @@ namespace trissa
 {
 
 class StateManager;
+class ConfigManager;
 
 class Menu {
 public:
-    Menu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father);
+    Menu(CEGUI::System* CEGUISystem, StateManager* stateManager,
+			ConfigManager* configManager, CEGUI::Window* window, Menu* father);
+	Menu(CEGUI::Window* window, Menu* father);
     virtual ~Menu();
     CEGUI::Window* getWindow();
 
 protected:
 
-    CEGUI::System* mCEGUISystem;
-    CEGUI::Window* mWindow;
-    StateManager* mStateManager;
+	//shared by all Menus
+	static CEGUI::System* mCEGUISystem;
+	static StateManager* mStateManager;
+	static ConfigManager* mConfigManager;
+
+	CEGUI::Window* mWindow;
     Menu* mFather;
 };
 

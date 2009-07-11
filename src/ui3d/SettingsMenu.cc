@@ -32,15 +32,32 @@
 namespace trissa
 {
 
-SettingsMenu::SettingsMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
-    Menu( CEGUISystem, pSheet, stateManager, father ) {
+SettingsMenu::SettingsMenu(Menu* father) :
+    Menu(CEGUI::WindowManager::getSingleton().loadWindowLayout("settings.layout"),
+			father )
+{
 
-	CEGUI::PushButton* pPlayButton = (CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOk");
-	pPlayButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&SettingsMenu::ok_OnClick, this));
+	CEGUI::PushButton* pOkButton =
+		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOk");
+	pOkButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+			CEGUI::Event::Subscriber(&SettingsMenu::ok_OnClick, this));
+	
+	CEGUI::PushButton* pCancelButton =
+		(CEGUI::PushButton*) CEGUI::WindowManager::getSingleton().getWindow("cmdCancel");
+	pCancelButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+			CEGUI::Event::Subscriber(&SettingsMenu::cancel_OnClick, this));
 
 }
 
+bool SettingsMenu::cancel_OnClick(const CEGUI::EventArgs &args){
+    mCEGUISystem->setGUISheet( mFather->getWindow() );
+    return true;
+}
+
 bool SettingsMenu::ok_OnClick(const CEGUI::EventArgs &args){
+	//Use ConfigManager to save changes
+	
+
     mCEGUISystem->setGUISheet( mFather->getWindow() );
     return true;
 }

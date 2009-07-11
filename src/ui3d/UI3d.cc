@@ -187,9 +187,7 @@ void UI3d::setupCEGUI() {
 void UI3d::createGUI(){
 	if(!mMainMenu){
 		mInputHandler = new InputHandlerGui ( mWindow, mSm, mCEGUISystem );
-		CEGUI::Window* pLayout = CEGUI::WindowManager::getSingleton().loadWindowLayout("welcome.layout");
-		mCEGUISystem->setGUISheet(pLayout);
-		mMainMenu = new MainMenu( mCEGUISystem, pLayout, mSm, 0 );
+		mMainMenu = new MainMenu( mCEGUISystem, mSm, mCm );
 	}
 	else
 		throw std::exception();

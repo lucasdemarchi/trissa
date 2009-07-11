@@ -34,34 +34,34 @@
 namespace trissa
 {
 
-MainMenu::MainMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
-    Menu ( CEGUISystem, pSheet, stateManager, 0 ),
-    mSettingsMenu( 0 ) {
-
-    //TexturePtr texBackground = TextureManager::getSingleton().load("texBackground.jpg",
-    //                                                                ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, TEX_TYPE_2D, 1);
-
-//    CEGUI::Texture *texBackground = mRenderer->createTexture((CEGUI::utf8*)"texBackground.jpg");
-//    CEGUI::Imageset *imageSet = CEGUI::ImagesetManager::getSingleton().createImageset((CEGUI::utf8*)"RttImageset", cTex);
-//    imageSet->defineImage((CEGUI::utf8*)"RttImage",
-//            CEGUI::Point(0.0f, 0.0f),
-//            CEGUI::Size(cTex->getWidth(), cTex->getHeight()),
-//            CEGUI::Point(0.0f,0.0f));
-
-	CEGUI::PushButton* pPlayButton = (CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdPlay");
-	pPlayButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainMenu::play_OnClick, this));
-
-	CEGUI::PushButton* pOptionsButton = (CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOptions");
-	pOptionsButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainMenu::options_OnClick, this));
-
-	CEGUI::PushButton* pQuitButton = (CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdQuit");
-	pQuitButton->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&MainMenu::quit_OnClick, this));
+MainMenu::MainMenu(CEGUI::System* CEGUISystem, StateManager* stateManager,
+		ConfigManager* configManager) :
+    Menu(CEGUISystem, stateManager, configManager, 
+	CEGUI::WindowManager::getSingleton().loadWindowLayout("welcome.layout"), 0),
+	mSettingsMenu(0)
+{
+	//Connect button events
+	CEGUI::PushButton* pPlayButton =
+		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdPlay");
+	pPlayButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+			CEGUI::Event::Subscriber(&MainMenu::play_OnClick, this));
 
 
-    CEGUI::Window* pLayout = 0;
-    pLayout = CEGUI::WindowManager::getSingleton().loadWindowLayout("settings.layout");
+	CEGUI::PushButton* pOptionsButton =
+		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOptions");
+	pOptionsButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+			CEGUI::Event::Subscriber(&MainMenu::options_OnClick, this));
 
-	mSettingsMenu = new SettingsMenu(mCEGUISystem, pLayout, mStateManager, this );
+	CEGUI::PushButton* pQuitButton =
+		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdQuit");
+	pQuitButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+			CEGUI::Event::Subscriber(&MainMenu::quit_OnClick, this));
+
+	//create son
+	mSettingsMenu = new SettingsMenu(this);
+
+	//make me visible
+	mCEGUISystem->setGUISheet(mWindow);
 }
 MainMenu::~MainMenu(){
     delete mSettingsMenu;

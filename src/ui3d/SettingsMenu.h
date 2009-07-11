@@ -34,13 +34,13 @@ namespace CEGUI
 namespace trissa
 {
 
-class StateManager;
-class MainMenu;
-
 class SettingsMenu : public Menu{
 public:
-    SettingsMenu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father);
+    SettingsMenu(Menu* father);
     bool ok_OnClick(const CEGUI::EventArgs &args);
+	bool cancel_OnClick(const CEGUI::EventArgs &args);
+private:
+
 };
 
 }

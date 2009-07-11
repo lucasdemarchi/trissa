@@ -29,18 +29,32 @@
 namespace trissa
 {
 
-Menu::Menu(CEGUI::System* CEGUISystem, CEGUI::Window* pSheet, StateManager* stateManager, Menu* father) :
-    mCEGUISystem( CEGUISystem ),
-    mWindow( pSheet ),
-    mStateManager( stateManager ),
-    mFather( father ) {
+Menu::Menu(CEGUI::System* CEGUISystem, StateManager* stateManager,
+		ConfigManager* configManager, CEGUI::Window* window, Menu* father) :
+	mWindow(window), mFather( father )
+{
+	mCEGUISystem = CEGUISystem;
+	mStateManager = stateManager;
+	mConfigManager = configManager;
 }
-Menu::~Menu(){
-    CEGUI::WindowManager::getSingleton().destroyWindow( mWindow );
+
+Menu::Menu(CEGUI::Window* window, Menu* father) :
+	mWindow(window), mFather( father )
+{
+
+}
+
+Menu::~Menu()
+{
+	CEGUI::WindowManager::getSingleton().destroyWindow(mWindow);
 }
 
 CEGUI::Window* Menu::getWindow(){
     return mWindow;
 }
+
+CEGUI::System* Menu::mCEGUISystem = 0;
+StateManager* Menu::mStateManager = 0;
+ConfigManager* Menu::mConfigManager = 0;
 
 }
