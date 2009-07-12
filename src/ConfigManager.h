@@ -105,7 +105,7 @@ public:
 	  * @remarks It's simply a call to PlayerFactory's method to obtain
 	  * the list
 	  */
-	void getPlayersList(std::vector<std::string> &strplayers);
+	void getPlayersList(std::vector<std::string> &strplayers) const;
 
 	/** Get PlayerA's name
 	  * @remarks Must be the same name used by Player to register itself in PlayerFactory

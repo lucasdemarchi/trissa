@@ -113,7 +113,7 @@ std::string ConfigManager::getPlayersPath() const
 {
 	return std::string(mPlayersPath);
 }
-void ConfigManager::getPlayersList(std::vector<string> &strplayers) const
+void ConfigManager::getPlayersList(std::vector<std::string> &strplayers) const
 {
 	mPlayerFactory->getPlayersList(strplayers);
 }
