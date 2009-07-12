@@ -78,20 +78,44 @@ void SettingsMenu::populatePlayers()
 {
 	std::vector<std::string> strplayers;
 	std::vector<std::string>::iterator iter;
+	CEGUI::WindowManager &wmng = CEGUI::WindowManager::getSingleton();
 
 	mConfigManager->getPlayersList(strplayers);
-	CEGUI::Combobox* comboPlayerA = (CEGUI::Combobox*) CEGUI::WindowManager::getSingleton().getWindow("comboPlayerA");
-	CEGUI::Combobox* comboPlayerB = (CEGUI::Combobox*) CEGUI::WindowManager::getSingleton().getWindow("comboPlayerB");
+	CEGUI::Combobox* comboPlayerA = (CEGUI::Combobox*) wmng.getWindow("comboPlayerA");
+	CEGUI::Combobox* comboPlayerB = (CEGUI::Combobox*) wmng.getWindow("comboPlayerB");
 
-	comboPlayerA->resetList();
+//	comboPlayerA->resetList();
 	comboPlayerB->resetList();
+	//CEGUI::ListboxTextItem *lb = (CEGUI::ListboxTextItem*) wmng.createWindow("QuadraticLook/ListboxItem", "test");
+	//comboPlayerA->addItem(lb);
+
+        CEGUI::Combobox* objectComboBox = (CEGUI::Combobox*)CEGUI::WindowManager::getSingleton().getWindow("comboPlayerA");
+
+        CEGUI::ListboxTextItem* item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"FrameWindow", 0);
+        objectComboBox->addItem(item);
+        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"Horizontal Scrollbar", 1);
+        objectComboBox->addItem(item);
+        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"Vertical Scrollbar", 2);
+        objectComboBox->addItem(item);
+        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"StaticText", 3);
+        objectComboBox->addItem(item);
+        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"StaticImage", 4);
+        objectComboBox->addItem(item);
+        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"Render to Texture", 5);
+        objectComboBox->addItem(item);
+
 
 	for(iter = strplayers.begin(); iter != strplayers.end(); iter++){
-		CEGUI::ListboxTextItem lb(*iter);
-		comboPlayerA->addItem(&lb);
-		comboPlayerB->addItem(&lb);
+		CEGUI::ListboxTextItem* player;
+		player = new CEGUI::ListboxTextItem(*iter);
+		comboPlayerA->addItem(player);
+
+//		comboPlayerA->addItem(&lb);
+//		comboPlayerB->addItem(&lb);
 		std::cout << *iter << std::endl;
 	}
+
+	comboPlayerA->handleUpdatedListItemData();
 }
 
 }
