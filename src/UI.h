@@ -32,7 +32,7 @@ namespace trissa
 class ConfigManager;
 class PlayerFactory;
 class StateManager;
-//TODO: allow changing of playersPath in UI
+
 class UI : public UIInputOutput
 {
 

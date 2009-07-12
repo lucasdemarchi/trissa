@@ -86,7 +86,7 @@ unsigned int UIText::getDimension()
 string UIText::getPlayer(std::string player)
 {
 	vector<string> strplayers;
-	mPf->getPlayersList(strplayers);
+	mCm->getPlayersList(strplayers);
 
 	cout << "Available players: " << endl;
 	for (unsigned int i=0; i < strplayers.size(); i++) {
