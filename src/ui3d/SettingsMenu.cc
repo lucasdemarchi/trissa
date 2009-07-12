@@ -28,8 +28,9 @@
 #include <CEGUIWindow.h>
 #include <CEGUIWindowManager.h>
 #include <elements/CEGUIPushButton.h>
-#include <elements/CEGUICombobox.h>
 #include <elements/CEGUIListboxTextItem.h>
+#include <elements/CEGUIListbox.h>
+#include <elements/CEGUISpinner.h>
 
 #include <vector>
 #include <string>
@@ -65,9 +66,10 @@ bool SettingsMenu::cancel_OnClick(const CEGUI::EventArgs &args){
 
 bool SettingsMenu::ok_OnClick(const CEGUI::EventArgs &args){
 	//Use ConfigManager to save changes
-	std::cout << CEGUI::WindowManager::getSingleton().getWindow("comboPlayerA")->getText() << std::endl;
-	std::cout << CEGUI::WindowManager::getSingleton().getWindow("comboPlayerB")->getText() << std::endl;
-	std::cout << CEGUI::WindowManager::getSingleton().getWindow("txtDimension")->getText() << std::endl;
+	CEGUI::WindowManager &wmng = CEGUI::WindowManager::getSingleton();
+	std::cout << static_cast<CEGUI::Listbox*>(wmng.getWindow("lstPlayerA"))->getFirstSelectedItem()->getText() << std::endl;
+	std::cout << static_cast<CEGUI::Listbox*>(wmng.getWindow("lstPlayerB"))->getFirstSelectedItem()->getText() << std::endl;
+	std::cout << static_cast<CEGUI::Spinner*>(wmng.getWindow("txtDimension"))->getCurrentValue() << std::endl;
 
 
     mCEGUISystem->setGUISheet( mFather->getWindow() );
@@ -81,41 +83,30 @@ void SettingsMenu::populatePlayers()
 	CEGUI::WindowManager &wmng = CEGUI::WindowManager::getSingleton();
 
 	mConfigManager->getPlayersList(strplayers);
-	CEGUI::Combobox* comboPlayerA = (CEGUI::Combobox*) wmng.getWindow("comboPlayerA");
-	CEGUI::Combobox* comboPlayerB = (CEGUI::Combobox*) wmng.getWindow("comboPlayerB");
+	CEGUI::Listbox* lstA = (CEGUI::Listbox*) wmng.getWindow("lstPlayerB");
+	CEGUI::Listbox* lstB = (CEGUI::Listbox*) wmng.getWindow("lstPlayerA");
 
-//	comboPlayerA->resetList();
-	comboPlayerB->resetList();
-	//CEGUI::ListboxTextItem *lb = (CEGUI::ListboxTextItem*) wmng.createWindow("QuadraticLook/ListboxItem", "test");
-	//comboPlayerA->addItem(lb);
 
-        CEGUI::Combobox* objectComboBox = (CEGUI::Combobox*)CEGUI::WindowManager::getSingleton().getWindow("comboPlayerA");
-
-        CEGUI::ListboxTextItem* item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"FrameWindow", 0);
-        objectComboBox->addItem(item);
-        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"Horizontal Scrollbar", 1);
-        objectComboBox->addItem(item);
-        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"Vertical Scrollbar", 2);
-        objectComboBox->addItem(item);
-        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"StaticText", 3);
-        objectComboBox->addItem(item);
-        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"StaticImage", 4);
-        objectComboBox->addItem(item);
-        item = new CEGUI::ListboxTextItem((CEGUI::utf8*)"Render to Texture", 5);
-        objectComboBox->addItem(item);
-
+	lstA->resetList();
+	lstB->resetList();
 
 	for(iter = strplayers.begin(); iter != strplayers.end(); iter++){
-		CEGUI::ListboxTextItem* player;
-		player = new CEGUI::ListboxTextItem(*iter);
-		comboPlayerA->addItem(player);
+		CEGUI::ListboxTextItem* playerA =
+			new CEGUI::ListboxTextItem((CEGUI::utf8*)(*iter).c_str());
+		CEGUI::ListboxTextItem* playerB =
+			new CEGUI::ListboxTextItem((CEGUI::utf8*)(*iter).c_str());
+		playerA->setSelectionBrushImage("QuadraticLook", "White");
+		playerA->setSelectionColours(CEGUI::colour(0.0,0.5,0.8));
+		playerA->setSelected(false);
+		playerB->setSelectionBrushImage("QuadraticLook", "White");
+		playerB->setSelectionColours(CEGUI::colour(0.0,0.5,0.8));
+		playerB->setSelected(false);
+		lstA->addItem(playerA);
+		lstB->addItem(playerB);
 
-//		comboPlayerA->addItem(&lb);
-//		comboPlayerB->addItem(&lb);
 		std::cout << *iter << std::endl;
 	}
 
-	comboPlayerA->handleUpdatedListItemData();
 }
 
 }
