@@ -518,6 +518,7 @@
 	***************************************************
 	-->
 	<WidgetLook name = "QuadraticLook/ArrowButton">
+		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
 		<ImagerySection name = "bg_normal">
 			<FrameComponent>
 				<Area>
@@ -628,16 +629,16 @@
 				<Section section = "bg_normal" />
 				<Section section = "label" />
 			</Layer>
-		</StateImagery>
+		    </StateImagery>
 		<StateImagery name = "Hover">
 			<Layer>
 				<Section section = "bg_hover_fill" />
 				<Section section = "bg_hover" />
-				<Section section = "label">
+				<!--	<Section section = "label">
 					<ColourProperty name = "HoverTextColour" />
-				</Section>
+				    </Section>-->
 			</Layer>
-		</StateImagery>
+		    </StateImagery> 
 		<StateImagery name = "Pushed">
 			<Layer>
 				<Section section = "bg_hover" />
@@ -1250,7 +1251,8 @@
 	***************************************************
 	-->
 	<WidgetLook name = "QuadraticLook/VerticalScrollbarThumb">
-		<Property name = "VertFree" value = "true" />
+	    <Property name = "VertFree" value = "true" />
+
 		<ImagerySection name = "normal">
 			<FrameComponent>
 				<Area>
@@ -2143,6 +2145,7 @@
 		<PropertyDefinition name = "SelectedTextColour" initialValue = "FF000000" redrawOnWrite = "true" />
 		<PropertyDefinition name = "ActiveSelectionColour" initialValue = "69001EFF" redrawOnWrite = "true" />
 		<PropertyDefinition name = "InactiveSelectionColour" initialValue = "6953626B" redrawOnWrite = "true" />
+		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
 		<Property name = "MouseCursorImage" value = "set:QuadraticLook image:MouseTextBar" />
 		<NamedArea name = "TextArea">
 			<Area>
@@ -2269,6 +2272,10 @@
 	***************************************************
 	-->
 	<WidgetLook name = "QuadraticLook/Combobox">
+        	<PropertyLinkDefinition name="NormalEditTextColour" widget="__auto_editbox__" targetProperty="NormalTextColour" initialValue="FFFFFFFF" />
+	        <PropertyLinkDefinition name="SelectedEditTextColour" widget="__auto_editbox__" targetProperty="SelectedTextColour" initialValue="FF000000" />
+        	<PropertyLinkDefinition name="ActiveEditSelectionColour" widget="__auto_editbox__" targetProperty="ActiveSelectionColour" initialValue="FF6060FF" />
+	        <PropertyLinkDefinition name="InactiveEditSelectionColour" widget="__auto_editbox__" targetProperty="InactiveSelectionColour" initialValue="FF808080" />
 		<Child  type = "QuadraticLook/ComboEditbox" nameSuffix = "__auto_editbox__">
 			<Area>
 				<Dim type = "LeftEdge">
@@ -2295,7 +2302,7 @@
 						</DimOperator>
 					</FontDim>
 				</Dim>
-			</Area>-
+			</Area>
 		</Child>
 		<Child  type = "QuadraticLook/ComboDropList" nameSuffix = "__auto_droplist__">
 			<Area>
@@ -3859,6 +3866,7 @@
 	<WidgetLook name = "QuadraticLook/ButtonArrowLeft">
 		<PropertyDefinition name = "NormalImage" initialValue = "set:QuadraticLook image:ButtonBG_normal" redrawOnWrite = "true" />
 		<PropertyDefinition name = "BackdropImage" initialValue = "set:QuadraticLook image:ButtonBG_normal" redrawOnWrite = "true" />
+		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
 		<ImagerySection name = "bg_normal">
 			<FrameComponent>
 				<Area>
@@ -4023,6 +4031,7 @@
 	-->
 	<WidgetLook name = "QuadraticLook/ButtonArrowRight">
 		<PropertyDefinition name = "BackdropImage" initialValue = "" redrawOnWrite = "true" />
+		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
 		<ImagerySection name = "bg_normal">
 			<FrameComponent>
 				<Area>
@@ -4186,6 +4195,7 @@
 	***************************************************
 	-->
 	<WidgetLook name = "QuadraticLook/ButtonArrowUp">
+		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
 		<ImagerySection name = "bg_normal">
 			<FrameComponent>
 				<Area>
@@ -4327,6 +4337,7 @@
 	***************************************************
 	-->
 	<WidgetLook name = "QuadraticLook/ButtonArrowDown">
+		<PropertyDefinition name = "HoverTextColour" initialValue = "FFFFFFFF" redrawOnWrite = "true" />
 		<ImagerySection name = "bg_normal">
 			<FrameComponent>
 				<Area>
