@@ -40,7 +40,7 @@ public:
     bool ok_OnClick(const CEGUI::EventArgs &args);
 	bool cancel_OnClick(const CEGUI::EventArgs &args);
 private:
-
+	void populatePlayers();
 };
 
 }

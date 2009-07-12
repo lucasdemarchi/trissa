@@ -21,12 +21,19 @@
 
 #include "SettingsMenu.h"
 #include "StateManager.h"
+#include "ConfigManager.h"
 #include "MainMenu.h"
 
 #include <CEGUISystem.h>
 #include <CEGUIWindow.h>
 #include <CEGUIWindowManager.h>
 #include <elements/CEGUIPushButton.h>
+#include <elements/CEGUICombobox.h>
+#include <elements/CEGUIListboxTextItem.h>
+
+#include <vector>
+#include <string>
+
 
 
 namespace trissa
@@ -47,6 +54,8 @@ SettingsMenu::SettingsMenu(Menu* father) :
 	pCancelButton->subscribeEvent(CEGUI::PushButton::EventClicked,
 			CEGUI::Event::Subscriber(&SettingsMenu::cancel_OnClick, this));
 
+	this->populatePlayers();
+
 }
 
 bool SettingsMenu::cancel_OnClick(const CEGUI::EventArgs &args){
@@ -56,10 +65,33 @@ bool SettingsMenu::cancel_OnClick(const CEGUI::EventArgs &args){
 
 bool SettingsMenu::ok_OnClick(const CEGUI::EventArgs &args){
 	//Use ConfigManager to save changes
-	
+	std::cout << CEGUI::WindowManager::getSingleton().getWindow("comboPlayerA")->getText() << std::endl;
+	std::cout << CEGUI::WindowManager::getSingleton().getWindow("comboPlayerB")->getText() << std::endl;
+	std::cout << CEGUI::WindowManager::getSingleton().getWindow("txtDimension")->getText() << std::endl;
+
 
     mCEGUISystem->setGUISheet( mFather->getWindow() );
     return true;
+}
+
+void SettingsMenu::populatePlayers()
+{
+	std::vector<std::string> strplayers;
+	std::vector<std::string>::iterator iter;
+
+	mConfigManager->getPlayersList(strplayers);
+	CEGUI::Combobox* comboPlayerA = (CEGUI::Combobox*) CEGUI::WindowManager::getSingleton().getWindow("comboPlayerA");
+	CEGUI::Combobox* comboPlayerB = (CEGUI::Combobox*) CEGUI::WindowManager::getSingleton().getWindow("comboPlayerB");
+
+	comboPlayerA->resetList();
+	comboPlayerB->resetList();
+
+	for(iter = strplayers.begin(); iter != strplayers.end(); iter++){
+		CEGUI::ListboxTextItem lb(*iter);
+		comboPlayerA->addItem(&lb);
+		comboPlayerB->addItem(&lb);
+		std::cout << *iter << std::endl;
+	}
 }
 
 }
