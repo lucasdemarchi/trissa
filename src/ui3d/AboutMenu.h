@@ -1,5 +1,5 @@
 /*
- * MainMenu.h
+ * AboutMenu.h
  * This file is part of Trissa
  *
  * Copyright (C) 2009 - Lucas De Marchi
@@ -19,8 +19,8 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef _TRISSA_MAINMENU_H
-#define _TRISSA_MAINMENU_H 1
+#ifndef _TRISSA_ABOUTMENU_H
+#define _TRISSA_ABOUTMENU_H
 
 #include "Menu.h"
 #include <CEGUIWindow.h>
@@ -34,27 +34,11 @@ namespace CEGUI
 namespace trissa
 {
 
-class StateManager;
-class ConfigManager;
-
-class SettingsMenu;
-class AboutMenu;
-
-class MainMenu : public Menu {
+class AboutMenu : public Menu{
 public:
-	MainMenu(CEGUI::System* CEGUISystem, StateManager* stateManager,
-		ConfigManager* configManager);
-    
-	virtual ~MainMenu();
-
-    bool quit_OnClick( const CEGUI::EventArgs &args );
-    bool options_OnClick( const CEGUI::EventArgs &args );
-    bool play_OnClick(const CEGUI::EventArgs &args);
-	bool about_OnClick(const CEGUI::EventArgs &args);
-protected:
-    SettingsMenu* mSettingsMenu;
-	AboutMenu* mAboutMenu;
+    AboutMenu(Menu* father);
+	bool close_OnClick(const CEGUI::EventArgs &args);
 };
-}
 
+}
 #endif

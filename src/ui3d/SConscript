@@ -6,7 +6,7 @@ Import('*')
 
 objs += ['#src/ui3d/UI3d.cc', '#src/ui3d/InputHandler.cc', '#src/ui3d/InputHandlerGame.cc', \
          '#src/ui3d/InputHandlerGui.cc', '#src/ui3d/MainMenu.cc', '#src/ui3d/Menu.cc', \
-         '#src/ui3d/SettingsMenu.cc']
+         '#src/ui3d/SettingsMenu.cc', '#src/ui3d/AboutMenu.cc' ]
 
 headers += ['#src/ui3d/UI3d.h']
 

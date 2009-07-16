@@ -1,5 +1,5 @@
 /*
- * MainMenu.h
+ * AboutMenu.cc
  * This file is part of Trissa
  *
  * Copyright (C) 2009 - Lucas De Marchi
@@ -19,42 +19,34 @@
  * Boston, MA  02110-1301  USA
  */
 
-#ifndef _TRISSA_MAINMENU_H
-#define _TRISSA_MAINMENU_H 1
+#include "AboutMenu.h"
 
-#include "Menu.h"
+#include <CEGUISystem.h>
 #include <CEGUIWindow.h>
+#include <CEGUIWindowManager.h>
+#include <elements/CEGUIPushButton.h>
 
-namespace CEGUI
-{
-	class System;
-	class Window;
-}
+
+
 
 namespace trissa
 {
 
-class StateManager;
-class ConfigManager;
+AboutMenu::AboutMenu(Menu* father) :
+    Menu(CEGUI::WindowManager::getSingleton().loadWindowLayout("about.layout"),
+			father )
+{
 
-class SettingsMenu;
-class AboutMenu;
+//	CEGUI::PushButton* pOkButton =
+//		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOk");
+//	pOkButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+//			CEGUI::Event::Subscriber(&SettingsMenu::ok_OnClick, this));
 
-class MainMenu : public Menu {
-public:
-	MainMenu(CEGUI::System* CEGUISystem, StateManager* stateManager,
-		ConfigManager* configManager);
-    
-	virtual ~MainMenu();
-
-    bool quit_OnClick( const CEGUI::EventArgs &args );
-    bool options_OnClick( const CEGUI::EventArgs &args );
-    bool play_OnClick(const CEGUI::EventArgs &args);
-	bool about_OnClick(const CEGUI::EventArgs &args);
-protected:
-    SettingsMenu* mSettingsMenu;
-	AboutMenu* mAboutMenu;
-};
 }
 
-#endif
+bool AboutMenu::close_OnClick(const CEGUI::EventArgs &args){
+    mCEGUISystem->setGUISheet( mFather->getWindow() );
+    return true;
+}
+
+}

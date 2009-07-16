@@ -20,6 +20,7 @@
  */
 
 #include "MainMenu.h"
+#include "AboutMenu.h"
 #include "SettingsMenu.h"
 #include "StateManager.h"
 
@@ -57,28 +58,45 @@ MainMenu::MainMenu(CEGUI::System* CEGUISystem, StateManager* stateManager,
 	pQuitButton->subscribeEvent(CEGUI::PushButton::EventClicked,
 			CEGUI::Event::Subscriber(&MainMenu::quit_OnClick, this));
 
-	//create son
+	CEGUI::PushButton* pAboutButton =
+		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdAbout");
+	pAboutButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+			CEGUI::Event::Subscriber(&MainMenu::about_OnClick, this));
+
+	//create sons
 	mSettingsMenu = new SettingsMenu(this);
+	mAboutMenu = new AboutMenu(this);
 
 	//make me visible
 	mCEGUISystem->setGUISheet(mWindow);
 }
-MainMenu::~MainMenu(){
+MainMenu::~MainMenu()
+{
     delete mSettingsMenu;
+	delete mAboutMenu;
 }
 
-bool MainMenu::quit_OnClick( const CEGUI::EventArgs &args ){
+bool MainMenu::quit_OnClick( const CEGUI::EventArgs &args )
+{
     mStateManager->requestStateChange(SHUTDOWN);
     return true;
 }
 
-bool MainMenu::options_OnClick( const CEGUI::EventArgs &args ){
+bool MainMenu::options_OnClick( const CEGUI::EventArgs &args )
+{
     mCEGUISystem->setGUISheet( mSettingsMenu->getWindow() );
     return true;
 }
-bool MainMenu::play_OnClick(const CEGUI::EventArgs &args){
+bool MainMenu::play_OnClick(const CEGUI::EventArgs &args)
+{
     mStateManager->requestStateChange(GAME);
     return true;
+}
+
+bool MainMenu::about_OnClick(const CEGUI::EventArgs &args)
+{
+	mCEGUISystem->setGUISheet( mAboutMenu->getWindow() );
+	return true;
 }
 
 }
