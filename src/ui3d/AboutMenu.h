@@ -37,7 +37,7 @@ namespace trissa
 class AboutMenu : public Menu{
 public:
     AboutMenu(Menu* father);
-	bool close_OnClick(const CEGUI::EventArgs &args);
+	bool ok_OnClick(const CEGUI::EventArgs &args);
 };
 
 }

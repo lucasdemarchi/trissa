@@ -37,14 +37,14 @@ AboutMenu::AboutMenu(Menu* father) :
 			father )
 {
 
-//	CEGUI::PushButton* pOkButton =
-//		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOk");
-//	pOkButton->subscribeEvent(CEGUI::PushButton::EventClicked,
-//			CEGUI::Event::Subscriber(&SettingsMenu::ok_OnClick, this));
+	CEGUI::PushButton* pOkButton =
+		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("About/cmdOk");
+	pOkButton->subscribeEvent(CEGUI::PushButton::EventClicked,
+			CEGUI::Event::Subscriber(&AboutMenu::ok_OnClick, this));
 
 }
 
-bool AboutMenu::close_OnClick(const CEGUI::EventArgs &args){
+bool AboutMenu::ok_OnClick(const CEGUI::EventArgs &args){
     mCEGUISystem->setGUISheet( mFather->getWindow() );
     return true;
 }
