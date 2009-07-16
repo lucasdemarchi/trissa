@@ -1,35 +1,49 @@
-<?xml version="1.0" ?>
-<GUILayout>
-    <Window Type="QuadraticLook/FrameWindow" Name="Main">
-        <Property Name="UnifiedAreaRect" Value="{{0.0,0},{0.0,0},{1.0,0},{1.0,0}}" />
-        <Property Name="FrameEnabled" Value="false" />
-        <Property Name="TitlebarEnabled" Value="false" />
-	<Property Name="CloseButtonEnabled" Value="False" />
-	<Window Type="QuadraticLook/StaticImage" Name="Background" >
-            <Property Name="UnifiedAreaRect" Value="{{0.000000,0.000000},{0.000000,0.000000},{1.000000,0.000000},{1.000000,0.000000}}" />
-            <Property Name="UnifiedMaxSize" Value="{{1.000000,0.000000},{1.000000,0.000000}}" />
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="QuadraticLook/FrameWindow" Name="Main" >
+        <Property Name="FrameEnabled" Value="False" />
+        <Property Name="TitlebarFont" Value="BlueHighway-12" />
+        <Property Name="SizingEnabled" Value="False" />
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="TitlebarEnabled" Value="False" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property Name="CloseButtonEnabled" Value="False" />
+        <Window Type="QuadraticLook/StaticImage" Name="Background" >
             <Property Name="Image" Value="set:Background image:Background" />
-	</Window>
-        <Window Type="QuadraticLook/Button" Name="cmdPlay">
-            <Property Name="Text" Value="Play" />
-            <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.25,0},{0.9,0},{0.35,0}}" />
-            <Property Name="EnableBorder" Value="0" />
-	    <Property Name="Font" Value="BlueHighway-20" />
-	    <Property Name="AlwaysOnTop" Value="true" />
+            <Property Name="AlwaysOnTop" Value="False" />
+            <Property Name="FrameEnabled" Value="True" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+            <Property Name="BackgroundEnabled" Value="True" />
         </Window>
-        <Window Type="QuadraticLook/Button" Name="cmdOptions">
-            <Property Name="Text" Value="Options" />
-            <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.45,0},{0.9,0},{0.55,0}}" />
-            <Property Name="EnableBorder" Value="0" />
-	    <Property Name="Font" Value="BlueHighway-20" />
-	    <Property Name="AlwaysOnTop" Value="true" />
-        </Window>
-        <Window Type="QuadraticLook/Button" Name="cmdQuit">
-            <Property Name="Text" Value="Quit" />
-            <Property Name="UnifiedAreaRect" Value="{{0.7,0},{0.65,0},{0.9,0},{0.75,0}}" />
-            <Property Name="EnableBorder" Value="0" />
+        <Window Type="QuadraticLook/Button" Name="cmdAbout" >
             <Property Name="Font" Value="BlueHighway-20" />
-	    <Property Name="AlwaysOnTop" Value="true" />
+            <Property Name="Text" Value="About" />
+            <Property Name="AlwaysOnTop" Value="True" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.7075,0},{0.478333,0},{0.90625,0},{0.578333,0}}" />
+        </Window>
+        <Window Type="QuadraticLook/Button" Name="cmdPlay" >
+            <Property Name="Font" Value="BlueHighway-20" />
+            <Property Name="Text" Value="Play" />
+            <Property Name="AlwaysOnTop" Value="True" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.7075,0},{0.166667,0},{0.9075,0},{0.266667,0}}" />
+        </Window>
+        <Window Type="QuadraticLook/Button" Name="cmdQuit" >
+            <Property Name="Font" Value="BlueHighway-20" />
+            <Property Name="Text" Value="Quit" />
+            <Property Name="AlwaysOnTop" Value="True" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.7075,0},{0.71,0},{0.9075,0},{0.81,0}}" />
+        </Window>
+        <Window Type="QuadraticLook/Button" Name="cmdOptions" >
+            <Property Name="Font" Value="BlueHighway-20" />
+            <Property Name="Text" Value="Options" />
+            <Property Name="AlwaysOnTop" Value="True" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0.7075,0},{0.318333,0},{0.9075,0},{0.418333,0}}" />
         </Window>
     </Window>
 </GUILayout>
