@@ -67,10 +67,45 @@ bool SettingsMenu::cancel_OnClick(const CEGUI::EventArgs &args){
 bool SettingsMenu::ok_OnClick(const CEGUI::EventArgs &args){
 	//Use ConfigManager to save changes
 	CEGUI::WindowManager &wmng = CEGUI::WindowManager::getSingleton();
-	std::cout << static_cast<CEGUI::Listbox*>(wmng.getWindow("lstPlayerA"))->getFirstSelectedItem()->getText() << std::endl;
-	std::cout << static_cast<CEGUI::Listbox*>(wmng.getWindow("lstPlayerB"))->getFirstSelectedItem()->getText() << std::endl;
-	std::cout << static_cast<CEGUI::Spinner*>(wmng.getWindow("txtDimension"))->getCurrentValue() << std::endl;
+	CEGUI::ListboxItem* playerA = static_cast<CEGUI::Listbox*>
+		(wmng.getWindow("lstPlayerA"))->getFirstSelectedItem();
+	CEGUI::ListboxItem* playerB = static_cast<CEGUI::Listbox*>
+		(wmng.getWindow("lstPlayerB"))->getFirstSelectedItem();
+	int dimension = static_cast<int>(static_cast<CEGUI::Spinner*>
+		(wmng.getWindow("txtDimension"))->getCurrentValue());
+	
+	if (playerA == NULL){
+		if(static_cast<CEGUI::Listbox*>
+				(wmng.getWindow("lstPlayerA"))->getItemCount() > 0){
 
+			std::cerr << "No player A selected, using the first one" << std::endl;
+			playerA = static_cast<CEGUI::Listbox*>
+				(wmng.getWindow("lstPlayerA"))->getListboxItemFromIndex(0);
+
+		}
+		else{
+			std::cerr << "No player to select for player A" << std::endl;
+			return true;
+		}
+	}
+	if (playerB == NULL){
+		if(static_cast<CEGUI::Listbox*>
+				(wmng.getWindow("lstPlayerB"))->getItemCount() > 0){
+
+			std::cerr << "No player B selected, using the first one" << std::endl;
+			playerB = static_cast<CEGUI::Listbox*>
+				(wmng.getWindow("lstPlayerB"))->getListboxItemFromIndex(0);
+
+		}
+		else{
+			std::cerr << "No player to select for player A" << std::endl;
+			return true;
+		}
+	}
+
+	mConfigManager->setDimension(dimension);
+	mConfigManager->setPlayerA(std::string(playerA->getText().c_str()));
+	mConfigManager->setPlayerB(std::string(playerB->getText().c_str()));
 
     mCEGUISystem->setGUISheet( mFather->getWindow() );
     return true;
