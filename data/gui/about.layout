@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="QuadraticLook/FrameWindow" Name="Main" >
+        <Property Name="FrameEnabled" Value="False" />
+        <Property Name="TitlebarFont" Value="BlueHighway-12" />
+        <Property Name="SizingEnabled" Value="False" />
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="TitlebarEnabled" Value="False" />
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property Name="CloseButtonEnabled" Value="False" />
+        <Window Type="QuadraticLook/StaticImage" Name="Background" >
+            <Property Name="Image" Value="set:Background image:Background" />
+            <Property Name="FrameEnabled" Value="True" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+            <Property Name="BackgroundEnabled" Value="True" />
+        </Window>
+        <Window Type="QuadraticLook/FrameWindow" Name="Main/About" >
+            <Property Name="Text" Value="About" />
+            <Property Name="AlwaysOnTop" Value="True" />
+            <Property Name="TitlebarFont" Value="BlueHighway-12" />
+            <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+            <Property Name="TitlebarEnabled" Value="True" />
+            <Property Name="UnifiedAreaRect" Value="{{0.15,0},{0.2,0},{0.85,0},{0.8,0}}" />
+            <Property Name="DragMovingEnabled" Value="False" />
+            <Window Type="QuadraticLook/StaticText" Name="Main/About/" >
+                <Property Name="Text" >Trissa is a modification of the well known tictactoe game, where you can play in a 3D board. It has as a text interface as well as this 3D interface, in which is simpler to play.
+
+The goal of the game is to align N balls, where N is the board&apos;s dimension. For example, if you are playing in a 5x5x5 board (you can set the dimension entering the &quot;Options&quot; menu on the first screen) you have to align 5 balls in whatever direction. Note however that not all directions inside a cube can hold N balls.
+
+The game was though in the beginning to be used to develop algorithms to play this type of game against each other. There&apos;s a plugin mechanism that you can use to develop your algorithm. Afterwards a Human player was added using this same mechanism, so you can have some fun and also test your algorithms.
+
+For more informations visit our site: http://github.com/lucasdemarchi/trissa/
+
+Author:
+     Lucas De Marchi
+     http://www.politreco.com</Property>
+                <Property Name="HorzFormatting" Value="WordWrapLeftAligned" />
+                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                <Property Name="VertFormatting" Value="TopAligned" />
+                <Property Name="UnifiedAreaRect" Value="{{0.05,0},{0.1,0},{0.95,0},{0.9,0}}" />
+            </Window>
+        </Window>
+    </Window>
+</GUILayout>
