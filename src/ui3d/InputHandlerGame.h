@@ -61,6 +61,8 @@ public:
     bool keyPressed(const OIS::KeyEvent &e);
     bool keyReleased(const OIS::KeyEvent &e);
 
+	void setUserInputEnabled(bool enable);
+
 protected:
     Ogre::SceneManager* mSceneMgr;
     Ogre::Camera* mCamera;
@@ -70,7 +72,10 @@ protected:
     //Selection Variables
     Ogre::RaySceneQuery *mRaySceneQuery;
     Ogre::Entity *mSelPos;
+	bool mUserInputEnabled;
     bool mWaitingSelConfirmation;
+
+
 
     Ogre::Real mRotateSpeed;
     Ogre::Real mCameraRotateSpeed;

@@ -47,7 +47,7 @@ namespace trissa
 InputHandlerGame::InputHandlerGame(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem,
                                     SceneManager* sceneMgr) :
     InputHandler( win, stateManager, CEGUISystem ),
-    mSceneMgr( sceneMgr ), mCamera( 0 ), mBoardNode( 0 ), mCameraNode( 0 ), mRaySceneQuery( 0 ), mSelPos( 0 ), mWaitingSelConfirmation( false ),
+    mSceneMgr( sceneMgr ), mCamera( 0 ), mBoardNode( 0 ), mCameraNode( 0 ), mRaySceneQuery( 0 ), mSelPos( 0 ), mUserInputEnabled(false) , mWaitingSelConfirmation( false ),
     mRotateSpeed( 0.5 ), mCameraRotateSpeed( 0.13 ), mMoveSpeed( 1 ), mZoomSpeed( 0.6 ), mZoomSens( 100 ), mZoomPrev ( 0 ),
     mMovingY( false ),
     mNumScreenshots( 0 ) {
@@ -101,7 +101,7 @@ bool InputHandlerGame::mouseMoved(const OIS::MouseEvent &evt) {
     return ret;
 }
 bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID id) {
-    if( id == OIS::MB_Left ){
+    if(mUserInputEnabled && id == OIS::MB_Left ){
         if(!mWaitingSelConfirmation){
             CEGUI::Point mousePos = CEGUI::MouseCursor::getSingleton().getPosition();
             Ray mouseRay = mCamera->getCameraToViewportRay(mousePos.d_x/float(e.state.width), mousePos.d_y/float(e.state.height));
@@ -188,6 +188,12 @@ bool InputHandlerGame::keyPressed(const OIS::KeyEvent &e) {
     }
     return true;
 }
+
+void InputHandlerGame::setUserInputEnabled(bool enable)
+{
+	mUserInputEnabled = enable;
+}
+
 bool InputHandlerGame::keyReleased(const OIS::KeyEvent &e) {
     switch( e.key ){
 		case OIS::KC_PGUP:
