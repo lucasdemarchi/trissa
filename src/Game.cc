@@ -94,17 +94,17 @@ int Game::load()
 	//Create the UI based on the parameter got through ConfigManager
 #ifdef _TRISSA_UI3D_
 	if (mConfigManager.getUIType() == ConfigManager::UI_3D){
-		cout << "ui3d...\n";
+		cout << "Loading UI: 3d...\n";
 		mUi = new UI3d(&mConfigManager, &mStateManager, &mPlayerFactory);
 	}
 	else
 #endif
 	if (mConfigManager.getUIType() == ConfigManager::UI_TEXT){
-		cout << "text... \n";
+		cout << "Loading UI: text... \n";
 		mUi = new UIText(&mConfigManager, &mStateManager, &mPlayerFactory);
 	}
 	else{
-		cout << "not available...\n";
+		cerr << "UI not available...\n";
 		return -1;
 	}
 
@@ -129,6 +129,9 @@ void Game::configure()
 void Game::run()
 {
 	//Finish loading configurations
+	cout << "Loading game... " << endl;
+	cout << "Dimension: " << mConfigManager.getDimension();
+
 	mDimension  = (int) mConfigManager.getDimension();
 
 	if ( mBoard )
@@ -141,6 +144,7 @@ void Game::run()
 	if ( mPlayerA || mPlayerB )
 		mPlayerFactory.destroyPlayers();
 
+	cout << "Creating players..." << endl;
 	try{
 		mPlayerA = mPlayerFactory.create_player (mConfigManager.getPlayerA(),
 	                                         mDimension, PLAYER_CROSS, mUi);
@@ -152,7 +156,7 @@ void Game::run()
 	}
 
 
-
+	cout << "Calling UI specific start method";
 	//Start game
 	mUi->start(*mBoard);
 

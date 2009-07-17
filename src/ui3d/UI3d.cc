@@ -85,7 +85,6 @@ void UI3d::configure()
 
 void UI3d::start(Cube const& board)
 {
-
 	assert(!mThread);
 	mThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&UI3d::start_thread, this)));
 }
