@@ -78,7 +78,9 @@ int Game::startGame()
 		// run configurations (a.k.a Menus in 3D or some questions in text)
 		this->configure();
 		if ( this->mStateManager.getCurrentState() == GAME ) {
-			this->run();
+			boost::thread thr(boost::bind(&Game::run,this));
+			static_cast<UI3d*>(mUi)->start_thread();
+			thr.join();
 		}
 
 	}
@@ -156,10 +158,11 @@ void Game::run()
 	}
 
 
-	cout << "Calling UI specific start method";
+	cout << "Calling UI specific start method" << endl;
 	//Start game
 	mUi->start(*mBoard);
-
+	//wait GUI loading
+	boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
 
 	int turn = 0;
 	int retry = n_retry;
@@ -225,6 +228,7 @@ out:
 	if (!mUi->gameOver())
 		mStateManager.requestStateChange(SHUTDOWN);
 
+	//FIXME
 	mUi->wait_end();
 }
 

@@ -23,6 +23,7 @@
 #define _TRISSA_INPUTHANDLERGAME_H_ 1
 
 #include "InputHandler.h"
+#include "common.h"
 //OIS includes
 #include <OISEvents.h>
 //Ogre Includes
@@ -33,6 +34,11 @@
 #include <OgreVector3.h>
 //CEGUI includes
 #include <CEGUISystem.h>
+
+
+
+#include <boost/thread/mutex.hpp>
+#include <boost/thread/condition_variable.hpp>
 
 namespace trissa
 {
@@ -61,7 +67,7 @@ public:
     bool keyPressed(const OIS::KeyEvent &e);
     bool keyReleased(const OIS::KeyEvent &e);
 
-	void setUserInputEnabled(bool enable);
+	Ogre::Entity* getUserInput();
 
 protected:
     Ogre::SceneManager* mSceneMgr;
@@ -73,6 +79,10 @@ protected:
     Ogre::RaySceneQuery *mRaySceneQuery;
     Ogre::Entity *mSelPos;
 	bool mUserInputEnabled;
+	boost::mutex mMutexUserInput;
+	boost::condition_variable mCondUserInput;
+	Move mUserInput;
+
     bool mWaitingSelConfirmation;
 
 

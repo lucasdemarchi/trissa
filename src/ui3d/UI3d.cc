@@ -53,7 +53,7 @@ UI3d::UI3d (ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
 	//Config screens:
 	mCEGUIRenderer( 0 ), mCEGUISystem( 0 ), mMainMenu( 0 ),
 	//Display configuration?
-	mForceConfigDialogDisplay(false)
+	mForceConfigDialogDisplay(false), mCanLoadUi(false)
 {
 	mRoot = new Root();
 	//Load all resources defined in resources.cfg
@@ -85,17 +85,25 @@ void UI3d::configure()
 
 void UI3d::start(Cube const& board)
 {
-	assert(!mThread);
-	mThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&UI3d::start_thread, this)));
+//	mThread = boost::shared_ptr<boost::thread>(new boost::thread(boost::bind(&UI3d::start_thread, this)));
+	mCanLoadUi = true;
 }
 
 void UI3d::wait_end()
 {
-	assert(mThread);
-	mThread->join();
+	//assert(mThread);
+	//mThread->join();
 }
 void UI3d::start_thread()
 {
+	//wait game load - busy wait
+	while(!mCanLoadUi){
+		boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+	}
+
+
+	std::cout << "UI3d::start_thread:  render thread.\n";
+//	boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
 	createScene();
 	while(mSm->getCurrentState() == GAME) {
 		mInputHandler->capture();
@@ -104,6 +112,7 @@ void UI3d::start_thread()
 		mRoot->renderOneFrame();
 	}
 	destroyScene();
+	mCanLoadUi = false;
 
 	//thread finishes here and mThread is automagically freeed
 }
@@ -118,8 +127,11 @@ void UI3d::setPos(Move const &m, PlayerType player)
 
 Move UI3d::getUserInput()
 {
-	return Move(0,0,0);
+	InputHandlerGame* ih = static_cast<InputHandlerGame*>(mInputHandler);
+	//blocks until user play
+	return boardMap[ih->getUserInput()];
 }
+
 void UI3d::printWinnerMessage(std::string msg)
 {
 }
@@ -200,7 +212,6 @@ void UI3d::destroyGUI(){
 
 void UI3d::createScene(){
 	mSceneMgr->setAmbientLight(ColourValue(0.25, 0.25, 0.25));
-
 	Entity *ent = 0;
 	SceneNode *node = 0;
 	Light* light = 0;
@@ -247,9 +258,10 @@ void UI3d::createScene(){
 				SceneNode* sc = mBoardNode->createChildSceneNode();
 				sc->setPosition(init_position - (QUAD_SIZE * i),                     //X
 								QUAD_SIZE + (j * VAR_DIST_PLANES * boardDimension),  //Y
-								init_position - (QUAD_SIZE * k)
-								);                                                                     //Z
+								init_position - (QUAD_SIZE * k)                      //Z
+								);
 				sc->attachObject(ent);
+				boardMap[ent] = Move(i,j,k);
 			}
 		}
 	}
@@ -325,6 +337,7 @@ void UI3d::destroyScene(){
 	delete mInputHandler;
 	mInputHandler = 0;
 }
+
 const Real UI3d::VAR_DIST_PLANES = 6;
 const String UI3d::posNames("BoardPlace");
 const Real UI3d::QUAD_SIZE = 20;

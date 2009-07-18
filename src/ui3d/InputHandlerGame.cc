@@ -47,7 +47,7 @@ namespace trissa
 InputHandlerGame::InputHandlerGame(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem,
                                     SceneManager* sceneMgr) :
     InputHandler( win, stateManager, CEGUISystem ),
-    mSceneMgr( sceneMgr ), mCamera( 0 ), mBoardNode( 0 ), mCameraNode( 0 ), mRaySceneQuery( 0 ), mSelPos( 0 ), mUserInputEnabled(false) , mWaitingSelConfirmation( false ),
+    mSceneMgr( sceneMgr ), mCamera( 0 ), mBoardNode( 0 ), mCameraNode( 0 ), mRaySceneQuery( 0 ), mSelPos( 0 ), mUserInputEnabled(false), mUserInput(0,0,0), mWaitingSelConfirmation( false ),
     mRotateSpeed( 0.5 ), mCameraRotateSpeed( 0.13 ), mMoveSpeed( 1 ), mZoomSpeed( 0.6 ), mZoomSens( 100 ), mZoomPrev ( 0 ),
     mMovingY( false ),
     mNumScreenshots( 0 ) {
@@ -119,14 +119,22 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
         }
         else {
             //put a ball
-            Entity* ent = mSceneMgr->createEntity(mSelPos->getName() + "Ball", "ball.mesh");
-            ent->setQueryFlags(BALL_MASK);
-            mSelPos->getParentSceneNode()->attachObject(ent);
-            mSelPos->setQueryFlags(POSITION_OCCUPIED_MASK);
-            mSelPos->setMaterialName("glass/glass");
-            mWaitingSelConfirmation = false;
-            mSelPos = 0;
-        }
+			{
+				boost::lock_guard<boost::mutex> lock(mMutexUserInput);
+				mUserInputEnabled = false;
+				
+				mSelPos->setQueryFlags(POSITION_OCCUPIED_MASK);
+				mSelPos->setMaterialName("glass/glass");
+				mWaitingSelConfirmation = false;
+				//mSelPos = 0;
+
+			// FIXME
+				Entity* ent = mSceneMgr->createEntity(mSelPos->getName() + "Ball", "ball.mesh");
+				ent->setQueryFlags(BALL_MASK);
+				mSelPos->getParentSceneNode()->attachObject(ent);
+			}
+			mCondUserInput.notify_one();
+		}
     }
     else if(mWaitingSelConfirmation && id == OIS::MB_Right ){
         mWaitingSelConfirmation = false;
@@ -189,9 +197,16 @@ bool InputHandlerGame::keyPressed(const OIS::KeyEvent &e) {
     return true;
 }
 
-void InputHandlerGame::setUserInputEnabled(bool enable)
+Entity* InputHandlerGame::getUserInput()
 {
-	mUserInputEnabled = enable;
+	{
+		boost::unique_lock<boost::mutex> lock(mMutexUserInput);
+		mUserInputEnabled = true;
+		while(mUserInputEnabled){
+			mCondUserInput.wait(lock);
+		}
+	}
+	return mSelPos;
 }
 
 bool InputHandlerGame::keyReleased(const OIS::KeyEvent &e) {

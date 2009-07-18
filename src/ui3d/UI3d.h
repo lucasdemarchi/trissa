@@ -37,6 +37,8 @@
 #include <CEGUISchemeManager.h>
 
 #include <sstream>
+#include <map>
+
 #include <boost/thread/thread.hpp>
 #include <boost/shared_ptr.hpp>
 
@@ -52,11 +54,15 @@ public:
 	void start(Cube const& board);	
 	void wait_end();
 	void setPos(Move const& m, PlayerType player);
-
+	
 	bool gameOver();
 
 	
+	void start_thread();
+
+	//called by core
 	Move getUserInput();
+
 	void printWinnerMessage(std::string msg);
 	void printLooserMessage(std::string msg);
 
@@ -79,7 +85,7 @@ private:
 	static const Ogre::Real QUAD_SIZE;
 
 	bool mForceConfigDialogDisplay;
-	boost::shared_ptr<boost::thread> mThread;
+	volatile bool mCanLoadUi;
 
 	void setupResources();
 	void setupRenderSystem();
@@ -92,7 +98,7 @@ private:
 	void createScene();
 	void destroyScene();
 
-	void start_thread();
+	std::map<Ogre::Entity*, Move> boardMap;
 };
 
 

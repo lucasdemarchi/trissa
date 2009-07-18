@@ -44,6 +44,7 @@ public:
 	int y;
 	int z;
 	Move(int x, int y, int z) : x(x), y(y), z(z) {}
+	Move() : x(0), y(0), z(0) {}
 	//Move(){}
 	void operator-=(Move a) {
 		x -= a.x;
