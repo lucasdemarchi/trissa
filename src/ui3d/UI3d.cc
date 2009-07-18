@@ -123,6 +123,15 @@ bool UI3d::gameOver()
 }
 void UI3d::setPos(Move const &m, PlayerType player)
 {
+	InputHandlerGame* ih = static_cast<InputHandlerGame*>(mInputHandler);
+	Entity* selPos = ih->getSel();
+	Entity* ent = mSceneMgr->getEntity(selPos->getName() + "Ball");
+	ent->setQueryFlags(InputHandlerGame::BALL_MASK);
+	if(player == PLAYER_CROSS)
+		ent->setMaterialName("frostedglass2");
+	else
+		ent->setMaterialName("Trissa/RedGlass");
+	selPos->getParentSceneNode()->attachObject(ent);
 }
 
 Move UI3d::getUserInput()

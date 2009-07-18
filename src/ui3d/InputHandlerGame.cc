@@ -125,13 +125,13 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
 				
 				mSelPos->setQueryFlags(POSITION_OCCUPIED_MASK);
 				mSelPos->setMaterialName("glass/glass");
+
+				try{
+					mSceneMgr->createEntity(mSelPos->getName() + "Ball", "ball.mesh");
+				} catch(...){ //ignore if already exist
+				}
 				mWaitingSelConfirmation = false;
 				//mSelPos = 0;
-
-			// FIXME
-				Entity* ent = mSceneMgr->createEntity(mSelPos->getName() + "Ball", "ball.mesh");
-				ent->setQueryFlags(BALL_MASK);
-				mSelPos->getParentSceneNode()->attachObject(ent);
 			}
 			mCondUserInput.notify_one();
 		}
@@ -206,6 +206,10 @@ Entity* InputHandlerGame::getUserInput()
 			mCondUserInput.wait(lock);
 		}
 	}
+	return mSelPos;
+}
+Entity* InputHandlerGame::getSel()
+{
 	return mSelPos;
 }
 

@@ -68,7 +68,7 @@ public:
     bool keyReleased(const OIS::KeyEvent &e);
 
 	Ogre::Entity* getUserInput();
-
+	Ogre::Entity* getSel();
 protected:
     Ogre::SceneManager* mSceneMgr;
     Ogre::Camera* mCamera;
