@@ -81,8 +81,14 @@ void PlayerFactory::loadPlayerLibraries(std::string path)
 						dlclose(player_details.dlib);
 						continue;
 					}
+					if(factory.find(playerName) == factory.end())
+						this->factory[playerName] = player_details;
+					else
+						cerr << "PlayerFactory: Impossible to add two players "
+							"with the same name: " << playerName << endl <<
+							"Ignoring player defined by file: " << filename <<
+							endl;
 
-					this->factory[playerName] = player_details;
 				}
 			} catch ( const std::exception & ex ) {
 				cerr<< "PlayerFactory: " << "Unable to access file " << dir_itr->path().filename() << endl;
