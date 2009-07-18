@@ -173,6 +173,7 @@ void Game::run()
 
 	if (isInsideBoard(*move) && isFreePosition(*move)) {
 		(*mBoard)[move->z][move->y][move->x] = player;
+		mUi->setPos(*move,player);
 	} else {
 		cerr << "PlayerA returned invalid position in first play (z,y,x): ["
 		     << move->z << "," << move->y << "," << move->x << "]\n";
