@@ -120,6 +120,11 @@ void UIText::start(Cube const& board)
 	this->refresh();
 }
 
+void UIText::start_thread()
+{
+	//this is not threaded... just return
+}
+
 void UIText::refresh()
 {
 	char * dash_space = (char*) "---";
@@ -190,10 +195,6 @@ void UIText::setPos(Move const &m, PlayerType player)
 	this->refresh();
 }
 
-void UIText::wait_end()
-{
-	//this is not threaded... just return
-}
 
 Move UIText::getUserInput()
 {

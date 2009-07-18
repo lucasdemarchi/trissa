@@ -42,7 +42,7 @@ public:
 
 	virtual void configure();
 	virtual void start(Cube const& board) = 0;
-	virtual void wait_end() = 0;
+	virtual void start_thread() = 0;
 	virtual void setPos(Move const& m, PlayerType player) = 0;
 
 	virtual bool gameOver();

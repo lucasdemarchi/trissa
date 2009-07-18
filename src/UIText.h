@@ -33,7 +33,7 @@ public:
 	
 	void configure();
 	void start(Cube const& board);
-	void wait_end();
+	void start_thread();
 	void setPos(Move const &m, PlayerType player);
 	
 	bool gameOver();

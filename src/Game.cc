@@ -227,9 +227,6 @@ out:
 	mStateManager.requestStateChange(GUI);
 	if (!mUi->gameOver())
 		mStateManager.requestStateChange(SHUTDOWN);
-
-	//FIXME
-	mUi->wait_end();
 }
 
 inline bool Game::isInsideBoard(Move &move)
