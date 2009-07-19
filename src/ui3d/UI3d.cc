@@ -115,26 +115,23 @@ void UI3d::start_thread()
 	}
 	destroyScene();
 	mCanLoadUi = false;
-
 }
 
 void UI3d::updateBoard()
 {
 	boost::lock_guard<boost::mutex> lock(mMutexNewPos);
-std::cout << "updating board\n";
-std::cout << "posNames: " << posNames.c_str() <<  "\n";
+	
 	std::stringstream father_name("");
 	father_name << posNames.c_str() << "[" << player_move.m.x << "][" << player_move.m.y << "]["
 		<< player_move.m.z << "]";
 	Entity* father_ent = mSceneMgr->getEntity(father_name.str());
-std::cout << "Father name: " << father_name.str() << "\n";
+	
 	assert(father_ent);
 	std::stringstream ball_name("");
 	ball_name << father_name.str() << "Ball";
 	Entity*	new_ball = mSceneMgr->createEntity
 		(ball_name.str(), "ball.mesh" );
 
-std::cout << "Ball name: " << ball_name.str() << "\n";
 	new_ball->setQueryFlags(InputHandlerGame::BALL_MASK);
 	if(player_move.player == PLAYER_CROSS)
 		new_ball->setMaterialName("frostedglass2");
@@ -151,6 +148,7 @@ bool UI3d::gameOver()
 {
 	return false;
 }
+
 void UI3d::setPos(Move const &m, PlayerType player)
 {
 	player_move.m = m;
