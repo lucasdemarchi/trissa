@@ -40,6 +40,8 @@
 #include <map>
 
 #include <boost/thread/thread.hpp>
+#include <boost/thread/mutex.hpp>
+#include <boost/thread/condition_variable.hpp>
 #include <boost/shared_ptr.hpp>
 
 namespace trissa
@@ -47,6 +49,11 @@ namespace trissa
 
 class UI3d : public UI
 {
+	struct PlayerMove {
+		Move m;
+		PlayerType player;
+	};
+
 public:
 	UI3d (ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
 	~UI3d();
@@ -86,6 +93,11 @@ private:
 
 	bool mForceConfigDialogDisplay;
 	volatile bool mCanLoadUi;
+	
+	volatile bool mHasNewPos;
+	boost::mutex mMutexNewPos;
+	boost::condition_variable mCondNewPosHandled;
+	PlayerMove player_move;
 
 	void setupResources();
 	void setupRenderSystem();
@@ -97,6 +109,8 @@ private:
 
 	void createScene();
 	void destroyScene();
+
+	void updateBoard();
 
 	std::map<Ogre::Entity*, Move> boardMap;
 };

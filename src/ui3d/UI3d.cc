@@ -53,7 +53,7 @@ UI3d::UI3d (ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
 	//Config screens:
 	mCEGUIRenderer( 0 ), mCEGUISystem( 0 ), mMainMenu( 0 ),
 	//Display configuration?
-	mForceConfigDialogDisplay(false), mCanLoadUi(false)
+	mForceConfigDialogDisplay(false), mCanLoadUi(false), mHasNewPos(false)
 {
 	mRoot = new Root();
 	//Load all resources defined in resources.cfg
@@ -103,18 +103,48 @@ void UI3d::start_thread()
 
 
 	std::cout << "UI3d::start_thread:  render thread.\n";
-//	boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
+	
 	createScene();
 	while(mSm->getCurrentState() == GAME) {
 		mInputHandler->capture();
 		mInputHandler->treatPressingEvents();
 		WindowEventUtilities::messagePump();
+		if(mHasNewPos)
+			updateBoard();
 		mRoot->renderOneFrame();
 	}
 	destroyScene();
 	mCanLoadUi = false;
 
-	//thread finishes here and mThread is automagically freeed
+}
+
+void UI3d::updateBoard()
+{
+	boost::lock_guard<boost::mutex> lock(mMutexNewPos);
+std::cout << "updating board\n";
+std::cout << "posNames: " << posNames.c_str() <<  "\n";
+	std::stringstream father_name("");
+	father_name << posNames.c_str() << "[" << player_move.m.x << "][" << player_move.m.y << "]["
+		<< player_move.m.z << "]";
+	Entity* father_ent = mSceneMgr->getEntity(father_name.str());
+std::cout << "Father name: " << father_name.str() << "\n";
+	assert(father_ent);
+	std::stringstream ball_name("");
+	ball_name << father_name.str() << "Ball";
+	Entity*	new_ball = mSceneMgr->createEntity
+		(ball_name.str(), "ball.mesh" );
+
+std::cout << "Ball name: " << ball_name.str() << "\n";
+	new_ball->setQueryFlags(InputHandlerGame::BALL_MASK);
+	if(player_move.player == PLAYER_CROSS)
+		new_ball->setMaterialName("frostedglass2");
+	else
+		new_ball->setMaterialName("Trissa/RedGlass");
+	father_ent->getParentSceneNode()->attachObject(new_ball);
+
+	mHasNewPos = false;
+	mCondNewPosHandled.notify_one();
+
 }
 
 bool UI3d::gameOver()
@@ -123,15 +153,14 @@ bool UI3d::gameOver()
 }
 void UI3d::setPos(Move const &m, PlayerType player)
 {
-	InputHandlerGame* ih = static_cast<InputHandlerGame*>(mInputHandler);
-	Entity* selPos = ih->getSel();
-	Entity* ent = mSceneMgr->getEntity(selPos->getName() + "Ball");
-	ent->setQueryFlags(InputHandlerGame::BALL_MASK);
-	if(player == PLAYER_CROSS)
-		ent->setMaterialName("frostedglass2");
-	else
-		ent->setMaterialName("Trissa/RedGlass");
-	selPos->getParentSceneNode()->attachObject(ent);
+	player_move.m = m;
+	player_move.player = player;
+
+	boost::unique_lock<boost::mutex> lock(mMutexNewPos);
+	mHasNewPos = true;
+	while (mHasNewPos)
+		mCondNewPosHandled.wait(lock);
+
 }
 
 Move UI3d::getUserInput()
@@ -258,8 +287,8 @@ void UI3d::createScene(){
 	//    SceneNode* nodePlane = mBoardNode->createChildSceneNode();
 		for(int i = 0 ; i < boardDimension; i++){
 			for (int k = 0 ; k < boardDimension ; k++){
-				std::stringstream sName(posNames);
-				sName << "[" << i << "][" << j << "][" << k << "]";
+				std::stringstream sName("");
+				sName << posNames.c_str() << "[" << i << "][" << j << "][" << k << "]";
 				ent = mSceneMgr->createEntity(sName.str(), "glass.mesh" );
 				//ent->setMaterialName("Trissa/Glass");
 				ent->setQueryFlags( InputHandlerGame::POSITION_AVAILABLE_MASK );

@@ -126,10 +126,6 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
 				mSelPos->setQueryFlags(POSITION_OCCUPIED_MASK);
 				mSelPos->setMaterialName("glass/glass");
 
-				try{
-					mSceneMgr->createEntity(mSelPos->getName() + "Ball", "ball.mesh");
-				} catch(...){ //ignore if already exist
-				}
 				mWaitingSelConfirmation = false;
 				//mSelPos = 0;
 			}
