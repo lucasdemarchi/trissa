@@ -1,0 +1,13 @@
+// A really basic ambient pass program, support for one texture coodinate set
+
+vertex_program World/AmbientOneTexture glsl
+{
+	source AmbientOneTexture.glsl
+
+	default_params
+	{
+		param_named_auto ambient ambient_light_colour
+	}
+}
+
+
