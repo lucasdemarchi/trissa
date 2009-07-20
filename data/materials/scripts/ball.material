@@ -29,7 +29,7 @@ material Ball/Cross
 			emissive 0.000000 0.000000 0.000000 1.000000
 			texture_unit
 			{
-        		colour_op_ex source1 src_manual src_current 1 0 0
+        		colour_op_ex source1 src_manual src_current 0.8 0 0
 			}
 		}
 
@@ -49,7 +49,7 @@ material Ball/Circle
 			emissive 0.000000 0.000000 0.000000 1.000000
 			texture_unit
 			{
-        		colour_op_ex source1 src_manual src_current 0 0 1
+        		colour_op_ex source1 src_manual src_current 0 0 0.8
 			}
 
 		}
