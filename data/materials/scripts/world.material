@@ -11,3 +11,55 @@ material World/Ground
     }
   }
 }
+
+fragment_program Examples/MorningSkyBoxHDRfp cg
+{
+	source hdr.cg
+	entry_point morningskybox_fp
+	profiles ps_2_0 arbfp1
+
+}
+material World/MorningSkyBox
+{
+        technique
+        {
+                pass
+                {
+                        lighting off
+                        depth_write off
+
+                        texture_unit
+                        {
+                                cubic_texture morning.jpg separateUV
+                                tex_address_mode clamp
+                        }
+                }
+        }
+
+        // HDR technique (fake)
+        technique
+        {
+                scheme HDR
+
+                pass
+                {
+                        lighting off
+                        depth_write off
+
+                        vertex_program_ref World/AmbientOneTexture
+                        {
+                                param_named_auto worldViewProj worldviewproj_matrix
+                                param_named ambient float4 1 1 1 1
+                        }
+                        fragment_program_ref World/MorningSkyBoxHDRfp
+                        {
+                        }
+
+                        texture_unit
+                        {
+                                cubic_texture morning.jpg separateUV
+                                tex_address_mode clamp
+                        }
+                }
+        }
+}

@@ -371,6 +371,9 @@ void UI3d::createScene(){
 	node->yaw( Degree( 135 ) );
 	node->lookAt( Vector3( 0, 0, 0 ), Node::TS_PARENT );
 
+
+	mSceneMgr->setSkyBox(true, "World/MorningSkyBox");
+
 	mInputHandler = new InputHandlerGame( mWindow, mSm, mCEGUISystem, mSceneMgr );
 
 }
