@@ -111,7 +111,7 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
             for ( RaySceneQueryResult::iterator itr = result.begin( ); itr != result.end(); itr++){
                 if (itr->movable && itr->movable != mCamera ){
                     mSelPos = mSceneMgr->getEntity(itr->movable->getName());
-                    mSelPos->setMaterialName("Trissa/RedGlass");
+                    mSelPos->setMaterialName("Board/Selected");
                     mWaitingSelConfirmation = true;
                     break;
                 }
@@ -124,7 +124,7 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
 				mUserInputEnabled = false;
 				
 				mSelPos->setQueryFlags(POSITION_OCCUPIED_MASK);
-				mSelPos->setMaterialName("glass/glass");
+				mSelPos->setMaterialName("Board/Glass");
 
 				mWaitingSelConfirmation = false;
 				//mSelPos = 0;
@@ -134,7 +134,7 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
     }
     else if(mWaitingSelConfirmation && id == OIS::MB_Right ){
         mWaitingSelConfirmation = false;
-        mSelPos->setMaterialName("glass/glass");
+        mSelPos->setMaterialName("Board/Glass");
         mSelPos = 0;
     }
     return true;

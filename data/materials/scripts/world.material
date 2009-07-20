@@ -1,4 +1,4 @@
-material Ground
+material World/Ground
 {
   technique
   {

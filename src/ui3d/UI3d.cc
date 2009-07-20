@@ -134,9 +134,9 @@ void UI3d::updateBoard()
 
 	new_ball->setQueryFlags(InputHandlerGame::BALL_MASK);
 	if(player_move.player == PLAYER_CROSS)
-		new_ball->setMaterialName("frostedglass2");
+		new_ball->setMaterialName("Ball/Cross");
 	else
-		new_ball->setMaterialName("Trissa/RedGlass");
+		new_ball->setMaterialName("Ball/Circle");
 	father_ent->getParentSceneNode()->attachObject(new_ball);
 
 	mHasNewPos = false;
@@ -255,10 +255,13 @@ void UI3d::createScene(){
 	mCamera->setQueryFlags( InputHandlerGame::CAMERA_MASK );
 	//Ground
 	Plane plane( Vector3::UNIT_Y, 0 );
-	MeshManager::getSingleton().createPlane("ground", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane, 1500,1500,20,20,true,1,5,5,Vector3::UNIT_Z);
-	ent = mSceneMgr->createEntity( "GroundEntity", "ground" );
+	MeshManager::getSingleton().createPlane
+		("ground", ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME, plane,
+		 1500,1500,20,20,true,1,5,5,Vector3::UNIT_Z);
+
+	ent = mSceneMgr->createEntity("GroundEntity", "ground" );
 	mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(ent);
-	ent->setMaterialName( "Ground" );
+	ent->setMaterialName( "World/Ground" );
 	ent->setCastShadows( false );
 	ent->setQueryFlags( InputHandlerGame::PLANE_MASK );
 
@@ -279,23 +282,23 @@ void UI3d::createScene(){
 	//Board
 	int boardDimension = mCm->getDimension();
 	Real init_position = (boardDimension*QUAD_SIZE)/2 -QUAD_SIZE/2;
-	mBoardNode = mSceneMgr->getRootSceneNode()->createChildSceneNode(String("BoardNode"));
+	mBoardNode = mSceneMgr->getRootSceneNode()->createChildSceneNode
+		(String("BoardNode"));
+
 	for(int j = 0 ; j < boardDimension ; j++){
-		//initial Z and X
-	//    SceneNode* nodePlane = mBoardNode->createChildSceneNode();
 		for(int i = 0 ; i < boardDimension; i++){
 			for (int k = 0 ; k < boardDimension ; k++){
 				std::stringstream sName("");
-				sName << posNames.c_str() << "[" << i << "][" << j << "][" << k << "]";
+				sName << posNames.c_str() << "[" << i << "][" << j << "]["
+					<< k << "]";
 				ent = mSceneMgr->createEntity(sName.str(), "glass.mesh" );
-				//ent->setMaterialName("Trissa/Glass");
+				ent->setMaterialName("Board/Glass");
 				ent->setQueryFlags( InputHandlerGame::POSITION_AVAILABLE_MASK );
-	  //          SceneNode* sc = nodePlane->createChildSceneNode();
 				SceneNode* sc = mBoardNode->createChildSceneNode();
-				sc->setPosition(init_position - (QUAD_SIZE * i),                     //X
-								QUAD_SIZE + (j * VAR_DIST_PLANES * boardDimension),  //Y
-								init_position - (QUAD_SIZE * k)                      //Z
-								);
+				sc->setPosition(init_position - (QUAD_SIZE * i),			//X
+						QUAD_SIZE + (j * VAR_DIST_PLANES * boardDimension),	//Y
+						init_position - (QUAD_SIZE * k));					//Z
+				
 				sc->attachObject(ent);
 				boardMap[ent] = Move(i,j,k);
 			}
@@ -308,44 +311,52 @@ void UI3d::createScene(){
 	ent = mSceneMgr->createEntity("stick1", "Cylinder.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
 	//ent->setMaterialName( "Trissa/Ground" );
-	Vector3 vScale(1, 2 + QUAD_SIZE + (VAR_DIST_PLANES * boardDimension * (boardDimension-1)), 1);
-	node = mBoardNode->createChildSceneNode(Vector3(init_position , 0, init_position));
+	Vector3 vScale(1, 2 + QUAD_SIZE + (VAR_DIST_PLANES * boardDimension *
+				(boardDimension-1)), 1);
+	node = mBoardNode->createChildSceneNode(Vector3(init_position,
+				0, init_position));
 	node->setScale(vScale);
 	node->attachObject(ent);
 
 	ent = mSceneMgr->createEntity("stick2", "Cylinder.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
 	//ent->setMaterialName( "Trissa/Ground" );
-	node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0, init_position));
+	node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0,
+				init_position));
 	node->setScale(vScale);
 	node->attachObject(ent);
 
 	ent = mSceneMgr->createEntity("stick3", "Cylinder.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
 	//ent->setMaterialName( "Trissa/Ground" );
-	node = mBoardNode->createChildSceneNode(Vector3(init_position , 0, -init_position));
+	node = mBoardNode->createChildSceneNode(Vector3(init_position , 0,
+				-init_position));
 	node->setScale(vScale);
 	node->attachObject(ent);
 
 	ent = mSceneMgr->createEntity("stick4", "Cylinder.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
 	//ent->setMaterialName( "Trissa/Ground" );
-	node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0, -init_position));
+	node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0,
+				-init_position));
 	node->setScale(vScale);
 	node->attachObject(ent);
 
 
-	// Create the scene nodes for cameras
+	//Create the scene nodes for cameras
 	//Calculate the Y position according to board size:
 
 
 	//Vector3 cornerPos(init_position, yPos = QUAD_SIZE + (VAR_DIST_PLANES * boardDimension * (boardDimension-1)), init_position);
 
-	Real yPos = QUAD_SIZE + (VAR_DIST_PLANES * boardDimension * (boardDimension-1));
+	Real yPos = QUAD_SIZE +
+		(VAR_DIST_PLANES * boardDimension * (boardDimension-1));
 
-	node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode1", Vector3(-300, yPos, 300));
+	node = mSceneMgr->getRootSceneNode()->createChildSceneNode
+		("CamNode1", Vector3(-300, yPos, 300));
 	node->yaw( Degree( -45 ) );
-	node->lookAt( Vector3( 0, Real(QUAD_SIZE) + Real(VAR_DIST_PLANES) * Real(boardDimension* (boardDimension-1)) , 0 ), Node::TS_PARENT );
+	node->lookAt( Vector3( 0, Real(QUAD_SIZE) + Real(VAR_DIST_PLANES) * 
+				Real(boardDimension* (boardDimension-1)) , 0 ), Node::TS_PARENT );
 	node->attachObject(mCamera);
 
 	node = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode2", Vector3(300, yPos, 300));
@@ -365,6 +376,8 @@ void UI3d::createScene(){
 }
 
 void UI3d::destroyScene(){
+	//TODO: wait for inputmanager be ok with that, cause the other can be
+	//accessing it while we destroy
 	mSceneMgr->destroyAllLights();
 	mSceneMgr->destroyAllEntities();
 	mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();
