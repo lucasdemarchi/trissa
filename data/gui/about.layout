@@ -79,23 +79,19 @@ Author:
                     <Property Name="UnifiedAreaRect" Value="{{0,0},{-0.00303674,0},{1,0},{0.996963,0}}" />
                     <Window Type="QuadraticLook/StaticText" Name="About/Controls/" >
                         <Property Name="Text" >w                       Move the camera upwards in Z direction
-
 s                        Move the camera downwards in Z direction
+p                       Take a screenshot
+1 | 2 | 3 | 4           Select one of the 4 cameras available
 
 Mouse wheel       Zoom in/out
-
 LMB                   When a human is playing:
                                  If no position is selected, select the position under cursor
                                  Confirm selection otherwise
-
 RMB                   When a human is playing AND a position is selected:
                                  Cancel selection
                          If no position is selected
                                  Rotate the board
-
-MMB                  Camera free-look
-
-p                       Take a screenshot</Property>
+MMB                  Camera free-look</Property>
                         <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
                         <Property Name="UnifiedAreaRect" Value="{{0.05,0},{0.01,0},{0.99,0},{0.95,0}}" />
                     </Window>
