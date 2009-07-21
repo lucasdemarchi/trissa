@@ -36,7 +36,7 @@ public:
 	void start_thread();
 	void setPos(Move const &m, PlayerType player);
 	
-	bool gameOver();
+	bool gameOver(Move const& startPosition, Move const& direction);
 
 
 	Move getUserInput();

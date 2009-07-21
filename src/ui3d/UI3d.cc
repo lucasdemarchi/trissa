@@ -144,9 +144,9 @@ void UI3d::updateBoard()
 
 }
 
-bool UI3d::gameOver()
+bool UI3d::gameOver(Move const& startPosition, Move const& direction)
 {
-	return false;
+	return true;
 }
 
 void UI3d::setPos(Move const &m, PlayerType player)

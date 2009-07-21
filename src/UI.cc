@@ -47,11 +47,6 @@ void UI::configure()
 	mSm->requestStateChange(GAME);
 }
 
-bool UI::gameOver()
-{
-	return true;
-}
-
 UI::~UI()
 {
 }

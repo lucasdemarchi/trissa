@@ -226,7 +226,7 @@ void Game::run()
 out:
 
 	mStateManager.requestStateChange(GUI);
-	if (!mUi->gameOver())
+	if (!mUi->gameOver(Move(0,0,0), Move(0,0,0)))
 		mStateManager.requestStateChange(SHUTDOWN);
 }
 

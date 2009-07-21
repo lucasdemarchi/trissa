@@ -45,7 +45,7 @@ public:
 	virtual void start_thread() = 0;
 	virtual void setPos(Move const& m, PlayerType player) = 0;
 
-	virtual bool gameOver();
+	virtual bool gameOver(Move const& startPosition, Move const& direction) = 0;
 
 protected:
 	ConfigManager* mCm;

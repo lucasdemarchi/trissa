@@ -62,7 +62,7 @@ public:
 	void wait_end();
 	void setPos(Move const& m, PlayerType player);
 	
-	bool gameOver();
+	bool gameOver(Move const& startPosition, Move const& direction);
 
 	
 	void start_thread();

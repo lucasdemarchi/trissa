@@ -179,7 +179,7 @@ void UIText::refresh()
 //	}
 //}
 
-bool UIText::gameOver()
+bool UIText::gameOver(Move const& startPosition, Move const& direction)
 {
 	string resp;
 	cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
