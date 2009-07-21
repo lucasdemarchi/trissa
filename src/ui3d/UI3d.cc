@@ -308,9 +308,8 @@ void UI3d::createScene(){
 	//sticks
 	init_position +=  QUAD_SIZE/2;
 
-	ent = mSceneMgr->createEntity("stick1", "Cylinder.mesh");
+	ent = mSceneMgr->createEntity("stick1", "stick.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
-	//ent->setMaterialName( "Trissa/Ground" );
 	Vector3 vScale(1, 2 + QUAD_SIZE + (VAR_DIST_PLANES * boardDimension *
 				(boardDimension-1)), 1);
 	node = mBoardNode->createChildSceneNode(Vector3(init_position,
@@ -318,25 +317,22 @@ void UI3d::createScene(){
 	node->setScale(vScale);
 	node->attachObject(ent);
 
-	ent = mSceneMgr->createEntity("stick2", "Cylinder.mesh");
+	ent = mSceneMgr->createEntity("stick2", "stick.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
-	//ent->setMaterialName( "Trissa/Ground" );
 	node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0,
 				init_position));
 	node->setScale(vScale);
 	node->attachObject(ent);
 
-	ent = mSceneMgr->createEntity("stick3", "Cylinder.mesh");
+	ent = mSceneMgr->createEntity("stick3", "stick.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
-	//ent->setMaterialName( "Trissa/Ground" );
 	node = mBoardNode->createChildSceneNode(Vector3(init_position , 0,
 				-init_position));
 	node->setScale(vScale);
 	node->attachObject(ent);
 
-	ent = mSceneMgr->createEntity("stick4", "Cylinder.mesh");
+	ent = mSceneMgr->createEntity("stick4", "stick.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
-	//ent->setMaterialName( "Trissa/Ground" );
 	node = mBoardNode->createChildSceneNode(Vector3(-init_position , 0,
 				-init_position));
 	node->setScale(vScale);
