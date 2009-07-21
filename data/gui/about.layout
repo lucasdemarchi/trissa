@@ -26,8 +26,17 @@
             <Property Name="UnifiedAreaRect" Value="{{0.15,0},{0.2,0},{0.85,0},{0.8,0}}" />
             <Property Name="DragMovingEnabled" Value="False" />
             <Property Name="CloseButtonEnabled" Value="False" />
-            <Window Type="QuadraticLook/StaticText" Name="About/Text" >
-                <Property Name="Text" >Trissa is a modification of the well known tictactoe game, where you can play in a 3D board. It has as a text interface as well as this 3D interface, in which is simpler to play.
+            <Window Type="QuadraticLook/TabControl" Name="About/Tab" >
+                <Property Name="TabHeight" Value="{0,23.0563}" />
+                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                <Property Name="TabPanePosition" Value="Top" />
+                <Property Name="UnifiedAreaRect" Value="{{0.0158481,0},{0.0701975,0},{0.977343,0},{0.925079,0}}" />
+                <Window Type="DefaultWindow" Name="About/Tab/About" >
+                    <Property Name="Text" Value="Game" />
+                    <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                    <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+                    <Window Type="QuadraticLook/StaticText" Name="About/Text" >
+                        <Property Name="Text" >Trissa is a modification of the well known tictactoe game, where you can play in a 3D board. It has as a text interface as well as this 3D interface, in which is simpler to play.
 
 The goal of the game is to align N balls, where N is the board&apos;s dimension. For example, if you are playing in a 5x5x5 board (you can set the dimension entering the &quot;Options&quot; menu on the first screen) you have to align 5 balls in whatever direction. Note however that not all directions inside a cube can hold N balls.
 
@@ -38,16 +47,65 @@ For more informations visit our site: http://github.com/lucasdemarchi/trissa/
 Author:
      Lucas De Marchi
      http://www.politreco.com</Property>
-                <Property Name="HorzFormatting" Value="WordWrapLeftAligned" />
-                <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-                <Property Name="VertFormatting" Value="TopAligned" />
-                <Property Name="UnifiedAreaRect" Value="{{0.05,0},{0.1,0},{0.95,0},{0.9,0}}" />
+                        <Property Name="HorzFormatting" Value="WordWrapLeftAligned" />
+                        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                        <Property Name="VertFormatting" Value="TopAligned" />
+                        <Property Name="UnifiedAreaRect" Value="{{0.05,0},{0.01,0},{0.99,0},{0.95,0}}" />
+                    </Window>
+                </Window>
+                <Window Type="DefaultWindow" Name="About/Tab/Rules" >
+                    <Property Name="Text" Value="Rules" />
+                    <Property Name="Visible" Value="False" />
+                    <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                    <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1,0}}" />
+                    <Window Type="QuadraticLook/StaticText" Name="About/Rules" >
+                        <Property Name="Text" >The game has three simple rules:
+
+1) A Player wins when align N pieces, where N is the dimension of the game. All directions that allow N pieces to be aligned is an elegible direction to win.
+
+2) If a player, be it human or an algorithm, plays into an invalid position for more than 3 times, the other player is proclaimed the winner.
+
+3) Read the first two rules</Property>
+                        <Property Name="HorzFormatting" Value="WordWrapLeftAligned" />
+                        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                        <Property Name="VertFormatting" Value="TopAligned" />
+                        <Property Name="UnifiedAreaRect" Value="{{0.05,0},{0.01,0},{0.99,0},{0.95,0}}" />
+                    </Window>
+                </Window>
+                <Window Type="DefaultWindow" Name="About/Tab/Controls" >
+                    <Property Name="Text" Value="Controls" />
+                    <Property Name="Visible" Value="False" />
+                    <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                    <Property Name="UnifiedAreaRect" Value="{{0,0},{-0.00303674,0},{1,0},{0.996963,0}}" />
+                    <Window Type="QuadraticLook/StaticText" Name="About/Controls/" >
+                        <Property Name="Text" >w                       Move the camera upwards in Z direction
+
+s                        Move the camera downwards in Z direction
+
+Mouse wheel       Zoom in/out
+
+LMB                   When a human is playing:
+                                 If no position is selected, select the position under cursor
+                                 Confirm selection otherwise
+
+RMB                   When a human is playing AND a position is selected:
+                                 Cancel selection
+                         If no position is selected
+                                 Rotate the board
+
+MMB                  Camera free-look
+
+p                       Take a screenshot</Property>
+                        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+                        <Property Name="UnifiedAreaRect" Value="{{0.05,0},{0.01,0},{0.99,0},{0.95,0}}" />
+                    </Window>
+                </Window>
             </Window>
             <Window Type="QuadraticLook/Button" Name="About/cmdOk" >
                 <Property Name="Text" Value="Ok" />
                 <Property Name="AlwaysOnTop" Value="True" />
                 <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
-                <Property Name="UnifiedAreaRect" Value="{{0.839286,0},{0.888889,0},{0.979286,0},{0.968889,0}}" />
+                <Property Name="UnifiedAreaRect" Value="{{0.839286,0},{0.909658,0},{0.979286,0},{0.989658,0}}" />
             </Window>
         </Window>
     </Window>
