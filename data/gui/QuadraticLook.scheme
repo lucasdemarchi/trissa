@@ -2,6 +2,7 @@
 <GUIScheme Name = "QuadraticLook">
 	<Imageset Name = "QuadraticLook" Filename = "QuadraticLook.imageset" />
 	<Imageset Name="Background" Filename="Background.imageset" />
+	<Imageset Name="Logo" Filename="logo.imageset" />
     <Font Name="BlueHighway-12" Filename="bluehighway-12.font" />
     <Font Name="BlueHighway-20" Filename="bluehighway-20.font" />
     <Font Name="BlueHighway-10" Filename="bluehighway-10.font" />
