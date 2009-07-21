@@ -310,8 +310,8 @@ void UI3d::createScene(){
 
 	ent = mSceneMgr->createEntity("stick1", "stick.mesh");
 	ent->setQueryFlags( InputHandlerGame::STICK_MASK );
-	Vector3 vScale(1, 2 + QUAD_SIZE + (VAR_DIST_PLANES * boardDimension *
-				(boardDimension-1)), 1);
+	Vector3 vScale(2, 2 + QUAD_SIZE + (VAR_DIST_PLANES * boardDimension *
+				(boardDimension-1)), 2);
 	node = mBoardNode->createChildSceneNode(Vector3(init_position,
 				0, init_position));
 	node->setScale(vScale);
