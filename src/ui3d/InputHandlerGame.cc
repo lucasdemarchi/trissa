@@ -118,16 +118,12 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
             }
         }
         else {
-            //put a ball
 			{
 				boost::lock_guard<boost::mutex> lock(mMutexUserInput);
 				mUserInputEnabled = false;
 				
-				mSelPos->setQueryFlags(POSITION_OCCUPIED_MASK);
 				mSelPos->setMaterialName("Board/Glass");
-
 				mWaitingSelConfirmation = false;
-				//mSelPos = 0;
 			}
 			mCondUserInput.notify_one();
 		}
