@@ -146,9 +146,30 @@ void UI3d::updateBoard()
 
 }
 
-bool UI3d::gameOver(Move const& startPosition, Move const& direction)
+void UI3d::gameOver(Move const& startPosition, Move const& direction)
 {
-	return true;
+	mGameOver = true;
+	int dimension = mCm->getDimension();
+
+	Move m = startPosition;
+	while (m.x != dimension && m.y != dimension && m.z != dimension
+			&& m.x >= 0 && m.y >= 0 && m.z >= 0)
+		m -= direction;
+	
+	for(int i = 0; i < dimension; i++){
+		m += direction;
+		std::stringstream ball_name("");
+		ball_name << posNames.c_str() << "[" << m.x << "][" << m.y << "]["
+		<< m.z << "]" << "Ball";
+		Entity* ent = mSceneMgr->getEntity(ball_name.str());
+		ent->setMaterialName("Ball/Winner");
+	}
+
+}
+
+void UI3d::gameOver()
+{
+	mGameOver = true;
 }
 
 void UI3d::setPos(Move const &m, PlayerType player)

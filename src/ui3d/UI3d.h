@@ -62,7 +62,8 @@ public:
 	void wait_end();
 	void setPos(Move const& m, PlayerType player);
 	
-	bool gameOver(Move const& startPosition, Move const& direction);
+	void gameOver(Move const& startPosition, Move const& direction);
+	void gameOver();
 
 	
 	void start_thread();
@@ -93,6 +94,7 @@ private:
 
 	bool mForceConfigDialogDisplay;
 	volatile bool mCanLoadUi;
+	volatile bool mGameOver;
 	
 	volatile bool mHasNewPos;
 	boost::mutex mMutexNewPos;

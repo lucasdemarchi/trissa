@@ -20,6 +20,7 @@
  */
 #include "UIText.h"
 #include "ConfigManager.h"
+#include "StateManager.h"
 #include "PlayerFactory.h"
 #include <boost/lexical_cast.hpp>
 #include <vector>
@@ -179,15 +180,28 @@ void UIText::refresh()
 //	}
 //}
 
-bool UIText::gameOver(Move const& startPosition, Move const& direction)
+void UIText::gameOver(Move const& startPosition, Move const& direction)
 {
+	cout << "Winner direction: ["
+	     << direction.x << "," << direction.y << "," << direction.z << "]\n";
+	cout << "Last position played: ["
+	     << startPosition.x << "," << startPosition.y << "," << startPosition.z << "]\n";
+
 	string resp;
 	cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
 	cin >> resp;
-	if (resp == "yes")
-		return true;
-	return false;
+	if (resp == "no")
+		mSm->requestStateChange(SHUTDOWN);
+}
 
+void UIText::gameOver()
+{
+	cout << "No winner!" << endl << endl; 
+	string resp;
+	cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
+	cin >> resp;
+	if (resp == "no")
+		mSm->requestStateChange(SHUTDOWN);
 }
 
 void UIText::setPos(Move const &m, PlayerType player)
