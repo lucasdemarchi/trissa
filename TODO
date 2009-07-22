@@ -1,0 +1,18 @@
+MILESTONE for version 1.0:
+
+- ESC ==> exit and go to Menu... Always!
+- camera only above ground
+- Put some effects in the end of the game when "selecting" the balls
+- It's possible (and easy) to win against Minmax. Let it better.
+- Put some information while playing in UI3d, like players' names
+- Status bar to display messsages to user
+- Play without a selected player => open configuration menu
+- UI3d == default UI
+
+Plans for 1.1:
+- Port to windows / MacOS X
+
+Plans for 1.5:
+- Audio: music and effects
+- Network: create a "Proxy Player" which will forward the request of the
+  position to play to another machine, enabling to play through internet
