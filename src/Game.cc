@@ -229,10 +229,12 @@ void Game::run()
 		}
 	}
 out:
+	bool ret;
+	if(winner != PLAYER_BLANK)
+		mUi->gameOver(mWinnerStartPos, mWinnerDirection);
+	else
+		mUi->gameOver();
 
-	mStateManager.requestStateChange(GUI);
-	if (!mUi->gameOver(Move(0,0,0), Move(0,0,0)))
-		mStateManager.requestStateChange(SHUTDOWN);
 }
 
 inline bool Game::isInsideBoard(Move &move)
@@ -309,13 +311,8 @@ PlayerType Game::goalTest(Move const& lastMove, PlayerType player_type)
 			}
 		}
 		if (!invalid_direction && (int)n_pieces == dimension) {
-			//TODO: set member variable for winner direction(s) and point
-#ifdef _TRISSA_DEBUG_ //TODO: should put this in output, not here
-			cout << "Winner direction: ["
-			     << directions[i].x << "," << directions[i].y << "," << directions[i].z << "]\n";
-			cout << "Last position played: ["
-			     << lastMove.x << "," << lastMove.y << "," << lastMove.z << "]\n";
-#endif // _TRISSA_DEBUG_
+			mWinnerDirection = directions[i];
+			mWinnerStartPos = lastMove;
 			return (player_type);
 		}
 	}

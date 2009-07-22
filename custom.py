@@ -5,7 +5,7 @@ import string
 import re
 import SCons
 
-version='0.92'
+version='0.97'
 #try:
 #    f = open("subversion", 'r')
 #    subversion = f.readline().strip()
