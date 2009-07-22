@@ -55,7 +55,7 @@ SettingsMenu::SettingsMenu(Menu* father) :
 	pCancelButton->subscribeEvent(CEGUI::PushButton::EventClicked,
 			CEGUI::Event::Subscriber(&SettingsMenu::cancel_OnClick, this));
 
-	this->populatePlayers();
+	loadConfig();
 
 }
 
@@ -132,7 +132,7 @@ void SettingsMenu::populatePlayers()
 			new CEGUI::ListboxTextItem((CEGUI::utf8*)(*iter).c_str());
 		playerA->setSelectionBrushImage("QuadraticLook", "White");
 		playerA->setSelectionColours(CEGUI::colour(0.0,0.5,0.8));
-		playerA->setSelected(false);
+
 		playerB->setSelectionBrushImage("QuadraticLook", "White");
 		playerB->setSelectionColours(CEGUI::colour(0.0,0.5,0.8));
 		playerB->setSelected(false);
@@ -140,8 +140,27 @@ void SettingsMenu::populatePlayers()
 		lstB->addItem(playerB);
 
 		std::cout << *iter << std::endl;
+		bool sel = (mConfigManager->getPlayerA() == (*iter));
+		playerA->setSelected(sel);
+		sel = (mConfigManager->getPlayerB() == (*iter));
+		playerB->setSelected(sel);
 	}
+	if(lstA->getItemCount() > 0 && lstA->getSelectedCount() == 0)
+		lstA->setItemSelectState((size_t)0, true);
 
+	if(lstB->getItemCount() > 0 && lstB->getSelectedCount() == 0)
+		lstB->setItemSelectState((size_t)0, true);
+
+}
+void SettingsMenu::loadConfig()
+{
+	populatePlayers();
+	
+	//Dimension
+	CEGUI::WindowManager &wmng = CEGUI::WindowManager::getSingleton();
+	int dimension = mConfigManager->getDimension();
+	static_cast<CEGUI::Spinner*>
+		(wmng.getWindow("txtDimension"))->setCurrentValue(dimension);
 }
 
 }

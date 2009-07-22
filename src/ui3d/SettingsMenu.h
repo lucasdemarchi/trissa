@@ -41,6 +41,7 @@ public:
 	bool cancel_OnClick(const CEGUI::EventArgs &args);
 private:
 	void populatePlayers();
+	void loadConfig();
 };
 
 }
