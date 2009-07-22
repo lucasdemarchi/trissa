@@ -72,6 +72,7 @@ void ConfigManager::attachPlayerFactory(PlayerFactory* playerFactory)
 {
 	mPlayerFactory = playerFactory;
 	mPlayerFactory->loadPlayerLibraries(mPlayersPath);
+	//Set the first player to PlayerA and PlayerB
 }
 
 void ConfigManager::printVersion() const

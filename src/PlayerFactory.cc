@@ -146,4 +146,11 @@ void PlayerFactory::getPlayersList(std::vector<std::string>& strplayers) const
 	}
 }
 
+std::string PlayerFactory::getFirstPlayer() const
+{
+	if(factory.size())
+		return factory.begin()->first;
+	return std::string("");
+}
+
 }

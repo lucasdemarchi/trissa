@@ -77,11 +77,16 @@ int Game::startGame()
 
 		// run configurations (a.k.a Menus in 3D or some questions in text)
 		this->configure();
-		if ( this->mStateManager.getCurrentState() == GAME ) {
+		if(mConfigManager.getPlayerA() != ""
+			   	&& mConfigManager.getPlayerB() != ""
+				&& mConfigManager.getDimension() 
+				&& this->mStateManager.getCurrentState() == GAME ) {
 			boost::thread thr(boost::bind(&Game::run,this));
 			static_cast<UI3d*>(mUi)->start_thread();
 			thr.join();
 		}
+		if(mStateManager.getCurrentState() == GAME)
+			mStateManager.requestStateChange(GUI);
 
 	}
 
