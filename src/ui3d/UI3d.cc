@@ -138,7 +138,7 @@ void UI3d::updateBoard()
 	else
 		new_ball->setMaterialName("Ball/Circle");
 	
-	new_ball->setQueryFlags(InputHandlerGame::POSITION_OCCUPIED_MASK);
+	father_ent->setQueryFlags(InputHandlerGame::POSITION_OCCUPIED_MASK);
 	father_ent->getParentSceneNode()->attachObject(new_ball);
 
 	mHasNewPos = false;
