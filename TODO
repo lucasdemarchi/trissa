@@ -1,6 +1,7 @@
 MILESTONE for version 1.0:
 
-- camera only above ground
+- camera only above ground > wall the games have this problem... marking it
+  temporarily as "won't fix"
 - Put some effects in the end of the game when "selecting" the balls
 - It's possible (and easy) to win against Minmax. Let it better.
 - Put some information while playing in UI3d, like players' names
