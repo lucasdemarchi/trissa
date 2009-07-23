@@ -169,67 +169,74 @@ void Game::run()
 	//wait GUI loading
 	boost::this_thread::sleep(boost::posix_time::milliseconds(1000));
 
-	int turn = 0;
-	int retry = n_retry;
-	Move* move = mPlayerA->firstPlay();
-	Player* player_p = mPlayerA;
-	PlayerType player = PLAYER_CROSS;
 	PlayerType winner = PLAYER_BLANK;
+	try {
+		int turn = 0;
+		int retry = n_retry;
+		Move* move = mPlayerA->firstPlay();
+		Player* player_p = mPlayerA;
+		PlayerType player = PLAYER_CROSS;
 
-	if (isInsideBoard(*move) && isFreePosition(*move)) {
-		(*mBoard)[move->z][move->y][move->x] = player;
-		mUi->setPos(*move,player);
-	} else {
-		cerr << "PlayerA returned invalid position in first play (z,y,x): ["
-		     << move->z << "," << move->y << "," << move->x << "]\n";
-		winner = PLAYER_CIRCLE;
-		goto out;
-	}
 
-	//while there's no winner 
-	//and not all positions are occupied
-	for (turn = 1 ; winner == PLAYER_BLANK                                     
-		            && turn < (mDimension*mDimension*mDimension); turn++) {    
-
-		//decide which player plays next
-		//they take turns
-		if (turn%2) {
-			player_p = mPlayerB;
-			player = PLAYER_CIRCLE;
-		} else {
-			player_p = mPlayerA;
-			player = PLAYER_CROSS;
-		}
-		
-
-		// ask Player the position to play and keep trying n_retry times
-		// if it returns an invalid position
-		for (move = player_p->play(*mBoard,*move)
-		    ;!(isInsideBoard(*move) && isFreePosition(*move)) && retry
-			;move = player_p->play(*mBoard,*move)) {   //try again
-
-			cerr << "Player returned invalid position (z,y,x): ["
-			     << move->z << "," << move->y << "," << move->x << "]\n";
-			cerr << "This is probably a bug in Player's algorithm\n";
-			retry--;
-		}
-		if (retry){
+		if (isInsideBoard(*move) && isFreePosition(*move)) {
 			(*mBoard)[move->z][move->y][move->x] = player;
-			mUi->setPos(*move, player);
-			winner = goalTest(*move,player_p->getPlayerType());
+			mUi->setPos(*move,player);
+		} else {
+			cerr << "PlayerA returned invalid position in first play (z,y,x): ["
+				 << move->z << "," << move->y << "," << move->x << "]\n";
+			winner = PLAYER_CIRCLE;
+			goto out;
 		}
-		else {
-			cerr << "Player \'" << player_p->getName() << "\'"
-				"returned an invalid position for more than " << n_retry 
-				<< "times.\nPlease fix your algorithm before trying to play. "
-				"The other player is proclaimed winner";
+
+		//while there's no winner 
+		//and not all positions are occupied
+		for (turn = 1 ; winner == PLAYER_BLANK                                     
+						&& turn < (mDimension*mDimension*mDimension); turn++) {    
+
+			//decide which player plays next
+			//they take turns
+			if (turn%2) {
+				player_p = mPlayerB;
+				player = PLAYER_CIRCLE;
+			} else {
+				player_p = mPlayerA;
+				player = PLAYER_CROSS;
+			}
 			
-			//the other player
-			winner = (player == PLAYER_CROSS) ? PLAYER_CIRCLE:PLAYER_CROSS; 
+
+			// ask Player the position to play and keep trying n_retry times
+			// if it returns an invalid position
+			for (move = player_p->play(*mBoard,*move)
+				;!(isInsideBoard(*move) && isFreePosition(*move)) && retry
+				;move = player_p->play(*mBoard,*move)) {   //try again
+
+				cerr << "Player returned invalid position (z,y,x): ["
+					 << move->z << "," << move->y << "," << move->x << "]\n";
+				cerr << "This is probably a bug in Player's algorithm\n";
+				retry--;
+			}
+			if (retry){
+				(*mBoard)[move->z][move->y][move->x] = player;
+				mUi->setPos(*move, player);
+				winner = goalTest(*move,player_p->getPlayerType());
+			}
+			else {
+				cerr << "Player \'" << player_p->getName() << "\'"
+					"returned an invalid position for more than " << n_retry 
+					<< "times.\nPlease fix your algorithm before trying to play. "
+					"The other player is proclaimed winner";
+				
+				//the other player
+				winner = (player == PLAYER_CROSS) ? PLAYER_CIRCLE:PLAYER_CROSS; 
+			}
 		}
+	}
+	catch(exception& e){
+		//user canceled
+		cout << "User canceled game" << endl;
+		return;
 	}
 out:
-	bool ret;
 	if(winner != PLAYER_BLANK)
 		mUi->gameOver(mWinnerStartPos, mWinnerDirection);
 	else

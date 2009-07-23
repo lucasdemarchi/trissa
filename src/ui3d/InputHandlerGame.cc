@@ -143,6 +143,15 @@ bool InputHandlerGame::mouseReleased(const OIS::MouseEvent &e, OIS::MouseButtonI
 bool InputHandlerGame::keyPressed(const OIS::KeyEvent &e) {
     switch (e.key){
         case OIS::KC_ESCAPE:
+			mSelPos = NULL;
+			{
+				boost::lock_guard<boost::mutex> lock(mMutexUserInput);
+				if(mUserInputEnabled || mWaitingSelConfirmation){
+					mUserInputEnabled = false;
+					mWaitingSelConfirmation = false;
+				}
+				mCondUserInput.notify_one();
+			}
             mStateManager->requestStateChange( GUI );
             break;
         case OIS::KC_1:
@@ -198,7 +207,7 @@ Entity* InputHandlerGame::getUserInput()
 			mCondUserInput.wait(lock);
 		}
 	}
-	return mSelPos;
+	return mSelPos; // == NULL if user canceled
 }
 Entity* InputHandlerGame::getSel()
 {

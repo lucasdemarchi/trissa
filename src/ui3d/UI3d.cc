@@ -106,11 +106,11 @@ void UI3d::start_thread()
 	
 	createScene();
 	while(mSm->getCurrentState() == GAME) {
+		if(mHasNewPos)
+			updateBoard();
 		mInputHandler->capture();
 		mInputHandler->treatPressingEvents();
 		WindowEventUtilities::messagePump();
-		if(mHasNewPos)
-			updateBoard();
 		mRoot->renderOneFrame();
 	}
 	destroyScene();
@@ -188,7 +188,11 @@ Move UI3d::getUserInput()
 {
 	InputHandlerGame* ih = static_cast<InputHandlerGame*>(mInputHandler);
 	//blocks until user play
-	return boardMap[ih->getUserInput()];
+	Entity* ent = ih->getUserInput();
+	if(ent != NULL)
+		return boardMap[ent];
+	else
+		throw std::exception();
 }
 
 void UI3d::printWinnerMessage(std::string msg)
