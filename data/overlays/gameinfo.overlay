@@ -1,0 +1,103 @@
+
+Game/InfoOverlay
+{
+	zorder 500
+	// Stats block
+	container BorderPanel(Game/InfoOverlay/Panel)
+	{
+		metrics_mode pixels
+		vert_align top
+		left 5
+		top 5
+		width 250
+		height 55
+		material Game/Overlay/InfoBlock
+
+		element TextArea(Game/InfoOverlay/PlayerA/label)
+		{
+			metrics_mode pixels
+			vert_align top
+			left 5
+			top 5
+			width 40
+			height 25
+			font_name BlueHighway
+			char_height 19
+			caption PlayerA:
+			colour_top 0.7 0 0
+			colour_bottom 0.8 0 0
+		}
+		element TextArea(Game/InfoOverlay/PlayerB/label)
+		{
+			metrics_mode pixels
+			vert_align top
+			left 5
+			top 35
+			width 40
+			height 25
+			font_name BlueHighway
+			char_height 19
+			caption PlayerB:
+			colour_top 0 0 0.7
+			colour_bottom 0 0 0.8
+		}
+		element TextArea(Game/InfoOverlay/PlayerA/text)
+		{
+			metrics_mode pixels
+			vert_align top
+			left 75
+			top 5
+			width 200
+			height 25
+			font_name BlueHighway
+			char_height 19
+			//caption Test A
+			colour_top 0.7 0 0
+			colour_bottom 0.8 0 0
+		}
+		element TextArea(Game/InfoOverlay/PlayerB/text)
+		{
+			metrics_mode pixels
+			vert_align top
+			left 75
+			top 35
+			width 40
+			height 200
+			font_name BlueHighway
+			char_height 19
+			//caption Test B
+			colour_top 0 0 0.7
+			colour_bottom 0 0 0.8
+		}
+    }
+}
+Game/StatusOverlay
+{
+	zorder 500
+	// Stats block
+	container BorderPanel(Game/StatusOverlay/Panel)
+	{
+		metrics_mode relative
+		left .02
+		top 0.93
+		width 0.96
+		height 0.05
+		material Game/Overlay/InfoBlock
+
+		element TextArea(Game/StatusOverlay/text)
+		{
+			metrics_mode pixels
+			vert_align center
+			horz_align center
+			left -100
+			top -5
+			width 300
+			height 15
+			font_name BlueHighway
+			char_height 16
+			caption Game Over! Press ESC to exit
+			colour_top 0 0 0
+			colour_bottom 0 0 0
+		}
+
+}

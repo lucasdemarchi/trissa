@@ -1,0 +1,93 @@
+
+Game/WinnerCrossOverlay
+{
+	zorder 501
+	// Stats block
+	container BorderPanel(Game/WinnerCrossOverlay/Panel)
+	{
+		metrics_mode pixels
+		vert_align top
+		left 5
+		top 5
+		width 250
+		height 55
+		material Game/Overlay/InfoBlock
+
+		element TextArea(Game/WinnerCrossOverlay/winner)
+		{
+			metrics_mode pixels
+			vert_align top
+			horz_align center
+			left -20
+			top 5
+			width 40
+			height 25
+			font_name BlueHighway
+			char_height 19
+			caption Winner:
+			colour_top 0.7 0 0
+			colour_bottom 0.8 0 0
+		}
+		element TextArea(Game/WinnerCrossOverlay/winnerName)
+		{
+			metrics_mode pixels
+			vert_align top
+			left 5
+			top 30
+			width 245
+			height 25
+			font_name BlueHighway
+			char_height 26
+			caption Test B
+			colour_top 0.7 0 0
+			colour_bottom 0.8 0 0
+		}
+    }
+}
+
+Game/WinnerCircleOverlay
+{
+	zorder 501
+	// Stats block
+	container BorderPanel(Game/WinnerCircleOverlay/Panel)
+	{
+		metrics_mode pixels
+		vert_align top
+		left 5
+		top 5
+		width 250
+		height 55
+		material Game/Overlay/InfoBlock
+
+		element TextArea(Game/WinnerCircleOverlay/winner)
+		{
+			metrics_mode pixels
+			vert_align top
+			horz_align center
+			left -20
+			top 5
+			width 40
+			height 25
+			font_name BlueHighway
+			char_height 19
+			caption Winner:
+			colour_top 0 0 0.7
+			colour_bottom 0 0 0.7
+		}
+		element TextArea(Game/WinnerCircleOverlay/winnerName)
+		{
+			metrics_mode pixels
+			vert_align top
+			left 5
+			top 30
+			width 245 
+			height 25
+			font_name BlueHighway
+			char_height 26
+			caption Test B
+			colour_top 0 0 0.7
+			colour_bottom 0 0 0.8
+		}
+    }
+}
+

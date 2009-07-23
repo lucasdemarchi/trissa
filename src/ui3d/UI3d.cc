@@ -180,6 +180,8 @@ void UI3d::gameOver(Move const& startPosition, Move const& direction,
 	if(pOver)
 		pOver->show();
 
+	pOver = OverlayManager::getSingleton().getByName("Game/StatusOverlay");
+	pOver->show();
 
 }
 
@@ -415,16 +417,29 @@ void UI3d::createScene(){
 
 	//load the others
 	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCrossOverlay");
-
-		pOver->show();
-		pOver->hide();
+	pOver->show();
+	pOver->hide();
+	
 	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCircleOverlay");
-		pOver->show();
-		pOver->hide();
+	pOver->show();
+	pOver->hide();
 
 
+	pOver = OverlayManager::getSingleton().getByName("Game/StatusOverlay");
+	pOver->show();
+	pOver->hide();
 
+	//set captions
+	OverlayElement* ov = OverlayManager::getSingleton().getOverlayElement("Game/InfoOverlay/PlayerA/text");
+	ov->setCaption(mCm->getPlayerA());
+	ov = OverlayManager::getSingleton().getOverlayElement("Game/WinnerCrossOverlay/winnerName");
+	ov->setCaption(mCm->getPlayerA());
 
+	ov = OverlayManager::getSingleton().getOverlayElement("Game/InfoOverlay/PlayerB/text");
+	ov->setCaption(mCm->getPlayerB());
+	ov = OverlayManager::getSingleton().getOverlayElement("Game/WinnerCircleOverlay/winnerName");
+	ov->setCaption(mCm->getPlayerB());
+				
 	mInputHandler = new InputHandlerGame( mWindow, mSm, mCEGUISystem, mSceneMgr );
 
 }
@@ -442,6 +457,8 @@ void UI3d::destroyScene(){
 	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCrossOverlay");
 	pOver->hide();
 	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCircleOverlay");
+	pOver->hide();
+	pOver = OverlayManager::getSingleton().getByName("Game/StatusOverlay");
 	pOver->hide();
 
 	delete mInputHandler;
