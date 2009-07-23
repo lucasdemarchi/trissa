@@ -237,10 +237,7 @@ void Game::run()
 		return;
 	}
 out:
-	if(winner != PLAYER_BLANK)
-		mUi->gameOver(mWinnerStartPos, mWinnerDirection);
-	else
-		mUi->gameOver();
+	mUi->gameOver(mWinnerStartPos, mWinnerDirection, winner);
 
 }
 

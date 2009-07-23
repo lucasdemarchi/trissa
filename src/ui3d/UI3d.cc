@@ -146,9 +146,13 @@ void UI3d::updateBoard()
 
 }
 
-void UI3d::gameOver(Move const& startPosition, Move const& direction)
+void UI3d::gameOver(Move const& startPosition, Move const& direction,
+		PlayerType winner)
 {
 	mGameOver = true;
+	if(winner == PLAYER_BLANK)
+		return;
+
 	int dimension = mCm->getDimension();
 
 	Move m = startPosition;
@@ -165,11 +169,18 @@ void UI3d::gameOver(Move const& startPosition, Move const& direction)
 		ent->setMaterialName("Ball/Winner");
 	}
 
-}
+	//set winner name
+	Overlay* pOver = OverlayManager::getSingleton().getByName("Game/InfoOverlay");
+	pOver->hide();
+	if(winner == PLAYER_CROSS)
+		pOver = OverlayManager::getSingleton().getByName("Game/WinnerCrossOverlay");
+	else
+		pOver = OverlayManager::getSingleton().getByName("Game/WinnerCircleOverlay");
 
-void UI3d::gameOver()
-{
-	mGameOver = true;
+	if(pOver)
+		pOver->show();
+
+
 }
 
 void UI3d::setPos(Move const &m, PlayerType player)
@@ -397,6 +408,23 @@ void UI3d::createScene(){
 
 	mSceneMgr->setSkyBox(true, "World/MorningSkyBox");
 
+	Overlay* pOver = OverlayManager::getSingleton().getByName("Game/InfoOverlay");
+
+	if(pOver)
+		pOver->show();
+
+	//load the others
+	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCrossOverlay");
+
+		pOver->show();
+		pOver->hide();
+	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCircleOverlay");
+		pOver->show();
+		pOver->hide();
+
+
+
+
 	mInputHandler = new InputHandlerGame( mWindow, mSm, mCEGUISystem, mSceneMgr );
 
 }
@@ -408,6 +436,13 @@ void UI3d::destroyScene(){
 	mSceneMgr->destroyAllEntities();
 	mSceneMgr->getRootSceneNode()->removeAndDestroyAllChildren();
 	MeshManager::getSingleton().removeAll();
+
+	Overlay* pOver = OverlayManager::getSingleton().getByName("Game/InfoOverlay");
+	pOver->hide();
+	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCrossOverlay");
+	pOver->hide();
+	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCircleOverlay");
+	pOver->hide();
 
 	delete mInputHandler;
 	mInputHandler = 0;

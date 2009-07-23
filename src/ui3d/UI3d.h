@@ -62,9 +62,7 @@ public:
 	void wait_end();
 	void setPos(Move const& m, PlayerType player);
 	
-	void gameOver(Move const& startPosition, Move const& direction);
-	void gameOver();
-
+	void gameOver(Move const& startPosition, Move const& direction, PlayerType winner);
 	
 	void start_thread();
 

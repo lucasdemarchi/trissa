@@ -180,23 +180,17 @@ void UIText::refresh()
 //	}
 //}
 
-void UIText::gameOver(Move const& startPosition, Move const& direction)
+void UIText::gameOver(Move const& startPosition, Move const& direction, PlayerType winner)
 {
-	cout << "Winner direction: ["
-	     << direction.x << "," << direction.y << "," << direction.z << "]\n";
-	cout << "Last position played: ["
-	     << startPosition.x << "," << startPosition.y << "," << startPosition.z << "]\n";
-
-	string resp;
-	cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
-	cin >> resp;
-	if (resp == "no")
-		mSm->requestStateChange(SHUTDOWN);
-}
-
-void UIText::gameOver()
-{
-	cout << "No winner!" << endl << endl; 
+	if(winner == PLAYER_BLANK){
+		cout << "No winner!" << endl << endl; 
+	}
+	else{
+		cout << "Winner direction: ["
+		     << direction.x << "," << direction.y << "," << direction.z << "]\n";
+		cout << "Last position played: ["
+		     << startPosition.x << "," << startPosition.y << "," << startPosition.z << "]\n";
+	}
 	string resp;
 	cout << endl << endl <<"GAME OVER!!" << endl<<"Do you want to play again? (yes/no): ";
 	cin >> resp;
