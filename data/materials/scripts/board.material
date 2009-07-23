@@ -24,7 +24,6 @@ material Board/Glass
 			texture_unit
 			{
 				texture Water01.jpg	
-				border_colour 0.5 0.5 0.5 0.5
 				tex_coord_set 0
 				tex_address_mode clamp
 				filtering trilinear

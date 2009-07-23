@@ -12,7 +12,7 @@ material World/Ground
   }
 }
 
-fragment_program Examples/MorningSkyBoxHDRfp cg
+fragment_program World/MorningSkyBoxHDRfp cg
 {
 	source hdr.cg
 	entry_point morningskybox_fp
@@ -48,7 +48,6 @@ material World/MorningSkyBox
 
                         vertex_program_ref World/AmbientOneTexture
                         {
-                                param_named_auto worldViewProj worldviewproj_matrix
                                 param_named ambient float4 1 1 1 1
                         }
                         fragment_program_ref World/MorningSkyBoxHDRfp
