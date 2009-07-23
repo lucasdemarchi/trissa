@@ -180,7 +180,12 @@ void ConfigManager::setAvailableOptions()
 
 	mGameOptions.add( mCommandLine ).add( mConfigFile );
 }
+
+#ifdef _TRISSA_UI3D_
+const char * ConfigManager::DEFAULT_UI("3d");
+#else
 const char * ConfigManager::DEFAULT_UI("text");
+#endif
 const char * ConfigManager::DEFAULT_CONFIG_FILE ("./trissa.cfg");
 const char * ConfigManager::DEFAULT_PLAYERS_PATH("./players/");
 const char * ConfigManager::DEFAULT_PLAYER("Human Player");
