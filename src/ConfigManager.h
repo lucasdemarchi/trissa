@@ -42,6 +42,7 @@ public:
 	static const char * DEFAULT_UI; /**< Default UI to be used when there's no configuration about it */
 	static const char * DEFAULT_CONFIG_FILE; /**< Default config file to be used when not specified in command line */
 	static const char * DEFAULT_PLAYERS_PATH; /**< Default path where to look for Players classes */
+	static const char * DEFAULT_PLAYER; /**< Default selected player */
 
 	enum UI_OPTIONS {
 		UI_UNAVAILABLE = -1,

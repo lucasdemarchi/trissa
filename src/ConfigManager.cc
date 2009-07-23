@@ -62,6 +62,8 @@ ConfigManager::ConfigManager(int argc, char* argv[]) :
 
 	mPlayersPath = mOptionsMap["path"].as<std::string>();
 	mDimension = mOptionsMap["dimension"].as<unsigned int>();
+	mPlayerA = mOptionsMap["selectedA"].as<std::string>();
+	mPlayerB = mOptionsMap["selectedB"].as<std::string>();
 }
 
 ConfigManager::~ConfigManager()
@@ -168,10 +170,12 @@ void ConfigManager::setAvailableOptions()
 	("ui,u", po::value<std::string>()->default_value(DEFAULT_UI), "Available interfaces: Text ('text' option)");
 #endif
 	mConfigFile.add_options()
-	("selectedA", po::value<std::string>()->default_value(""), "Selected player A. Must be the same name exported by one"
-	 "of the player in players' path")
-	("selectedB", po::value<std::string>()->default_value(""), "Selected player B. Must be the same name exported by one"
-	 "of the player in players' path")
+	("selectedA", po::value<std::string>()->default_value(DEFAULT_PLAYER),
+	 "Selected player A. Must be the same name exported by one of the player in"
+	 " players' path")
+	("selectedB", po::value<std::string>()->default_value(DEFAULT_PLAYER),
+	 "Selected player B. Must be the same name exported by one of the player in"
+	 " players' path")
 	;
 
 	mGameOptions.add( mCommandLine ).add( mConfigFile );
@@ -179,5 +183,6 @@ void ConfigManager::setAvailableOptions()
 const char * ConfigManager::DEFAULT_UI("text");
 const char * ConfigManager::DEFAULT_CONFIG_FILE ("./trissa.cfg");
 const char * ConfigManager::DEFAULT_PLAYERS_PATH("./players/");
+const char * ConfigManager::DEFAULT_PLAYER("Human Player");
 
 }

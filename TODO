@@ -6,7 +6,6 @@ MILESTONE for version 1.0:
 - It's possible (and easy) to win against Minmax. Let it better.
 - Put some information while playing in UI3d, like players' names
 - Status bar to display messsages to user
-- Play without a selected player => open configuration menu
 - UI3d == default UI
 
 Plans for 1.1:
