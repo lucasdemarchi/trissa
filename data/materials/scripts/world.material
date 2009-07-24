@@ -6,7 +6,8 @@ material World/Ground
     {      
       texture_unit
       {
-          texture rockwall.tga
+          texture floortileable.jpg
+          scale .25 .25
       }
     }
   }
