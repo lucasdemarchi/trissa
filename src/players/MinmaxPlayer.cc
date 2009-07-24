@@ -47,15 +47,33 @@ public:
 		//update our copy of board
 		(*my_board)[opponentMove.z][opponentMove.y][opponentMove.x] = other_player;
 
-#ifdef _TRISSA_DEBUG_
+
 		int r = maximize(depth,-INF,INF, player_type, NULL);
+
+#ifdef _TRISSA_DEBUG_
 		cout << "Ret: " << r << endl;
-#else
-		maximize(depth,-INF,INF, player_type, NULL);
 #endif
+		if(r == -INF) // we already lost... choose any free position
+			choose_first_free_position(player_type);
 		(*my_board)[next_move.z][next_move.y][next_move.x] = player_type;
 		return &next_move;
 
+	}
+	virtual void choose_first_free_position(trissa::PlayerType player)
+	{
+		for (unsigned int k=0; k < dimension; k++) {
+			for (unsigned int j=0; j < dimension; j++) {
+				for (unsigned int i=0; i < dimension; i++) {
+					if ((*my_board)[k][j][i] == trissa::PLAYER_BLANK) {
+						(*my_board)[k][j][i] = player;
+						next_move.x = i;
+						next_move.y = j;
+						next_move.z = k;
+						return;
+					}
+				}
+			}
+		}
 	}
 	virtual trissa::Move* firstPlay() {
 		(*my_board)[next_move.z][next_move.y][next_move.x] = player_type;
