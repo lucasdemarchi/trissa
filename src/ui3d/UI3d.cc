@@ -261,7 +261,11 @@ void UI3d::setupCEGUI() {
 	// create the root CEGUI class
 	mCEGUISystem = new CEGUI::System(mCEGUIRenderer);
 	// tell us a lot about what is going on (see CEGUI.log in the working directory)
+#ifdef _TRISSA_DEBUG_
 	CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative);
+#else
+	CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Errors);
+#endif
 	// use this CEGUI scheme definition (see CEGUI docs for more)
 	CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"QuadraticLook.scheme");
 
