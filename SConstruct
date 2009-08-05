@@ -5,7 +5,7 @@
 exec(open('custom.py'))
 
 PKG_CONFIG_VERSION='0.22'
-OGRE_VERSION='>=1.6.0'
+OGRE_VERSION='>1.6.3'
 BOOST_VERSION='1.3.0'
 
 ###################
