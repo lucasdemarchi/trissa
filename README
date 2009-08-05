@@ -14,4 +14,94 @@ along with Trissa; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, 
 Boston, MA  02110-1301  USA
 
+1. Dependencies
+================
 
+You will need the following packages to compile Trissa:
+    * CEGUI - http://www.cegui.org.uk/
+      The only version tested is 0.6.2. It's possible to work with other
+      versions, but not guaranteed
+      To compile CEGUI from source do:
+          $ ./configure --sysconfdir=/etc --enable-devil --enable-silly \
+             --disable-xerces-c --with-default-image-codec=SILLYImageCodec \
+             --disable-lua
+          $ make
+          # make install
+
+    * Boost - http://www.boost.org/
+      It's advised to have the complete boost package and the best way to
+      accomplish this is using your distribution package. All versions of
+      boost in recent distributions are known to work. If you want to compile
+      from source, you will need:
+          - Filesystem:
+            http://www.boost.org/doc/libs/1_39_0/libs/filesystem/doc/index.htm
+          - Program Options:
+            http://www.boost.org/doc/libs/1_39_0/doc/html/program_options.html
+          - Thread:
+            http://www.boost.org/doc/libs/1_39_0/doc/html/thread.html
+
+    * Scons - http://www.scons.org/
+      Versions 1.2 and 1.1 are known to work. Use your distribution's package
+
+    * OIS - http://sourceforge.net/projects/wgois/
+      Version 1.2 is known to work, although older versions probably work too.
+      To compile from source code, download the latest version and do:
+          $ ./bootstrap
+          $ ./configure
+          $ make
+          # make install
+
+    * OGRE - http://www.ogre3d.org
+      You will need version 1.7. As of now, it's not released yet, so you will
+      need to compile it yourself from svn:
+      See http://www.ogre3d.org/developers/subversion how to fetch the latest
+      svn version. Compile it with (you'll need cmake):
+          $ cmake-gui 
+          $ make
+          # make install
+
+    * Nvidia CG Toolkit - use your distributions' package
+
+2. Compiling Trissa
+===================
+
+You have a bunch of options to choose when compiling Trissa. The default is to
+compile with debug enabled. To disable it, pass mode=optimized option. See
+scons --help for more options:
+
+    prefix: The install path "prefix"
+        default: /usr/local
+        actual: /usr/local
+    
+    mode: Defines how Trissa will be built (optimized|optimized_thishost|debug)
+        default: debug
+        actual: debug
+    
+    configfile: Path to configuration file ( /path/to/configfile )
+        default: /etc/trissa.conf
+        actual: /etc/trissa.conf
+    
+    version: Auto-update version options (auto|release|keepold)
+        default: auto
+        actual: auto
+    
+    enable_ui3d: Compile 3D interface (yes|no)
+        default: True
+        actual: True
+
+Trissa is in development version. It's not a well self-contained package.
+prefix and configfile options have no effects yet.
+
+Mode options:
+    - debug: compile with debug flag on (you'll see a lot of output in
+      stdout/stderr) and with compiler flags to be able to use gdb to debug it
+    - optimized: it will compile without debugging symbols and with -O3
+      optimization
+    - optimized_thishost: it will detect optimization flags that your
+      processor supports and pass it to gcc (for example, SSE/MMX/...)
+
+3. Intalling and running
+========================
+
+Do not install Trissa. It's not ready yet. Instead, run it inside the build
+directories. Inside build directory, run ./trissa --help for options.
