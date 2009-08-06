@@ -35,15 +35,18 @@ env = Environment(
     LIBS = ['dl','boost_filesystem', 'boost_program_options', 'boost_thread-mt'],
     LINKFLAGS = ['-rdynamic'],
     
-    #CXXCOMSTR = 'Compiling $TARGET',
-    #CCCOMSTR = 'Compiling $TARGET',
-    #LINKCOMSTR = 'Linking $TARGET',
+#    CXXCOMSTR = 'Compiling $TARGET',
+#    CCCOMSTR = 'Compiling $TARGET',
+#    LINKCOMSTR = 'Linking $TARGET',
     
-    #SHCXXCOMSTR = 'Compiling $TARGET',
-    #SHCCCOMSTR = 'Compiling $TARGET',
-    #SHLINKCOMSTR = 'Linking $TARGET',
+#    SHCXXCOMSTR = 'Compiling $TARGET',
+#    SHCCCOMSTR = 'Compiling $TARGET',
+#    SHLINKCOMSTR = 'Linking $TARGET',
     variables = opts
     )
+
+if os.environ.has_key("PKG_CONFIG_PATH"):
+    env['PKG_CONFIG_PATH']= os.environ["PKG_CONFIG_PATH"]
 
 #####################
 # Generate Help Texts
@@ -118,11 +121,10 @@ if 'players' in COMMAND_LINE_TARGETS:
     subdirs = ['src/players']
 else:
     subdirs = ['src','src/players']
-    if env['enable_ui3d']:
-        subdirs.append('src/ui3d')
-        env['CCFLAGS']+=['-DEXT_HASH', '-D_TRISSA_UI3D_']
-        if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS and not 'cscope' in COMMAND_LINE_TARGETS:
-            Config(env, packages_ui3d)
+headers=[]
+objs=[]
+sharedobjs=[]
+
 
 #Boost is needed by players, ui3d and core:
 if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS and not 'cscope' in COMMAND_LINE_TARGETS:
@@ -130,10 +132,14 @@ if not env.GetOption('clean') and not 'tags' in COMMAND_LINE_TARGETS and not 'cs
     if not (conf.CheckBoost(BOOST_VERSION)):
         print 'Boost version >=' + BOOST_VERSION + ' is needed'
         Exit(1)
+    else:
+        env = conf.Finish()
 
-headers=[]
-objs=[]
-sharedobjs=[]
+    if env['enable_ui3d']:
+        subdirs.append('src/ui3d')
+        env['CCFLAGS']+=['-DEXT_HASH', '-D_TRISSA_UI3D_']
+        Config(env, packages_ui3d)
+
 Export('env version subdirs headers objs sharedobjs COMMAND_LINE_TARGETS opts')
 
 #######

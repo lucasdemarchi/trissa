@@ -5,7 +5,7 @@ import string
 import re
 import SCons
 
-version='0.97'
+version='0.98'
 #try:
 #    f = open("subversion", 'r')
 #    subversion = f.readline().strip()
@@ -47,13 +47,19 @@ def CheckPkgConfig(context, version):
     return ret
 
 def CheckPkg(context, name):
-    context.Message( 'Checking for %s...' % name)
-    pkg_config_cmd = "pkg-config"
-    if os.environ.has_key("PKG_CONFIG_PATH"):
-        pkg_config_cmd = "PKG_CONFIG_PATH=" + os.environ["PKG_CONFIG_PATH"] + " pkg-config"
+    context.Message('Configuring path for %s...' % name)
+
+    pkg_config_cmd = 'PKG_CONFIG_PATH=' + context.env['PKG_CONFIG_PATH'] + ' pkg-config'
     action = '%s --exists \'%s\'' % (pkg_config_cmd, name);
 
     ret = context.TryAction(action)[0]
+    if(ret):
+        action = pkg_config_cmd + " --libs --cflags " + name
+        try:
+            context.env.ParseConfig(pkg_config_cmd + " --libs --cflags " + name)
+        except:
+            ret=0
+
     context.Result(ret)
     return ret
 
@@ -71,21 +77,17 @@ def Config(env, packages):
         headercheck = packages[key]['headercheck']
         msg = packages[key]['msg']
         web = packages[key]['web']
-        if not conf.CheckPkg(key):
-            print '  !!' + msg + key + ' not found.'
-            print '  See: ' + web
-            Exit(1)
-        else:
-            try:
-                env.ParseConfig('pkg-config --libs --cflags ' + key)
-            except:
-                print 'no'
-                print 'Unable to parse config file'
-                Exit(1)
+        if conf.CheckPkg(key):
+            print 'Trying to link to %s with header %s... ' % (libcheck,headercheck)
             if not conf.CheckLibWithHeader(libcheck, headercheck, 'C++'):
+                print 'fail'
                 print 'Unable to link to lib or find required header'
                 Exit(1)
-    
+        else: 
+            print '  !! ' + msg + key + ' not found.'
+            print '  See: ' + web
+            Exit(1)
+   
     env = conf.Finish()
 
 def GenerateTags():    
@@ -101,7 +103,7 @@ def CheckBoost(context, version):
     if len(v_arr) > 0:
         version_n += int(v_arr[0])*100000
     if len(v_arr) > 1:
-        version_n += int(v_arr[1])*100
+        version_n += int(v_arr[1])*1000
     if len(v_arr) > 2:
         version_n += int(v_arr[2])
 
