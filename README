@@ -83,7 +83,7 @@ You will need the following packages to compile Trissa:
 1.1.2 Archlinux
 
    Packages are available in AUR. The best way to install them is through
-   yaourt (note that other dependencies are isntalled automatically):
+   yaourt (note that other dependencies are installed automatically):
 
        $ yaourt -S cegui ogre
        $ yaourt -S boost scons
@@ -92,23 +92,27 @@ You will need the following packages to compile Trissa:
 1.2 From source
 ---------------
 
-If your distro doesn't have pacc
+     If your distro doesn't have packages for the dependencies listed above
+     (or if they are too old), you can install them from source. Below is a
+     quick and dirty guide to get them working. Refer to their websites for
+     more informations.
+
      To compile CEGUI from source do:
           $ ./configure --sysconfdir=/etc --enable-devil --enable-silly \
              --disable-xerces-c --with-default-image-codec=SILLYImageCodec \
              --disable-lua
           $ make
           # make install
-
-      To compile from source code, download the latest version and do:
+     
+     To compile OIS from source code, download the latest version and do:
           $ ./bootstrap
           $ ./configure
           $ make
           # make install
 
-
-      See http://www.ogre3d.org/developers/subversion how to fetch the latest
-      svn version. Compile it with (you'll need cmake):
+     To install ogre from source see
+     http://www.ogre3d.org/developers/subversion how to fetch the latest
+     svn version and compile it with (you'll need cmake):
           $ cmake-gui 
           $ make
           # make install
