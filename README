@@ -21,12 +21,15 @@ You will need the following packages to compile Trissa:
     * CEGUI - http://www.cegui.org.uk/
       The only version tested is 0.6.2. It's possible to work with other
       versions, but not guaranteed
-      To compile CEGUI from source do:
-          $ ./configure --sysconfdir=/etc --enable-devil --enable-silly \
-             --disable-xerces-c --with-default-image-codec=SILLYImageCodec \
-             --disable-lua
-          $ make
-          # make install
+ 
+    * OIS - http://sourceforge.net/projects/wgois/
+      Version 1.2 is known to work, although older versions probably work too.
+
+    * Nvidia CG Toolkit - use your distributions' package
+
+    * OGRE - http://www.ogre3d.org
+      You will need version 1.7. As of now, it's not released yet, so you will
+      need to compile it yourself from svn.
 
     * Boost - http://www.boost.org/
       It's advised to have the complete boost package and the best way to
@@ -43,24 +46,73 @@ You will need the following packages to compile Trissa:
     * Scons - http://www.scons.org/
       Versions 1.2 and 1.1 are known to work. Use your distribution's package
 
-    * OIS - http://sourceforge.net/projects/wgois/
-      Version 1.2 is known to work, although older versions probably work too.
+
+1.1 Supported distros
+---------------------
+
+1.1.1 Ubuntu
+    
+   CEGUI, OIS, Nvidia CG Toolkit and OGRE are available in PPA. To use it
+   you'll need to add a repository (See available packages in
+   https://launchpad.net/~andrewfenn/+archive/ogredev):
+
+       $ sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 6FED7057
+
+   See https://launchpad.net/+help/soyuz/ppa-sources-list.html on how to add
+   the following PPA repository:
+
+       * [9.04 - Jaunty]
+           deb http://ppa.launchpad.net/andrewfenn/ogredev/ubuntu jaunty main 
+           deb-src http://ppa.launchpad.net/andrewfenn/ogredev/ubuntu jaunty main
+	   
+       * [8.10 - Intrepid]
+           deb http://ppa.launchpad.net/andrewfenn/ogredev/ubuntu intrepid main 
+           deb-src http://ppa.launchpad.net/andrewfenn/ogredev/ubuntu intrepid main 
+
+       * [8.04 - Hardy]
+           deb http://ppa.launchpad.net/andrewfenn/ogredev/ubuntu hardy main 
+           deb-src http://ppa.launchpad.net/andrewfenn/ogredev/ubuntu hardy main 
+
+   Install dependencies:
+   
+       $ sudo apt-get install silly ois cegui nvidia-cg-toolkit ogre
+       $ sudo apt-get install libboost-program-options1.37-dev \
+           libboost-filesystem1.37-dev libboost1.37-dev
+       $ sudo apt-get install scons
+
+1.1.2 Archlinux
+
+   Packages are available in AUR. The best way to install them is through
+   yaourt (note that other dependencies are isntalled automatically):
+
+       $ yaourt -S cegui ogre
+       $ yaourt -S boost scons
+
+
+1.2 From source
+---------------
+
+If your distro doesn't have pacc
+     To compile CEGUI from source do:
+          $ ./configure --sysconfdir=/etc --enable-devil --enable-silly \
+             --disable-xerces-c --with-default-image-codec=SILLYImageCodec \
+             --disable-lua
+          $ make
+          # make install
+
       To compile from source code, download the latest version and do:
           $ ./bootstrap
           $ ./configure
           $ make
           # make install
 
-    * OGRE - http://www.ogre3d.org
-      You will need version 1.7. As of now, it's not released yet, so you will
-      need to compile it yourself from svn:
+
       See http://www.ogre3d.org/developers/subversion how to fetch the latest
       svn version. Compile it with (you'll need cmake):
           $ cmake-gui 
           $ make
           # make install
 
-    * Nvidia CG Toolkit - use your distributions' package
 
 2. Compiling Trissa
 ===================
@@ -99,6 +151,8 @@ Mode options:
       optimization
     - optimized_thishost: it will detect optimization flags that your
       processor supports and pass it to gcc (for example, SSE/MMX/...)
+
+
 
 3. Intalling and running
 ========================
