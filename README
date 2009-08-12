@@ -50,7 +50,7 @@ You will need the following packages to compile Trissa:
 1.1 Supported distros
 ---------------------
 
-1.1.1 Ubuntu
+1.1.1 Ubuntu [NOT TESTED YET]
     
    CEGUI, OIS, Nvidia CG Toolkit and OGRE are available in PPA. To use it
    you'll need to add a repository (See available packages in
@@ -88,6 +88,24 @@ You will need the following packages to compile Trissa:
        $ yaourt -S cegui ogre
        $ yaourt -S boost scons
 
+1.1.3 Fedora [NOT TESTED YET]
+   
+   Fedora 11 provides the following packages:
+       OIS   - 1.0
+       CEGUI - 1.6.2
+       ogre  - 1.6.1
+       boost - 1.37
+       scons - 1.2.0
+   
+   rpmfusion repository:
+       Nvidia CG Toolkit - 2.0.0015
+
+   Add rpmfusion repository:
+       $ sudo rpm -Uvh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
+            http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm
+       $ sudo yum update
+       $ sudo yum install ois cegui ogre boost scons cg
+     
 
 1.2 From source
 ---------------
