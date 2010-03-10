@@ -79,7 +79,7 @@ int Game::startGame()
 		this->configure();
 		if(mConfigManager.getPlayerA() != ""
 			   	&& mConfigManager.getPlayerB() != ""
-				&& mConfigManager.getDimension() 
+				&& mConfigManager.getDimension()
 				&& this->mStateManager.getCurrentState() == GAME ) {
 			boost::thread thr(boost::bind(&Game::run,this));
 			static_cast<UI3d*>(mUi)->start_thread();
@@ -188,10 +188,10 @@ void Game::run()
 			goto out;
 		}
 
-		//while there's no winner 
+		//while there's no winner
 		//and not all positions are occupied
-		for (turn = 1 ; winner == PLAYER_BLANK                                     
-						&& turn < (mDimension*mDimension*mDimension); turn++) {    
+		for (turn = 1 ; winner == PLAYER_BLANK
+						&& turn < (mDimension*mDimension*mDimension); turn++) {
 
 			//decide which player plays next
 			//they take turns
@@ -202,7 +202,7 @@ void Game::run()
 				player_p = mPlayerA;
 				player = PLAYER_CROSS;
 			}
-			
+
 
 			// ask Player the position to play and keep trying n_retry times
 			// if it returns an invalid position
@@ -222,12 +222,12 @@ void Game::run()
 			}
 			else {
 				cerr << "Player \'" << player_p->getName() << "\'"
-					"returned an invalid position for more than " << n_retry 
+					"returned an invalid position for more than " << n_retry
 					<< "times.\nPlease fix your algorithm before trying to play. "
 					"The other player is proclaimed winner";
-				
+
 				//the other player
-				winner = (player == PLAYER_CROSS) ? PLAYER_CIRCLE:PLAYER_CROSS; 
+				winner = (player == PLAYER_CROSS) ? PLAYER_CIRCLE:PLAYER_CROSS;
 			}
 		}
 	}

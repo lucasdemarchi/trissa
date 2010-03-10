@@ -31,7 +31,7 @@
 
 using namespace Ogre;
 
-namespace trissa 
+namespace trissa
 {
 
 InputHandlerGui::InputHandlerGui(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem) :

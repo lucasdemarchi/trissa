@@ -30,12 +30,12 @@ class UIText : public UI
 public:
 	UIText(ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) : UI(cm, sm, pf) { }
 	~UIText() {}
-	
+
 	void configure();
 	void start(Cube const& board);
 	void start_thread();
 	void setPos(Move const &m, PlayerType player);
-	
+
 	void gameOver(Move const& startPosition, Move const& direction, PlayerType winner);
 
 

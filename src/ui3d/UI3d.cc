@@ -103,7 +103,7 @@ void UI3d::start_thread()
 
 
 	std::cout << "UI3d::start_thread:  render thread.\n";
-	
+
 	createScene();
 	while(mSm->getCurrentState() == GAME) {
 		if(mHasNewPos)
@@ -120,12 +120,12 @@ void UI3d::start_thread()
 void UI3d::updateBoard()
 {
 	boost::lock_guard<boost::mutex> lock(mMutexNewPos);
-	
+
 	std::stringstream father_name("");
 	father_name << posNames.c_str() << "[" << player_move.m.x << "][" << player_move.m.y << "]["
 		<< player_move.m.z << "]";
 	Entity* father_ent = mSceneMgr->getEntity(father_name.str());
-	
+
 	assert(father_ent);
 	std::stringstream ball_name("");
 	ball_name << father_name.str() << "Ball";
@@ -137,7 +137,7 @@ void UI3d::updateBoard()
 		new_ball->setMaterialName("Ball/Cross");
 	else
 		new_ball->setMaterialName("Ball/Circle");
-	
+
 	father_ent->setQueryFlags(InputHandlerGame::POSITION_OCCUPIED_MASK);
 	father_ent->getParentSceneNode()->attachObject(new_ball);
 
@@ -159,7 +159,7 @@ void UI3d::gameOver(Move const& startPosition, Move const& direction,
 	while (m.x != dimension && m.y != dimension && m.z != dimension
 			&& m.x >= 0 && m.y >= 0 && m.z >= 0)
 		m -= direction;
-	
+
 	for(int i = 0; i < dimension; i++){
 		m += direction;
 		std::stringstream ball_name("");
@@ -342,7 +342,7 @@ void UI3d::createScene(){
 				sc->setPosition(init_position - (QUAD_SIZE * i),			//X
 						QUAD_SIZE + (j * VAR_DIST_PLANES * boardDimension),	//Y
 						init_position - (QUAD_SIZE * k));					//Z
-				
+
 				sc->attachObject(ent);
 				boardMap[ent] = Move(i,j,k);
 			}
@@ -395,7 +395,7 @@ void UI3d::createScene(){
 	node = mSceneMgr->getRootSceneNode()->createChildSceneNode
 		("CamNode1", Vector3(-300, yPos, 300));
 	node->yaw( Degree( -45 ) );
-	node->lookAt( Vector3( 0, Real(QUAD_SIZE) + Real(VAR_DIST_PLANES) * 
+	node->lookAt( Vector3( 0, Real(QUAD_SIZE) + Real(VAR_DIST_PLANES) *
 				Real(boardDimension* (boardDimension-1)) , 0 ), Node::TS_PARENT );
 	node->attachObject(mCamera);
 
@@ -423,7 +423,7 @@ void UI3d::createScene(){
 	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCrossOverlay");
 	pOver->show();
 	pOver->hide();
-	
+
 	pOver = OverlayManager::getSingleton().getByName("Game/WinnerCircleOverlay");
 	pOver->show();
 	pOver->hide();
@@ -443,7 +443,7 @@ void UI3d::createScene(){
 	ov->setCaption(mCm->getPlayerB());
 	ov = OverlayManager::getSingleton().getOverlayElement("Game/WinnerCircleOverlay/winnerName");
 	ov->setCaption(mCm->getPlayerB());
-				
+
 	mInputHandler = new InputHandlerGame( mWindow, mSm, mCEGUISystem, mSceneMgr );
 
 }

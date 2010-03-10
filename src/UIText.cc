@@ -183,7 +183,7 @@ void UIText::refresh()
 void UIText::gameOver(Move const& startPosition, Move const& direction, PlayerType winner)
 {
 	if(winner == PLAYER_BLANK){
-		cout << "No winner!" << endl << endl; 
+		cout << "No winner!" << endl << endl;
 	}
 	else{
 		cout << "Winner direction: ["

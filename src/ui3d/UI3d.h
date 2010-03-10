@@ -58,12 +58,12 @@ public:
 	UI3d (ConfigManager* cm, StateManager* sm, PlayerFactory const* pf);
 	~UI3d();
 	void configure();
-	void start(Cube const& board);	
+	void start(Cube const& board);
 	void wait_end();
 	void setPos(Move const& m, PlayerType player);
-	
+
 	void gameOver(Move const& startPosition, Move const& direction, PlayerType winner);
-	
+
 	void start_thread();
 
 	//called by core
@@ -93,7 +93,7 @@ private:
 	bool mForceConfigDialogDisplay;
 	volatile bool mCanLoadUi;
 	volatile bool mGameOver;
-	
+
 	volatile bool mHasNewPos;
 	boost::mutex mMutexNewPos;
 	boost::condition_variable mCondNewPosHandled;
@@ -102,7 +102,7 @@ private:
 	void setupResources();
 	void setupRenderSystem();
 	void setupScene();
-	
+
 	void setupCEGUI();
 	void createGUI();
 	void destroyGUI();

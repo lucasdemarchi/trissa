@@ -27,7 +27,7 @@
 
 using namespace Ogre;
 
-namespace trissa 
+namespace trissa
 {
 
 InputHandler::InputHandler(Ogre::RenderWindow* win, StateManager* stateManager, CEGUI::System* CEGUISystem) :

@@ -121,7 +121,7 @@ bool InputHandlerGame::mousePressed(const OIS::MouseEvent &e, OIS::MouseButtonID
 			{
 				boost::lock_guard<boost::mutex> lock(mMutexUserInput);
 				mUserInputEnabled = false;
-				
+
 				mSelPos->setMaterialName("Board/Glass");
 				mWaitingSelConfirmation = false;
 			}

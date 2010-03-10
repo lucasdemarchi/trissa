@@ -37,7 +37,7 @@ namespace trissa
 
 MainMenu::MainMenu(CEGUI::System* CEGUISystem, StateManager* stateManager,
 		ConfigManager* configManager) :
-    Menu(CEGUISystem, stateManager, configManager, 
+    Menu(CEGUISystem, stateManager, configManager,
 	CEGUI::WindowManager::getSingleton().loadWindowLayout("welcome.layout"), 0),
 	mSettingsMenu(0)
 {

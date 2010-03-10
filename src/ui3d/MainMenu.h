@@ -44,7 +44,7 @@ class MainMenu : public Menu {
 public:
 	MainMenu(CEGUI::System* CEGUISystem, StateManager* stateManager,
 		ConfigManager* configManager);
-    
+
 	virtual ~MainMenu();
 
     bool quit_OnClick( const CEGUI::EventArgs &args );

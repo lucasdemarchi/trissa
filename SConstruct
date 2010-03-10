@@ -34,11 +34,11 @@ env = Environment(
     CPPPATH = [ '#src' ],
     LIBS = ['dl','boost_filesystem', 'boost_program_options', 'boost_thread-mt'],
     LINKFLAGS = ['-rdynamic'],
-    
+
 #    CXXCOMSTR = 'Compiling $TARGET',
 #    CCCOMSTR = 'Compiling $TARGET',
 #    LINKCOMSTR = 'Linking $TARGET',
-    
+
 #    SHCXXCOMSTR = 'Compiling $TARGET',
 #    SHCCCOMSTR = 'Compiling $TARGET',
 #    SHLINKCOMSTR = 'Linking $TARGET',
@@ -89,7 +89,7 @@ packages_ui3d = {
         'msg' : 'Error: Ogre3d and development files are required to use 3D UI',
         'web' : 'http://www.ogre3d.org'
     },
-        
+
     'OIS' : {
         'check': '',
         'libcheck': 'OIS',
@@ -97,7 +97,7 @@ packages_ui3d = {
         'msg' : 'Error: OIS needed to use 3D UI',
         'web' : 'http://sourceforge.net/projects/wgois/'
     },
-        
+
     'CEGUI' : {
         'check' : '',
         'libcheck': 'CEGUIBase',

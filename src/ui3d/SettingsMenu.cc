@@ -49,7 +49,7 @@ SettingsMenu::SettingsMenu(Menu* father) :
 		(CEGUI::PushButton *)CEGUI::WindowManager::getSingleton().getWindow("cmdOk");
 	pOkButton->subscribeEvent(CEGUI::PushButton::EventClicked,
 			CEGUI::Event::Subscriber(&SettingsMenu::ok_OnClick, this));
-	
+
 	CEGUI::PushButton* pCancelButton =
 		(CEGUI::PushButton*) CEGUI::WindowManager::getSingleton().getWindow("cmdCancel");
 	pCancelButton->subscribeEvent(CEGUI::PushButton::EventClicked,
@@ -73,7 +73,7 @@ bool SettingsMenu::ok_OnClick(const CEGUI::EventArgs &args){
 		(wmng.getWindow("lstPlayerB"))->getFirstSelectedItem();
 	int dimension = static_cast<int>(static_cast<CEGUI::Spinner*>
 		(wmng.getWindow("txtDimension"))->getCurrentValue());
-	
+
 	if (playerA == NULL){
 		if(static_cast<CEGUI::Listbox*>
 				(wmng.getWindow("lstPlayerA"))->getItemCount() > 0){
@@ -155,7 +155,7 @@ void SettingsMenu::populatePlayers()
 void SettingsMenu::loadConfig()
 {
 	populatePlayers();
-	
+
 	//Dimension
 	CEGUI::WindowManager &wmng = CEGUI::WindowManager::getSingleton();
 	int dimension = mConfigManager->getDimension();
