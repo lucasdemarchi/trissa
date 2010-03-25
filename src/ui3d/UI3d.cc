@@ -31,7 +31,8 @@
 #include <Ogre.h>
 #include <OgreWindowEventUtilities.h>
 
-#include <OgreCEGUIRenderer.h>
+#include <RendererModules/Ogre/CEGUIOgreRenderer.h>
+#include <CEGUI.h>
 #include <CEGUISystem.h>
 #include <CEGUILogger.h>
 #include <CEGUIWindow.h>
@@ -70,6 +71,7 @@ UI3d::UI3d (ConfigManager* cm, StateManager* sm, PlayerFactory const* pf) :
 }
 UI3d::~UI3d()
 {
+        CEGUI::OgreRenderer::destroySystem();
 	delete mRoot;
 }
 void UI3d::configure()
@@ -257,9 +259,18 @@ void UI3d::setupScene() {
 
 void UI3d::setupCEGUI() {
 
-	mCEGUIRenderer = new CEGUI::OgreCEGUIRenderer(mWindow, Ogre::RENDER_QUEUE_OVERLAY, false, 3000, mSceneMgr);
-	// create the root CEGUI class
-	mCEGUISystem = new CEGUI::System(mCEGUIRenderer);
+	mCEGUIRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
+
+	// default resources
+	CEGUI::Imageset::setDefaultResourceGroup("Imagesets");
+	CEGUI::Font::setDefaultResourceGroup("Fonts");
+	CEGUI::Scheme::setDefaultResourceGroup("Schemes");
+	CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
+	CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
+
+	// retrieve pointer to CEGUI::System singleton
+	mCEGUISystem = CEGUI::System::getSingletonPtr();
+
 	// tell us a lot about what is going on (see CEGUI.log in the working directory)
 #ifdef _TRISSA_DEBUG_
 	CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative);
@@ -267,11 +278,9 @@ void UI3d::setupCEGUI() {
 	CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Errors);
 #endif
 	// use this CEGUI scheme definition (see CEGUI docs for more)
-	CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"QuadraticLook.scheme");
-
+	CEGUI::SchemeManager::getSingleton().create((CEGUI::utf8*)"QuadraticLook.scheme");
 	mCEGUISystem->setDefaultMouseCursor((CEGUI::utf8*)"QuadraticLook", (CEGUI::utf8*)"MouseArrow");
 	mCEGUISystem->setDefaultFont((CEGUI::utf8*)"BlueHighway-12");
-
 }
 
 

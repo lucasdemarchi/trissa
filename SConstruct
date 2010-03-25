@@ -108,7 +108,7 @@ packages_ui3d = {
     'CEGUI-OGRE' : {
         'check' : '',
         'libcheck': 'CEGUIOgreRenderer',
-        'headercheck': 'OgreCEGUIRenderer.h',
+        'headercheck': 'RendererModules/Ogre/CEGUIOgreRenderer.h',
         'msg' : 'Error: CEGUI-OGRE needed to use 3D UI',
         'web' : 'http://www.ogre3d.org'
     }

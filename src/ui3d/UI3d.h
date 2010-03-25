@@ -29,7 +29,7 @@
 #include <Ogre.h>
 #include <OgreWindowEventUtilities.h>
 
-#include <OgreCEGUIRenderer.h>
+#include <RendererModules/Ogre/CEGUIOgreRenderer.h>
 #include <CEGUISystem.h>
 #include <CEGUILogger.h>
 #include <CEGUIWindow.h>
@@ -80,7 +80,7 @@ private:
 	Ogre::Viewport* mViewport;
 	InputHandler* mInputHandler;
 
-	CEGUI::OgreCEGUIRenderer* mCEGUIRenderer;
+	CEGUI::OgreRenderer *mCEGUIRenderer;
 	CEGUI::System* mCEGUISystem;
 
 	MainMenu* mMainMenu;
