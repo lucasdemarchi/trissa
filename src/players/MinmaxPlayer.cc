@@ -23,7 +23,7 @@ public:
 	MinmaxPlayer(int dimension, trissa::PlayerType player_type, trissa::UIInputOutput* ui) :
 			trissa::Player(dimension, player_type, NULL),
 			next_move(0,0,0),
-			depth(2) //,
+			depth(3) //,
 			//my_player(player_type)
 	{
 		other_player = player_type==trissa::PLAYER_CROSS ? trissa::PLAYER_CIRCLE : trissa::PLAYER_CROSS;
